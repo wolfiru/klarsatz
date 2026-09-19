@@ -44,7 +44,13 @@ die Weiterarbeit (z. B. mit Claude Code auf dem Raspberry Pi). Arbeitsregeln: `C
    der Kurzform von `Wenn`, Wörterbuch-Werte direkt durchgehen.
    `Warte N Sekunden` ist seit 0.5.0 **gebaut** – zusammen mit dem Mitlesen (siehe unten).
 
-## Webseite (Stand 18.09.2026)
+## Webseite (Stand 19.09.2026)
+
+**Die Webseite liegt seit 19.09.2026 mit im Repository** (`webseite/`) und wird dort bearbeitet, nicht im
+Webordner: `seiten/` (index, doku, spielplatz) und `assets/` von Hand, `kapitel/` als Quelle der Doku-Kapitel.
+Veröffentlicht mit `python3 tools/veroeffentliche_webseite.py` — das kopiert, baut die Kapitel und stempelt.
+Nur im Webordner liegen die erzeugten `doku-*.html`, `spielwiese/`, `downloads/` und `pyodide/` (14 MB Fremdcode).
+
 
 Adresse: **https://www.ruthner.at/klarsatz/** – Ordner `/var/www/html/klarsatz/`. Auf der Startseite
 (`/var/www/html/index.html`) prominent verlinkt, im selben Muster wie Video Wallpaper, mit einem animierten

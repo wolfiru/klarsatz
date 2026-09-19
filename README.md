@@ -148,6 +148,7 @@ Eine geprüfte Sandbox ist das trotzdem nicht. Was abgesichert ist und was nicht
 | `docs/` | Sprachreferenz, Programmübersicht, Sicherheit |
 | `playground/` | die Spielwiese für den Browser (Editor, Pyodide-Worker) |
 | `editor/` | VS-Code-Erweiterung, TextMate-Grammatik |
+| `webseite/` | die Seiten von [ruthner.at/klarsatz](https://www.ruthner.at/klarsatz/): `seiten/` und `assets/` von Hand, `kapitel/` als Quelle der Doku-Kapitel |
 | `tools/` | Generatoren und Werkzeuge für Webseite und Archiv |
 | `tests/` | 462 Tests |
 

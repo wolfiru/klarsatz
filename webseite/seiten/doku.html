@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Die vollständige Dokumentation der Programmiersprache Klarsatz: Grundlagen, Rechnen, Schleifen, Listen, Aufgaben und Referenz.">
+<meta name="theme-color" content="#0c0e0b">
+<title>Dokumentation — Klarsatz</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230c0e0b'/%3E%3Crect x='14' y='20' width='28' height='3' rx='1.5' fill='%23d9b45a'/%3E%3Crect x='14' y='30' width='36' height='3' rx='1.5' fill='%23f3efe6' opacity='.6'/%3E%3Crect x='14' y='40' width='20' height='3' rx='1.5' fill='%23f3efe6' opacity='.6'/%3E%3Crect x='38' y='40' width='4' height='3' rx='1.5' fill='%23d9b45a'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<canvas id="manuskript"></canvas>
+<div class="bg-overlay"></div>
+<div class="grain"></div>
+
+<nav class="nav">
+    <div class="nav-start">
+        <a class="heim" href="/" aria-label="Zur Startseite von ruthner.at">
+            <img src="/monogram.png" alt="" width="414" height="516" decoding="async">
+            <span>ruthner<em>.at</em></span>
+        </a>
+        <span class="nav-teiler" aria-hidden="true"></span>
+        <a class="brand" href="index.html"><span class="brand-mark"></span><span>Klar<em>satz</em></span></a>
+    </div>
+    <div class="nav-links">
+        <a href="index.html">Sprache</a>
+        <a href="doku.html">Dokumentation</a>
+        <a href="doku-referenz.html">Referenz</a>
+        <a href="spielplatz.html" class="nav-cta">Spielplatz</a>
+    </div>
+</nav>
+
+<header class="seitenkopf">
+    <p class="kicker">Dokumentation · Version 0.2.0</p>
+    <h1>Die Sprache, <em>Kapitel für Kapitel.</em></h1>
+    <p class="lede">Sieben Kapitel, die aufeinander aufbauen — vom ersten Satz bis zur vollständigen Referenz. Jedes Codebeispiel lässt sich mit einem Klick im Spielplatz öffnen und verändern.</p>
+</header>
+
+<main>
+<div style="max-width:1180px;margin:0 auto;padding-bottom:60px">
+
+    <div class="kapitel-grid">
+        <a class="kapitel reveal" style="--i:0" href="doku-grundlagen.html">
+            <span class="kapitel-nr">01</span>
+            <h3>Grundlagen</h3>
+            <p>Wie ein Satz gebaut ist, welche Werte es gibt, wie man ausgibt, einliest und sich Werte merkt.</p>
+            <p class="kapitel-themen">Satzbau · Artikel · Zeige · Frage · Merke · Setze · Anmerkung</p>
+        </a>
+        <a class="kapitel reveal" style="--i:1" href="doku-rechnen.html">
+            <span class="kapitel-nr">02</span>
+            <h3>Rechnen und Vergleichen</h3>
+            <p>Die sechs Rechenarten in Worten, Umwandlungen und Rundungen, Vergleiche und logische Verknüpfungen.</p>
+            <p class="kapitel-themen">plus · mal · Wurzel · Formatiert · größer als · teilbar · und/oder</p>
+        </a>
+        <a class="kapitel reveal" style="--i:2" href="doku-ablauf.html">
+            <span class="kapitel-nr">03</span>
+            <h3>Entscheiden und Wiederholen</h3>
+            <p>Bedingungen in Block- und Kurzform sowie alle fünf Schleifenarten, samt Abbruch und Übersprung.</p>
+            <p class="kapitel-themen">Wenn · Sonst · Wiederhole · Zähle · Für jedes · Höre auf</p>
+        </a>
+        <a class="kapitel reveal" style="--i:3" href="doku-zeichnen.html">
+            <span class="kapitel-nr">04</span>
+            <h3>Zeichnen</h3>
+            <p>Ein Stift, zwei Befehle: Aus <em>Gehe</em> und <em>Drehe</em> entstehen Quadrate, Vielecke und Spiralen.</p>
+            <p class="kapitel-themen">Gehe · Drehe · Stift heben · Farbe · Strichstärke</p>
+        </a>
+        <a class="kapitel reveal" style="--i:4" href="doku-listen.html">
+            <span class="kapitel-nr">05</span>
+            <h3>Listen und Dinge</h3>
+            <p>Werte sammeln und sortieren, auf Einträge zugreifen, Texte zerlegen und eigene Strukturen beschreiben.</p>
+            <p class="kapitel-themen">Erstelle Liste · Füge hinzu · Element n von · Teile · Ein X hat</p>
+        </a>
+        <a class="kapitel reveal" style="--i:5" href="doku-aufgaben.html">
+            <span class="kapitel-nr">06</span>
+            <h3>Aufgaben und Fehler</h3>
+            <p>Eigene Befehle definieren, Werte zurückgeben, Rekursion — und was passiert, wenn etwas schiefgeht.</p>
+            <p class="kapitel-themen">Definiere Aufgabe · Gib zurück · Versuche · Stelle sicher · Lies</p>
+        </a>
+        <a class="kapitel reveal" style="--i:6" href="doku-referenz.html">
+            <span class="kapitel-nr">07</span>
+            <h3>Referenz</h3>
+            <p>Sämtliche Satzmuster in Tabellenform, die reservierten Wörter, der Aufruf des Interpreters und die bekannten Grenzen.</p>
+            <p class="kapitel-themen">Satzmuster · reservierte Wörter · --limit · --ohne-dateien</p>
+        </a>
+    </div>
+
+    <section class="section" id="schnellstart" style="margin-top:20px">
+        <div class="section-head reveal">
+            <span class="eyebrow">Schnellstart</span>
+            <h2>In fünf Minuten <em>hineinkommen.</em></h2>
+            <p class="section-sub">Wer lieber tippt als liest: Diese vier Programme zeigen fast alles, was die Sprache ausmacht.</p>
+        </div>
+
+        <div class="vergleich reveal">
+            <div class="v-spalte">
+                <div class="code-kopf"><span class="code-titel">1 · Ausgeben und Merken</span></div>
+<pre class="klar">Zeige "Hallo Welt".
+
+Merke 5 als Zahl.
+Erhöhe die Zahl um 3.
+Zeige "Die Zahl ist " und Zahl.</pre>
+
+                <div class="code-kopf"><span class="code-titel">3 · Listen</span></div>
+<pre class="klar">Erstelle eine Liste namens Einkauf.
+Füge "Milch" zur Einkauf hinzu.
+Füge "Brot" zur Einkauf hinzu.
+Sortiere Einkauf.
+
+Für jedes Element in Einkauf:
+    Zeige "- " und Element.
+Ende.</pre>
+            </div>
+            <div class="v-spalte">
+                <div class="code-kopf"><span class="code-titel">2 · Entscheiden und Zählen</span></div>
+<pre class="klar">Zähle von 1 bis 15 mit i:
+    Wenn i durch 3 teilbar ist, zeige "Fizz".
+    Sonst zeige i.
+Ende.</pre>
+
+                <div class="code-kopf"><span class="code-titel">4 · Eigene Aufgaben</span></div>
+<pre class="klar">Definiere Aufgabe Fläche von Breite und Höhe:
+    Gib Breite mal Höhe zurück.
+Ende.
+
+Zeige "5 x 3 = " und Fläche von 5 und 3.</pre>
+            </div>
+        </div>
+
+        <p class="reveal" style="margin-top:36px">
+            <a href="doku-grundlagen.html" class="btn btn-primary">Mit Kapitel 01 beginnen</a>
+            &nbsp;
+            <a href="spielplatz.html" class="btn btn-secondary">Direkt zum Spielplatz</a>
+        </p>
+    </section>
+
+</div>
+</main>
+
+<footer>
+    <div class="foot-inner">
+        <span>© <span id="jahr"></span> ruthner.at · Klarsatz <span data-download="version">0.7.1</span></span>
+        <span><a href="/">ruthner.at</a> &nbsp;·&nbsp; <a href="index.html">Sprache</a> &nbsp;·&nbsp; <a href="doku.html">Dokumentation</a> &nbsp;·&nbsp; <a href="spielplatz.html">Spielplatz</a> &nbsp;·&nbsp; <a href="https://github.com/wolfiru/klarsatz" rel="noopener">GitHub</a></span>
+    </div>
+</footer>
+
+<script src="assets/manuskript-bg.js"></script>
+<script src="assets/app.js"></script>
+<script type="module" src="assets/code-hervorhebung.js"></script>
+</body>
+</html>

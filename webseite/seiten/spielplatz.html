@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Klarsatz-Programme direkt im Browser schreiben, prüfen und ausführen — mit neunzehn Beispielprogrammen zum Hineinladen. Ohne Server, ohne Dateizugriff.">
+<meta name="theme-color" content="#0c0e0b">
+<title>Spielplatz — Klarsatz</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230c0e0b'/%3E%3Crect x='14' y='20' width='28' height='3' rx='1.5' fill='%23d9b45a'/%3E%3Crect x='14' y='30' width='36' height='3' rx='1.5' fill='%23f3efe6' opacity='.6'/%3E%3Crect x='14' y='40' width='20' height='3' rx='1.5' fill='%23f3efe6' opacity='.6'/%3E%3Crect x='38' y='40' width='4' height='3' rx='1.5' fill='%23d9b45a'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="assets/style.css">
+<link rel="stylesheet" href="spielwiese/klarsatz-playground.css">
+<link rel="stylesheet" href="assets/spielwiese-design.css">
+</head>
+<body>
+
+<canvas id="manuskript"></canvas>
+<div class="bg-overlay"></div>
+<div class="grain"></div>
+
+<nav class="nav">
+    <div class="nav-start">
+        <a class="heim" href="/" aria-label="Zur Startseite von ruthner.at">
+            <img src="/monogram.png" alt="" width="414" height="516" decoding="async">
+            <span>ruthner<em>.at</em></span>
+        </a>
+        <span class="nav-teiler" aria-hidden="true"></span>
+        <a class="brand" href="index.html"><span class="brand-mark"></span><span>Klar<em>satz</em></span></a>
+    </div>
+    <div class="nav-links">
+        <a href="index.html">Sprache</a>
+        <a href="doku.html">Dokumentation</a>
+        <a href="doku-referenz.html">Referenz</a>
+        <a href="spielplatz.html" class="nav-cta">Spielplatz</a>
+    </div>
+</nav>
+
+<main class="sp-main">
+<div class="sp-huelle">
+
+    <div class="sp-kopf">
+        <div>
+            <p class="kicker" style="margin-bottom:0">Spielplatz</p>
+            <h1>Schreiben, laufen lassen, <em>zusehen.</em></h1>
+        </div>
+        <div class="sp-werkzeuge">
+            <button class="sp-mini" id="knopf-teilen" type="button" title="Link zu genau diesem Programm in die Zwischenablage legen">Link zum Programm</button>
+        </div>
+    </div>
+
+    <p class="sp-einleitung">
+        Wähle oben links ein Beispiel — oder <em>Leeres Blatt</em>, um selbst zu schreiben — und drücke <kbd>Strg</kbd>+<kbd>Enter</kbd>.
+        <em>Prüfen</em> findet Fehler, ohne das Programm auszuführen, <em>Formatieren</em> rückt es sauber ein,
+        und <em>Als Python</em> zeigt dasselbe Programm in Python.
+        Fragt ein Programm etwas, erscheint unter der Ausgabe ein Eingabefeld; zeichnet es, erscheint eine Leinwand.
+    </p>
+
+    <div id="spielwiese">
+        <p class="sp-laedt">Die Spielwiese wird geladen — beim ersten Mal dauert das einen Moment,
+        weil der Interpreter samt Python in deinen Browser geladen wird (rund 14 MB, danach zwischengespeichert).</p>
+    </div>
+
+    <noscript>
+        <div class="notiz warnung" style="margin-top:20px">
+            <span class="notiz-titel">JavaScript ist abgeschaltet</span>
+            <p>Der Spielplatz führt Klarsatz vollständig im Browser aus und braucht dafür JavaScript. Die <a href="doku.html">Dokumentation</a> lässt sich auch ohne lesen.</p>
+        </div>
+    </noscript>
+
+    <section class="section" id="sicherheit">
+        <div class="section-head reveal">
+            <span class="eyebrow">Sicher ausprobieren</span>
+            <h2>Was hier <em>nicht</em> passieren kann.</h2>
+            <p class="section-sub">Der Spielplatz führt den echten Klarsatz-Interpreter aus — als Python im Browser, nicht auf dem Server.</p>
+        </div>
+        <div class="sicher-grid reveal">
+            <article class="sicher-karte">
+                <h3>Kein Dateizugriff</h3>
+                <p>Der Spielplatz läuft ohne Dateisystem: <code>Lies</code> und <code>Schreibe</code> arbeiten auf einem Speicherbereich, der mit dem Lauf verschwindet. Auf keine Festplatte wird geschrieben — weder auf deine noch auf den Server.</p>
+            </article>
+            <article class="sicher-karte">
+                <h3>Nichts wird gesendet</h3>
+                <p>Dein Quelltext bleibt im Browser. Es gibt keinen Server, der Programme ausführt, und auch die Python-Laufzeit kommt von dieser Seite selbst — kein fremder Dienst sieht, was du schreibst.</p>
+            </article>
+            <article class="sicher-karte">
+                <h3>Abgeschotteter Lauf</h3>
+                <p>Jedes Programm läuft in einem eigenen Hintergrundprozess des Browsers, ohne Zugriff auf diese Seite. Hängt ein Lauf, wird der Prozess beendet und neu gestartet — die Seite bleibt bedienbar.</p>
+            </article>
+            <article class="sicher-karte">
+                <h3>Begrenzte Mittel</h3>
+                <p>Schritte, Laufzeit, Textlängen, Listengrößen, Zahlengrößen und Verschachtelungstiefe sind begrenzt. Endlosschleifen enden von allein, und kein Programm kann den Browser vollschreiben.</p>
+            </article>
+        </div>
+        <p class="reveal" style="margin-top:28px;color:var(--paper-dim);font-size:0.92rem;max-width:62ch">
+            Trotzdem ehrlich gesagt: Klarsatz ist ein Lernprojekt, kein gehärteter Dienst.
+            Die Einzelheiten stehen in der <a href="doku-referenz.html#sicherheit" style="color:var(--gold-2)">Referenz</a>.
+        </p>
+    </section>
+
+    <section class="section" id="bruecke">
+        <div class="section-head reveal">
+            <span class="eyebrow">Die Brücke</span>
+            <h2>Dasselbe Programm <em>in Python.</em></h2>
+            <p class="section-sub">Der Knopf <em>Als Python</em> übersetzt, was im Editor steht — damit der Schritt in eine verbreitete Sprache kein Sprung ins Kalte ist.</p>
+        </div>
+        <div class="vergleich reveal">
+            <div class="v-spalte">
+                <div class="code-kopf"><span class="code-titel">Klarsatz</span></div>
+<pre class="klar" data-probieren="nein">Merke 5 als Zahl.
+Zähle von 1 bis 3 mit i:
+    Zeige i mal Zahl.
+Ende.</pre>
+            </div>
+            <div class="v-spalte">
+                <p class="v-titel">Python</p>
+<pre class="schale"><code>Zahl = 5
+for i in range(1, 3 + 1):
+    print((i * Zahl))</code></pre>
+            </div>
+        </div>
+        <p class="reveal" style="color:var(--paper-dim);max-width:62ch;margin-top:20px">
+            Die Übersetzung ist auf <strong>Lesbarkeit</strong> aus, nicht auf Gleichheit bis ins letzte Zeichen.
+            Wo Klarsatz anders rechnet — Listen ab 1, Kommazahlen mit Komma, ganzzahliges Teilen —
+            schreibt sie einen Hinweis in den Kopf des erzeugten Programms, statt eine Hilfsbibliothek mitzuschleppen.
+            Auf der Kommandozeile macht das <code>python3 -m klarsatz --nach-python programm.klar</code>.
+        </p>
+    </section>
+
+    <section class="section" id="daheim">
+        <div class="section-head reveal">
+            <span class="eyebrow">Am eigenen Rechner</span>
+            <h2>Klarsatz <em>lokal</em> laufen lassen.</h2>
+            <p class="section-sub">Der Interpreter ist reines Python 3 ohne weitere Abhängigkeiten — auf dem Raspberry Pi genauso wie auf dem Schreibtisch.</p>
+        </div>
+        <div class="reveal">
+<pre class="schale"><code>python3 -m klarsatz programme/03_taschenrechner.klar   # Programm ausführen
+python3 -m klarsatz                                    # interaktive Konsole
+python3 -m klarsatz --pruefe programm.klar             # Fehler finden, ohne auszuführen
+python3 -m klarsatz --formatiere --ersetzen programm.klar</code></pre>
+            <p style="color:var(--paper-dim)">Dort stehen auch <code>Lies</code> und <code>Schreibe</code> offen — standardmäßig auf den Arbeitsordner beschränkt.</p>
+            <p style="margin-top:26px;display:flex;align-items:center;gap:18px;flex-wrap:wrap">
+                <a class="btn btn-primary" data-download="datei" href="downloads/klarsatz-0.7.1.zip" download>Klarsatz <span data-download="version">0.7.1</span> laden</a>
+                <span style="color:var(--paper-faint);font-size:0.84rem">
+                    <span data-download="groesse">239</span> kB · ZIP · Python 3.10 oder neuer · MIT-Lizenz<br>
+                    Enthält Interpreter, alle Beispielprogramme, Dokumentation und diese Spielwiese.
+                </span>
+            </p>
+        </div>
+    </section>
+
+</div>
+</main>
+
+<footer>
+    <div class="foot-inner">
+        <span>© <span id="jahr"></span> ruthner.at · Klarsatz <span data-download="version">0.7.1</span></span>
+        <span><a href="/">ruthner.at</a> &nbsp;·&nbsp; <a href="index.html">Sprache</a> &nbsp;·&nbsp; <a href="doku.html">Dokumentation</a> &nbsp;·&nbsp; <a href="spielplatz.html">Spielplatz</a> &nbsp;·&nbsp; <a href="https://github.com/wolfiru/klarsatz" rel="noopener">GitHub</a></span>
+    </div>
+</footer>
+
+<script src="assets/manuskript-bg.js"></script>
+<script src="assets/app.js"></script>
+<script type="module" src="assets/spielplatz.js"></script>
+</body>
+</html>

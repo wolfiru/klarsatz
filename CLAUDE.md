@@ -20,6 +20,18 @@ Lies zuerst `ÜBERGABE.md` (Stand, offene Punkte, Pläne) und `docs/SPRACHE.md` 
   einordnen (ein Test erzwingt das). Alltagswörter (Zahl, Text, Wert …) NICHT reservieren.
 - Der Formatierer darf nie den Inhalt ändern; `tests/test_formatierer.py` prüft das für alle Programme.
 
+## Webseite
+Die Seite https://www.ruthner.at/klarsatz/ wird **in `webseite/` bearbeitet, nie im Webordner** — sonst geht die
+Änderung beim nächsten Veröffentlichen verloren. `webseite/seiten/` (index, doku, spielplatz) und `webseite/assets/`
+von Hand, `webseite/kapitel/` sind die Quellen der Doku-Kapitel. Veröffentlichen:
+```
+python3 tools/veroeffentliche_webseite.py     # Seiten + Bausteine, baut die Kapitel mit und stempelt
+python3 tools/veroeffentliche_spielwiese.py   # playground/ -> spielwiese/
+python3 tools/baue_archiv.py                  # ZIP + Prüfsumme + Versionsangaben in den Seiten
+```
+Cache-Stempel (`?v=…`) stehen **nicht** in `webseite/`; die setzt `tools/stempel_webseite.py` beim Veröffentlichen
+aus dem Dateiinhalt. Nur im Webordner liegen: `doku-*.html` (erzeugt), `spielwiese/`, `downloads/`, `pyodide/`.
+
 ## Versionsverwaltung
 Das Projekt liegt seit 19.09.2026 in einem Git-Repository (Zweig `main`). Vor größeren Umbauten einen
 sauberen Stand committen; Commit-Texte auf Deutsch, Betreffzeile im Imperativ oder als Aussage.

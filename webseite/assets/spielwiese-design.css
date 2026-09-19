@@ -1,0 +1,105 @@
+/*
+ * Passt die Klarsatz-Spielwiese (playground/klarsatz-playground.css) in das
+ * Design dieser Seite ein. Nur Variablen und wenige Feinheiten — die Spielwiese
+ * selbst bleibt unverändert, damit sie aus dem Projekt aktualisiert werden kann
+ * (tools/veroeffentliche_spielwiese.py).
+ *
+ * Muss NACH klarsatz-playground.css geladen werden.
+ */
+
+:root, :root .kp-b {
+    --kp-bg: #151812;
+    --kp-bg2: #0f1210;
+    --kp-rand: rgba(243, 239, 230, 0.14);
+    --kp-text: #f3efe6;
+    --kp-dezent: #b9b4a5;
+    --kp-akzent: #d9b45a;
+    --kp-fehler: #e08a6a;
+    --kp-warnung: #d9b45a;
+    --kp-hinweis: #9fb4a0;
+    --kp-ok: #7fb069;
+    --kp-fehler-bg: rgba(224, 138, 106, 0.16);
+    --kp-warnung-bg: rgba(217, 180, 90, 0.16);
+    --kp-hinweis-bg: rgba(159, 180, 160, 0.12);
+
+    /* Einfärbung des Quelltextes — dieselben Regeln wie in VS Code und Pygments. */
+    --kp-t-kommentar: #7d7a70;
+    --kp-t-text: #7fb069;
+    --kp-t-zahl: #e8a87c;
+    --kp-t-steuerung: #e8cd86;
+    --kp-t-anweisung: #d9b45a;
+    --kp-t-funktion: #8fd4c4;
+    --kp-t-konstante: #e8a87c;
+    --kp-t-operator: #9aa08f;
+    --kp-t-funktionsname: #e8cd86;
+    --kp-t-typname: #8fd4c4;
+    --kp-t-zeichen: #6b6f66;
+
+    --kp-schrift: "JetBrains Mono", "Cascadia Code", Consolas, ui-monospace, monospace;
+    --kp-hoehe: 30rem;
+}
+
+/* Die Seite ist immer dunkel — die helle Voreinstellung der Spielwiese entfällt. */
+@media (prefers-color-scheme: light) {
+    :root {
+        --kp-bg: #151812;
+        --kp-bg2: #0f1210;
+        --kp-rand: rgba(243, 239, 230, 0.14);
+        --kp-text: #f3efe6;
+        --kp-dezent: #b9b4a5;
+        --kp-akzent: #d9b45a;
+        --kp-fehler: #e08a6a;
+        --kp-warnung: #d9b45a;
+        --kp-hinweis: #9fb4a0;
+        --kp-ok: #7fb069;
+        --kp-t-kommentar: #7d7a70;
+        --kp-t-text: #7fb069;
+        --kp-t-zahl: #e8a87c;
+        --kp-t-steuerung: #e8cd86;
+        --kp-t-anweisung: #d9b45a;
+        --kp-t-funktion: #8fd4c4;
+        --kp-t-konstante: #e8a87c;
+        --kp-t-operator: #9aa08f;
+        --kp-t-funktionsname: #e8cd86;
+        --kp-t-typname: #8fd4c4;
+        --kp-t-zeichen: #6b6f66;
+    }
+}
+
+/* Feinschliff: Rundungen, Schrift und Knöpfe an das Seitendesign angleichen. */
+.kp-b {
+    font-family: var(--sans);
+    border-radius: var(--radius);
+    overflow: hidden;
+    border: 1px solid var(--line);
+    background: var(--ink-2);
+}
+
+.kp-knopf, .kp-auswahl, .kp-antwortfeld {
+    font-family: var(--sans);
+    border-radius: 999px;
+}
+
+.kp-knopf {
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    transition: transform 0.2s var(--ease), background 0.2s, border-color 0.2s;
+}
+
+.kp-knopf:hover:not(:disabled) { transform: translateY(-1px); }
+
+.kp-lauf {
+    background: var(--gold);
+    color: var(--ink);
+    border-color: var(--gold);
+}
+
+.kp-lauf:hover:not(:disabled) { background: var(--gold-2); border-color: var(--gold-2); }
+
+@media (prefers-color-scheme: dark) { .kp-lauf { color: var(--ink); } }
+
+.kp-editor, .kp-ausgabe, .kp-text, .kp-hervor, .kp-nummern {
+    font-family: var(--mono);
+}
+
+.kp-status { font-size: 0.82rem; }

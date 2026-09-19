@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Klarsatz — eine Programmiersprache, deren Programme sich wie deutsche Sätze lesen. Dokumentation und Spielplatz zum Ausprobieren im Browser.">
+<meta name="theme-color" content="#0c0e0b">
+<meta property="og:title" content="Klarsatz — die Programmiersprache in deutschen Sätzen">
+<meta property="og:description" content="Programme, die sich lesen wie Anweisungen. Mit Dokumentation und Spielplatz zum Ausprobieren.">
+<title>Klarsatz — Programmieren in deutschen Sätzen</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230c0e0b'/%3E%3Crect x='14' y='20' width='28' height='3' rx='1.5' fill='%23d9b45a'/%3E%3Crect x='14' y='30' width='36' height='3' rx='1.5' fill='%23f3efe6' opacity='.6'/%3E%3Crect x='14' y='40' width='20' height='3' rx='1.5' fill='%23f3efe6' opacity='.6'/%3E%3Crect x='38' y='40' width='4' height='3' rx='1.5' fill='%23d9b45a'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<canvas id="manuskript"></canvas>
+<div class="bg-overlay"></div>
+<div class="grain"></div>
+
+<nav class="nav">
+    <div class="nav-start">
+        <a class="heim" href="/" aria-label="Zur Startseite von ruthner.at">
+            <img src="/monogram.png" alt="" width="414" height="516" decoding="async">
+            <span>ruthner<em>.at</em></span>
+        </a>
+        <span class="nav-teiler" aria-hidden="true"></span>
+        <a class="brand" href="#top"><span class="brand-mark"></span><span>Klar<em>satz</em></span></a>
+    </div>
+    <div class="nav-links">
+        <a href="#idee">Idee</a>
+        <a href="#blick">Erster Blick</a>
+        <a href="#bausteine">Bausteine</a>
+        <a href="#download">Download</a>
+        <a href="doku.html">Dokumentation</a>
+        <a href="spielplatz.html" class="nav-cta">Spielplatz</a>
+    </div>
+</nav>
+
+<header class="hero" id="top">
+    <div class="hero-inner reveal">
+        <p class="kicker">Eine neue Programmiersprache · Version 0.2</p>
+        <h1>Programme,<br>die sich lesen<br><em>wie ein Satz.</em></h1>
+        <p class="lede">Klarsatz ist eine kontrollierte natürliche Sprache: Jeder Befehl steht im Imperativ, jeder Satz endet mit einem Punkt. Was dasteht, ist genau das, was passiert — kein Klammerdickicht, keine englischen Abkürzungen.</p>
+        <div class="hero-actions">
+            <a href="spielplatz.html" class="btn btn-primary">Gleich ausprobieren</a>
+            <a href="doku.html" class="btn btn-link">Dokumentation lesen</a>
+        </div>
+    </div>
+    <div class="hero-meta reveal" style="--i:2">
+        <span>Deutsche Satzmuster</span>
+        <span>Läuft im Browser</span>
+        <span>Ohne Dateizugriff</span>
+    </div>
+</header>
+
+<main class="mit-verlauf">
+
+    <section class="section" id="idee">
+        <div class="section-head reveal">
+            <span class="eyebrow">01 — Idee</span>
+            <h2>Der Quelltext <em>ist</em> die Erklärung.</h2>
+            <p class="section-sub">Klarsatz nimmt die Sprache ernst, in der wir ohnehin über Programme reden. Wer den Satz versteht, versteht den Befehl.</p>
+        </div>
+        <div class="feature-grid">
+            <article class="feature reveal" style="--i:0">
+                <span class="feature-num">i.</span>
+                <h3>Feste Satzmuster</h3>
+                <p>Jeder Befehl folgt einem festen Muster, das sich vorlesen lässt. Der Parser erkennt Sätze, nicht Symbolfolgen — deshalb bleibt die Sprache eindeutig, obwohl sie nach Deutsch klingt.</p>
+            </article>
+            <article class="feature reveal" style="--i:1">
+                <span class="feature-num">ii.</span>
+                <h3>Artikel sind erlaubt</h3>
+                <p><code>Zeige die Summe.</code> und <code>Zeige Summe.</code> sind dasselbe. Artikel, Umlautschreibung und Groß&#8209;/Kleinschreibung werden überlesen, damit der Satz natürlich bleiben darf.</p>
+            </article>
+            <article class="feature reveal" style="--i:2">
+                <span class="feature-num">iii.</span>
+                <h3>Fehler, die man versteht</h3>
+                <p>Unbekannte Namen führen nicht zu einem Absturz, sondern zu einem Vorschlag: „Meintest du 'Summe'?“ Zugriffe hinter das Listenende sind immer ein klarer Fehler, nie ein stiller Fehlgriff.</p>
+            </article>
+            <article class="feature reveal" style="--i:3">
+                <span class="feature-num">iv.</span>
+                <h3>Deutsche Zahlen</h3>
+                <p>Kommazahlen erscheinen in der Ausgabe so, wie man sie hier schreibt: <code>3,5</code> statt <code>3.5</code>. Texte werden nach deutscher Sortierreihenfolge verglichen — Äpfel vor Birnen.</p>
+            </article>
+            <article class="feature reveal" style="--i:4">
+                <span class="feature-num">v.</span>
+                <h3>Klein genug zum Verstehen</h3>
+                <p>Der Interpreter ist reines Python 3 ohne Fremdpakete und besteht aus überschaubaren Stufen: Lexer, Satzmuster&#8209;Parser, Syntaxbaum, Interpreter. Kein <code>eval</code>, kein Nachladen von Code.</p>
+            </article>
+            <article class="feature reveal" style="--i:5">
+                <span class="feature-num">vi.</span>
+                <h3>Zum Lernen gebaut</h3>
+                <p>Klarsatz ist ein Lernprojekt — für alle, die das Programmieren nicht gleichzeitig mit einer Fremdsprache lernen wollen. Die Sprache erklärt sich beim Lesen.</p>
+            </article>
+        </div>
+    </section>
+
+    <section class="section" id="blick">
+        <div class="section-head reveal">
+            <span class="eyebrow">02 — Erster Blick</span>
+            <h2>Dasselbe Programm, <em>zweimal erzählt.</em></h2>
+            <p class="section-sub">Links, wie es die meisten Sprachen schreiben. Rechts, wie Klarsatz es sagt.</p>
+        </div>
+        <div class="vergleich reveal">
+            <div class="v-spalte">
+                <p class="v-titel">Gewohnt</p>
+<pre class="schale"><code>for i in range(1, 31):
+    if i % 15 == 0:
+        print("FizzBuzz")
+    elif i % 3 == 0:
+        print("Fizz")
+    elif i % 5 == 0:
+        print("Buzz")
+    else:
+        print(i)</code></pre>
+            </div>
+            <div class="v-spalte">
+                <p class="v-titel">Klarsatz</p>
+                <div class="code-kopf"><span class="code-titel">fizzbuzz.klar</span></div>
+<pre class="klar">Zähle von 1 bis 30 mit i:
+    Wenn i durch 15 teilbar ist, zeige "FizzBuzz".
+    Sonst wenn i durch 3 teilbar ist, zeige "Fizz".
+    Sonst wenn i durch 5 teilbar ist, zeige "Buzz".
+    Sonst zeige i.
+Ende.</pre>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="bausteine">
+        <div class="section-head reveal">
+            <span class="eyebrow">03 — Bausteine</span>
+            <h2>Alles, was eine Sprache <em>braucht.</em></h2>
+            <p class="section-sub">Werte merken, entscheiden, wiederholen, zeichnen, sammeln, gliedern — in Sätzen, die man laut lesen kann.</p>
+        </div>
+
+        <div class="feature-grid bausteine reveal">
+            <div>
+                <h3 style="font-family:var(--sans);font-size:1.06rem;margin:0 0 4px">Werte merken</h3>
+<pre class="klar" data-probieren="nein">Merke 5 als Zahl.
+Setze die Zahl auf 7.
+Erhöhe die Zahl um 1.
+
+Merke "Wolfgang" als Name.
+Verbinde "Hallo, " und Name zu Gruss.
+Zeige Gruss.</pre>
+            </div>
+            <div>
+                <h3 style="font-family:var(--sans);font-size:1.06rem;margin:0 0 4px">Entscheiden</h3>
+<pre class="klar" data-probieren="nein">Merke 25 als Alter.
+
+Wenn Alter mindestens 18 ist:
+    Zeige "willkommen".
+Sonst:
+    Zeige "zu jung".
+Ende.</pre>
+            </div>
+            <div>
+                <h3 style="font-family:var(--sans);font-size:1.06rem;margin:0 0 4px">Wiederholen</h3>
+<pre class="klar" data-probieren="nein">Wiederhole 3 Mal:
+    Zeige "Klarsatz".
+Ende.
+
+Zähle von 1 bis 10 mit i:
+    Zeige i.
+Ende.</pre>
+            </div>
+            <div>
+                <h3 style="font-family:var(--sans);font-size:1.06rem;margin:0 0 4px">Sammeln</h3>
+<pre class="klar" data-probieren="nein">Erstelle eine Liste namens Einkauf.
+Füge "Milch" zur Einkauf hinzu.
+Sortiere Einkauf.
+Für jedes Element in Einkauf:
+    Zeige Element.
+Ende.</pre>
+            </div>
+            <div>
+                <h3 style="font-family:var(--sans);font-size:1.06rem;margin:0 0 4px">Gliedern</h3>
+<pre class="klar" data-probieren="nein">Definiere Aufgabe Summe von a und b:
+    Gib a plus b zurück.
+Ende.
+
+Zeige Summe von 3 und 4.</pre>
+            </div>
+            <div>
+                <h3 style="font-family:var(--sans);font-size:1.06rem;margin:0 0 4px">Zeichnen</h3>
+<pre class="klar" data-probieren="nein">Nimm die Farbe "gold".
+Wiederhole 4 Mal:
+    Gehe 120 Schritte vor.
+    Drehe dich um 90 Grad rechts.
+Ende.</pre>
+            </div>
+            <div>
+                <h3 style="font-family:var(--sans);font-size:1.06rem;margin:0 0 4px">Nachschlagen</h3>
+<pre class="klar" data-probieren="nein">Erstelle eine Tabelle namens Preise.
+Trage "Apfel" mit 3 in Preise ein.
+Trage "Kiwi" mit 5 in Preise ein.
+Zeige Wert für "Apfel" in Preise.</pre>
+            </div>
+            <div>
+                <h3 style="font-family:var(--sans);font-size:1.06rem;margin:0 0 4px">Beschreiben</h3>
+<pre class="klar" data-probieren="nein">Ein Hund hat einen Namen und ein Alter.
+Erschaffe einen Hund mit Name "Rocco"
+    und Alter 5 als Waldi.
+Zeige den Namen von Waldi.</pre>
+            </div>
+        </div>
+
+        <p class="reveal" style="margin-top:40px">
+            <a href="doku.html" class="btn btn-secondary">Zur vollständigen Dokumentation</a>
+        </p>
+    </section>
+
+    <section class="section" id="spielplatz">
+        <div class="section-head reveal">
+            <span class="eyebrow">04 — Spielplatz</span>
+            <h2>Ausprobieren, <em>ohne etwas zu riskieren.</em></h2>
+            <p class="section-sub">Der Spielplatz führt Klarsatz-Programme direkt im Browser aus — und zeigt Zeichnungen auf einer Leinwand gleich daneben. Nichts davon verlässt das Fenster.</p>
+        </div>
+        <div class="sicher-grid reveal">
+            <article class="sicher-karte">
+                <h3>Nichts wird geschrieben</h3>
+                <p>Im Spielplatz arbeiten <code>Lies</code> und <code>Schreibe</code> auf einem Dateisystem im Arbeitsspeicher, das mit dem Lauf verschwindet. Es gibt keinen Weg von einem Programm auf eine Festplatte — weder auf deine noch auf den Server.</p>
+            </article>
+            <article class="sicher-karte">
+                <h3>Eigener Arbeitsbereich</h3>
+                <p>Der echte Interpreter läuft als Python im Browser — in einem abgeschotteten Hintergrundprozess ohne Zugriff auf die Seite. Kein Server führt Programme aus, nichts wird gesendet.</p>
+            </article>
+            <article class="sicher-karte">
+                <h3>Endlosschleifen enden</h3>
+                <p>Schritt- und Zeitgrenzen brechen Programme ab, die nicht von allein fertig werden. Hängt ein Lauf, wird der Hintergrundprozess beendet und neu gestartet.</p>
+            </article>
+            <article class="sicher-karte">
+                <h3>Kein fremder Code</h3>
+                <p>Klarsatz kennt kein <code>eval</code>, kein Nachladen und keinen Zugriff auf darunterliegende Funktionen. Ein Programm kann nur das, was in dieser Dokumentation steht.</p>
+            </article>
+        </div>
+        <p class="reveal" style="margin-top:36px">
+            <a href="spielplatz.html" class="btn btn-primary">Spielplatz öffnen</a>
+        </p>
+    </section>
+
+    <section class="section" id="download">
+        <div class="section-head reveal">
+            <span class="eyebrow">05 — Zum Mitnehmen</span>
+            <h2>Klarsatz auf dem <em>eigenen Rechner.</em></h2>
+            <p class="section-sub">Reines Python 3, keine Fremdpakete, keine Installation: herunterladen, entpacken, loslegen.</p>
+        </div>
+
+        <div class="download-karte reveal">
+            <div class="download-inhalt">
+                <p>Im Archiv steckt alles, was zum Ausprobieren nötig ist — und der gesamte Quelltext dazu, denn Klarsatz ist zum Nachlesen gebaut.</p>
+                <ul class="download-liste">
+                    <li>der Interpreter mit Prüfmodus, Formatierer und interaktiver Konsole</li>
+                    <li>zwanzig Beispielprogramme, vom Zahlenraten bis zum grafischen Adventure</li>
+                    <li>die vollständige Sprachdokumentation zum Nachschlagen</li>
+                    <li>eine Erweiterung für VS&nbsp;Code, die Klarsatz einfärbt</li>
+                    <li>die Spielwiese dieser Seite, auch ohne Internet startbar</li>
+                </ul>
+<pre class="schale"><code>unzip klarsatz-<span data-download="version">0.7.1</span>.zip
+cd klarsatz-<span data-download="version">0.7.1</span>
+python3 -m klarsatz programme/03_taschenrechner.klar</code></pre>
+            </div>
+
+            <div class="download-seite">
+                <a class="btn btn-primary" data-download="datei" href="downloads/klarsatz-0.7.1.zip" download>Klarsatz <span data-download="version">0.7.1</span> laden</a>
+                <dl class="download-angaben">
+                    <dt>Größe</dt><dd><span data-download="groesse">239</span> kB als ZIP</dd>
+                    <dt>Voraussetzung</dt><dd>Python 3.10 oder neuer</dd>
+                    <dt>Läuft auf</dt><dd>Linux, Windows, macOS, Raspberry&nbsp;Pi</dd>
+                    <dt>Lizenz</dt><dd>MIT — benutzen und weitergeben erwünscht</dd>
+                </dl>
+                <p class="download-pruefsumme">SHA256 <code data-download="sha256">6b3b6a90</code>…<br>
+                   vollständig in <a href="downloads/klarsatz-0.7.1.zip.sha256" data-download="sha256datei">der Prüfsummendatei</a></p>
+
+                <p class="download-quelle">Lieber den Quelltext? Klarsatz liegt offen auf GitHub —
+                   mitlesen, abzweigen, Fehler melden, Sätze vorschlagen.</p>
+                <a class="btn btn-secondary" href="https://github.com/wolfiru/klarsatz" rel="noopener">Quelltext auf GitHub</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="stand">
+        <div class="section-head reveal">
+            <span class="eyebrow">06 — Stand</span>
+            <h2>Wo Klarsatz gerade <em>steht.</em></h2>
+            <p class="section-sub">Version <span data-download="version">0.7.1</span> — die Sprache ist vollständig benutzbar und wird weiter ausgebaut.</p>
+        </div>
+
+        <div class="feature-grid reveal">
+            <article class="feature">
+                <span class="feature-num">Fertig</span>
+                <h3>Was schon trägt</h3>
+                <p>Variablen und Konstanten, Rechnen und Vergleichen, Bedingungen, fünf Arten von Schleifen, Listen und Tabellen, Werkzeuge für Texte, Zeichnen mit Stift und Farben, eigene Aufgaben, Dinge mit Feldern und das Abfangen von Fehlern — dazu ein Prüfmodus, der Fehler findet, ohne das Programm auszuführen.</p>
+                <p>Damit beim Weiterbauen nichts unbemerkt zerbricht, prüft sich die Sprache selbst: 462 kleine Probeläufe kontrollieren nach jeder Änderung, ob noch alles genau das tut, was in dieser Dokumentation steht.</p>
+            </article>
+            <article class="feature">
+                <span class="feature-num">Grenzen</span>
+                <h3>Was noch fehlt</h3>
+                <p>Kein Dezimalkomma in der Eingabe — das Komma trennt Satzteile. Die Kurzform von <code>Wenn</code> führt genau einen Satz aus. Der Prüfer arbeitet ohne Datenfluss, kennt also keine Typen.</p>
+            </article>
+            <article class="feature">
+                <span class="feature-num">Geplant</span>
+                <h3>Was kommt</h3>
+                <p><code>Falls vorhanden:</code> für Optionalwerte, Fähigkeiten im Sinne von <code>Diese Aufgabe darf nur lesen</code>, Lernstufen, die Befehle nach und nach freischalten, ein Tutorial mit lauffähigen Lektionen und später ein Bytecode-Compiler.</p>
+            </article>
+        </div>
+
+        <div class="notiz warnung reveal" style="margin-top:40px;max-width:760px">
+            <span class="notiz-titel">Hinweis zum Prototyp</span>
+            <p>Klarsatz ist ein Lern- und Hobbyprojekt. Der Interpreter begrenzt Schritte, Zeit, Speicher und Dateizugriff — eine geprüfte Sandbox ist er trotzdem nicht. Der Spielplatz dieser Seite geht deshalb den sicheren Weg und führt überhaupt nichts auf dem Server aus, sondern alles im Browser des Besuchers.</p>
+        </div>
+    </section>
+
+</main>
+
+<footer>
+    <div class="foot-inner">
+        <span>© <span id="jahr"></span> ruthner.at · Klarsatz <span data-download="version">0.7.1</span></span>
+        <span><a href="/">ruthner.at</a> &nbsp;·&nbsp; <a href="index.html">Sprache</a> &nbsp;·&nbsp; <a href="doku.html">Dokumentation</a> &nbsp;·&nbsp; <a href="spielplatz.html">Spielplatz</a> &nbsp;·&nbsp; <a href="https://github.com/wolfiru/klarsatz" rel="noopener">GitHub</a></span>
+    </div>
+</footer>
+
+<script src="assets/manuskript-bg.js"></script>
+<script src="assets/app.js"></script>
+<script type="module" src="assets/code-hervorhebung.js"></script>
+</body>
+</html>

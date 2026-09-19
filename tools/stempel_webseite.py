@@ -21,17 +21,20 @@ IMPORT = re.compile(r"""(from\s+['"])(\.\./spielwiese/[^'"?]+\.js)(?:\?v=[^'"]*)
 
 
 def stempel(datei: Path) -> str:
-    """Stempel einer Datei. Für die Spielwiese zählt der ganze Ordner: Ändert sich dort
-    irgendetwas — auch beispiele.json oder klarsatz-py.zip —, ändert sich der Stempel, mit
-    dem die Spielwiese geladen wird. Ihre Dateien erben ihn (siehe klarsatz-playground.js),
-    sodass kein Browser eine alte Fassung behält."""
+    """Stempel einer Datei, gebildet aus ihrem Inhalt. Für die Spielwiese zählt der ganze
+    Ordner: Ändert sich dort irgendetwas — auch beispiele.json oder klarsatz-py.zip —,
+    ändert sich der Stempel, mit dem die Spielwiese geladen wird. Ihre Dateien erben ihn
+    (siehe klarsatz-playground.js), sodass kein Browser eine alte Fassung behält.
+
+    Bewusst der Inhalt und nicht Änderungszeit und Größe: Beim Veröffentlichen wird
+    kopiert, und Kopieren setzt neue Änderungszeiten. Sonst bekäme jede Veröffentlichung
+    neue Stempel, und jeder Besucher lüde CSS und JavaScript erneut, obwohl sich nichts
+    geändert hat."""
     if datei.parent.name == "spielwiese":
-        teile = [f"{d.name}-{d.stat().st_mtime_ns}-{d.stat().st_size}"
+        teile = [f"{d.name}-{hashlib.sha1(d.read_bytes()).hexdigest()}"
                  for d in sorted(datei.parent.iterdir()) if d.is_file()]
         return hashlib.sha1("|".join(teile).encode()).hexdigest()[:8]
-    zustand = datei.stat()
-    roh = f"{zustand.st_mtime_ns}-{zustand.st_size}".encode()
-    return hashlib.sha1(roh).hexdigest()[:8]
+    return hashlib.sha1(datei.read_bytes()).hexdigest()[:8]
 
 
 def main() -> int:
