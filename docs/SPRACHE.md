@@ -1,7 +1,20 @@
 # Klarsatz – Sprachdefinition (Prototyp 0.1)
 
-Klarsatz ist eine *kontrollierte natürliche Sprache*: Programme lesen sich wie deutsche Anweisungen,
-folgen aber festen Satzmustern. Der Interpreter (Paket `klarsatz/`, reines Python 3) besteht aus
+Klarsatz ist **keine natürliche Sprache**, sondern eine Programmiersprache, deren Syntax sich an
+deutscher Alltagssprache orientiert — fachlich: eine *kontrollierte natürliche Sprache*. Der
+Unterschied ist wichtig und keine Wortklauberei: Der Parser erkennt **feste Satzmuster**, kein
+beliebiges Deutsch. Er versteht nicht, was du meinst; er erkennt, welchem Muster dein Satz
+entspricht. Deshalb bleibt die Sprache eindeutig, obwohl sie sich vorlesen lässt — und deshalb
+scheitert `Sag Hallo.`, während `Zeige "Hallo".` läuft.
+
+**Und sie ist nicht als Zielsprache gedacht.** Am ehesten trifft es: eine *didaktische Notation für
+das Erlernen von Programmierdenken*. Variablen, Bedingungen, Schleifen, Aufgaben und Strukturen
+sind dieselben Begriffe wie überall — Klarsatz zeigt sie nur, ohne dass man gleichzeitig eine
+Fremdsprache lernen muss. `nach_python.py` führt anschließend zurück in eine gebräuchliche Sprache;
+das ist kein Nebenfeature, sondern der vorgesehene Ausgang.
+
+Der Spielraum innerhalb eines Musters ist trotzdem groß: Artikel und Füllwörter werden überlesen,
+Groß- und Kleinschreibung ist egal, Umlaute dürfen als `ae`/`oe`/`ue` geschrieben werden. Der Interpreter (Paket `klarsatz/`, reines Python 3) besteht aus
 **Lexer → Satzmuster-Parser → AST → Interpreter**.
 
 ```

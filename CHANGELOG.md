@@ -1,6 +1,15 @@
 # Änderungen
 
 ## Unveröffentlicht
+- **Einordnung geschärft** — an den Stellen, an denen die Erwartung entsteht (Seitenkopf, README,
+  Sprachreferenz, Lektion 1):
+  * *Klarsatz ist keine natürliche Sprache*, sondern eine Programmiersprache, deren Syntax sich an
+    deutscher Alltagssprache orientiert. Der Parser versteht nicht, was man meint — er erkennt,
+    welchem festen Satzmuster ein Satz entspricht. Das Tutorial zeigt die Grenze an einem echten
+    Beispiel: `Zeige mir bitte "Hallo".` läuft, `Sag Hallo.` nicht.
+  * *Und sie will keine Zielsprache sein.* Treffender als „neue Programmiersprache" ist:
+    eine **didaktische Notation für das Erlernen von Programmierdenken**. Der Ausgang zu Python
+    ist kein Nebenfeature, sondern vorgesehen.
 - **`Frage "…" als Zahl` und `als Text`**: Man kann jetzt ausdrücklich sagen, was man erwartet.
   `als Zahl` bricht mit einer deutschen Meldung ab, wenn etwas anderes kommt — und die Meldung
   sagt gleich, wie man stattdessen so lange fragt, bis es passt. `als Text` verhindert die

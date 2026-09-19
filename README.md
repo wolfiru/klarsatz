@@ -2,6 +2,17 @@
 
 **Eine Programmiersprache, die wie Deutsch klingt.**
 
+Zwei Sätze zur Einordnung, damit die Erwartung stimmt:
+
+**Klarsatz ist keine natürliche Sprache.** Es ist eine Programmiersprache, deren Syntax sich an
+deutscher Alltagssprache orientiert: feste Satzmuster, die sich vorlesen lassen. `Sag Hallo.`
+versteht sie nicht — `Zeige "Hallo".` schon.
+
+**Und sie will keine Zielsprache sein.** Am ehesten ist Klarsatz eine *didaktische Notation für das
+Erlernen von Programmierdenken*: eine Schreibweise, in der man Variablen, Bedingungen, Schleifen und
+Funktionen zum ersten Mal sieht, ohne gleichzeitig eine Fremdsprache zu lernen. Danach zieht man
+weiter — der Knopf *Als Python* übersetzt jedes eigene Programm.
+
 [![Tests](https://github.com/wolfiru/klarsatz/actions/workflows/tests.yml/badge.svg)](https://github.com/wolfiru/klarsatz/actions/workflows/tests.yml)
 [![Lizenz: MIT](https://img.shields.io/badge/Lizenz-MIT-gold.svg)](LICENSE)
 [![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-blue.svg)](https://www.python.org/)

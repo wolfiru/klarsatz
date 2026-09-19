@@ -92,6 +92,38 @@ Zeige "Fertig.".
 Fertig.
 ```
 
+### Wie weit geht das mit dem Deutsch?
+
+Klarsatz klingt wie Deutsch — aber es **ist** kein Deutsch. Es ist eine Programmiersprache, deren
+Sätze sich an deutscher Alltagssprache orientieren. Der Computer versteht nicht, was du *meinst*;
+er erkennt, welchem **festen Satzmuster** dein Satz entspricht.
+
+Innerhalb eines Musters darfst du dich frei bewegen. Artikel und Höflichkeitswörter werden
+überlesen:
+
+```klar
+Zeige mir bitte "Hallo".
+```
+```ausgabe
+Hallo
+```
+
+Aber ein Satz, der auf kein Muster passt, geht nicht — auch wenn jeder Mensch ihn verstünde:
+
+```klar
+Sag Hallo.
+```
+```fehler
+Ich verstehe den Satz nicht: er beginnt mit 'Sag'.
+```
+
+Das ist keine Schwäche, sondern der Grund, warum die Sprache funktioniert: **Eindeutigkeit.**
+`Zeige` heißt immer genau dasselbe. Bei echtem Deutsch müsste der Computer raten — und raten ist
+das Letzte, was ein Programm tun soll.
+
+Welche Satzanfänge es gibt, lernst du in diesem Kurs Stück für Stück. Du musst sie nicht auswendig
+können: Die Fehlermeldung sagt dir, wenn du danebenliegst.
+
 > **Ein Helfer von Anfang an.** Neben *Ausführen* steht in der Spielwiese ein Knopf **Prüfen**.
 > Der liest dein Programm durch, ohne es laufen zu lassen, und zeigt Tippfehler und vergessene
 > Namen an. Wenn du unsicher bist, drück ihn — das ist kein Schummeln, das machen Profis den
