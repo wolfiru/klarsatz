@@ -1996,3 +1996,51 @@ kbd {
     .wechsel-linie:last-child { display: none; }
     .wechsel-text { text-align: left; }
 }
+
+
+/* ── Hinweis auf den Zeichenkurs ─────────────────────────────────────────── */
+
+.zweiterkurs {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 40px;
+    align-items: center;
+    margin-top: 40px;
+    padding: 30px 34px;
+    background: var(--ink-2);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+}
+
+/* Ohne min-width: 0 spreizt der Codeblock die Rasterzelle über den Rand
+   hinaus — dieselbe Falle wie bei der Download-Karte. */
+.zk-text { min-width: 0; }
+.zk-text pre.klar { overflow-x: auto; }
+
+.zk-marke {
+    margin: 0 0 8px;
+    font-family: var(--sans);
+    font-size: 0.74rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+}
+
+.zk-text h3 { font-family: var(--sans); font-size: 1.15rem; margin: 0 0 12px; }
+.zk-text > p { margin: 0 0 14px; font-size: 0.95rem; line-height: 1.65; color: var(--paper-dim); max-width: 60ch; }
+.zk-knopf { margin: 20px 0 0 !important; }
+
+/* Das Bild kommt aus dem Interpreter und bringt seinen eigenen Hintergrund mit. */
+.zk-bild img {
+    display: block;
+    width: 243px;
+    max-width: 100%;
+    height: auto;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+}
+
+@media (max-width: 860px) {
+    .zweiterkurs { grid-template-columns: 1fr; gap: 26px; padding: 24px; }
+    .zk-bild { display: flex; justify-content: center; }
+}

@@ -36,6 +36,10 @@ gemacht — nie die HTML-Seiten bearbeiten, sonst ist die Änderung beim nächst
 Codeblöcke bekommen dabei einen `code-kopf`; **nur daran** hängt `assets/app.js` den Link
 „Im Spielplatz öffnen".
 
+Das Bild neben dem Zeichenkurs ist kein Symbol, sondern das Ergebnis von
+`webseite/assets/zeichnung.klar` — `python3 tools/baue_zeichnung.py` erzeugt daraus das SVG, die CI
+prüft, ob es aktuell ist, und ein Test vergleicht es mit dem Programm, das die Seite daneben zeigt.
+
 Cache-Stempel (`?v=…`) stehen **nicht** in `webseite/`; die setzt `tools/stempel_webseite.py` beim Veröffentlichen
 aus dem Dateiinhalt. Nur im Webordner liegen: `doku-*.html` (erzeugt), `spielwiese/`, `downloads/`, `pyodide/`.
 

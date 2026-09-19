@@ -54,6 +54,7 @@ jobs:
         run: |
           python3 tools/baue_editor.py
           python3 tools/baue_playground.py
+          python3 tools/baue_zeichnung.py
 
       - name: Nichts darf sich geändert haben
         # Schlägt das fehl, wurde die Sprache geändert, ohne die Generatoren
