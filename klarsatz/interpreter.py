@@ -13,6 +13,7 @@ from .fehler import (KlarsatzFehler, LaufzeitFehler, LimitFehler, SyntaxFehler, 
 from .grenzen import Grenzen
 from .lexer import lexer, norm
 from .parser import Parser
+from .stufen import pruefe as pruefe_stufe
 from .werte import *  # noqa
 from .werte import _ist_zahl, _gleich, _sortierschluessel, _auto_zahl
 
@@ -44,13 +45,14 @@ def _ohne_rauschen(wert):
 
 class Interpreter:
     def __init__(self, ausgabe=None, eingabe=None, dateien=True, max_schritte=None, zufall=None,
-                 grenzen=None, dateisystem=None, zeichne=None, uhr=None):
+                 grenzen=None, dateisystem=None, zeichne=None, uhr=None, stufe=None):
         """dateien=False sperrt jeden Dateizugriff; ohne weitere Angabe sind Dateien im aktuellen Ordner
         (und darunter) erlaubt. Ein eigenes `dateisystem` hat Vorrang. `grenzen` begrenzt Zeit und Speicher.
 
         `zeichne` bekommt jeden Strich als ("linie", x1, y1, x2, y2, farbe, breite). Ohne Angabe sammelt
         der Interpreter die Striche in `self.zeichnung` — er malt selbst nichts, das überlässt er der
         Oberfläche (Browser: Leinwand, Kommandozeile: SVG-Datei)."""
+        self.stufe = stufe                       # Lernstufe (None = ganze Sprache)
         self.zufall = zufall or random.Random()
         self.aus = ausgabe or print
         self.eingabe = eingabe or input
@@ -85,7 +87,9 @@ class Interpreter:
         """Quelltext -> Syntaxbaum (Aufgaben aus früheren Programmteilen sind bekannt)."""
         if len(quelltext) > self.grenzen.quelltext:
             raise LimitFehler(f"Das Programm ist zu lang (mehr als {self.grenzen.quelltext} Zeichen).")
-        parser = Parser(lexer(quelltext), vorwissen=self.stelligkeit, max_tiefe=self.grenzen.verschachtelung)
+        tokens = lexer(quelltext)
+        pruefe_stufe(tokens, self.stufe)
+        parser = Parser(tokens, vorwissen=self.stelligkeit, max_tiefe=self.grenzen.verschachtelung)
         programm = parser.programm()
         self.stelligkeit.update(parser.aufgaben)
         return programm

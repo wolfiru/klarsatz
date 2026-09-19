@@ -30,7 +30,8 @@ self.onmessage = async (e) => {
       // So sieht man Ausgaben und Striche in dem Moment, in dem sie entstehen —
       // und ein Programm mit "Warte" darf endlos laufen, ohne stumm zu bleiben.
       const melde = (eintragJson) => self.postMessage({ id, teil: JSON.parse(eintragJson) });
-      text = web.laufe_json(args.quelltext, JSON.stringify(args.antworten), args.seed, melde);
+      text = web.laufe_json(args.quelltext, JSON.stringify(args.antworten), args.seed, melde,
+                            args.stufe ?? null);
     }
     else if (art === "pruefe") text = web.pruefe_json(args.quelltext);
     else if (art === "formatiere") text = web.formatiere_json(args.quelltext);

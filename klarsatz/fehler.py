@@ -17,6 +17,10 @@ class SyntaxFehler(KlarsatzFehler):
     """Der Satz passt auf kein bekanntes Satzmuster."""
 
 
+class StufenFehler(SyntaxFehler):
+    """Das Wort gibt es, aber es gehört zu einer höheren Lernstufe (siehe stufen.py)."""
+
+
 class LaufzeitFehler(KlarsatzFehler):
     """Fehler beim Ausführen (kann mit 'Versuche ... Bei Fehler' abgefangen werden)."""
 
@@ -55,7 +59,9 @@ def _quellzeile(zeilen, nr, spalte=None, laenge=None):
 
 def formatiere_fehler(e, quelltext):
     """Fehlermeldung als Text: Überschrift, betroffene Zeile mit Markierung, Aufrufkette."""
-    if isinstance(e, SyntaxFehler):
+    if isinstance(e, StufenFehler):
+        art = "Das kommt später"
+    elif isinstance(e, SyntaxFehler):
         art = "Ich verstehe das Programm nicht"
     elif isinstance(e, LimitFehler):
         art = "Abgebrochen"

@@ -79,6 +79,19 @@ class Spielwiese(unittest.TestCase):
     def ausgabe(self):
         return self.s.inner_text(".kp-ausgabe")
 
+    def antworte(self, *antworten):
+        """Antworten der Reihe nach eintippen.
+
+        Jede Frage bekommt ein **neues** Eingabefeld — das alte wird beim nächsten
+        Durchlauf weggeräumt. Wer nur auf '.kp-antwortfeld' wartet, erwischt sonst
+        noch das alte, abgelöste Feld, und die Antwort geht verloren. Darum wird nach
+        jedem Enter gewartet, bis das benutzte Feld wirklich verschwunden ist."""
+        for antwort in antworten:
+            feld = self.s.wait_for_selector(".kp-antwortfeld", timeout=30000)
+            feld.fill(antwort)
+            feld.press("Enter")
+            feld.wait_for_element_state("hidden")
+
     def warte_auf_ende(self, timeout=30000):
         self.s.wait_for_selector(".kp-ende, .kp-fehlertext", timeout=timeout)
 
@@ -95,6 +108,23 @@ class Spielwiese(unittest.TestCase):
         self.assertIn("Programm beendet", self.ausgabe())
         self.assertEqual(self.s.inner_text(".kp-status"), "Fertig.")
 
+    def test_lernstufe_sperrt_und_gibt_wieder_frei(self):
+        """Die Stufenwahl ist reine JavaScript-Verdrahtung — nur hier wird sie wirklich geprüft."""
+        self.code("Merke 5 als Zahl.\nZeige Zahl plus 1.")
+
+        self.s.select_option(".kp-stufenwahl", "1")
+        self.lauf()
+        self.warte_auf_ende()
+        self.assertIn("Das kommt später", self.ausgabe())
+        self.assertIn("Stufe 2 (Rechnen)", self.ausgabe())
+
+        self.s.evaluate("document.querySelector('.kp-ausgabe').replaceChildren()")
+        self.s.select_option(".kp-stufenwahl", "2")
+        self.lauf()
+        self.warte_auf_ende()
+        self.assertIn("6", self.ausgabe())
+        self.assertNotIn("Das kommt später", self.ausgabe())
+
     def test_hervorhebung(self):
         self.assertGreater(self.s.locator(".kp-hervor .kp-t-anweisung").count(), 0)      # Zeige, Merke …
         self.assertGreater(self.s.locator(".kp-hervor .kp-t-text").count(), 0)
@@ -104,12 +134,9 @@ class Spielwiese(unittest.TestCase):
         self.assertEqual(self.s.inner_text(".kp-nummern").split(), ["1", "2", "3"])
 
     def test_eingaben_im_taschenrechner(self):
-        self.s.select_option(".kp-auswahl", "01_taschenrechner")
+        self.s.select_option(".kp-auswahl", "03_taschenrechner")
         self.lauf()
-        for antwort in ["+", "2", "3", "ende"]:
-            self.s.wait_for_selector(".kp-antwortfeld", timeout=30000)
-            self.s.fill(".kp-antwortfeld", antwort)
-            self.s.press(".kp-antwortfeld", "Enter")
+        self.antworte("+", "2", "3", "ende")
         self.warte_auf_ende()
         text = self.ausgabe()
         self.assertIn("2 + 3 = 5", text)
@@ -207,12 +234,9 @@ class Spielwiese(unittest.TestCase):
         self.assertNotIn("Schrittlimit", self.ausgabe())
 
     def test_dateien_liegen_im_arbeitsspeicher(self):
-        self.s.select_option(".kp-auswahl", "10_todo_liste")
+        self.s.select_option(".kp-auswahl", "18_todo_liste")
         self.lauf()
-        for antwort in ["1", "Milch", "0"]:
-            self.s.wait_for_selector(".kp-antwortfeld", timeout=30000)
-            self.s.fill(".kp-antwortfeld", antwort)
-            self.s.press(".kp-antwortfeld", "Enter")
+        self.antworte("1", "Milch", "0")
         self.warte_auf_ende()
         self.assertIn("Bis bald!", self.ausgabe())
 
@@ -225,7 +249,12 @@ class Spielwiese(unittest.TestCase):
 
     def test_alle_beispiele_laufen_bis_zur_ersten_frage_oder_zum_ende(self):
         ids = self.s.evaluate("[...document.querySelectorAll('.kp-auswahl option')].map(o => o.value)")
-        self.assertGreaterEqual(len(ids), 19)
+        # Nicht "mindestens ein paar", sondern genau die Liste: Sonst fällt es nicht auf,
+        # wenn ein Beispiel aus der Auswahl verschwindet.
+        import json
+        erwartet = {b["id"] for b in json.loads(
+            (Path(__file__).resolve().parent.parent / "playground" / "beispiele.json").read_text(encoding="utf-8"))}
+        self.assertEqual(set(ids) - {""}, erwartet)
         for i in ids:
             with self.subTest(beispiel=i):
                 self.s.select_option(".kp-auswahl", i)

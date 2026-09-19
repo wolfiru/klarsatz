@@ -11,6 +11,8 @@ from .dateisystem import KeinDateisystem, OrdnerDateisystem
 from .fehler import KlarsatzFehler, formatiere_fehler
 from .grenzen import Grenzen
 from .interpreter import Interpreter
+from .sprachdaten import HOECHSTE_STUFE
+from . import stufen
 
 
 def baue_parser():
@@ -29,10 +31,13 @@ def baue_parser():
     was.add_argument("--ersetzen", action="store_true", help="mit --formatiere: Datei direkt überschreiben")
     was.add_argument("--nach-python", action="store_true", dest="nach_python",
                      help="das Programm in lesbares Python übersetzen und ausgeben")
+    was.add_argument("--stufen", action="store_true", help="die Lernstufen mit ihren Wörtern anzeigen")
     was.add_argument("--tokens", action="store_true", help="die vom Lexer gelesenen Wörter anzeigen")
     was.add_argument("--ast", action="store_true", help="den Syntaxbaum anzeigen")
 
     lauf = ap.add_argument_group("Ausführen")
+    lauf.add_argument("--stufe", type=int, default=None, metavar="N",
+                      help=f"Lernstufe 1 bis {HOECHSTE_STUFE}: höhere Sätze sind gesperrt (--stufen zeigt die Wörter)")
     lauf.add_argument("--seed", type=int, default=None, help="Startwert für Zufallszahlen (reproduzierbar)")
     lauf.add_argument("--limit", type=int, default=None, metavar="SCHRITTE",
                       help="Abbruch nach so vielen Schritten (Schutz vor Endlosschleifen)")
@@ -66,7 +71,8 @@ def baue_interpreter(args, **kw):
     else:
         fs = OrdnerDateisystem(args.dateien_ordner or os.getcwd())
     zufall = random.Random(args.seed) if args.seed is not None else None
-    return Interpreter(grenzen=grenzen, dateisystem=fs, zufall=zufall, **kw)
+    return Interpreter(grenzen=grenzen, dateisystem=fs, zufall=zufall,
+                       stufe=getattr(args, "stufe", None), **kw)
 
 
 def _lies_datei(pfad):
@@ -82,6 +88,15 @@ def _lies_datei(pfad):
 
 def main(argv=None):
     args = baue_parser().parse_args(argv)
+
+    if args.stufen:
+        print(stufen.uebersicht())
+        return 0
+
+    if args.stufe is not None and not 1 <= args.stufe <= HOECHSTE_STUFE:
+        print(f"Die Stufe muss zwischen 1 und {HOECHSTE_STUFE} liegen. "
+              f"'--stufen' zeigt, was es auf welcher Stufe gibt.", file=sys.stderr)
+        return 2
 
     if args.datei is None:
         from .repl import starte_konsole

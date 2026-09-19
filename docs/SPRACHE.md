@@ -258,6 +258,24 @@ Der Tangens von 90 oder 270 Grad ist nicht bestimmt und meldet einen Fehler.
 **Bedingungen:** Klammern (`Wenn (a kleiner als 1 oder b gleich 2) und c gleich 3 ist:`), Typtests
 (`Antwort eine Zahl ist`, `keine Zahl`, `ein Text`, `eine Liste`, `eine Tabelle`), `Liste enthält Wert`.
 
+**Lernstufen** (`--stufe N`): Wer anfängt, hat mit `Zeige`, `Frage` und `Merke` schon ein Programm –
+alles andere wartet. Greift man zu früh nach einem Wort, sagt Klarsatz freundlich, wo es hingehört
+(„Das kommt später: 'Wenn' lernst du in Stufe 3"). Die Stufen folgen den Lektionen des Tutorials:
+
+| Stufe | Name | Neu darin |
+|---|---|---|
+| 1 | Zeigen, fragen, merken | `Zeige`, `Frage`, `Merke` |
+| 2 | Rechnen | `plus`, `mal`, `Setze`, `Erhöhe`, `Wurzel von`, `Gerundet von` |
+| 3 | Entscheiden | `Wenn`, `Sonst`, `gleich`, `größer als`, `wahr`, `falsch` |
+| 4 | Wiederholen | `Wiederhole`, `Zähle`, `Für jedes`, `Höre auf` |
+| 5 | Listen und Tabellen | `Erstelle`, `Füge hinzu`, `Element n von`, `Sortiere`, `Teile` |
+| 6 | Alles | Aufgaben, Dinge, `Versuche`, Dateien, Zeichnen, Uhrzeit |
+
+`--stufen` zeigt alle Wörter je Stufe. Ohne `--stufe` ist nichts gesperrt. In der Spielwiese steht
+die Auswahl oben; ein geladenes Beispiel setzt sie zurück, denn Beispiele soll man immer ansehen
+können. Die Einteilung steht in `sprachdaten.py` neben den Wortgruppen, geprüft wird sie in
+`stufen.py`.
+
 **Werkzeuge:** `--pruefe` (findet Fehler, ohne auszuführen), `--formatiere [--ersetzen]`,
 `--nach-python` (dasselbe Programm als lesbares Python), `--tokens`, `--ast`,
 Konsole ohne Datei. Grenzen und Dateien: siehe SICHERHEIT.md.

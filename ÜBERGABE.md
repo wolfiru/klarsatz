@@ -123,7 +123,25 @@ nicht mehr laufen).
 
 Vier Vorschläge, hier mit der Stelle im Code, an der sie ansetzen, und dem jeweiligen Knackpunkt.
 
-### 1. Lernstufen (`--stufe 1`)
+### 1. Lernstufen (`--stufe 1`) — **gebaut am 19.09.2026**
+Sechs Stufen, die den Lektionen des Tutorials folgen: 1 Zeigen/fragen/merken, 2 Rechnen, 3 Entscheiden,
+4 Wiederholen, 5 Listen und Tabellen, 6 Alles. Die Einteilung liegt wie geplant in `sprachdaten.py`
+neben den Gruppen (`STUFEN`, `STUFEN_NAMEN`), geprüft wird in `klarsatz/stufen.py`, aufgerufen aus
+`Interpreter.parse()`. Dazu `--stufe N` und `--stufen` in der CLI, `web.laufe(stufe=…)` und eine
+Auswahl in der Spielwiese.
+
+**Der Knackpunkt ist gelöst, aber anders als gedacht:** Nicht im Parser, sondern als Durchgang über die
+Token davor. Funktionswörter wie `Wurzel` sind *keine* reservierten Wörter — man darf eine Variable so
+nennen. Darum werden nur eindeutige Wörter gesperrt (alles aus `RESERVIERT`/`STARTER`), Funktionen nur
+dann, wenn auch das Muster stimmt (`Wurzel` mit `von` dahinter). Im Zweifel wird **nicht** gesperrt.
+
+**Zwei Wortkollisionen hat erst ein Test gefunden:** `für` steckt nicht nur in `Für jedes` (Stufe 4),
+sondern schon in `Merke für immer` (Stufe 2); `bei` nicht nur in `Bei Fehler` (6), sondern schon in
+`Teile Satz bei " "` (5). Ein Wort gehört immer zur *frühesten* Stelle, an der es gebraucht wird. Der
+Test dazu (`tests/test_stufen.py`) rechnet für jede Tutorial-Lektion die nötige Stufe aus und besteht
+darauf, dass sie nie zurückgeht.
+
+<details><summary>ursprüngliche Planung</summary>
 Nur `Zeige`, `Frage`, `Merke`; höhere Stufen schalten Rechnen, Bedingungen, Schleifen, Listen, Aufgaben frei.
 Wer zu früh greift, liest: „Das lernst du in Stufe 3."
 
@@ -135,6 +153,7 @@ Wer zu früh greift, liest: „Das lernst du in Stufe 3."
   benutzt aber eine höhere Funktion — `FUNKTIONEN` und die Operatoren müssen mit eingestuft werden, sonst ist
   die Sperre löchrig.
 * Kleinster Eingriff der vier, und er gibt allem anderen eine Ordnung.
+</details>
 
 ### 2. Grafik im Browser — **gebaut am 18.09.2026 (0.3.0)**
 Umgesetzt wie unten beschrieben: der Interpreter meldet nur Striche, die Oberfläche malt. Offen geblieben:

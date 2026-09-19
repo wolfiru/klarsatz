@@ -18,7 +18,7 @@ import random
 from dataclasses import dataclass, field
 
 from .dateisystem import SpeicherDateisystem
-from .fehler import KlarsatzFehler, LimitFehler, SyntaxFehler, formatiere_fehler
+from .fehler import KlarsatzFehler, LimitFehler, StufenFehler, SyntaxFehler, formatiere_fehler
 from .formatierer import formatiere as _formatiere
 from .grenzen import Grenzen
 from .interpreter import Interpreter
@@ -57,7 +57,7 @@ class Ergebnis:
                 "wiederholung": self.wiederholung}
 
 
-def laufe(quelltext, antworten=(), seed=0, grenzen=None, dateien=None, melde=None):
+def laufe(quelltext, antworten=(), seed=0, grenzen=None, dateien=None, melde=None, stufe=None):
     """Führt das Programm mit den bisherigen `antworten` aus und hält an, wenn eine weitere gebraucht wird.
 
     `melde` bekommt jeden Verlaufseintrag sofort, sobald er entsteht — dadurch kann eine Oberfläche
@@ -90,13 +90,16 @@ def laufe(quelltext, antworten=(), seed=0, grenzen=None, dateien=None, melde=Non
     interp = Interpreter(ausgabe=lambda z: sammle(("aus", z)),
                          zeichne=sammle,              # ("linie", …) und ("loeschen",)
                          eingabe=eingabe,
-                         grenzen=grenzen or Grenzen.streng(), dateisystem=fs, zufall=random.Random(seed))
+                         grenzen=grenzen or Grenzen.streng(), dateisystem=fs, zufall=random.Random(seed),
+                         stufe=stufe)
     try:
         interp.lauf(quelltext)
     except _BrauchtEingabe as e:
         return Ergebnis("wartet", verlauf, frage=e.frage, dateien=dict(fs.dateien))
     except KlarsatzFehler as e:
-        art = "syntax" if isinstance(e, SyntaxFehler) else "limit" if isinstance(e, LimitFehler) else "laufzeit"
+        art = ("stufe" if isinstance(e, StufenFehler) else
+               "syntax" if isinstance(e, SyntaxFehler) else
+               "limit" if isinstance(e, LimitFehler) else "laufzeit")
         return Ergebnis("fehler", verlauf, fehler=formatiere_fehler(e, quelltext), fehlerart=art,
                         fehler_zeile=e.zeile, fehler_spalte=e.spalte, dateien=dict(fs.dateien))
     return Ergebnis("fertig", verlauf, dateien=dict(fs.dateien), wiederholung=interp.wiederholung)
@@ -129,12 +132,13 @@ class Sitzung:
 
 
 # ── Für JavaScript: nur Texte hin und her ───────────────────────────────
-def laufe_json(quelltext, antworten_json="[]", seed=0, melde=None):
+def laufe_json(quelltext, antworten_json="[]", seed=0, melde=None, stufe=None):
     """Wie `laufe`, aber mit Texten statt Objekten — für JavaScript.
 
     `melde` wird, wenn angegeben, mit jedem Verlaufseintrag als JSON-Text aufgerufen."""
     weiter = (lambda eintrag: melde(json.dumps(list(eintrag), ensure_ascii=False))) if melde is not None else None
-    ergebnis = laufe(quelltext, json.loads(antworten_json), int(seed), melde=weiter)
+    ergebnis = laufe(quelltext, json.loads(antworten_json), int(seed), melde=weiter,
+                     stufe=int(stufe) if stufe else None)
     return json.dumps(ergebnis.als_dict(), ensure_ascii=False)
 
 

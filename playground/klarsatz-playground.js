@@ -96,6 +96,14 @@ const HTML = `
   <div class="kp-leiste">
     <label class="kp-beispiel">Beispiel <select class="kp-auswahl" aria-label="Beispielprogramm wählen"></select></label>
     <button type="button" class="kp-knopf kp-neu" title="Leeres Blatt – selbst programmieren">✎ Neu</button>
+    <label class="kp-stufe" title="Nur für eigene Programme: höhere Sätze werden gesperrt. Ein geladenes Beispiel setzt die Stufe zurück.">Stufe <select class="kp-stufenwahl" aria-label="Lernstufe wählen">
+      <option value="">alle</option>
+      <option value="1">1 · Zeigen, fragen, merken</option>
+      <option value="2">2 · Rechnen</option>
+      <option value="3">3 · Entscheiden</option>
+      <option value="4">4 · Wiederholen</option>
+      <option value="5">5 · Listen und Tabellen</option>
+    </select></label>
     <button type="button" class="kp-knopf kp-lauf" disabled title="Strg+Enter">▶ Ausführen</button>
     <button type="button" class="kp-knopf kp-pruefen" disabled>Prüfen</button>
     <button type="button" class="kp-knopf kp-format" disabled>Formatieren</button>
@@ -389,7 +397,8 @@ export async function erstelle(wurzel, opt = {}) {
     knopfLauf.textContent = "■ Anhalten";
     setzeStatus("Läuft …");
     try {
-      const erg = await python.aufruf("laufe", { quelltext: ta.value, antworten, seed });
+      const stufe = q(".kp-stufenwahl").value || null;
+      const erg = await python.aufruf("laufe", { quelltext: ta.value, antworten, seed, stufe });
       laeuft = false;
       if (nr === laufNummer) zeigeErgebnis(erg);
       if (!taktTimer) knopfLauf.textContent = "▶ Ausführen";
@@ -489,6 +498,10 @@ export async function erstelle(wurzel, opt = {}) {
     letzteStriche = [];
     maleBild(letzteStriche);
     setzeCode((nachId(auswahl.value) ?? LEER).code);
+    // Die Lernstufe gilt fürs eigene Üben. Ein geladenes Beispiel soll man immer
+    // ansehen und laufen lassen können — sonst stünde man vor "Das kommt später",
+    // ohne etwas falsch gemacht zu haben.
+    if (auswahl.value !== "") q(".kp-stufenwahl").value = "";
     setzeStatus(auswahl.value === "" ? "Leeres Blatt – schreib etwas und drücke Strg+Enter." : "Bereit.");
     if (auswahl.value === "") ta.focus();
   });

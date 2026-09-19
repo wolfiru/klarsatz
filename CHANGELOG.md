@@ -1,6 +1,14 @@
 # Änderungen
 
 ## Unveröffentlicht
+- **Lernstufen** (`--stufe N`, `--stufen`, Auswahl in der Spielwiese): sechs Stufen entlang der
+  Lektionen des Tutorials. Wer zu früh nach einem Wort greift, liest „Das kommt später: 'Wenn'
+  lernst du in Stufe 3 (Entscheiden)". Gesperrt wird nur, was eindeutig ist — eine Variable darf
+  weiterhin `Wurzel` heißen. Ein geladenes Beispiel setzt die Stufe zurück.
+- **Behoben:** Das Textadventure und das Grafikadventure stürzten ab, wenn man eine **Zahl**
+  eintippte (`Kleinbuchstaben von 5`). Jetzt wird die Eingabe erst zu Text gemacht.
+- **Behoben:** Der Browser-Test tippte Antworten in ein bereits abgelöstes Eingabefeld und verlor
+  sie dabei. Er wartet jetzt, bis das benutzte Feld verschwunden ist.
 - **Tutorial** (`docs/TUTORIAL.md`): elf Lektionen vom ersten Satz bis zum selbstgebauten
   Zahlenraten — Ausgabe, Variablen, Eingabe, Entscheidungen, Schleifen, Listen, Tabellen, Aufgaben,
   Dinge, Fehlerbehandlung, ein Spiel. `tests/test_tutorial.py` führt alle 42 Beispiele aus und

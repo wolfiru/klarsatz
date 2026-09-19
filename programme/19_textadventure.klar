@@ -103,7 +103,9 @@ Wiederhole 50 Mal:
     Führe RaumAnzeigen aus.
 
     Frage "Was möchtest du tun?" und merke die Antwort als Eingabe.
-    Merke Kleinbuchstaben von Eingabe als Befehl.
+    Anmerkung: Wer eine Zahl eintippt, bekommt sonst einen Fehler – "Verbinde" macht daraus Text.
+    Verbinde "" und Eingabe zu Eingabetext.
+    Merke Kleinbuchstaben von Eingabetext als Befehl.
 
     Wenn Befehl gleich "hilfe" ist:
         Zeige "Mögliche Befehle:".

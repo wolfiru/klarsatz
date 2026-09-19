@@ -58,3 +58,61 @@ def alternative(woerter):
 
 GRUPPEN = {"steuerung": KONTROLLE, "anweisungen": ANWEISUNGEN, "funktionen": FUNKTIONEN,
            "konstanten": KONSTANTEN, "bindewoerter": BINDEWOERTER}
+
+# ── Lernstufen ──────────────────────────────────────────────────────────────────
+#
+# Wer anfängt, soll nicht die ganze Sprache auf einmal vor sich haben. Jede Stufe
+# schaltet ein paar Wörter frei; die Reihenfolge folgt den Lektionen des Tutorials.
+# Ein Wort steht bei der *frühesten* Stufe, auf der es gebraucht wird — "bis" etwa
+# gehört zu den Schleifen, kommt aber schon bei "Zufallszahl von 1 bis 10" vor.
+#
+# Geprüft wird in stufen.py. Ein Test erzwingt, dass jedes Wort der Sprache hier
+# eingeordnet ist, damit die Sperre beim Ausbau der Sprache nicht löchrig wird.
+
+STUFEN_NAMEN = {
+    1: "Zeigen, fragen, merken",
+    2: "Rechnen",
+    3: "Entscheiden",
+    4: "Wiederholen",
+    5: "Listen und Tabellen",
+    6: "Alles",
+}
+
+STUFEN = {
+    1: {"zeige", "frage", "merke", "als", "und"},
+
+    2: {"setze", "erhoehe", "verringere", "verdopple", "halbiere", "verbinde",
+        "plus", "minus", "mal", "geteilt", "durch", "hoch",
+        "um", "auf", "von", "mit", "zu", "bis", "immer", "stellen", "fuer",
+        "wurzel", "betrag", "rest", "laenge", "zahlenwert", "zufallszahl",
+        "abgerundet", "aufgerundet", "gerundet", "formatiert",
+        "grossbuchstaben", "kleinbuchstaben"},
+
+    3: {"wenn", "sonst", "ende",
+        "ist", "sind", "gleich", "groesser", "kleiner", "mindestens", "hoechstens",
+        "teilbar", "nicht", "oder", "keine", "enthaelt", "wahr", "falsch"},
+
+    4: {"wiederhole", "zaehle", "hoere", "mach", "weiter",
+        "solange", "jedes", "jede", "jeden", "in",
+        "rueckwaerts", "abwaerts", "schritten"},
+
+    5: {"erstelle", "fuege", "entferne", "sortiere", "teile", "kopiere", "trage", "ersetze",
+        "namens", "hinzu", "aus", "absteigend", "bei",
+        "element", "elemente", "erste", "letzte", "wert", "verkettet", "zeichen",
+        "zufaelliges", "zufaellige", "rechtsbuendig", "linksbuendig"},
+
+    6: {"definiere", "aufgabe", "gib", "zurueck", "fuehre",
+        "versuche", "fehler", "stelle", "sicher", "dass",
+        "hat", "erschaffe",
+        "lies", "schreibe",
+        "gehe", "drehe", "hebe", "senke", "nimm", "loesche", "warte",
+        "schritte", "grad", "strichstaerke",
+        "aktuelle", "aktueller", "aktuelles", "aktuellen", "sekunde", "sekunden",
+        "sinus", "kosinus", "cosinus", "tangens",
+        "arkussinus", "arkuskosinus", "arkuscosinus", "arkustangens"},
+}
+
+HOECHSTE_STUFE = max(STUFEN)
+
+# Wort -> Stufe, auf der es dazukommt.
+STUFE_VON_WORT = {wort: nr for nr, woerter in STUFEN.items() for wort in woerter}

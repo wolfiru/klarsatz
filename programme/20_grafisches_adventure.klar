@@ -542,7 +542,9 @@ Wiederhole 60 Mal:
     Führe RaumAnzeigen aus.
 
     Frage "Was möchtest du tun?" und merke die Antwort als Eingabe.
-    Merke Kleinbuchstaben von Eingabe als Befehl.
+    Anmerkung: Wer eine Zahl eintippt, bekommt sonst einen Fehler – "Verbinde" macht daraus Text.
+    Verbinde "" und Eingabe zu Eingabetext.
+    Merke Kleinbuchstaben von Eingabetext als Befehl.
     Teile Befehl bei " " zu Worte.
     Merke Grundform von (Element 1 von Worte) als Tat.
 
