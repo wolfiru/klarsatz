@@ -2135,3 +2135,53 @@ kbd {
 }
 
 @media (min-width: 880px) { .funnel-fuss { max-width: 74ch; } }
+
+
+/* ── Zitatfenster ────────────────────────────────────────────────────────── */
+
+.zitat {
+    position: relative;
+    margin: 52px auto 0;
+    max-width: 780px;
+    padding: 34px 44px 42px;
+    background:
+        radial-gradient(ellipse at 50% 0%, rgba(217, 180, 90, 0.10), transparent 62%),
+        var(--ink-2);
+    border: 1px solid rgba(217, 180, 90, 0.28);
+    border-radius: 20px;
+    text-align: center;
+}
+
+/* Das Anführungszeichen steht im Textfluss über dem Zitat, nicht dahinter —
+   absolut gesetzt lag es sonst auf der ersten Zeile. Bewusst U+201C und nicht das
+   deutsche U+201E: Die Schrift setzt beide gehoben, und dann soll auch das Zeichen
+   dastehen, das so aussehen soll. Als Schmuck über einem zentrierten Zitat ist das
+   die übliche Form. */
+.zitat::before {
+    content: "“";
+    display: block;
+    margin: 0 0 2px;
+    font-family: var(--serif);
+    font-size: 4.5rem;
+    line-height: 1;
+    color: var(--gold);
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.zitat blockquote { margin: 0; }
+
+.zitat p {
+    margin: 0;
+    font-family: var(--serif);
+    font-size: clamp(1.15rem, 2.2vw, 1.55rem);
+    line-height: 1.55;
+    color: var(--paper);
+}
+
+.zitat em { color: var(--gold); font-style: italic; }
+
+@media (max-width: 620px) {
+    .zitat { padding: 28px 24px 32px; }
+    .zitat::before { font-size: 4rem; }
+}
