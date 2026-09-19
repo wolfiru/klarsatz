@@ -464,6 +464,20 @@ class WegInDieSpielwiese(unittest.TestCase):
         self.s.wait_for_function("() => !document.querySelector('.kp-lauf').disabled", timeout=180000)
         self.assertIn("Zeige", self.s.input_value(".kp-text"))
 
+    def test_die_spielwiese_traegt_das_design_der_seite(self):
+        """Die Spielwiese bringt helle Farben mit und bekommt dunkle von der Seite.
+
+        Das ging still kaputt: Die Spielwiese setzt ihre Variablen auf `.kp`, die
+        Anpassung der Seite setzte sie nur auf `:root` — und was näher am Element
+        steht, gewinnt. Ergebnis war ein weißer Editor auf schwarzer Seite. Von außen
+        sieht man so etwas nur, wenn man wirklich hinschaut."""
+        self.s.goto(self.basis + "spielplatz.html")
+        self.s.wait_for_selector(".kp", timeout=180000)
+        farbe = self.s.evaluate("getComputedStyle(document.querySelector('.kp')).backgroundColor")
+        werte = [int(x) for x in farbe.replace("rgb(", "").replace(")", "").split(",")[:3]]
+        self.assertLess(sum(werte) / 3, 80,
+                        f"Die Spielwiese ist hell ({farbe}) — das Design der Seite greift nicht.")
+
     def test_die_sofort_demo_laedt_erst_auf_klick(self):
         """Der ganze Sinn der Demo: Sie kostet nichts, bis jemand sie will.
 

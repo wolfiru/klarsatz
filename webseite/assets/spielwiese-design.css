@@ -5,9 +5,14 @@
  * (tools/veroeffentliche_spielwiese.py).
  *
  * Muss NACH klarsatz-playground.css geladen werden.
+ *
+ * Und die Farben müssen auf `.kp` gesetzt werden, nicht nur auf `:root`: Die
+ * Spielwiese definiert ihre eigenen Variablen auf `.kp` selbst, und was näher am
+ * Element steht, gewinnt. Ein `:root` allein wird davon überschrieben — dann
+ * erscheint die Spielwiese hell auf der dunklen Seite.
  */
 
-:root, :root .kp-b {
+:root, .kp, .kp-b {
     --kp-bg: #151812;
     --kp-bg2: #0f1210;
     --kp-rand: rgba(243, 239, 230, 0.14);
@@ -41,7 +46,7 @@
 
 /* Die Seite ist immer dunkel — die helle Voreinstellung der Spielwiese entfällt. */
 @media (prefers-color-scheme: light) {
-    :root {
+    :root, .kp {
         --kp-bg: #151812;
         --kp-bg2: #0f1210;
         --kp-rand: rgba(243, 239, 230, 0.14);

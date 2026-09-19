@@ -9,6 +9,19 @@
  * Wer nie klickt, zahlt nichts. Wer klickt, ist nach ein paar Sekunden mitten
  * in einem laufenden Programm — ohne Installation, ohne Konto, ohne Seitenwechsel.
  */
+function stil(pfad) {
+    return new Promise((fertig, schiefgegangen) => {
+        const href = new URL(pfad, document.baseURI).href;
+        if (document.querySelector(`link[href="${href}"]`)) return fertig();
+        const el = document.createElement('link');
+        el.rel = 'stylesheet';
+        el.href = href;
+        el.onload = fertig;
+        el.onerror = () => schiefgegangen(new Error('konnte ' + pfad + ' nicht laden'));
+        document.head.append(el);
+    });
+}
+
 const wurzel = document.getElementById('mini');
 
 if (wurzel) {
@@ -22,6 +35,11 @@ if (wurzel) {
         knopf.textContent = 'Klarsatz wird geladen …';
 
         try {
+            // Die Spielwiese bringt ihr eigenes Aussehen mit. Ohne diese beiden
+            // Stylesheets erscheint sie roh — mit Systemknöpfen und ohne Raster.
+            // Auch sie werden erst jetzt geholt, nicht beim Laden der Seite.
+            await Promise.all(['spielwiese/klarsatz-playground.css', 'assets/spielwiese-design.css'].map(stil));
+
             const { erstelle } = await import('./../spielwiese/klarsatz-playground.js');
             const spielwiese = await erstelle(buehne, {
                 basis: new URL('spielwiese/', document.baseURI).href,
@@ -31,6 +49,12 @@ if (wurzel) {
             });
             wurzel.classList.add('laeuft');
             buehne.hidden = false;
+
+            // Sagen, wo man gelandet ist — sonst steht plötzlich ein Editor da,
+            // und niemand weiß, ob die Seite gewechselt hat.
+            const hinweis = wurzel.querySelector('.mini-hinweis');
+            if (hinweis) hinweis.hidden = false;
+
             spielwiese.starte();
         } catch (fehler) {
             knopf.disabled = false;
