@@ -1,4 +1,4 @@
-# Übergabe – Stand 19.09.2026, Version 0.6.0
+# Übergabe – Stand 19.09.2026, Version 0.7.1
 
 > **Umbenannt:** Das Projekt hieß bis 18.09.2026 *Klartext*; der Name war schon vergeben.
 > Alles heißt jetzt **Klarsatz** — nur die Dateiendung der Programme bleibt `.klar`.
@@ -6,7 +6,7 @@
 Klarsatz ist eine deutsche Programmiersprache mit Python-Interpreter (Lernprojekt von Wolfgang). Diese Datei ist für
 die Weiterarbeit (z. B. mit Claude Code auf dem Raspberry Pi). Arbeitsregeln: `CLAUDE.md`. Sprache: `docs/SPRACHE.md`.
 
-## Was fertig ist (369 Tests, alle grün)
+## Was fertig ist (462 Tests, alle grün)
 - **Interpreter** mit Aufgaben, Dingen, Listen, Tabellen, Textwerkzeugen, Zufall, Dateien, Fehlerbehandlung.
 - **Härtung:** Grenzen (`grenzen.py`), Dateisystem-Abstraktion mit Ordnerschutz (`dateisystem.py`), Absturzschutz.
 - **Fehlermeldungen:** Spalte + Markierung, Aufrufkette, deutsche Texte, „Meintest du …?“.
@@ -17,7 +17,12 @@ die Weiterarbeit (z. B. mit Claude Code auf dem Raspberry Pi). Arbeitsregeln: `C
   in einem Web-Worker. Ende-zu-Ende-getestet in Chromium (`tests/test_browser.py`).
 - **Editor-Unterstützung:** VS-Code-Erweiterung, TextMate-Grammatik, Pygments-Lexer, JS-Regeln – alle aus **einer**
   Regelliste (`hervorhebung.py`/`sprachdaten.py`); Tests vergleichen Pygments, VS-Code-Tokenizer und JS Token für Token.
-- **Programme:** zwölf Beispielprogramme (`programme/`), jedes mit simuliertem Spieler getestet.
+- **Programme:** zwanzig Beispielprogramme (`programme/`), nach Schwierigkeit geordnet,
+  jedes mit simuliertem Spieler getestet.
+- **Versionsverwaltung:** seit 19.09.2026 ein Git-Repository in `/home/pi/klarsatz` (Zweig `main`,
+  erster Commit als `v0.7.1` markiert). Erzeugte Dateien liegen bewusst mit im Repository, damit ein
+  ausgecheckter Stand sofort läuft — geprüft: ein frischer Klon besteht alle 462 Tests.
+  Es gibt **kein** entferntes Gegenstück; das Repository liegt auf derselben Karte wie das Projekt.
 
 ## Offen (in dieser Reihenfolge sinnvoll)
 1. **Fuzz-Test** (noch nicht gemacht): Beispielprogramme zufällig verändern (Tokens löschen, vertauschen, doppeln,
