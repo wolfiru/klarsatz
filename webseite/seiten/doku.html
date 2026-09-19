@@ -10,18 +10,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="assets/style.css">
-<script>
-/* Die Einblend-Animation versteckt Inhalte per CSS und zeigt sie erst wieder, wenn
-   assets/app.js läuft. Ohne dieses Skript wäre die Seite leer — deshalb wird erst hier
-   die Klasse gesetzt, die das Verstecken überhaupt erlaubt. Und falls app.js gar nicht
-   ankommt, nimmt der Zeitgeber sie wieder weg: lieber ohne Animation als ohne Inhalt. */
-(function (h) {
-    h.classList.add("js");
-    setTimeout(function () {
-        if (!h.classList.contains("seite-bereit")) h.classList.remove("js");
-    }, 2500);
-})(document.documentElement);
-</script>
 </head>
 <body>
 
@@ -68,43 +56,43 @@
 
 
     <div class="kapitel-grid">
-        <a class="kapitel reveal" style="--i:0" href="doku-grundlagen.html">
+        <a class="kapitel" href="doku-grundlagen.html">
             <span class="kapitel-nr">01</span>
             <h3>Grundlagen</h3>
             <p>Wie ein Satz gebaut ist, welche Werte es gibt, wie man ausgibt, einliest und sich Werte merkt.</p>
             <p class="kapitel-themen">Satzbau · Artikel · Zeige · Frage · Merke · Setze · Anmerkung</p>
         </a>
-        <a class="kapitel reveal" style="--i:1" href="doku-rechnen.html">
+        <a class="kapitel" href="doku-rechnen.html">
             <span class="kapitel-nr">02</span>
             <h3>Rechnen und Vergleichen</h3>
             <p>Die sechs Rechenarten in Worten, Umwandlungen und Rundungen, Vergleiche und logische Verknüpfungen.</p>
             <p class="kapitel-themen">plus · mal · Wurzel · Formatiert · größer als · teilbar · und/oder</p>
         </a>
-        <a class="kapitel reveal" style="--i:2" href="doku-ablauf.html">
+        <a class="kapitel" href="doku-ablauf.html">
             <span class="kapitel-nr">03</span>
             <h3>Entscheiden und Wiederholen</h3>
             <p>Bedingungen in Block- und Kurzform sowie alle fünf Schleifenarten, samt Abbruch und Übersprung.</p>
             <p class="kapitel-themen">Wenn · Sonst · Wiederhole · Zähle · Für jedes · Höre auf</p>
         </a>
-        <a class="kapitel reveal" style="--i:3" href="doku-zeichnen.html">
+        <a class="kapitel" href="doku-zeichnen.html">
             <span class="kapitel-nr">04</span>
             <h3>Zeichnen</h3>
             <p>Ein Stift, zwei Befehle: Aus <em>Gehe</em> und <em>Drehe</em> entstehen Quadrate, Vielecke und Spiralen.</p>
             <p class="kapitel-themen">Gehe · Drehe · Stift heben · Farbe · Strichstärke</p>
         </a>
-        <a class="kapitel reveal" style="--i:4" href="doku-listen.html">
+        <a class="kapitel" href="doku-listen.html">
             <span class="kapitel-nr">05</span>
             <h3>Listen und Dinge</h3>
             <p>Werte sammeln und sortieren, auf Einträge zugreifen, Texte zerlegen und eigene Strukturen beschreiben.</p>
             <p class="kapitel-themen">Erstelle Liste · Füge hinzu · Element n von · Teile · Ein X hat</p>
         </a>
-        <a class="kapitel reveal" style="--i:5" href="doku-aufgaben.html">
+        <a class="kapitel" href="doku-aufgaben.html">
             <span class="kapitel-nr">06</span>
             <h3>Aufgaben und Fehler</h3>
             <p>Eigene Befehle definieren, Werte zurückgeben, Rekursion — und was passiert, wenn etwas schiefgeht.</p>
             <p class="kapitel-themen">Definiere Aufgabe · Gib zurück · Versuche · Stelle sicher · Lies</p>
         </a>
-        <a class="kapitel reveal" style="--i:6" href="doku-referenz.html">
+        <a class="kapitel" href="doku-referenz.html">
             <span class="kapitel-nr">07</span>
             <h3>Referenz</h3>
             <p>Sämtliche Satzmuster in Tabellenform, die reservierten Wörter, der Aufruf des Interpreters und die bekannten Grenzen.</p>
@@ -113,13 +101,13 @@
     </div>
 
     <section class="section" id="schnellstart" style="margin-top:20px">
-        <div class="section-head reveal">
+        <div class="section-head">
             <span class="eyebrow">Schnellstart</span>
             <h2>In fünf Minuten <em>hineinkommen.</em></h2>
             <p class="section-sub">Wer lieber tippt als liest: Diese vier Programme zeigen fast alles, was die Sprache ausmacht.</p>
         </div>
 
-        <div class="vergleich reveal">
+        <div class="vergleich">
             <div class="v-spalte">
                 <div class="code-kopf"><span class="code-titel">1 · Ausgeben und Merken</span></div>
 <pre class="klar">Zeige "Hallo Welt".
@@ -154,7 +142,7 @@ Zeige "5 x 3 = " und Fläche von 5 und 3.</pre>
             </div>
         </div>
 
-        <p class="reveal" style="margin-top:36px">
+        <p style="margin-top:36px">
             <a href="doku-grundlagen.html" class="btn btn-primary">Mit Kapitel 01 beginnen</a>
             &nbsp;
             <a href="spielplatz.html" class="btn btn-secondary">Direkt zum Spielplatz</a>

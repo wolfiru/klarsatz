@@ -12,18 +12,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="assets/style.css">
-<script>
-/* Die Einblend-Animation versteckt Inhalte per CSS und zeigt sie erst wieder, wenn
-   assets/app.js läuft. Ohne dieses Skript wäre die Seite leer — deshalb wird erst hier
-   die Klasse gesetzt, die das Verstecken überhaupt erlaubt. Und falls app.js gar nicht
-   ankommt, nimmt der Zeitgeber sie wieder weg: lieber ohne Animation als ohne Inhalt. */
-(function (h) {
-    h.classList.add("js");
-    setTimeout(function () {
-        if (!h.classList.contains("seite-bereit")) h.classList.remove("js");
-    }, 2500);
-})(document.documentElement);
-</script>
 </head>
 <body>
 
@@ -53,7 +41,7 @@
 </nav>
 
 <header class="hero" id="top">
-    <div class="hero-inner reveal">
+    <div class="hero-inner">
         <p class="kicker">Ein Sprachexperiment · Version <span data-download="version">0.7.1</span></p>
         <h1>Programmieren lernen,<br>ohne vorher eine<br><em>Fremdsprache zu übersetzen.</em></h1>
         <p class="lede">Klarsatz schreibt Programme in klaren deutschen Sätzen. Du lernst Variablen, Bedingungen und Schleifen — und führst dein erstes Programm später als Python weiter. Dahinter steckt die Frage, wie nah eine formale Sprache an deutsche Sätze heranrücken kann, ohne ihre Eindeutigkeit zu verlieren.</p>
@@ -62,7 +50,7 @@
             <a href="tutorial.html" class="btn btn-link">Den Kurs ansehen</a>
         </div>
     </div>
-    <div class="hero-meta reveal" style="--i:2">
+    <div class="hero-meta">
         <span>Eindeutig trotz Alltagssprache</span>
         <span>Läuft im Browser</span>
         <span>Führt weiter zu Python</span>
@@ -72,12 +60,12 @@
 <main class="mit-verlauf">
 
     <section class="section" id="blick">
-        <div class="section-head reveal">
+        <div class="section-head">
             <span class="eyebrow">01 — Sieh es dir an</span>
             <h2>Dasselbe Programm, <em>zweimal erzählt.</em></h2>
             <p class="section-sub">Dasselbe Programm zweimal: einmal in Python, einmal in Klarsatz. Die <strong>Konzepte sind identisch</strong>: eine Schleife, drei Bedingungen, eine Ausgabe. Verschieden ist nur, wie viel man vorher wissen muss, um die linke Spalte zu lesen.</p>
         </div>
-        <div class="vergleich reveal">
+        <div class="vergleich">
             <div class="v-spalte">
                 <p class="v-titel">Python</p>
 <pre class="schale" data-erzeugt="nach-python"><code>for i in range(1, 30 + 1):
@@ -103,13 +91,13 @@ Ende.</pre>
         </div>
 
 
-        <p class="pointe reveal">Der Quelltext <em>ist</em> die Erklärung.<span>In der Python-Fassung muss man erst lernen, was <code>range</code>, <code>%</code> und <code>elif</code> bedeuten. In der Klarsatz-Fassung steht es da. Was die Sprache sonst noch kann, steht <a href="#bausteine">weiter unten</a>.</span></p>
+        <p class="pointe">Der Quelltext <em>ist</em> die Erklärung.<span>In der Python-Fassung muss man erst lernen, was <code>range</code>, <code>%</code> und <code>elif</code> bedeuten. In der Klarsatz-Fassung steht es da. Was die Sprache sonst noch kann, steht <a href="#bausteine">weiter unten</a>.</span></p>
 
-        <p class="these reveal">Klarsatz versucht, einen Teil der anfänglichen kognitiven Belastung
+        <p class="these">Klarsatz versucht, einen Teil der anfänglichen kognitiven Belastung
            durch fremde Syntax und Fachbegriffe zu reduzieren, damit mehr Aufmerksamkeit für
            <strong>Programmstruktur und Problemlösung</strong> bleibt.</p>
 
-        <div class="mini reveal" id="mini">
+        <div class="mini" id="mini">
             <h3>Und jetzt du.</h3>
             <p>Kein Download, kein Konto, kein Seitenwechsel. Drück auf Ausführen — Klarsatz wird
                geladen und das Programm läuft hier, in dieser Seite.</p>
@@ -128,12 +116,12 @@ Zeige "Fünf plus drei ist " und Zahl und ".".</pre>
     </section>
 
     <section class="section" id="idee">
-        <div class="section-head reveal">
+        <div class="section-head">
             <span class="eyebrow">02 — Die Idee</span>
             <h2>Natürlich genug zum Lesen.<br><em>Streng genug zum Rechnen.</em></h2>
             <p class="section-sub">Klarsatz ist eine <strong>kontrollierte natürliche Sprache</strong>. Der Fachbegriff klingt sperrig, sagt aber genau, worum es geht: Die Sprache soll klingen wie Deutsch — und darf trotzdem nicht so vieldeutig sein wie Deutsch. Sie darf deutsch <em>aussehen</em>. Sie darf nicht deutsch <em>raten</em>.</p>
         </div>
-        <div class="vergleich reveal spannung">
+        <div class="vergleichspannung">
             <div class="v-spalte">
                 <p class="v-titel">Natürlichkeit</p>
                 <div class="code-kopf"><span class="code-titel">Artikel, Füllwörter, Schreibweise — alles egal</span></div>
@@ -152,18 +140,18 @@ Ende.</pre>
             </div>
         </div>
 
-        <p class="spannung-fazit reveal">Die <strong>Kontrolle</strong> ist kein Rückschritt gegenüber der <strong>Natürlichkeit</strong> — sie ist ihre Bedingung. Das Stichwort heißt <strong>Eindeutigkeit</strong>: Ein Parser, der aus echtem Deutsch erraten müsste, was gemeint ist, wäre unberechenbar — und Raten ist das Letzte, was ein Programm tun soll. Die Kunst liegt darin, den Spielraum <em>innerhalb</em> der Muster so groß zu machen, dass sich der Zwang nicht wie Zwang anfühlt.</p>
+        <p class="spannung-fazit">Die <strong>Kontrolle</strong> ist kein Rückschritt gegenüber der <strong>Natürlichkeit</strong> — sie ist ihre Bedingung. Das Stichwort heißt <strong>Eindeutigkeit</strong>: Ein Parser, der aus echtem Deutsch erraten müsste, was gemeint ist, wäre unberechenbar — und Raten ist das Letzte, was ein Programm tun soll. Die Kunst liegt darin, den Spielraum <em>innerhalb</em> der Muster so groß zu machen, dass sich der Zwang nicht wie Zwang anfühlt.</p>
 
     </section>
 
     <section class="section" id="lernen">
-        <div class="section-head reveal">
+        <div class="section-head">
             <span class="eyebrow">03 — Lernen</span>
             <h2>Du lernst nicht Syntax.<br><em>Du baust dein erstes Programm.</em></h2>
             <p class="section-sub">Der Kurs fragt dich in jeder Lektion zuerst, was wohl herauskommt — dann probierst du es aus, dann veränderst du es. Wer nur liest, lernt Vokabeln. Wer vorhersagt, lernt Programmieren.</p>
         </div>
 
-        <ol class="lernpfad reveal">
+        <ol class="lernpfad">
             <li><span class="lp-nr">1</span><span class="lp-titel">Dein erstes Programm</span><span class="lp-was">Zeige</span></li>
             <li><span class="lp-nr">2</span><span class="lp-titel">Sich etwas merken</span><span class="lp-was">Merke</span></li>
             <li><span class="lp-nr">3</span><span class="lp-titel">Entscheidungen</span><span class="lp-was">Wenn</span></li>
@@ -177,7 +165,7 @@ Ende.</pre>
             <li><span class="lp-nr">11</span><span class="lp-titel">Dasselbe in Python</span><span class="lp-was">der Ausgang</span></li>
         </ol>
 
-        <div class="lernhilfen reveal">
+        <div class="lernhilfen">
             <div class="lh-karte">
                 <h3>Ein Fehler ist eine Nachricht an dich</h3>
                 <p>Eine ganze Lektion macht absichtlich Programme kaputt und liest die Meldungen. Denn
@@ -202,22 +190,22 @@ Ende.</pre>
             </div>
         </div>
 
-        <p class="lernpfad-fuss reveal">Dazu ein Knopf <em>Prüfen</em>, der ein Programm durchliest, ohne es auszuführen — praktisch, wenn man noch unsicher ist.</p>
+        <p class="lernpfad-fuss">Dazu ein Knopf <em>Prüfen</em>, der ein Programm durchliest, ohne es auszuführen — praktisch, wenn man noch unsicher ist.</p>
 
 
-        <p class="reveal" style="margin-top:28px">
+        <p style="margin-top:28px">
             <a href="tutorial.html" class="btn btn-primary">Mit Lektion 1 anfangen</a>
         </p>
     </section>
 
     <section class="section" id="zeichnen">
-        <div class="section-head reveal">
+        <div class="section-head">
             <span class="eyebrow">04 — Zeichnen</span>
             <h2>Programmieren, das man <em>sehen kann.</em></h2>
             <p class="section-sub">Ein zweiter Kurs in acht Lektionen — und es ist nicht etwa ein anderes Thema: Es sind dieselben Schleifen und Bedingungen wie im ersten Kurs. Man sieht sie hier nur.</p>
         </div>
 
-        <div class="zweiterkurs reveal">
+        <div class="zweiterkurs">
             <div class="zk-text">
                 <p>Der Weg: Vielecke und die Regel dahinter, Farben und Strichstärke, Muster aus zwei
                    ineinanderliegenden Schleifen, Zufall, eigene Bausteine — und am Schluss eine Anzeige,
@@ -241,13 +229,13 @@ Ende.</pre>
     </section>
 
     <section class="section" id="danach">
-        <div class="section-head reveal">
+        <div class="section-head">
             <span class="eyebrow">05 — Danach</span>
             <h2>Warum du Klarsatz <em>nicht für immer brauchst.</em></h2>
             <p class="section-sub"><strong>Klarsatz ersetzt Python nicht.</strong> Es ist eine erste textbasierte Programmiersprache, die Programmierkonzepte ohne die zusätzliche Hürde einer fremden Syntax vermittelt — und anschließend bewusst zu Python weiterführt. Der naheliegendste Einwand lautet deshalb: Warum soll ich eine kleine eigene Sprache lernen? Die Antwort: Sollst du nicht. Klarsatz ist die erste Schreibweise, nicht die letzte.</p>
         </div>
 
-        <div class="bruecke reveal">
+        <div class="bruecke">
             <h3>Dasselbe Denken, eine andere Sprache</h3>
             <p><strong>Klarsatz ist keine Sackgasse.</strong> Wenn du ein Programm verstanden hast,
                kannst du es als Python ansehen. Ganz links steht die <strong>Idee</strong>, daneben,
@@ -319,7 +307,7 @@ Ende.</pre></td>
                bei jeder Änderung nach, dass hier noch steht, was er heute erzeugt.</p>
         </div>
 
-        <div class="funnel reveal">
+        <div class="funnel">
             <div class="fn-stufe">
                 <span class="fn-marke">Klarsatz</span>
                 <p>Denken lernen: Variablen, Bedingungen, Schleifen, eigene Bausteine — in Sätzen, die man vorlesen kann.</p>
@@ -336,10 +324,10 @@ Ende.</pre></td>
             </div>
         </div>
 
-        <p class="funnel-fuss reveal">So wird aus einer ersten deutschen Schreibweise schrittweise
+        <p class="funnel-fuss">So wird aus einer ersten deutschen Schreibweise schrittweise
            echter Python-Quelltext.</p>
 
-        <div class="warum reveal">
+        <div class="warum">
             <h3>Warum dann nicht gleich Python?</h3>
             <p>Oft ist das die richtige Antwort — und die Seite sagt das auch: Wer Englisch kann und
                loslegen will, sollte gleich Python nehmen. Klarsatz ist für die anderen gebaut.</p>
@@ -360,13 +348,13 @@ Ende.</pre></td>
     </section>
 
     <section class="section" id="fuerwen">
-        <div class="section-head reveal">
+        <div class="section-head">
             <span class="eyebrow">06 — Für wen</span>
             <h2>Eine erste Sprache, <em>keine einzige.</em></h2>
             <p class="section-sub">Klarsatz nimmt genau eine Hürde weg: die fremde Schreibweise. Alles andere am Programmieren bleibt, wie es ist. Das macht die Sprache für manche sehr nützlich und für andere überflüssig — hier ehrlich aufgeschrieben.</p>
         </div>
 
-        <div class="eig-rahmen reveal">
+        <div class="eig-rahmen">
             <table class="eignung">
                 <thead>
                     <tr><th scope="col">Für wen</th><th scope="col">Eignung</th><th scope="col">Warum</th></tr>
@@ -431,7 +419,7 @@ Ende.</pre></td>
             </table>
         </div>
 
-        <figure class="zitat reveal">
+        <figure class="zitat">
             <blockquote>
                 <p>Wer mit Klarsatz programmieren gelernt hat, soll weiterziehen. Genau dafür gibt es
                    den Knopf <em>Als Python</em>: Er zeigt dasselbe Programm in einer Sprache, mit der
@@ -440,7 +428,7 @@ Ende.</pre></td>
         </figure>
     </section>
 
-    <div class="wechsel reveal">
+    <div class="wechsel">
         <span class="wechsel-linie" aria-hidden="true"></span>
         <div class="wechsel-text">
             <p class="wechsel-titel">Für die, die es genauer wissen wollen</p>
@@ -451,13 +439,13 @@ Ende.</pre></td>
     </div>
 
     <section class="section" id="bausteine">
-        <div class="section-head reveal">
+        <div class="section-head">
             <span class="eyebrow">07 — Die Sprache</span>
             <h2>Alles, was eine Sprache <em>braucht.</em></h2>
             <p class="section-sub">Werte merken, entscheiden, wiederholen, zeichnen, sammeln, gliedern — in Sätzen, die man laut lesen kann.</p>
         </div>
 
-        <div class="feature-grid bausteine reveal">
+        <div class="feature-grid bausteine">
             <div>
                 <h3 style="font-family:var(--sans);font-size:1.06rem;margin:0 0 4px">Werte merken</h3>
 <pre class="klar" data-probieren="nein">Merke 5 als Zahl.
@@ -529,38 +517,38 @@ Zeige den Namen von Waldi.</pre>
             </div>
         </div>
 
-        <p class="reveal" style="margin-top:40px">
+        <p style="margin-top:40px">
             <a href="doku.html" class="btn btn-secondary">Zur vollständigen Dokumentation</a>
         </p>
-        <p class="section-sub reveal" style="margin-top:56px">Und ein paar Entscheidungen, die man erst beim Benutzen merkt:</p>
+        <p class="section-sub" style="margin-top:56px">Und ein paar Entscheidungen, die man erst beim Benutzen merkt:</p>
 
         <div class="feature-grid">
-            <article class="feature reveal" style="--i:0">
+            <article class="feature">
                 <span class="feature-num">i.</span>
                 <h3>Feste Satzmuster</h3>
                 <p>Jeder Befehl folgt einem festen Muster, das sich vorlesen lässt. Der Parser versteht nicht, was du <em>meinst</em> — er erkennt, welchem Muster dein Satz entspricht. Genau deshalb bleibt die Sprache eindeutig, obwohl sie nach Deutsch klingt.</p>
             </article>
-            <article class="feature reveal" style="--i:1">
+            <article class="feature">
                 <span class="feature-num">ii.</span>
                 <h3>Artikel sind erlaubt</h3>
                 <p><code>Zeige die Summe.</code> und <code>Zeige Summe.</code> sind dasselbe. Artikel, Umlautschreibung und Groß&#8209;/Kleinschreibung werden überlesen, damit der Satz natürlich bleiben darf.</p>
             </article>
-            <article class="feature reveal" style="--i:2">
+            <article class="feature">
                 <span class="feature-num">iii.</span>
                 <h3>Fehler, die man versteht</h3>
                 <p>Unbekannte Namen führen nicht zu einem Absturz, sondern zu einem Vorschlag: „Meintest du 'Summe'?“ Zugriffe hinter das Listenende sind immer ein klarer Fehler, nie ein stiller Fehlgriff.</p>
             </article>
-            <article class="feature reveal" style="--i:3">
+            <article class="feature">
                 <span class="feature-num">iv.</span>
                 <h3>Deutsche Zahlen</h3>
                 <p>Kommazahlen erscheinen in der Ausgabe so, wie man sie hier schreibt: <code>3,5</code> statt <code>3.5</code>. Texte werden nach deutscher Sortierreihenfolge verglichen — Äpfel vor Birnen.</p>
             </article>
-            <article class="feature reveal" style="--i:4">
+            <article class="feature">
                 <span class="feature-num">v.</span>
                 <h3>Klein genug zum Verstehen</h3>
                 <p>Der Interpreter ist reines Python 3 ohne Fremdpakete und besteht aus überschaubaren Stufen: Lexer, Satzmuster&#8209;Parser, Syntaxbaum, Interpreter. Kein <code>eval</code>, kein Nachladen von Code.</p>
             </article>
-            <article class="feature reveal" style="--i:5">
+            <article class="feature">
                 <span class="feature-num">vi.</span>
                 <h3>Zum Lernen gebaut</h3>
                 <p>Klarsatz ist ein Lernprojekt — für alle, die das Programmieren nicht gleichzeitig mit einer Fremdsprache lernen wollen. Die Sprache erklärt sich beim Lesen.</p>
@@ -569,13 +557,13 @@ Zeige den Namen von Waldi.</pre>
     </section>
 
     <section class="section" id="spielplatz">
-        <div class="section-head reveal">
+        <div class="section-head">
             <span class="eyebrow">08 — Sicherheit</span>
             <h2>Ausprobieren, <em>ohne etwas zu riskieren.</em></h2>
             <p class="section-sub">Der Spielplatz führt Klarsatz-Programme direkt im Browser aus — und zeigt Zeichnungen auf einer Leinwand gleich daneben. Nichts davon verlässt das Fenster.</p>
         </div>
 
-        <div class="sicher-zahlen reveal">
+        <div class="sicher-zahlen">
             <div class="beleg-zahlen">
                 <div class="beleg-zahl">
                     <strong>60 000</strong>
@@ -596,14 +584,14 @@ Zeige den Namen von Waldi.</pre>
                Fehlermeldung.</p>
         </div>
 
-        <p class="reveal" style="margin-top:36px">
+        <p style="margin-top:36px">
             <a href="spielplatz.html" class="btn btn-primary">Spielplatz öffnen</a>
         </p>
 
-        <details class="tiefer reveal">
+        <details class="tiefer">
             <summary>Wie das im Einzelnen abgesichert ist</summary>
             <div class="tiefer-inhalt">
-                <div class="sicher-grid reveal">
+                <div class="sicher-grid">
             <article class="sicher-karte">
                 <h3>Nichts wird geschrieben</h3>
                 <p>Im Spielplatz arbeiten <code>Lies</code> und <code>Schreibe</code> auf einem Dateisystem im Arbeitsspeicher, das mit dem Lauf verschwindet. Es gibt keinen Weg von einem Programm auf eine Festplatte — weder auf deine noch auf den Server.</p>
@@ -647,13 +635,13 @@ Zeige den Namen von Waldi.</pre>
     </section>
 
     <section class="section" id="download">
-        <div class="section-head reveal">
+        <div class="section-head">
             <span class="eyebrow">09 — Zum Mitnehmen</span>
             <h2>Klarsatz auf dem <em>eigenen Rechner.</em></h2>
             <p class="section-sub">Reines Python 3, keine Fremdpakete, keine Installation: herunterladen, entpacken, loslegen.</p>
         </div>
 
-        <div class="download-karte reveal">
+        <div class="download-karte">
             <div class="download-inhalt">
                 <p>Im Archiv steckt alles, was zum Ausprobieren nötig ist — und der gesamte Quelltext dazu, denn Klarsatz ist zum Nachlesen gebaut.</p>
                 <ul class="download-liste">
@@ -687,13 +675,13 @@ python3 -m klarsatz programme/03_taschenrechner.klar</code></pre>
     </section>
 
     <section class="section" id="stand">
-        <div class="section-head reveal">
+        <div class="section-head">
             <span class="eyebrow">10 — Stand</span>
             <h2>Wo Klarsatz gerade <em>steht.</em></h2>
             <p class="section-sub">Version <span data-download="version">0.7.1</span>. Ein <strong>bewusst begrenztes</strong> Experiment — „begrenzt“ ist dabei keine Entschuldigung, sondern eine Entscheidung: Was dem pädagogischen Ziel nicht dient, kommt nicht hinein. Was daraus geworden ist, steht hier — samt dem, was fehlt.</p>
         </div>
 
-        <div class="feature-grid reveal">
+        <div class="feature-grid">
             <article class="feature">
                 <span class="feature-num">Fertig</span>
                 <h3>Was schon trägt</h3>
@@ -714,7 +702,7 @@ python3 -m klarsatz programme/03_taschenrechner.klar</code></pre>
             </article>
         </div>
 
-        <div class="notiz warnung reveal" style="margin-top:40px;max-width:760px">
+        <div class="notiz warnung" style="margin-top:40px;max-width:760px">
             <span class="notiz-titel">Hinweis zum Prototyp</span>
             <p>Klarsatz ist ein Lern- und Hobbyprojekt. Der Interpreter begrenzt Schritte, Zeit, Speicher und Dateizugriff — eine geprüfte Sandbox ist er trotzdem nicht. Der Spielplatz dieser Seite geht deshalb den sicheren Weg und führt überhaupt nichts auf dem Server aus, sondern alles im Browser des Besuchers.</p>
         </div>
@@ -723,8 +711,8 @@ python3 -m klarsatz programme/03_taschenrechner.klar</code></pre>
 </main>
 
     <section class="section" id="kontakt">
-        <div class="kontakt reveal">
-            <p class="kontakt-frage">Fragen?</p>
+        <div class="kontakt">
+            <p class="kontakt-frage">Fragen? Feedback?</p>
             <p class="kontakt-text">Schreib mir — über Klarsatz, über einen Fehler, über eine Idee,
                oder wenn du es im Unterricht einsetzen willst.</p>
             <p class="kontakt-adresse"><a href="mailto:wolfgang@ruthner.at">wolfgang@ruthner.at</a></p>

@@ -496,12 +496,35 @@ class WegInDieSpielwiese(unittest.TestCase):
             "performance.getEntriesByType('resource').filter(r => r.name.includes('pyodide')).length")
         self.assertGreater(nachher, 0, "Nach dem Klick muss Pyodide geladen worden sein.")
 
-    def test_ohne_javascript_bleibt_die_seite_lesbar(self):
-        """Die Einblend-Animation versteckt Inhalte per CSS.
+    def sichtbare_absaetze(self, seite):
+        return seite.evaluate("""() => {
+            const ist = (e) => {
+                const s = getComputedStyle(e);
+                return s.opacity !== '0' && s.visibility !== 'hidden' && s.display !== 'none';
+            };
+            return [...document.querySelectorAll('h1, h2, p')].filter(ist).length;
+        }""")
 
-        Zeigt sie niemand wieder an — weil das Skript fehlt, blockiert ist oder klemmt —,
-        dann ist die Seite leer. Genau das war sie, bis das Verstecken an eine Klasse
-        gebunden wurde, die erst JavaScript setzt."""
+    def test_der_inhalt_verschwindet_nicht_wieder(self):
+        """Einmal sichtbar, immer sichtbar.
+
+        Es gab hier eine Einblend-Animation: erst alles unsichtbar, dann beim Scrollen
+        eingeblendet. In manchen Browsern war die Seite dadurch kurz zu sehen und dann
+        weg. Deshalb darf kein Skript mehr Inhalt verstecken — dieser Test schaut zweimal
+        nach, direkt nach dem Laden und ein paar Sekunden später."""
+        for datei in ("", "tutorial.html", "doku.html"):
+            with self.subTest(seite=datei or "index.html"):
+                self.s.goto(self.basis + datei)
+                self.s.wait_for_selector("h1, h2")
+                sofort = self.sichtbare_absaetze(self.s)
+                self.assertGreater(sofort, 10, f"{datei or 'index.html'} ist beim Laden leer.")
+                self.s.wait_for_timeout(3000)
+                self.assertGreaterEqual(
+                    self.sichtbare_absaetze(self.s), sofort,
+                    f"{datei or 'index.html'}: Inhalt ist nach dem Laden wieder verschwunden.")
+
+    def test_ohne_javascript_bleibt_die_seite_lesbar(self):
+        """Dasselbe, wenn das Skript gar nicht erst ankommt: blockiert, kaputt, abgeschaltet."""
         ctx = self.browser.new_context(java_script_enabled=False)
         seite = ctx.new_page()
         try:
@@ -509,14 +532,7 @@ class WegInDieSpielwiese(unittest.TestCase):
                 with self.subTest(seite=datei or "index.html"):
                     seite.goto(self.basis + datei)
                     seite.wait_for_selector("h1, h2")
-                    sichtbar = seite.evaluate("""() => {
-                        const ist = (e) => {
-                            const s = getComputedStyle(e);
-                            return s.opacity !== '0' && s.visibility !== 'hidden' && s.display !== 'none';
-                        };
-                        return [...document.querySelectorAll('h1, h2, p')].filter(ist).length;
-                    }""")
-                    self.assertGreater(sichtbar, 10,
+                    self.assertGreater(self.sichtbare_absaetze(seite), 10,
                                        f"{datei or 'index.html'} ist ohne JavaScript praktisch leer.")
         finally:
             ctx.close()
