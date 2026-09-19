@@ -1706,3 +1706,114 @@ kbd {
 .warum p { margin: 0 0 14px; font-size: 0.95rem; line-height: 1.7; color: var(--paper-dim); }
 .warum strong { color: var(--paper); }
 .warum-fuss { margin: 20px 0 0 !important; }
+
+
+/* ── Die Pointe unter dem Vergleich ──────────────────────────────────────── */
+
+.pointe {
+    margin: 34px 0 0;
+    font-family: var(--serif);
+    font-size: clamp(1.5rem, 3vw, 2.1rem);
+    line-height: 1.25;
+    color: var(--paper);
+}
+
+.pointe em { color: var(--gold); font-style: italic; }
+
+.pointe span {
+    display: block;
+    margin-top: 12px;
+    font-family: var(--sans);
+    font-size: 0.95rem;
+    line-height: 1.65;
+    color: var(--paper-dim);
+    max-width: 62ch;
+}
+
+/* ── Sofort-Demo ─────────────────────────────────────────────────────────── */
+
+.mini {
+    margin-top: 38px;
+    padding: 28px;
+    background: var(--ink-2);
+    border: 1px solid rgba(217, 180, 90, 0.28);
+    border-radius: 20px;
+}
+
+.mini h3 { font-family: var(--sans); font-size: 1.05rem; margin: 0 0 8px; }
+.mini > p { margin: 0 0 18px; font-size: 0.95rem; line-height: 1.65; color: var(--paper-dim); max-width: 68ch; }
+.mini-fuss { margin: 18px 0 0 !important; }
+.mini-fehler { margin-top: 14px; font-size: 0.9rem; color: var(--paper-dim); }
+.mini.laeuft > p, .mini.laeuft .code-kopf, .mini.laeuft > pre, .mini.laeuft .mini-fuss { display: none; }
+.mini-buehne { margin-top: 4px; }
+
+/* ── Lernpfad ────────────────────────────────────────────────────────────── */
+
+.lernpfad {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+    gap: 10px;
+}
+
+/* Jede Lektion trägt ihren eigenen Rahmen. Ein durchgehendes Raster mit
+   eingefärbten Lücken sähe in der letzten Reihe nach leeren Kästen aus —
+   elf Lektionen gehen in keine Spaltenzahl glatt auf. */
+.lernpfad li {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 16px 18px;
+    background: var(--ink-2);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+}
+
+.lernpfad li:last-child {
+    border-color: rgba(127, 176, 105, 0.45);
+}
+
+.lernpfad li:last-child .lp-nr { color: var(--moss); }
+
+.lp-nr { font-family: var(--serif); font-size: 1.5rem; line-height: 1; color: var(--gold); }
+.lp-titel { font-family: var(--sans); font-weight: 600; font-size: 0.95rem; }
+.lp-was { font-size: 0.85rem; color: var(--paper-faint); font-family: var(--mono); }
+
+.lernpfad-fuss {
+    margin: 26px 0 0;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: var(--paper-dim);
+    max-width: 72ch;
+}
+
+/* ── Der Weg weiter ──────────────────────────────────────────────────────── */
+
+.funnel { display: flex; flex-direction: column; align-items: center; gap: 10px; margin-top: 8px; }
+
+.fn-stufe {
+    width: 100%;
+    max-width: 560px;
+    padding: 20px 24px;
+    background: var(--ink-2);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    text-align: center;
+}
+
+.fn-marke {
+    display: block;
+    font-family: var(--sans);
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-size: 0.82rem;
+    color: var(--gold);
+    margin-bottom: 8px;
+}
+
+.fn-stufe p { margin: 0; font-size: 0.93rem; line-height: 1.6; color: var(--paper-dim); }
+.fn-pfeil { color: var(--paper-faint); font-size: 1.3rem; line-height: 1; }
+.funnel .fn-stufe:last-of-type .fn-marke { color: var(--moss); }

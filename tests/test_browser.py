@@ -464,6 +464,24 @@ class WegInDieSpielwiese(unittest.TestCase):
         self.s.wait_for_function("() => !document.querySelector('.kp-lauf').disabled", timeout=180000)
         self.assertIn("Zeige", self.s.input_value(".kp-text"))
 
+    def test_die_sofort_demo_laedt_erst_auf_klick(self):
+        """Der ganze Sinn der Demo: Sie kostet nichts, bis jemand sie will.
+
+        Klarsatz im Browser heißt Pyodide, und das sind 14 MB. Würden die beim Laden der
+        Startseite mitkommen, wäre die Demo ein Schaden statt eines Gewinns."""
+        self.s.goto(self.basis)
+        self.s.wait_for_selector(".mini-start")
+        vorher = self.s.evaluate(
+            "performance.getEntriesByType('resource').filter(r => r.name.includes('pyodide')).length")
+        self.assertEqual(vorher, 0, "Pyodide wird schon beim Laden der Startseite geholt.")
+
+        self.s.click(".mini-start")
+        self.s.wait_for_selector("#mini .kp-ende, #mini .kp-fehlertext", timeout=180000)
+        self.assertIn("Fünf plus drei ist 8.", self.s.inner_text("#mini .kp-ausgabe"))
+        nachher = self.s.evaluate(
+            "performance.getEntriesByType('resource').filter(r => r.name.includes('pyodide')).length")
+        self.assertGreater(nachher, 0, "Nach dem Klick muss Pyodide geladen worden sein.")
+
     def test_leeres_blatt_zum_selbertippen(self):
         """Die Aufgaben im Kurs brauchen eine leere Fläche."""
         self.s.goto(self.basis + "spielplatz.html#beispiel=")

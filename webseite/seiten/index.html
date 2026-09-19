@@ -29,11 +29,11 @@
         <a class="brand" href="#top"><span class="brand-mark"></span><span>Klar<em>satz</em></span></a>
     </div>
     <div class="nav-links">
+        <a href="#blick">Ansehen</a>
         <a href="#idee">Idee</a>
-        <a href="#blick">Erster Blick</a>
-        <a href="#bausteine">Bausteine</a>
+        <a href="#lernen">Lernen</a>
         <a href="#fuerwen">Für wen</a>
-        <a href="#download">Download</a>
+        <a href="#danach">Danach</a>
         <a href="tutorial.html">Tutorial</a>
         <a href="doku.html">Dokumentation</a>
         <a href="spielplatz.html" class="nav-cta">Spielplatz</a>
@@ -43,11 +43,11 @@
 <header class="hero" id="top">
     <div class="hero-inner reveal">
         <p class="kicker">Ein Sprachexperiment · Version <span data-download="version">0.7.1</span></p>
-        <h1>Programme,<br>die sich lesen<br><em>wie ein Satz.</em></h1>
-        <p class="lede"><strong>Wie nah kann eine formale Programmiersprache an deutsche Sätze heranrücken, ohne ihre Eindeutigkeit zu verlieren?</strong> Klarsatz ist der Versuch, das herauszufinden — konsequent durchgezogen bis in die Fehlermeldungen. Der praktische Gewinn zeigt sich beim Lernen: Wer programmieren lernt, entziffert sonst gleichzeitig eine fremde Zeichensprache. Diese zweite Hürde fällt hier für eine Weile weg — und am Ende steht dasselbe Programm in Python daneben.</p>
+        <h1>Programmieren lernen,<br>ohne vorher eine<br><em>Fremdsprache zu übersetzen.</em></h1>
+        <p class="lede">Klarsatz schreibt Programme in klaren deutschen Sätzen. Du lernst Variablen, Bedingungen und Schleifen — und führst dein erstes Programm später als Python weiter. Dahinter steckt die Frage, wie nah eine formale Sprache an deutsche Sätze heranrücken kann, ohne ihre Eindeutigkeit zu verlieren.</p>
         <div class="hero-actions">
-            <a href="spielplatz.html" class="btn btn-primary">Gleich ausprobieren</a>
-            <a href="doku.html" class="btn btn-link">Dokumentation lesen</a>
+            <a href="#mini" class="btn btn-primary">▶ Jetzt programmieren</a>
+            <a href="tutorial.html" class="btn btn-link">Den Kurs ansehen</a>
         </div>
     </div>
     <div class="hero-meta reveal" style="--i:2">
@@ -59,9 +59,56 @@
 
 <main class="mit-verlauf">
 
+    <section class="section" id="blick">
+        <div class="section-head reveal">
+            <span class="eyebrow">01 — Sieh es dir an</span>
+            <h2>Dasselbe Programm, <em>zweimal erzählt.</em></h2>
+            <p class="section-sub">Beide Programme tun dasselbe — links Python, rechts Klarsatz. Die <strong>Konzepte sind identisch</strong>: eine Schleife, drei Bedingungen, eine Ausgabe. Verschieden ist nur, wie viel man vorher wissen muss, um die linke Spalte zu lesen.</p>
+        </div>
+        <div class="vergleich reveal">
+            <div class="v-spalte">
+                <p class="v-titel">Python</p>
+<pre class="schale" data-erzeugt="nach-python"><code>for i in range(1, 30 + 1):
+    if (i % 15 == 0):
+        print('FizzBuzz')
+    elif (i % 3 == 0):
+        print('Fizz')
+    elif (i % 5 == 0):
+        print('Buzz')
+    else:
+        print(i)</code></pre>
+            </div>
+            <div class="v-spalte">
+                <p class="v-titel">Klarsatz</p>
+                <div class="code-kopf"><span class="code-titel">fizzbuzz.klar</span></div>
+<pre class="klar">Zähle von 1 bis 30 mit i:
+    Wenn i durch 15 teilbar ist, zeige "FizzBuzz".
+    Sonst wenn i durch 3 teilbar ist, zeige "Fizz".
+    Sonst wenn i durch 5 teilbar ist, zeige "Buzz".
+    Sonst zeige i.
+Ende.</pre>
+            </div>
+        </div>
+
+
+        <p class="pointe reveal">Der Quelltext <em>ist</em> die Erklärung.<span>Links muss man erst lernen, was <code>range</code>, <code>%</code> und <code>elif</code> bedeuten. Rechts steht es da.</span></p>
+
+        <div class="mini reveal" id="mini">
+            <h3>Und jetzt du.</h3>
+            <p>Kein Download, kein Konto, kein Seitenwechsel. Drück auf Ausführen — Klarsatz wird
+               geladen und das Programm läuft hier, in dieser Seite.</p>
+            <div class="code-kopf"><span class="code-titel">Dein erstes Programm</span></div>
+<pre class="klar">Merke 5 als Zahl.
+Erhöhe die Zahl um 3.
+Zeige "Fünf plus drei ist " und Zahl und ".".</pre>
+            <p class="mini-fuss"><button type="button" class="btn btn-primary mini-start">▶ Ausführen</button></p>
+            <div class="mini-buehne" hidden></div>
+        </div>
+    </section>
+
     <section class="section" id="idee">
         <div class="section-head reveal">
-            <span class="eyebrow">01 — Die Idee</span>
+            <span class="eyebrow">02 — Die Idee</span>
             <h2>Natürlich genug zum Lesen.<br><em>Streng genug zum Rechnen.</em></h2>
             <p class="section-sub">Klarsatz ist eine <strong>kontrollierte natürliche Sprache</strong>. In diesem Begriff steckt die ganze Idee — und eine Spannung, die man aushalten muss: Die Sprache soll klingen wie Deutsch, darf aber nicht so beliebig sein wie Deutsch. Sie darf deutsch <em>aussehen</em>. Sie darf nicht deutsch <em>raten</em>.</p>
         </div>
@@ -120,143 +167,37 @@ Ende.</pre>
         </div>
     </section>
 
-    <section class="section" id="blick">
+    <section class="section" id="lernen">
         <div class="section-head reveal">
-            <span class="eyebrow">02 — Erster Blick</span>
-            <h2>Dasselbe Programm, <em>zweimal erzählt.</em></h2>
-            <p class="section-sub">Beide Programme tun dasselbe — links Python, rechts Klarsatz. Die <strong>Konzepte sind identisch</strong>: eine Schleife, drei Bedingungen, eine Ausgabe. Verschieden ist nur, wie viel man vorher wissen muss, um die linke Spalte zu lesen.</p>
-        </div>
-        <div class="vergleich reveal">
-            <div class="v-spalte">
-                <p class="v-titel">Python</p>
-<pre class="schale" data-erzeugt="nach-python"><code>for i in range(1, 30 + 1):
-    if (i % 15 == 0):
-        print('FizzBuzz')
-    elif (i % 3 == 0):
-        print('Fizz')
-    elif (i % 5 == 0):
-        print('Buzz')
-    else:
-        print(i)</code></pre>
-            </div>
-            <div class="v-spalte">
-                <p class="v-titel">Klarsatz</p>
-                <div class="code-kopf"><span class="code-titel">fizzbuzz.klar</span></div>
-<pre class="klar">Zähle von 1 bis 30 mit i:
-    Wenn i durch 15 teilbar ist, zeige "FizzBuzz".
-    Sonst wenn i durch 3 teilbar ist, zeige "Fizz".
-    Sonst wenn i durch 5 teilbar ist, zeige "Buzz".
-    Sonst zeige i.
-Ende.</pre>
-            </div>
+            <span class="eyebrow">03 — Lernen</span>
+            <h2>Du lernst nicht Syntax.<br><em>Du baust dein erstes Programm.</em></h2>
+            <p class="section-sub">Der Kurs fragt dich in jeder Lektion zuerst, was wohl herauskommt — dann probierst du es aus, dann veränderst du es. Wer nur liest, lernt Vokabeln. Wer vorhersagt, lernt Programmieren.</p>
         </div>
 
-        <div class="warum reveal">
-            <h3>Warum dann nicht gleich Python?</h3>
-            <p>Oft ist das die richtige Antwort — und die Seite sagt das auch: Wer Englisch kann und
-               loslegen will, sollte gleich Python nehmen. Klarsatz ist für die anderen gebaut.</p>
-            <p>Beim Lesen der linken Spalte muss man <strong>gleichzeitig</strong> sechs Dinge
-               wissen, die mit Programmieren nichts zu tun haben: dass <code>range(1, 31)</code> bei
-               30 aufhört, dass <code>%</code> den Rest einer Division meint, dass <code>==</code>
-               etwas anderes ist als <code>=</code>, was <code>elif</code> abkürzt, wofür der
-               Doppelpunkt steht und dass die Einrückung nicht Zierde ist. Wer das erste Mal
-               programmiert, lernt also zwei Dinge auf einmal — und scheitert meist am zweiten,
-               obwohl er das erste verstanden hätte.</p>
-            <p>Klarsatz nimmt diese zweite Hürde für eine Weile weg. Nicht für immer: Am Ende des
-               Tutorials steht dasselbe Programm in Python daneben, Zeile für Zeile, mit derselben
-               Bedeutung. Der Satz, auf den alles hinausläuft, lautet dann
-               <em>„Du hast nicht Klarsatz gelernt — du hast programmieren gelernt."</em></p>
-            <p class="warum-fuss"><a href="tutorial.html" class="btn btn-secondary">Das Tutorial ansehen</a></p>
-        </div>
-    </section>
+        <ol class="lernpfad reveal">
+            <li><span class="lp-nr">1</span><span class="lp-titel">Dein erstes Programm</span><span class="lp-was">Zeige</span></li>
+            <li><span class="lp-nr">2</span><span class="lp-titel">Sich etwas merken</span><span class="lp-was">Merke</span></li>
+            <li><span class="lp-nr">3</span><span class="lp-titel">Entscheidungen</span><span class="lp-was">Wenn</span></li>
+            <li><span class="lp-nr">4</span><span class="lp-titel">Fehler sind normal</span><span class="lp-was">lesen statt erschrecken</span></li>
+            <li><span class="lp-nr">5</span><span class="lp-titel">Wiederholen</span><span class="lp-was">Zähle</span></li>
+            <li><span class="lp-nr">6</span><span class="lp-titel">Dein erstes Spiel</span><span class="lp-was">alles zusammen</span></li>
+            <li><span class="lp-nr">7</span><span class="lp-titel">Eigene Bausteine</span><span class="lp-was">Definiere Aufgabe</span></li>
+            <li><span class="lp-nr">8</span><span class="lp-titel">Viele Werte</span><span class="lp-was">Listen</span></li>
+            <li><span class="lp-nr">9</span><span class="lp-titel">Daten ordnen</span><span class="lp-was">Kür</span></li>
+            <li><span class="lp-nr">10</span><span class="lp-titel">Abschlussprojekt</span><span class="lp-was">ohne Lösung</span></li>
+            <li><span class="lp-nr">11</span><span class="lp-titel">Dasselbe in Python</span><span class="lp-was">der Ausgang</span></li>
+        </ol>
 
-    <section class="section" id="bausteine">
-        <div class="section-head reveal">
-            <span class="eyebrow">03 — Bausteine</span>
-            <h2>Alles, was eine Sprache <em>braucht.</em></h2>
-            <p class="section-sub">Werte merken, entscheiden, wiederholen, zeichnen, sammeln, gliedern — in Sätzen, die man laut lesen kann.</p>
-        </div>
+        <p class="lernpfad-fuss reveal">Dazu eine <strong>Stufenwahl</strong>: Klarsatz kennt auf Wunsch nur die Wörter, die du schon gelernt hast, und sagt freundlich Bescheid, wenn du zu weit greifst. Und ein zweiter Kurs übers <a href="tutorial-zeichnen.html">Zeichnen</a>, in acht Lektionen vom ersten Strich zum bewegten Bild.</p>
 
-        <div class="feature-grid bausteine reveal">
-            <div>
-                <h3 style="font-family:var(--sans);font-size:1.06rem;margin:0 0 4px">Werte merken</h3>
-<pre class="klar" data-probieren="nein">Merke 5 als Zahl.
-Setze die Zahl auf 7.
-Erhöhe die Zahl um 1.
-
-Merke "Wolfgang" als Name.
-Verbinde "Hallo, " und Name zu Gruss.
-Zeige Gruss.</pre>
-            </div>
-            <div>
-                <h3 style="font-family:var(--sans);font-size:1.06rem;margin:0 0 4px">Entscheiden</h3>
-<pre class="klar" data-probieren="nein">Merke 25 als Alter.
-
-Wenn Alter mindestens 18 ist:
-    Zeige "willkommen".
-Sonst:
-    Zeige "zu jung".
-Ende.</pre>
-            </div>
-            <div>
-                <h3 style="font-family:var(--sans);font-size:1.06rem;margin:0 0 4px">Wiederholen</h3>
-<pre class="klar" data-probieren="nein">Wiederhole 3 Mal:
-    Zeige "Klarsatz".
-Ende.
-
-Zähle von 1 bis 10 mit i:
-    Zeige i.
-Ende.</pre>
-            </div>
-            <div>
-                <h3 style="font-family:var(--sans);font-size:1.06rem;margin:0 0 4px">Sammeln</h3>
-<pre class="klar" data-probieren="nein">Erstelle eine Liste namens Einkauf.
-Füge "Milch" zur Einkauf hinzu.
-Sortiere Einkauf.
-Für jedes Element in Einkauf:
-    Zeige Element.
-Ende.</pre>
-            </div>
-            <div>
-                <h3 style="font-family:var(--sans);font-size:1.06rem;margin:0 0 4px">Gliedern</h3>
-<pre class="klar" data-probieren="nein">Definiere Aufgabe Summe von a und b:
-    Gib a plus b zurück.
-Ende.
-
-Zeige Summe von 3 und 4.</pre>
-            </div>
-            <div>
-                <h3 style="font-family:var(--sans);font-size:1.06rem;margin:0 0 4px">Zeichnen</h3>
-<pre class="klar" data-probieren="nein">Nimm die Farbe "gold".
-Wiederhole 4 Mal:
-    Gehe 120 Schritte vor.
-    Drehe dich um 90 Grad rechts.
-Ende.</pre>
-            </div>
-            <div>
-                <h3 style="font-family:var(--sans);font-size:1.06rem;margin:0 0 4px">Nachschlagen</h3>
-<pre class="klar" data-probieren="nein">Erstelle eine Tabelle namens Preise.
-Trage "Apfel" mit 3 in Preise ein.
-Trage "Kiwi" mit 5 in Preise ein.
-Zeige Wert für "Apfel" in Preise.</pre>
-            </div>
-            <div>
-                <h3 style="font-family:var(--sans);font-size:1.06rem;margin:0 0 4px">Beschreiben</h3>
-<pre class="klar" data-probieren="nein">Ein Hund hat einen Namen und ein Alter.
-Erschaffe einen Hund mit Name "Rocco"
-    und Alter 5 als Waldi.
-Zeige den Namen von Waldi.</pre>
-            </div>
-        </div>
-
-        <p class="reveal" style="margin-top:40px">
-            <a href="doku.html" class="btn btn-secondary">Zur vollständigen Dokumentation</a>
+        <p class="reveal" style="margin-top:28px">
+            <a href="tutorial.html" class="btn btn-primary">Mit Lektion 1 anfangen</a>
         </p>
     </section>
 
     <section class="section" id="spielplatz">
         <div class="section-head reveal">
-            <span class="eyebrow">04 — Spielplatz</span>
+            <span class="eyebrow">04 — Sicherheit</span>
             <h2>Ausprobieren, <em>ohne etwas zu riskieren.</em></h2>
             <p class="section-sub">Der Spielplatz führt Klarsatz-Programme direkt im Browser aus — und zeigt Zeichnungen auf einer Leinwand gleich daneben. Nichts davon verlässt das Fenster.</p>
         </div>
@@ -389,9 +330,136 @@ Zeige den Namen von Waldi.</pre>
         <p class="eig-fazit reveal">Wer mit Klarsatz programmieren gelernt hat, soll weiterziehen. Genau dafür gibt es den Knopf <em>Als Python</em>: Er zeigt dasselbe Programm in einer Sprache, mit der man danach weiterarbeitet.</p>
     </section>
 
+    <section class="section" id="danach">
+        <div class="section-head reveal">
+            <span class="eyebrow">06 — Danach</span>
+            <h2>Warum du Klarsatz <em>nicht für immer brauchst.</em></h2>
+            <p class="section-sub">Der naheliegendste Einwand gegen eine kleine eigene Sprache lautet: Warum soll ich die lernen? Die Antwort: Sollst du nicht. Klarsatz ist die erste Schreibweise, nicht die letzte.</p>
+        </div>
+
+        <div class="funnel reveal">
+            <div class="fn-stufe">
+                <span class="fn-marke">Klarsatz</span>
+                <p>Denken lernen: Variablen, Bedingungen, Schleifen, eigene Bausteine — in Sätzen, die man vorlesen kann.</p>
+            </div>
+            <span class="fn-pfeil" aria-hidden="true">↓</span>
+            <div class="fn-stufe">
+                <span class="fn-marke">Als Python</span>
+                <p>Ein Knopf übersetzt dein eigenes Programm. Dieselben Zeilen, dieselbe Bedeutung, andere Zeichen.</p>
+            </div>
+            <span class="fn-pfeil" aria-hidden="true">↓</span>
+            <div class="fn-stufe">
+                <span class="fn-marke">Python</span>
+                <p>Weiterbauen — mit allem, was Klarsatz bewusst nicht hat: Bibliotheken, Ökosystem, Stellenanzeigen.</p>
+            </div>
+        </div>
+
+        <div class="warum reveal">
+            <h3>Warum dann nicht gleich Python?</h3>
+            <p>Oft ist das die richtige Antwort — und die Seite sagt das auch: Wer Englisch kann und
+               loslegen will, sollte gleich Python nehmen. Klarsatz ist für die anderen gebaut.</p>
+            <p>Beim Lesen der linken Spalte muss man <strong>gleichzeitig</strong> sechs Dinge
+               wissen, die mit Programmieren nichts zu tun haben: dass <code>range(1, 31)</code> bei
+               30 aufhört, dass <code>%</code> den Rest einer Division meint, dass <code>==</code>
+               etwas anderes ist als <code>=</code>, was <code>elif</code> abkürzt, wofür der
+               Doppelpunkt steht und dass die Einrückung nicht Zierde ist. Wer das erste Mal
+               programmiert, lernt also zwei Dinge auf einmal — und scheitert meist am zweiten,
+               obwohl er das erste verstanden hätte.</p>
+            <p>Klarsatz nimmt diese zweite Hürde für eine Weile weg. Nicht für immer: Am Ende des
+               Tutorials steht dasselbe Programm in Python daneben, Zeile für Zeile, mit derselben
+               Bedeutung. Der Satz, auf den alles hinausläuft, lautet dann
+               <em>„Du hast nicht Klarsatz gelernt — du hast programmieren gelernt."</em></p>
+            <p class="warum-fuss"><a href="tutorial.html" class="btn btn-secondary">Das Tutorial ansehen</a></p>
+        </div>
+    </section>
+
+    <section class="section" id="bausteine">
+        <div class="section-head reveal">
+            <span class="eyebrow">07 — Bausteine</span>
+            <h2>Alles, was eine Sprache <em>braucht.</em></h2>
+            <p class="section-sub">Werte merken, entscheiden, wiederholen, zeichnen, sammeln, gliedern — in Sätzen, die man laut lesen kann.</p>
+        </div>
+
+        <div class="feature-grid bausteine reveal">
+            <div>
+                <h3 style="font-family:var(--sans);font-size:1.06rem;margin:0 0 4px">Werte merken</h3>
+<pre class="klar" data-probieren="nein">Merke 5 als Zahl.
+Setze die Zahl auf 7.
+Erhöhe die Zahl um 1.
+
+Merke "Wolfgang" als Name.
+Verbinde "Hallo, " und Name zu Gruss.
+Zeige Gruss.</pre>
+            </div>
+            <div>
+                <h3 style="font-family:var(--sans);font-size:1.06rem;margin:0 0 4px">Entscheiden</h3>
+<pre class="klar" data-probieren="nein">Merke 25 als Alter.
+
+Wenn Alter mindestens 18 ist:
+    Zeige "willkommen".
+Sonst:
+    Zeige "zu jung".
+Ende.</pre>
+            </div>
+            <div>
+                <h3 style="font-family:var(--sans);font-size:1.06rem;margin:0 0 4px">Wiederholen</h3>
+<pre class="klar" data-probieren="nein">Wiederhole 3 Mal:
+    Zeige "Klarsatz".
+Ende.
+
+Zähle von 1 bis 10 mit i:
+    Zeige i.
+Ende.</pre>
+            </div>
+            <div>
+                <h3 style="font-family:var(--sans);font-size:1.06rem;margin:0 0 4px">Sammeln</h3>
+<pre class="klar" data-probieren="nein">Erstelle eine Liste namens Einkauf.
+Füge "Milch" zur Einkauf hinzu.
+Sortiere Einkauf.
+Für jedes Element in Einkauf:
+    Zeige Element.
+Ende.</pre>
+            </div>
+            <div>
+                <h3 style="font-family:var(--sans);font-size:1.06rem;margin:0 0 4px">Gliedern</h3>
+<pre class="klar" data-probieren="nein">Definiere Aufgabe Summe von a und b:
+    Gib a plus b zurück.
+Ende.
+
+Zeige Summe von 3 und 4.</pre>
+            </div>
+            <div>
+                <h3 style="font-family:var(--sans);font-size:1.06rem;margin:0 0 4px">Zeichnen</h3>
+<pre class="klar" data-probieren="nein">Nimm die Farbe "gold".
+Wiederhole 4 Mal:
+    Gehe 120 Schritte vor.
+    Drehe dich um 90 Grad rechts.
+Ende.</pre>
+            </div>
+            <div>
+                <h3 style="font-family:var(--sans);font-size:1.06rem;margin:0 0 4px">Nachschlagen</h3>
+<pre class="klar" data-probieren="nein">Erstelle eine Tabelle namens Preise.
+Trage "Apfel" mit 3 in Preise ein.
+Trage "Kiwi" mit 5 in Preise ein.
+Zeige Wert für "Apfel" in Preise.</pre>
+            </div>
+            <div>
+                <h3 style="font-family:var(--sans);font-size:1.06rem;margin:0 0 4px">Beschreiben</h3>
+<pre class="klar" data-probieren="nein">Ein Hund hat einen Namen und ein Alter.
+Erschaffe einen Hund mit Name "Rocco"
+    und Alter 5 als Waldi.
+Zeige den Namen von Waldi.</pre>
+            </div>
+        </div>
+
+        <p class="reveal" style="margin-top:40px">
+            <a href="doku.html" class="btn btn-secondary">Zur vollständigen Dokumentation</a>
+        </p>
+    </section>
+
     <section class="section" id="download">
         <div class="section-head reveal">
-            <span class="eyebrow">06 — Zum Mitnehmen</span>
+            <span class="eyebrow">08 — Zum Mitnehmen</span>
             <h2>Klarsatz auf dem <em>eigenen Rechner.</em></h2>
             <p class="section-sub">Reines Python 3, keine Fremdpakete, keine Installation: herunterladen, entpacken, loslegen.</p>
         </div>
@@ -431,7 +499,7 @@ python3 -m klarsatz programme/03_taschenrechner.klar</code></pre>
 
     <section class="section" id="stand">
         <div class="section-head reveal">
-            <span class="eyebrow">07 — Stand</span>
+            <span class="eyebrow">09 — Stand</span>
             <h2>Wo Klarsatz gerade <em>steht.</em></h2>
             <p class="section-sub">Version <span data-download="version">0.7.1</span>. Ein <strong>bewusst begrenztes</strong> Experiment — „begrenzt“ ist dabei keine Entschuldigung, sondern eine Entscheidung: Was dem pädagogischen Ziel nicht dient, kommt nicht hinein. Was daraus geworden ist, steht hier — samt dem, was fehlt.</p>
         </div>
@@ -472,6 +540,7 @@ python3 -m klarsatz programme/03_taschenrechner.klar</code></pre>
 
 <script src="assets/manuskript-bg.js"></script>
 <script src="assets/app.js"></script>
+<script type="module" src="assets/mini.js"></script>
 <script type="module" src="assets/code-hervorhebung.js"></script>
 </body>
 </html>
