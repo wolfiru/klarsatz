@@ -223,6 +223,18 @@ GERUEST = """<!DOCTYPE html>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="assets/style.css">
+<script>
+/* Die Einblend-Animation versteckt Inhalte per CSS und zeigt sie erst wieder, wenn
+   assets/app.js läuft. Ohne dieses Skript wäre die Seite leer — deshalb wird erst hier
+   die Klasse gesetzt, die das Verstecken überhaupt erlaubt. Und falls app.js gar nicht
+   ankommt, nimmt der Zeitgeber sie wieder weg: lieber ohne Animation als ohne Inhalt. */
+(function (h) {
+    h.classList.add("js");
+    setTimeout(function () {
+        if (!h.classList.contains("seite-bereit")) h.classList.remove("js");
+    }, 2500);
+})(document.documentElement);
+</script>
 </head>
 <body>
 

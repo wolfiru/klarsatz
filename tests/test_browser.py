@@ -496,6 +496,31 @@ class WegInDieSpielwiese(unittest.TestCase):
             "performance.getEntriesByType('resource').filter(r => r.name.includes('pyodide')).length")
         self.assertGreater(nachher, 0, "Nach dem Klick muss Pyodide geladen worden sein.")
 
+    def test_ohne_javascript_bleibt_die_seite_lesbar(self):
+        """Die Einblend-Animation versteckt Inhalte per CSS.
+
+        Zeigt sie niemand wieder an — weil das Skript fehlt, blockiert ist oder klemmt —,
+        dann ist die Seite leer. Genau das war sie, bis das Verstecken an eine Klasse
+        gebunden wurde, die erst JavaScript setzt."""
+        ctx = self.browser.new_context(java_script_enabled=False)
+        seite = ctx.new_page()
+        try:
+            for datei in ("", "tutorial.html", "doku.html"):
+                with self.subTest(seite=datei or "index.html"):
+                    seite.goto(self.basis + datei)
+                    seite.wait_for_selector("h1, h2")
+                    sichtbar = seite.evaluate("""() => {
+                        const ist = (e) => {
+                            const s = getComputedStyle(e);
+                            return s.opacity !== '0' && s.visibility !== 'hidden' && s.display !== 'none';
+                        };
+                        return [...document.querySelectorAll('h1, h2, p')].filter(ist).length;
+                    }""")
+                    self.assertGreater(sichtbar, 10,
+                                       f"{datei or 'index.html'} ist ohne JavaScript praktisch leer.")
+        finally:
+            ctx.close()
+
     def test_leeres_blatt_zum_selbertippen(self):
         """Die Aufgaben im Kurs brauchen eine leere Fläche."""
         self.s.goto(self.basis + "spielplatz.html#beispiel=")

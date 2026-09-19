@@ -138,6 +138,10 @@
         sparsam: sparsam
     };
 
+    /* Dem Schnipsel im Seitenkopf sagen, dass es uns gibt — sonst nimmt er nach
+       2,5 Sekunden an, dass dieses Skript nie ankommt, und zeigt alles ungeniert an. */
+    document.documentElement.classList.add("seite-bereit");
+
     navInit();
     menueInit();
     codeInit();

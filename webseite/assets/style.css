@@ -1217,7 +1217,8 @@ footer a:hover { border-bottom-color: var(--gold); }
 
 /* ---------- Reveal ---------- */
 
-.reveal {
+/* Nur mit JavaScript verstecken. Ohne es gäbe es niemanden, der wieder einblendet. */
+.js .reveal {
     opacity: 0;
     transform: translateY(16px);
     transition: opacity 0.8s var(--ease), transform 0.8s var(--ease);
