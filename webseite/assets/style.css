@@ -1867,3 +1867,45 @@ kbd {
 @media (min-width: 880px) {
     .fn-pfeil::before { content: "→"; }
 }
+
+
+/* ── Was den Kurs ausmacht: Fehlerkultur und Lernstufen ──────────────────── */
+
+.lernhilfen {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 18px;
+    margin-top: 30px;
+}
+
+.lh-karte {
+    padding: 24px 26px;
+    background: var(--ink-2);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+}
+
+.lh-karte h3 { font-family: var(--sans); font-size: 1rem; margin: 0 0 10px; }
+.lh-karte p { margin: 0 0 14px; font-size: 0.93rem; line-height: 1.65; color: var(--paper-dim); }
+.lh-karte p:last-child { margin-bottom: 0; }
+.lh-karte a { color: var(--gold); }
+
+.lh-probe {
+    margin: 0 0 14px;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    overflow: hidden;
+    font-size: 0.86rem;
+    line-height: 1.6;
+}
+
+.lh-ein, .lh-aus { display: block; padding: 11px 14px; }
+.lh-ein { font-family: var(--mono); color: var(--paper); background: rgba(8, 10, 8, 0.5); }
+
+.lh-aus {
+    border-top: 1px solid var(--line);
+    border-left: 2px solid #d98a5a;
+    color: var(--paper-dim);
+}
+
+.lh-aus strong { color: var(--paper); }
