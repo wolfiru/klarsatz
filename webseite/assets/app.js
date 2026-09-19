@@ -114,6 +114,16 @@
         dekodiere: dekodiere
     };
 
+    /* Rettung für alte Seitenfassungen aus dem Browser-Zwischenspeicher.
+       Bis September 2026 versteckte die Seite ihren Inhalt (Klasse "js" am <html>,
+       dazu .reveal im CSS) und blendete ihn per Skript ein. Wer so eine Fassung
+       gespeichert hat, sieht sonst eine leere Seite — dieses Skript kommt frisch
+       vom Server und nimmt das Verstecken wieder zurück. */
+    document.documentElement.classList.remove('js');
+    Array.prototype.forEach.call(document.querySelectorAll('.reveal'), function (el) {
+        el.classList.add('in');
+    });
+
     navInit();
     menueInit();
     codeInit();
