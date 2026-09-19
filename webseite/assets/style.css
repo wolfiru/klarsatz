@@ -1500,7 +1500,9 @@ kbd {
 .tabelle-rahmen table { min-width: 320px; }
 
 .tut-eingabe,
-.tut-ausgabe {
+.tut-ausgabe,
+.tut-fehler,
+.tut-python {
     margin: -8px 0 22px;
     border: 1px solid var(--line);
     border-radius: 10px;
@@ -1508,6 +1510,8 @@ kbd {
 }
 
 .tut-eingabe { border-left: 2px solid #a8c7e0; }
+.tut-fehler  { border-left: 2px solid #d98a5a; }
+.tut-python  { border-left: 2px solid #7aa7d9; }
 .tut-ausgabe { border-left: 2px solid var(--moss); }
 
 .tut-marke {
@@ -1523,7 +1527,9 @@ kbd {
 }
 
 .tut-eingabe pre,
-.tut-ausgabe pre {
+.tut-ausgabe pre,
+.tut-fehler pre,
+.tut-python pre {
     margin: 0;
     padding: 14px;
     background: none;
@@ -1536,11 +1542,14 @@ kbd {
     color: var(--paper-dim);
 }
 
-.tut-ausgabe pre { color: var(--paper); }
+.tut-ausgabe pre,
+.tut-python pre { color: var(--paper); }
 
 /* Ohne das erbt der Text die Kästchen-Optik von Inline-Code. */
 .tut-eingabe pre code,
-.tut-ausgabe pre code {
+.tut-ausgabe pre code,
+.tut-fehler pre code,
+.tut-python pre code {
     all: unset;
     font-family: var(--mono);
     white-space: pre;
@@ -1567,4 +1576,100 @@ kbd {
 
 @media (max-width: 680px) {
     .tut-hinweis { flex-direction: column; align-items: flex-start; gap: 18px; }
+}
+
+
+/* ── Für wen ist Klarsatz? ───────────────────────────────────────────────── */
+
+.eig-rahmen { overflow-x: auto; }
+
+.eignung { width: 100%; border-collapse: collapse; font-size: 0.93rem; min-width: 560px; }
+
+.eignung th[scope="col"] {
+    font-family: var(--sans);
+    font-size: 0.74rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--paper-faint);
+    font-weight: 600;
+    padding-bottom: 12px;
+}
+
+.eignung th[scope="row"] {
+    font-family: var(--sans);
+    font-weight: 600;
+    color: var(--paper);
+    width: 30%;
+    /* Die Kopfzeile der Tabelle ist in Versalien gesetzt — die Zeilenköpfe sind
+       aber normale Sätze und sollen sich nicht danach richten. */
+    text-transform: none;
+    letter-spacing: 0;
+    font-size: 0.93rem;
+}
+
+.eignung td:nth-child(2) { white-space: nowrap; }
+.eignung td { color: var(--paper-dim); line-height: 1.55; }
+.eignung th, .eignung td { padding: 14px 18px 14px 0; border-bottom: 1px solid var(--line); vertical-align: top; }
+.eignung tbody tr:last-child th, .eignung tbody tr:last-child td { border-bottom: none; }
+
+/* Das Zehn-Punkte-Maß. Die Farbe sagt, in welche Richtung es geht. */
+.eig-messer { display: inline-flex; gap: 3px; vertical-align: middle; }
+
+.eig-punkt {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    border: 1px solid rgba(243, 239, 230, 0.22);
+    background: none;
+}
+
+.eig-gut      .eig-punkt.ist-voll { background: var(--moss);  border-color: var(--moss); }
+.eig-mittel   .eig-punkt.ist-voll { background: var(--gold);  border-color: var(--gold); }
+.eig-schlecht .eig-punkt.ist-voll { background: #b2705a;      border-color: #b2705a; }
+
+.eig-zahl {
+    display: inline-block;
+    margin-left: 10px;
+    font-variant-numeric: tabular-nums;
+    font-size: 0.82rem;
+    color: var(--paper-faint);
+    vertical-align: middle;
+}
+
+.eig-fazit {
+    margin: 32px 0 0;
+    padding-top: 22px;
+    border-top: 1px solid var(--line);
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: var(--paper-dim);
+    max-width: 68ch;
+}
+
+/* Auf dem Handy wird aus der Tabelle ein Stapel Karten: drei Spalten nebeneinander
+   zwingen sonst zum Seitwärtsscrollen, und die Begründung steht ohnehin am besten
+   unter dem, was sie begründet. */
+@media (max-width: 620px) {
+    .eig-rahmen { overflow-x: visible; }
+    .eignung, .eignung tbody, .eignung tr, .eignung th, .eignung td { display: block; width: auto; }
+    .eignung { min-width: 0; }
+    .eignung thead { display: none; }
+
+    .eignung tbody tr {
+        padding: 16px 0;
+        border-bottom: 1px solid var(--line);
+    }
+
+    .eignung tbody tr:last-child { border-bottom: none; }
+
+    .eignung th[scope="row"] {
+        width: auto;
+        padding: 0 0 8px;
+        border-bottom: none;
+        font-size: 1rem;
+    }
+
+    .eignung td { padding: 0; border-bottom: none; }
+    .eignung td:nth-child(2) { padding-bottom: 8px; }
+    .eignung td:nth-child(3) { font-size: 0.9rem; }
 }

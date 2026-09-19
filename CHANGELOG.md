@@ -1,7 +1,21 @@
 # Änderungen
 
 ## Unveröffentlicht
-- **Lernstufen** (`--stufe N`, `--stufen`, Auswahl in der Spielwiese): sechs Stufen entlang der
+- **Tutorial neu gebaut — vom Sprachkurs zum Programmierkurs.** Jede Lektion beginnt jetzt mit
+  einem Problem statt mit einem Befehl, und jede folgt dem Muster *vorhersagen → ausprobieren →
+  verändern*. Neu: eine eigene Lektion **„Fehler sind normal"** mit absichtlich kaputten
+  Programmen (auch deren Meldungen werden nachgerechnet), das erste Spiel schon in der Mitte
+  statt am Ende, Funktionen direkt danach mit echtem Anlass, Kurzformen erst nach den
+  Grundformen, Dinge und Tabellen als Kür, eine Kür übers Zeichnen, ein **Abschlussprojekt ohne
+  Musterlösung** und als Schluss **„Dasselbe in Python"** mit Zeile-für-Zeile-Gegenüberstellung.
+- **Zielgruppen** in README und auf der Webseite: elf Gruppen mit einer ehrlichen Einschätzung
+  von 1 bis 10 — auch die, für die Klarsatz nichts bringt. Ein Test hält beide Fassungen gleich.
+- **Behoben:** `tools/baue_tutorial.py` lief in eine Endlosschleife, sobald eine Zeile nur aus
+  `>` bestand — das blockierte das Veröffentlichen, ohne einen Fehler zu melden. Jetzt gibt es
+  ein Sicherheitsnetz und einen Test mit zwölf sperrigen Zeilen.
+- **Behoben:** Die Lernstufen sperrten `Versuche` auch dort, wo es ein Variablenname ist.
+  Satzanfangswörter zählen jetzt nur noch am Satzanfang.
+- **Lernstufen** (`--stufe N`, `--stufen`, Auswahl in der Spielwiese): sieben Stufen entlang der
   Lektionen des Tutorials. Wer zu früh nach einem Wort greift, liest „Das kommt später: 'Wenn'
   lernst du in Stufe 3 (Entscheiden)". Gesperrt wird nur, was eindeutig ist — eine Variable darf
   weiterhin `Wurzel` heißen. Ein geladenes Beispiel setzt die Stufe zurück.

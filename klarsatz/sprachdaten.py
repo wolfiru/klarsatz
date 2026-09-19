@@ -74,8 +74,9 @@ STUFEN_NAMEN = {
     2: "Rechnen",
     3: "Entscheiden",
     4: "Wiederholen",
-    5: "Listen und Tabellen",
-    6: "Alles",
+    5: "Eigene Bausteine",
+    6: "Listen und Tabellen",
+    7: "Alles",
 }
 
 STUFEN = {
@@ -96,13 +97,14 @@ STUFEN = {
         "solange", "jedes", "jede", "jeden", "in",
         "rueckwaerts", "abwaerts", "schritten"},
 
-    5: {"erstelle", "fuege", "entferne", "sortiere", "teile", "kopiere", "trage", "ersetze",
-        "namens", "hinzu", "aus", "absteigend", "bei",
+    5: {"definiere", "aufgabe", "gib", "zurueck", "fuehre", "aus"},
+
+    6: {"erstelle", "fuege", "entferne", "sortiere", "teile", "kopiere", "trage", "ersetze",
+        "namens", "hinzu", "absteigend", "bei",
         "element", "elemente", "erste", "letzte", "wert", "verkettet", "zeichen",
         "zufaelliges", "zufaellige", "rechtsbuendig", "linksbuendig"},
 
-    6: {"definiere", "aufgabe", "gib", "zurueck", "fuehre",
-        "versuche", "fehler", "stelle", "sicher", "dass",
+    7: {"versuche", "fehler", "stelle", "sicher", "dass",
         "hat", "erschaffe",
         "lies", "schreibe",
         "gehe", "drehe", "hebe", "senke", "nimm", "loesche", "warte",

@@ -100,7 +100,16 @@ class KeineFehlalarme(unittest.TestCase):
 
 
 class PasstZumTutorial(unittest.TestCase):
-    """Die Stufen sind nur dann sinnvoll, wenn sie der Reihenfolge des Tutorials folgen."""
+    """Die Stufen sind nur dann sinnvoll, wenn sie zum Kurs passen.
+
+    Das Tutorial nennt in seiner Übersichtstabelle für jede Lektion eine Stufe. Die Zusage
+    dahinter: **Keine Lektion benutzt etwas, das der Lernende noch nicht kennt.** Genau das
+    wird hier nachgerechnet — und zwar aus den Programmen selbst, nicht aus der Tabelle.
+    """
+
+    # Lektion -> Stufe, wie sie im Tutorial angekündigt ist. Lektion 10 ist das
+    # Abschlussprojekt und enthält absichtlich keinen Code.
+    LEKTION_STUFE = {1: 1, 2: 2, 3: 3, 4: 3, 5: 4, 6: 4, 7: 5, 8: 6, 9: 7, 10: 7, 11: 7}
 
     def kleinste_stufe(self, quelltext, antworten):
         for s in range(1, HOECHSTE_STUFE + 1):
@@ -108,32 +117,42 @@ class PasstZumTutorial(unittest.TestCase):
                 return s
         return HOECHSTE_STUFE
 
-    def test_jede_lektion_bleibt_auf_ihrer_stufe_oder_darueber(self):
+    def test_keine_lektion_greift_zu_weit_vor(self):
         from tests.test_tutorial import TUTORIAL, lies_bloecke
-        je_lektion = {}
+        gesehen = set()
         for block in lies_bloecke(TUTORIAL.read_text(encoding="utf-8")):
+            # Auch die absichtlich kaputten Beispiele aus Lektion 4 gehören geprüft:
+            # Ein Tippfehler-Beispiel darf keine Wörter benutzen, die noch nicht dran sind.
             if not block.lektion.startswith("Lektion"):
                 continue
             nr = int(block.lektion.split()[1])
-            je_lektion[nr] = max(je_lektion.get(nr, 0),
-                                 self.kleinste_stufe(block.quelltext, block.eingaben))
+            gesehen.add(nr)
+            erlaubt = self.LEKTION_STUFE[nr]
+            with self.subTest(lektion=nr, zeile=block.zeile):
+                noetig = self.kleinste_stufe(block.quelltext, block.eingaben)
+                self.assertLessEqual(
+                    noetig, erlaubt,
+                    f"Das Beispiel in Zeile {block.zeile} braucht Stufe {noetig}, Lektion {nr} "
+                    f"kündigt aber nur Stufe {erlaubt} an — der Lernende kennt das noch nicht.")
+        # Lektion 10 ist das Abschlussprojekt und hat absichtlich keinen Code.
+        self.assertEqual(gesehen, set(self.LEKTION_STUFE) - {10},
+                         "Für diese Lektionen wurden keine Beispiele gefunden.")
 
-        vorher = 0
-        for nr in sorted(je_lektion):
-            with self.subTest(lektion=nr):
-                self.assertGreaterEqual(
-                    je_lektion[nr], vorher,
-                    f"Lektion {nr} braucht nur Stufe {je_lektion[nr]}, die Lektion davor schon "
-                    f"{vorher} — dann passen Stufen und Tutorial nicht mehr zusammen.")
-            vorher = je_lektion[nr]
+    def test_die_angekuendigten_stufen_steigen(self):
+        stufen = [self.LEKTION_STUFE[nr] for nr in sorted(self.LEKTION_STUFE)]
+        self.assertEqual(stufen, sorted(stufen), "Der Kurs darf nie zu einer niedrigeren Stufe zurück.")
+        self.assertEqual(max(stufen), HOECHSTE_STUFE, "Am Ende soll die ganze Sprache offen sein.")
 
-    def test_die_letzte_lektion_braucht_die_hoechste_stufe(self):
-        from tests.test_tutorial import TUTORIAL, lies_bloecke
-        letzte = [b for b in lies_bloecke(TUTORIAL.read_text(encoding="utf-8"))
-                  if b.lektion.startswith("Lektion 11")]
-        self.assertTrue(letzte)
-        self.assertEqual(max(self.kleinste_stufe(b.quelltext, b.eingaben) for b in letzte),
-                         HOECHSTE_STUFE)
+    def test_die_uebersichtstabelle_des_tutorials_stimmt(self):
+        """Was in der Tabelle des Tutorials steht, muss zu LEKTION_STUFE passen."""
+        import re
+        text = (WURZEL / "docs" / "TUTORIAL.md").read_text(encoding="utf-8")
+        gefunden = {}
+        for nr, _titel, stufe in re.findall(r"^\| (\d+) \| \[([^\]]+)\][^|]*\| (\d+|—) \|$", text, re.M):
+            if stufe != "—":
+                gefunden[int(nr)] = int(stufe)
+        self.assertEqual(gefunden, {nr: s for nr, s in self.LEKTION_STUFE.items() if nr != 11},
+                         "Die Tabelle im Tutorial und dieser Test sagen Verschiedenes.")
 
 
 class Uebersicht(unittest.TestCase):

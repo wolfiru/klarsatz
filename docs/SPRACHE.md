@@ -268,8 +268,9 @@ alles andere wartet. Greift man zu früh nach einem Wort, sagt Klarsatz freundli
 | 2 | Rechnen | `plus`, `mal`, `Setze`, `Erhöhe`, `Wurzel von`, `Gerundet von` |
 | 3 | Entscheiden | `Wenn`, `Sonst`, `gleich`, `größer als`, `wahr`, `falsch` |
 | 4 | Wiederholen | `Wiederhole`, `Zähle`, `Für jedes`, `Höre auf` |
-| 5 | Listen und Tabellen | `Erstelle`, `Füge hinzu`, `Element n von`, `Sortiere`, `Teile` |
-| 6 | Alles | Aufgaben, Dinge, `Versuche`, Dateien, Zeichnen, Uhrzeit |
+| 5 | Eigene Bausteine | `Definiere Aufgabe`, `Gib … zurück`, `Führe … aus` |
+| 6 | Listen und Tabellen | `Erstelle`, `Füge hinzu`, `Element n von`, `Sortiere`, `Teile` |
+| 7 | Alles | Dinge, `Versuche`, Dateien, Zeichnen, Uhrzeit |
 
 `--stufen` zeigt alle Wörter je Stufe. Ohne `--stufe` ist nichts gesperrt. In der Spielwiese steht
 die Auswahl oben; ein geladenes Beispiel setzt sie zurück, denn Beispiele soll man immer ansehen

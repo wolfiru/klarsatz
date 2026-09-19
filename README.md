@@ -31,13 +31,39 @@ installieren. Der Interpreter läuft als WebAssembly in einem Web-Worker, ohne S
 Zugriff auf die Festplatte. 29 Beispielprogramme sind zum Hineinladen hinterlegt, vom Zahlenraten
 bis zum grafischen Textadventure.
 
-Du willst die Sprache von Grund auf lernen? Das **[Tutorial](docs/TUTORIAL.md)** führt in elf
-Lektionen vom ersten Satz bis zum eigenen Spiel — [auch als
-Webseite](https://www.ruthner.at/klarsatz/tutorial.html). Jedes Beispiel darin läuft wirklich: Ein
-Test führt alle 42 Programme aus und vergleicht ihre Ausgabe mit dem, was im Text steht. Das
-Tutorial kann also nicht veralten.
+Du willst programmieren lernen? Das **[Tutorial](docs/TUTORIAL.md)** führt in elf Lektionen vom
+ersten Satz bis zum eigenen Programm — und zeigt dir am Ende dasselbe Programm in Python
+([auch als Webseite](https://www.ruthner.at/klarsatz/tutorial.html)). Es lehrt nicht Befehle,
+sondern das Muster *vorhersagen → ausprobieren → verändern*, hat eine eigene Lektion übers
+Fehlerlesen und endet mit einem Projekt ohne Musterlösung.
+
+Nichts darin ist abgetippt: Ein Test führt alle 36 Beispiele aus und vergleicht Ausgaben,
+Fehlermeldungen und sogar die Python-Übersetzung mit dem, was im Text steht.
 
 Dazu gibt es die **[Projektseite mit Dokumentation](https://www.ruthner.at/klarsatz/)**.
+
+## Für wen ist Klarsatz — und für wen nicht?
+
+Klarsatz ist eine **Lernsprache**. Sie nimmt eine einzige Hürde weg — die fremde Schreibweise — und
+lässt alles andere am Programmieren unangetastet. Das macht sie für manche Leute sehr gut und für
+andere überflüssig. Ehrlich eingeschätzt:
+
+| | Für wen | Eignung | |
+|---|---|---|---|
+| ✓ | **Anfänger ab etwa 10 Jahren, deutschsprachig** | `●●●●●●●●●○` 9/10 | Der Quelltext ist der erklärende Satz. Es gibt nichts zu übersetzen, bevor man denken kann. |
+| ✓ | **Schule und Kurse: der allererste Einstieg** | `●●●●●●●●●○` 9/10 | Elf Lektionen, Lernstufen, Spielwiese im Browser — nichts zu installieren, nichts einzurichten. |
+| ✓ | **Erwachsene ohne Englischkenntnisse** | `●●●●●●●●○○` 8/10 | Befehle, Fehlermeldungen und die ganze Doku sind deutsch. |
+| ✓ | **Wer danach Python lernen will** | `●●●●●●●●○○` 8/10 | Der Knopf *Als Python* übersetzt jedes eigene Programm — dieselben Ideen, andere Schreibweise. |
+| ✓ | **Wer schnell ein Bild sehen will** | `●●●●●●●○○○` 7/10 | Stift, Farben und Schleifen ergeben in fünf Zeilen ein Vieleck. |
+| ~ | **Hobby: kleine Rechnungen und Spielereien für sich selbst** | `●●●●●○○○○○` 5/10 | Reicht für Listen, Tabellen, Dateien und Text — aber ohne fremde Bibliotheken. |
+| ✗ | **Kinder, die noch nicht sicher lesen (unter etwa 8)** | `●●●○○○○○○○` 3/10 | Klarsatz wird getippt und gelesen. Zum Klicken und Ziehen ist Scratch das bessere Werkzeug. |
+| ✗ | **Wer Englisch kann und sofort Python will** | `●●●○○○○○○○` 3/10 | Dann ist der Umweg keiner. Klarsatz spart genau die Hürde, die es bei dir nicht gibt. |
+| ✗ | **Erfahrene Programmierer als Zweitsprache** | `●●○○○○○○○○` 2/10 | Hier gibt es nichts Neues zu lernen — außer aus Neugier, wie eine deutsche Syntax sich anfühlt. |
+| ✗ | **Programme über ein paar hundert Zeilen** | `●●○○○○○○○○` 2/10 | Es gibt keine Module, keine Pakete und keinen Namensraum über die Datei hinaus. |
+| ✗ | **Webseiten, Apps, Datenauswertung, KI** | `●○○○○○○○○○` 1/10 | Dafür fehlt alles: Netzwerk, Bibliotheken, Ökosystem. Das ist Absicht, siehe Sicherheit. |
+
+Die kurze Fassung: **Klarsatz ist die erste Sprache, nicht die einzige.** Wer damit programmieren
+gelernt hat, soll weiterziehen — dafür gibt es den Knopf *Als Python*.
 
 ## Auf dem eigenen Rechner
 

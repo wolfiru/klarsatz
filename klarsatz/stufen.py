@@ -19,8 +19,12 @@ from .fehler import StufenFehler
 from .parser import RESERVIERT, STARTER
 from .sprachdaten import (FUNKTIONEN_MIT_VON, HOECHSTE_STUFE, STUFEN_NAMEN, STUFE_VON_WORT)
 
-# Wörter, die nie ein Name sein können — die dürfen wir ohne Zusammenhang beurteilen.
-EINDEUTIG = set(RESERVIERT) | set(STARTER)
+# Reservierte Wörter können nie ein Name sein — die dürfen wir ohne Zusammenhang beurteilen.
+EINDEUTIG = set(RESERVIERT)
+
+# Satzanfänge (Zeige, Merke, Versuche …) sind nur **am Satzanfang** Befehle. `Versuche` ist
+# mittendrin ein völlig normaler Variablenname — das Ratespiel im Tutorial benutzt ihn so.
+NUR_AM_SATZANFANG = set(STARTER) - EINDEUTIG
 
 
 def name(stufe):
@@ -39,6 +43,11 @@ def _gilt_als_funktion(tokens, i):
     return folgt is not None and folgt.art == "WORT" and folgt.norm == "von"
 
 
+def _steht_am_satzanfang(tokens, i):
+    """Ein Satz fängt am Programmanfang an oder nach '.' bzw. ':'."""
+    return i == 0 or tokens[i - 1].art in (".", ":")
+
+
 def pruefe(tokens, stufe):
     """Wirft einen SyntaxFehler, sobald ein Wort über der erlaubten Stufe auftaucht."""
     if stufe is None or stufe >= HOECHSTE_STUFE:
@@ -53,8 +62,11 @@ def pruefe(tokens, stufe):
         if noetig is None or noetig <= stufe:
             continue
         if t.norm not in EINDEUTIG:
-            # Mehrdeutig: nur sperren, wenn es wirklich als Funktion dasteht.
-            if not (t.norm in FUNKTIONEN_MIT_VON and _gilt_als_funktion(tokens, i)):
+            # Mehrdeutig: nur sperren, wenn das Wort auch wirklich als Befehl oder
+            # Funktion dasteht — sonst ist es ein ganz normaler Name.
+            befehl = t.norm in NUR_AM_SATZANFANG and _steht_am_satzanfang(tokens, i)
+            funktion = t.norm in FUNKTIONEN_MIT_VON and _gilt_als_funktion(tokens, i)
+            if not (befehl or funktion):
                 continue
         raise StufenFehler(
             f"'{t.wert}' lernst du in Stufe {name(noetig)} — du bist gerade auf Stufe {name(stufe)}.",

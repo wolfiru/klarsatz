@@ -102,7 +102,8 @@ const HTML = `
       <option value="2">2 · Rechnen</option>
       <option value="3">3 · Entscheiden</option>
       <option value="4">4 · Wiederholen</option>
-      <option value="5">5 · Listen und Tabellen</option>
+      <option value="5">5 · Eigene Bausteine</option>
+      <option value="6">6 · Listen und Tabellen</option>
     </select></label>
     <button type="button" class="kp-knopf kp-lauf" disabled title="Strg+Enter">▶ Ausführen</button>
     <button type="button" class="kp-knopf kp-pruefen" disabled>Prüfen</button>

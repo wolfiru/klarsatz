@@ -52,6 +52,30 @@ die Weiterarbeit (z. B. mit Claude Code auf dem Raspberry Pi). Arbeitsregeln: `C
    der Kurzform von `Wenn`, Wörterbuch-Werte direkt durchgehen.
    `Warte N Sekunden` ist seit 0.5.0 **gebaut** – zusammen mit dem Mitlesen (siehe unten).
 
+## Tutorial: Umbau nach der Kritik (19.09.2026)
+
+Eine ausführliche pädagogische Kritik hat den Kern getroffen: Die erste Fassung war ein *Sprachkurs*
+(„hier ist ein Feature, hier ein Beispiel"), kein *Programmierkurs*. Das Tutorial ist deshalb neu
+aufgebaut — jede Lektion beginnt mit einem Problem, jede folgt dem Muster **vorhersagen →
+ausprobieren → verändern**. Neu sind: die Lektion „Fehler sind normal" (absichtlich kaputte
+Programme, deren Meldungen ebenfalls nachgerechnet werden), das erste Spiel in der Mitte statt am
+Ende, Funktionen direkt danach mit echtem Anlass, Kurzformen erst nach den Grundformen, Dinge und
+Tabellen als Kür, eine Kür übers Zeichnen, ein Abschlussprojekt ohne Musterlösung und als Schluss
+„Dasselbe in Python".
+
+**Abgelehnt wurden zwei Forderungen der Kritik**, nach Rücksprache auch vom Kritiker zurückgezogen:
+
+* **Indexierung ab 0.** Bricht alle Programme, die Doku und die These der Sprache („das *erste*
+  Element"). Der Unterschied wird stattdessen in Lektion 11 an der Python-Brücke *erklärt* — aus
+  einem vermeintlichen Problem wird ein Lernmoment.
+* **Füllwörter und Synonyme abschaffen.** Das ist die These des Projekts. Stattdessen zeigt das
+  Tutorial eine bevorzugte Schreibweise und erwähnt die Varianten einmal.
+
+**Noch offen aus derselben Kritik:** `Frage "…" als Zahl und merke …` als *zusätzliche*, explizite
+Form neben der automatischen Zahlenerkennung. Didaktisch wertvoll („Daten haben Typen"), technisch
+eine kleine Parser-Erweiterung, bricht nichts. Die Grenzen der Automatik stehen inzwischen im
+Tutorial (Lektion 2).
+
 ## Webseite (Stand 19.09.2026)
 
 **Die Webseite liegt seit 19.09.2026 mit im Repository** (`webseite/`) und wird dort bearbeitet, nicht im

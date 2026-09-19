@@ -14,6 +14,7 @@ from pathlib import Path
 
 from klarsatz import web
 from klarsatz.grenzen import Grenzen
+from klarsatz.nach_python import nach_python
 
 TUTORIAL = Path(__file__).resolve().parent.parent / "docs" / "TUTORIAL.md"
 
@@ -29,6 +30,8 @@ class Block:
     eingaben: list = field(default_factory=list)
     ausgabe: list = field(default_factory=list)
     hat_ausgabe: bool = False
+    fehler: list = field(default_factory=list)      # absichtlich kaputt: erwartete Meldung
+    python: list = field(default_factory=list)      # erwartete Übersetzung
 
 
 def lies_bloecke(text):
@@ -39,7 +42,7 @@ def lies_bloecke(text):
         zeile = zeilen[i]
         if zeile.startswith("## "):
             lektion = zeile[3:].strip()
-        treffer = re.match(r"^(\s*)```(klar|eingabe|ausgabe)\s*$", zeile)
+        treffer = re.match(r"^(\s*)```(klar|eingabe|ausgabe|fehler|python)\s*$", zeile)
         if not treffer:
             i += 1
             continue
@@ -56,6 +59,10 @@ def lies_bloecke(text):
         elif bloecke:
             if art == "eingabe":
                 bloecke[-1].eingaben = [z for z in inhalt]
+            elif art == "fehler":
+                bloecke[-1].fehler = inhalt
+            elif art == "python":
+                bloecke[-1].python = inhalt
             else:
                 bloecke[-1].ausgabe = inhalt
                 bloecke[-1].hat_ausgabe = True
@@ -74,6 +81,8 @@ class Tutorial(unittest.TestCase):
 
     def test_jeder_block_laeuft_und_gibt_aus_was_dasteht(self):
         for block in self.bloecke:
+            if block.fehler:
+                continue                      # eigener Test weiter unten
             with self.subTest(lektion=block.lektion, zeile=block.zeile):
                 ergebnis = web.laufe(block.quelltext, antworten=block.eingaben, seed=SAAT,
                                      grenzen=Grenzen.streng())
@@ -88,9 +97,106 @@ class Tutorial(unittest.TestCase):
                                  f"Zeile {block.zeile} ({block.lektion}): Ausgabe stimmt nicht mit "
                                  f"dem überein, was im Tutorial steht")
 
+    def test_absichtliche_fehler_melden_genau_das_was_dasteht(self):
+        """Die Lektion über Fehlermeldungen zeigt echte Meldungen — also müssen sie stimmen."""
+        geprueft = 0
+        for block in self.bloecke:
+            if not block.fehler:
+                continue
+            with self.subTest(lektion=block.lektion, zeile=block.zeile):
+                ergebnis = web.laufe(block.quelltext, antworten=block.eingaben, seed=SAAT,
+                                     grenzen=Grenzen.streng())
+                self.assertEqual(ergebnis.zustand, "fehler",
+                                 f"Zeile {block.zeile}: Das Programm sollte einen Fehler zeigen, "
+                                 f"läuft aber durch.")
+                erwartet = "\n".join(block.fehler).strip()
+                self.assertIn(erwartet, ergebnis.fehler,
+                              f"Zeile {block.zeile}: Die Meldung lautet anders als im Tutorial.")
+                geprueft += 1
+        self.assertGreater(geprueft, 0, "Kein einziger Fehlerblock — wird die Datei richtig gelesen?")
+
+    def test_die_python_gegenueberstellung_stimmt(self):
+        """Lektion 11 zeigt dieselben Programme in Python. Das darf nicht von Hand abgetippt sein."""
+        geprueft = 0
+        for block in self.bloecke:
+            if not block.python:
+                continue
+            with self.subTest(lektion=block.lektion, zeile=block.zeile):
+                self.assertEqual(nach_python(block.quelltext).strip(),
+                                 "\n".join(block.python).strip(),
+                                 f"Zeile {block.zeile}: Die Übersetzung sieht inzwischen anders aus.")
+                geprueft += 1
+        self.assertGreater(geprueft, 0, "Kein einziger Python-Block gefunden.")
+
+    def test_es_gibt_elf_lektionen(self):
+        ueberschriften = [z[3:].strip() for z in TUTORIAL.read_text(encoding="utf-8").split("\n")
+                          if z.startswith("## Lektion ")]
+        self.assertEqual(len(ueberschriften), 11, f"gefunden: {ueberschriften}")
+
     def test_jede_lektion_hat_beispiele(self):
-        lektionen = {b.lektion for b in self.bloecke if b.lektion.startswith("Lektion")}
-        self.assertEqual(len(lektionen), 11, f"Erwartet werden 11 Lektionen, gefunden: {sorted(lektionen)}")
+        """Ausnahme: Das Abschlussprojekt gibt absichtlich keine Lösung vor."""
+        OHNE_CODE = {10}
+        mit_bloecken = {int(b.lektion.split()[1]) for b in self.bloecke if b.lektion.startswith("Lektion")}
+        fehlen = set(range(1, 12)) - mit_bloecken - OHNE_CODE
+        self.assertEqual(fehlen, set(), f"Diese Lektionen haben kein einziges Beispiel: {sorted(fehlen)}")
+
+
+class Seitenbau(unittest.TestCase):
+    """Der Markdown-Leser von tools/baue_tutorial.py.
+
+    Er ist absichtlich klein gehalten — aber genau deshalb muss er bei allem, was er nicht
+    kennt, trotzdem weiterlaufen. Ein Bauwerkzeug, das hängt, ist schlimmer als eines, das
+    sich beschwert: Es blockiert das Veröffentlichen, ohne zu sagen warum. Das ist genau
+    einmal passiert, an einer Zeile, die nur aus '>' bestand.
+    """
+
+    def baue(self, text):
+        import importlib.util
+        pfad = Path(__file__).resolve().parent.parent / "tools" / "baue_tutorial.py"
+        spec = importlib.util.spec_from_file_location("baue_tutorial", pfad)
+        modul = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(modul)
+        return modul.nach_html(text)
+
+    def test_sperrige_zeilen_lassen_den_bau_nicht_haengen(self):
+        import signal
+        from tests import fuzzer
+
+        sperrig = [
+            "> ein Zitat\n>\n> nach einer leeren Zitatzeile",   # der echte Fall
+            ">",
+            ">>> tief",
+            "####### sieben Rauten",
+            "- [ ] eine Aufgabenliste",
+            "***",
+            "|unvollständige Tabelle",
+            "```klar\nZeige 1.",                                  # nie geschlossen
+            "\t eingerückt mit Tab",
+            "",
+            "   ",
+            "*kursiv am Zeilenanfang*",
+        ]
+        for text in sperrig:
+            with self.subTest(text=repr(text[:30])):
+                try:
+                    with fuzzer.zeitwache(10.0):
+                        self.baue(text)
+                except fuzzer.Zeitueberschreitung:
+                    self.fail("Der Seitenbau hängt an dieser Zeile.")
+
+    def test_das_zitat_mit_leerzeile_wird_zu_zwei_absaetzen(self):
+        html, _ = self.baue("> erster Teil\n>\n> zweiter Teil")
+        self.assertEqual(html.count("<p>"), 2)
+        self.assertIn("erster Teil", html)
+        self.assertIn("zweiter Teil", html)
+
+    def test_kaputte_beispiele_werden_von_der_webpruefung_ausgenommen(self):
+        html, _ = self.baue('```klar\nZeige "Hallo"\n```\n```fehler\nfehlt ein Punkt\n```')
+        self.assertIn('data-pruefung="nein"', html)
+
+    def test_heile_beispiele_bleiben_in_der_webpruefung(self):
+        html, _ = self.baue('```klar\nZeige "Hallo".\n```\n```ausgabe\nHallo\n```')
+        self.assertNotIn('data-pruefung="nein"', html)
 
 
 if __name__ == "__main__":

@@ -1,206 +1,153 @@
-# Klarsatz lernen
+# Programmieren lernen mit Klarsatz
 
-Elf kurze Lektionen. Am Ende hast du ein kleines Spiel gebaut.
+Elf Lektionen. Am Ende hast du ein eigenes Programm gebaut — und siehst dasselbe Programm in
+Python.
 
 Du brauchst nichts zu installieren: Öffne die [Spielwiese](https://www.ruthner.at/klarsatz/spielplatz.html),
-wähle oben **Leeres Blatt** und tippe mit. Wer Klarsatz auf dem eigenen Rechner hat, schreibt die
-Programme in eine Datei `meins.klar` und startet sie mit `python3 -m klarsatz meins.klar`.
+wähle oben **Leeres Blatt** und tippe mit.
 
-Jedes Beispiel hier läuft wirklich. Die Ausgaben darunter sind nicht abgetippt, sondern werden bei
-jedem Testlauf neu ausgerechnet und verglichen — was hier steht, stimmt also.
+**So funktioniert dieser Kurs.** Jede Lektion beginnt mit einem Problem, nicht mit einem Befehl.
+Dann kommt immer dieselbe Schleife:
 
-| | Lektion | Darum geht es |
+> **Vorhersagen** → **Ausprobieren** → **Verändern**
+
+Lies das Programm und sag dir *vorher*, was herauskommt. Dann lass es laufen. Dann ändere etwas und
+sieh nach, ob du recht behältst. Wer nur liest, lernt Vokabeln. Wer vorhersagt, lernt Programmieren.
+
+**Die Stufenwahl.** In der Spielwiese steht oben ein Feld *Stufe*. Stell es auf die Stufe der
+Lektion, an der du gerade bist — dann kennt Klarsatz nur die Wörter, die du schon gelernt hast, und
+sagt dir freundlich Bescheid, wenn du zu weit greifst. Ein geladenes Beispiel setzt die Stufe
+zurück.
+
+| | Lektion | Stufe |
 |---|---|---|
-| 1 | [Der erste Satz](#lektion-1--der-erste-satz) | Etwas anzeigen |
-| 2 | [Sich etwas merken](#lektion-2--sich-etwas-merken) | Variablen und Rechnen |
-| 3 | [Fragen stellen](#lektion-3--fragen-stellen) | Eingaben entgegennehmen |
-| 4 | [Entscheiden](#lektion-4--entscheiden) | Wenn, Sonst |
-| 5 | [Wiederholen](#lektion-5--wiederholen) | Schleifen |
-| 6 | [Viele Dinge auf einmal](#lektion-6--viele-dinge-auf-einmal) | Listen |
-| 7 | [Nachschlagen](#lektion-7--nachschlagen) | Tabellen |
-| 8 | [Eigene Befehle](#lektion-8--eigene-befehle) | Aufgaben |
-| 9 | [Eigene Dinge](#lektion-9--eigene-dinge) | Strukturen |
-| 10 | [Wenn etwas schiefgeht](#lektion-10--wenn-etwas-schiefgeht) | Fehler abfangen |
-| 11 | [Ein Spiel bauen](#lektion-11--ein-spiel-bauen) | Alles zusammen |
+| 1 | [Dein erstes Programm](#lektion-1--dein-erstes-programm) | 1 |
+| 2 | [Der Computer merkt sich Dinge](#lektion-2--der-computer-merkt-sich-dinge) | 2 |
+| 3 | [Programme treffen Entscheidungen](#lektion-3--programme-treffen-entscheidungen) | 3 |
+| 4 | [Fehler sind normal](#lektion-4--fehler-sind-normal) | 3 |
+| 5 | [Etwas mehrfach tun](#lektion-5--etwas-mehrfach-tun) | 4 |
+| 6 | [Dein erstes Spiel](#lektion-6--dein-erstes-spiel) | 4 |
+| 7 | [Eigene Bausteine](#lektion-7--eigene-bausteine) | 5 |
+| 8 | [Viele Werte auf einmal](#lektion-8--viele-werte-auf-einmal) | 6 |
+| 9 | [Daten ordnen (Kür)](#lektion-9--daten-ordnen-kür) | 7 |
+| ✦ | [Kür: Malen mit dem Stift](#kür--malen-mit-dem-stift) | 7 |
+| 10 | [Dein Abschlussprojekt](#lektion-10--dein-abschlussprojekt) | 7 |
+| 11 | [Dasselbe in Python](#lektion-11--dasselbe-in-python) | — |
+
+Alle Beispiele hier laufen wirklich. Die Ausgaben, die Fehlermeldungen und sogar der Python-Code in
+Lektion 11 sind nicht abgetippt, sondern werden bei jedem Testlauf neu ausgerechnet und verglichen.
 
 ---
 
-## Lektion 1 — Der erste Satz
+## Lektion 1 — Dein erstes Programm
 
-Ein Klarsatz-Programm ist eine Liste von Sätzen. Jeder Satz ist ein Befehl, beginnt mit einem
-Befehlswort und endet mit einem **Punkt** — wie im Deutschen.
+**Das Problem:** Der Computer soll dich begrüßen.
 
-```klar
-Zeige "Hallo Welt".
-```
-```ausgabe
-Hallo Welt
-```
+Ein Computer macht nichts von selbst. Er braucht genaue Anweisungen, eine nach der anderen. In
+Klarsatz ist jede Anweisung ein Satz — er fängt mit einem Befehlswort an und hört mit einem
+**Punkt** auf, wie im Deutschen.
 
-Der Punkt am Ende ist Pflicht. Vergisst du ihn, sagt Klarsatz dir das:
-
-> Ich verstehe das Programm nicht (Zeile 1): Hier fehlt ein Punkt am Satzende.
-
-Mehrere Sätze stehen untereinander und laufen der Reihe nach:
+**Vorhersagen.** Was gibt dieses Programm aus? Sag es dir, bevor du weiterliest.
 
 ```klar
-Zeige "Guten Morgen.".
-Zeige "Heute ist ein guter Tag zum Programmieren.".
+Zeige "Hallo!".
+Zeige "Ich lerne programmieren.".
 ```
 ```ausgabe
-Guten Morgen.
-Heute ist ein guter Tag zum Programmieren.
+Hallo!
+Ich lerne programmieren.
 ```
 
-Mit `und` klebst du mehrere Teile zu einer Zeile zusammen:
+Zwei Sätze, zwei Zeilen — der Reihe nach von oben nach unten. Mehr ist ein Programm nicht.
+
+**Verändern.** Tipp das Programm in die Spielwiese und bau eine dritte Zeile ein. Vertausche die
+Zeilen. Was passiert mit der Ausgabe?
+
+Mit `und` klebst du mehrere Teile zu **einer** Zeile zusammen:
 
 ```klar
-Zeige "Drei mal vier ist " und 3 mal 4 und ".".
+Zeige "Ich bin " und 12 und " Jahre alt.".
 ```
 ```ausgabe
-Drei mal vier ist 12.
+Ich bin 12 Jahre alt.
 ```
 
-Und wenn du dir selbst etwas notieren willst, ohne dass es ausgeführt wird, schreibst du eine
-**Anmerkung**. Alles dahinter bis zum Zeilenende ist nur für Menschen:
+Und mit `Anmerkung:` schreibst du etwas, das der Computer überliest — nur für Menschen gedacht:
 
 ```klar
-Anmerkung: Dieses Programm grüßt.
-Zeige "Hallo".          Anmerkung: auch am Satzende erlaubt
+Anmerkung: Das hier ist mein erstes Programm.
+Zeige "Fertig.".
 ```
 ```ausgabe
-Hallo
+Fertig.
 ```
 
-**Zum Selbermachen:** Lass das Programm drei Zeilen über dich ausgeben — Name, Wohnort, Lieblingsfarbe.
+> **Ein Helfer von Anfang an.** Neben *Ausführen* steht in der Spielwiese ein Knopf **Prüfen**.
+> Der liest dein Programm durch, ohne es laufen zu lassen, und zeigt Tippfehler und vergessene
+> Namen an. Wenn du unsicher bist, drück ihn — das ist kein Schummeln, das machen Profis den
+> ganzen Tag. Auf der Kommandozeile heißt er `--pruefe`.
+
+**Deine Aufgabe:** Lass den Computer eine kleine Biografie über dich ausgeben — Name, Wohnort,
+Lieblingsessen. Drei Zeilen, eine Anmerkung oben drüber.
 
 ---
 
-## Lektion 2 — Sich etwas merken
+## Lektion 2 — Der Computer merkt sich Dinge
 
-Damit ein Programm rechnen kann, muss es sich Werte merken. Das macht `Merke`:
-
-```klar
-Merke 5 als Zahl.
-Zeige Zahl.
-```
-```ausgabe
-5
-```
-
-`Merke 5 als Zahl` heißt: *Merk dir den Wert 5 unter dem Namen „Zahl".* Den Namen darfst du frei
-wählen. Er steht danach überall dort, wo sonst der Wert stünde.
-
-Klarsatz überliest Artikel und Füllwörter. Diese drei Sätze bedeuten dasselbe:
+**Das Problem:** Wir wollen jemanden nach dem Namen fragen und diesen Namen später noch einmal
+verwenden. Dafür muss der Computer ihn sich merken.
 
 ```klar
-Merke 5 als Zahl.
-Merke dir 5 als Zahl.
-Merke dir die 5 als Zahl.
-Zeige Zahl.
+Frage "Wie heißt du? " und merke die Antwort als Name.
+Zeige "Hallo, " und Name und "!".
+Zeige "Schön, dass du da bist, " und Name und ".".
+```
+```eingabe
+Anna
 ```
 ```ausgabe
-5
+Hallo, Anna!
+Schön, dass du da bist, Anna.
 ```
 
-Schreib also so, wie es sich gut liest.
+Der Name steht jetzt an zwei Stellen, eingetippt wurde er einmal. **Das nennt man eine Variable:**
+ein Platz mit einem Namen, in dem ein Wert liegt.
 
-### Rechnen
+**Vorhersagen.** Was kommt bei diesem Programm heraus?
+
+```klar
+Merke 20 als Punkte.
+Erhöhe Punkte um 5.
+Zeige Punkte.
+```
+```ausgabe
+25
+```
+
+`Merke 20 als Punkte` legt den Platz an. `Erhöhe Punkte um 5` ändert, was drinliegt. `Zeige Punkte`
+schaut nach. Der Wert kann sich ändern — der Name bleibt.
+
+**Verändern.** Probier der Reihe nach aus und sag jedes Mal vorher, was herauskommt:
+
+* Setz `Erhöhe Punkte um 5.` zweimal untereinander.
+* Schreib `Verringere Punkte um 3.` dazu.
+* Was passiert bei `Erhöhe Punkte um -5.`?
+* Vertausch die erste und die zweite Zeile. Warum beschwert sich Klarsatz?
+
+Rechnen geht mit `plus`, `minus`, `mal` und `geteilt durch`:
 
 ```klar
 Merke 7 als a.
 Merke 3 als b.
 Zeige a plus b.
-Zeige a minus b.
 Zeige a mal b.
-Zeige a geteilt durch b.
 ```
 ```ausgabe
 10
-4
 21
-2,33333333333
 ```
 
-Zwei Dinge fallen auf: Klarsatz schreibt Kommazahlen **deutsch**, mit Komma. Und `geteilt durch`
-liefert eine glatte ganze Zahl, wenn es aufgeht — `6 geteilt durch 3` ist `2`, nicht `2,0`.
-
-Es gibt noch mehr:
-
-```klar
-Zeige die Wurzel von 144.
-Zeige den Rest von 17 geteilt durch 5.
-Zeige 2 hoch 10.
-Zeige Gerundet von 2.7.
-Zeige Formatiert von 3.14159 auf 2 Stellen.
-```
-```ausgabe
-12
-2
-1024
-3
-3,14
-```
-
-### Werte ändern
-
-Ist ein Name erst einmal angelegt, änderst du ihn mit `Setze`, `Erhöhe` oder `Verringere`:
-
-```klar
-Merke 10 als Punkte.
-Erhöhe Punkte um 5.
-Zeige Punkte.
-Verringere Punkte um 3.
-Zeige Punkte.
-Verdopple Punkte.
-Zeige Punkte.
-Setze Punkte auf 0.
-Zeige Punkte.
-```
-```ausgabe
-15
-12
-24
-0
-```
-
-Was sich nie ändern soll, merkst du **für immer**. Ein späterer Änderungsversuch ist dann ein Fehler:
-
-```klar
-Merke für immer 3.14159 als Pi.
-Zeige Pi.
-```
-```ausgabe
-3,14159
-```
-
-**Zum Selbermachen:** Rechne aus, wie viele Sekunden ein Tag hat. Merke dir 24 als Stunden, rechne
-weiter und zeige das Ergebnis mit einem erklärenden Text davor.
-
----
-
-## Lektion 3 — Fragen stellen
-
-Ein Programm wird erst lebendig, wenn es fragt. Dafür gibt es `Frage`:
-
-```klar
-Frage "Wie heißt du? " und merke die Antwort als Name.
-Zeige "Hallo, " und Name und "!".
-```
-```eingabe
-Wolfgang
-```
-```ausgabe
-Hallo, Wolfgang!
-```
-
-Der Satz macht zwei Dinge auf einmal: Er zeigt die Frage an und legt die Antwort unter einem Namen
-ab. Das Leerzeichen am Ende von `"Wie heißt du? "` sorgt dafür, dass die Eingabe nicht direkt am
-Fragezeichen klebt.
-
-### Zahl oder Text?
-
-Sieht eine Antwort wie eine Zahl aus, wird sie zur Zahl — und man kann mit ihr rechnen:
+Sieht eine Antwort wie eine Zahl aus, wird sie zur Zahl — damit kann man rechnen:
 
 ```klar
 Frage "Wie alt bist du? " und merke die Antwort als Alter.
@@ -213,47 +160,87 @@ Zeige "In zehn Jahren bist du " und Alter plus 10 und ".".
 In zehn Jahren bist du 50.
 ```
 
-Alles andere bleibt Text. Ob das eine oder das andere vorliegt, kannst du prüfen — das brauchen wir
-in der nächsten Lektion:
+> **Was zählt als Zahl?** Klarsatz schaut sich die Antwort an. Als Zahl gelten `5`, `-5`, `3.5`
+> **und** `3,5` (beim Eintippen darfst du das deutsche Komma benutzen), auch mit Leerzeichen
+> drumherum; `007` wird zu `7`. Alles andere bleibt Text — auch `+5`, `1e3` und `5x`. Und eine
+> leere Eingabe ist ein leerer Text, keine Null.
+>
+> Im **Quelltext** schreibst du Kommazahlen dagegen mit Punkt: `Merke 3.5 als x.` Ausgegeben wird
+> dann wieder deutsch: `3,5`. Der Grund: Im Programm trennt das Komma Satzteile.
 
-```klar
-Frage "Sag eine Zahl: " und merke die Antwort als Eingabe.
-Wenn Eingabe eine Zahl ist:
-    Zeige "Damit kann ich rechnen.".
-Sonst:
-    Zeige "Das ist keine Zahl.".
-Ende.
-```
-```eingabe
-sieben
-```
-```ausgabe
-Das ist keine Zahl.
-```
+> **Eine Schreibweise, mehrere Formulierungen.** Klarsatz überliest Artikel und Füllwörter:
+> `Merke 5 als Zahl.` und `Merke dir die 5 als Zahl.` sind dasselbe. In diesem Kurs schreiben wir
+> immer die kurze Form. Du musst dir also **nichts** zusätzlich merken — es ist nur schön zu wissen,
+> dass die Sprache mitdenkt, wenn du natürlicher schreibst.
 
-**Zum Selbermachen:** Frage nach zwei Zahlen und zeige ihre Summe.
+**Deine Aufgabe:** Frage nach einem Preis und gib den Preis mit 20 % Aufschlag aus.
 
 ---
 
-## Lektion 4 — Entscheiden
+## Lektion 3 — Programme treffen Entscheidungen
 
-`Wenn` führt einen Block nur aus, wenn eine Bedingung zutrifft. Der Block beginnt mit einem
-Doppelpunkt und endet mit `Ende.`
+**Das Problem:** Ein Programm soll je nach Alter etwas anderes sagen. Bisher läuft immer alles von
+oben nach unten durch — das reicht dafür nicht.
+
+**Vorhersagen.** Was gibt dieses Programm aus?
 
 ```klar
-Merke 15 als Zahl.
-Wenn Zahl größer als 10 ist:
-    Zeige "Das ist eine große Zahl.".
+Merke 17 als Alter.
+
+Wenn Alter mindestens 18 ist:
+    Zeige "Erwachsen".
+Sonst:
+    Zeige "Noch nicht erwachsen".
 Ende.
 ```
 ```ausgabe
-Das ist eine große Zahl.
+Noch nicht erwachsen
 ```
 
-Mit `Sonst` sagst du, was andernfalls passieren soll, mit `Sonst wenn` fragst du weiter:
+Der Block beginnt mit einem Doppelpunkt und endet mit `Ende.` Dazwischen wird eingerückt — das ist
+nicht Pflicht, aber es macht sichtbar, was zusammengehört.
+
+**Verändern — und zwar nur eine einzige Zahl.** Probier `18`. Dann `25`. Dann `0`. Sag jedes Mal
+*vorher*, was herauskommt.
+
+Wenn du magst: Zeichne auf Papier zwei Pfeile, die sich gabeln. Genau das tut das Programm.
+
+Das Wichtige an dieser Lektion ist nicht das Wort `Sonst`. Es ist die Erkenntnis:
+
+> **Ein Programm kann abhängig von seinen Daten einen anderen Weg nehmen.**
+
+### Womit man vergleicht
+
+| Schreibweise | Bedeutung |
+|---|---|
+| `a gleich b` | gleich — **nicht** `a ist b` |
+| `a nicht gleich b` | ungleich |
+| `a größer als b`, `a kleiner als b` | größer, kleiner |
+| `a mindestens b`, `a höchstens b` | größer-gleich, kleiner-gleich |
+| `a durch 3 teilbar` | ohne Rest teilbar |
+
+Das Wörtchen **`gleich` ist Pflicht.** `Wenn Name "Anna" ist:` versteht Klarsatz nicht.
+
+```klar
+Frage "Wie heißt du? " und merke die Antwort als Name.
+Wenn Name gleich "Anna" ist:
+    Zeige "Dich kenne ich!".
+Sonst:
+    Zeige "Freut mich, " und Name und ".".
+Ende.
+```
+```eingabe
+Ben
+```
+```ausgabe
+Freut mich, Ben.
+```
+
+Mehr als zwei Wege gehen mit `Sonst wenn`:
 
 ```klar
 Merke 7 als Note.
+
 Wenn Note mindestens 9 ist:
     Zeige "Sehr gut".
 Sonst wenn Note mindestens 7 ist:
@@ -266,103 +253,165 @@ Ende.
 Gut
 ```
 
-### Die Vergleiche
+**Vorhersagen:** Was passiert bei `Note` gleich 9? Bei 8? Bei 2? Warum wird bei 9 **nicht** auch
+noch „Gut" ausgegeben?
 
-| Schreibweise | Bedeutung |
-|---|---|
-| `a gleich b` | gleich — **nicht** `a ist b` |
-| `a nicht gleich b` | ungleich |
-| `a größer als b`, `a kleiner als b` | größer, kleiner |
-| `a mindestens b`, `a höchstens b` | größer-gleich, kleiner-gleich |
-| `a durch 3 teilbar` | ohne Rest teilbar |
-| `Liste enthält Wert`, `Text enthält Textstück` | kommt darin vor |
-
-Das Wörtchen **`gleich` ist Pflicht**. `Wenn Name "Anna" ist:` versteht Klarsatz nicht — es muss
-`Wenn Name gleich "Anna" ist:` heißen.
-
-Mehrere Bedingungen verknüpfst du mit `und`, `oder` und `nicht`:
-
-```klar
-Merke 25 als Alter.
-Merke wahr als Hat_Zeit.
-Wenn Alter mindestens 18 ist und Hat_Zeit gleich wahr ist:
-    Zeige "Darf mitkommen.".
-Ende.
-```
-```ausgabe
-Darf mitkommen.
-```
-
-### Die Kurzform
-
-Wenn nur **ein** Satz folgt, geht es kürzer — mit Komma statt Doppelpunkt, und ohne `Ende.`
-
-```klar
-Merke 4 als i.
-Wenn i durch 2 teilbar ist, zeige "gerade".
-Sonst zeige "ungerade".
-```
-```ausgabe
-gerade
-```
-
-**Zum Selbermachen:** Frage nach einer Zahl und sage, ob sie negativ, null oder positiv ist.
+**Deine Aufgabe:** Frage nach einer Zahl und sage, ob sie negativ, null oder positiv ist.
 
 ---
 
-## Lektion 5 — Wiederholen
+## Lektion 4 — Fehler sind normal
 
-Die einfachste Schleife zählt einfach mit:
+**Das Problem:** Früher oder später schreibst du etwas, das Klarsatz nicht versteht. Das passiert
+jedem, jeden Tag. Die Frage ist nicht, wie du Fehler vermeidest — sondern wie du sie *liest*.
+
+Diese Lektion ist die einzige, in der du absichtlich kaputte Programme ausprobierst.
+
+### Fehler 1: Der vergessene Punkt
+
+**Vorhersagen.** Was ist hier falsch?
 
 ```klar
-Wiederhole 3 Mal:
-    Zeige "Hallo".
-Ende.
+Zeige "Hallo"
 ```
-```ausgabe
-Hallo
-Hallo
-Hallo
+```fehler
+Am Ende des Satzes fehlt ein Punkt
 ```
 
-Brauchst du die laufende Nummer, nimm `Zähle`:
+Klarsatz sagt nicht nur *dass* etwas fehlt, sondern **wo**: Zeile 1, Spalte 14, mit einem `^`
+darunter. Das ist genau die Stelle, an der der Punkt hingehört.
+
+### Fehler 2: Die Anführungszeichen vergessen
+
+```klar
+Zeige Hallo.
+```
+```fehler
+Ich kenne 'Hallo' nicht. Lege es zuerst mit 'Merke ... als Hallo.' an.
+```
+
+Ohne Anführungszeichen ist `Hallo` kein Text, sondern ein **Name** — und einen Platz mit diesem
+Namen gibt es nicht. Die Meldung sagt dir sogar, wie man ihn anlegen würde.
+
+### Fehler 3: Der Tippfehler
+
+Und jetzt kommt das Schönste, was Klarsatz kann:
+
+```klar
+Merke 5 als Summe.
+Zeige Sume.
+```
+```fehler
+Meintest du 'Summe'?
+```
+
+Klarsatz schaut nach, welche Namen es kennt, und schlägt den ähnlichsten vor. Wenn du einmal eine
+halbe Stunde einen Tippfehler gesucht hast, weißt du, was das wert ist.
+
+### Fehler 4: Rechnen, das nicht geht
+
+```klar
+Zeige 10 geteilt durch 0.
+```
+```fehler
+Durch null kann man nicht teilen.
+```
+
+### Fehler 5: Ändern, was es nicht gibt
+
+```klar
+Setze Punkte auf 5.
+```
+```fehler
+Ich kenne 'Punkte' noch nicht.
+```
+
+`Setze` ändert nur etwas, das schon da ist. Anlegen tut man mit `Merke`. Genau dieser Unterschied
+ist der Grund für die Meldung — und übrigens die Antwort auf die Vertausch-Aufgabe aus Lektion 2.
+
+### Das Wichtigste
+
+> Ein Fehler heißt nicht „ich kann das nicht".
+> Ein Fehler ist eine **Nachricht vom Programm an dich**.
+
+Lies immer drei Dinge: **welche Zeile**, **welche Stelle**, **was Klarsatz erwartet hätte**. In
+neunzehn von zwanzig Fällen steht die Lösung schon in der Meldung.
+
+**Deine Aufgabe:** Bau in ein funktionierendes Programm absichtlich drei verschiedene Fehler ein —
+einen pro Durchgang — und lies jedes Mal die Meldung, bevor du sie reparierst.
+
+---
+
+## Lektion 5 — Etwas mehrfach tun
+
+**Das Problem:** Der Computer soll von 1 bis 10 zählen. Zehn Zeilen `Zeige` zu schreiben wäre
+albern — und bei 1000 unmöglich.
 
 ```klar
 Zähle von 1 bis 5 mit i:
-    Zeige i und " mal 7 ist " und i mal 7.
-Ende.
-```
-```ausgabe
-1 mal 7 ist 7
-2 mal 7 ist 14
-3 mal 7 ist 21
-4 mal 7 ist 28
-5 mal 7 ist 35
-```
-
-`Zähle` kann auch rückwärts und in Schritten:
-
-```klar
-Zähle von 10 bis 1 rückwärts mit i:
     Zeige i.
 Ende.
-Zeige "Start!".
 ```
 ```ausgabe
-10
-9
-8
-7
-6
-5
+1
+2
+3
 4
+5
+```
+
+`i` ist eine Variable, die die Schleife selbst füllt: beim ersten Durchlauf 1, dann 2, dann 3 …
+
+> **Eine Schleife ist ein Programmteil, der wiederholt ausgeführt wird.** Mehr musst du dir aus
+> dieser Lektion nicht merken.
+
+**Verändern.** Der Reihe nach, jedes Mal erst vorhersagen:
+
+* `von 1 bis 10`
+* `Zeige i mal i.` statt `Zeige i.`
+* `Zähle von 10 bis 1 rückwärts mit i:`
+
+Das letzte sieht so aus:
+
+```klar
+Zähle von 3 bis 1 rückwärts mit i:
+    Zeige i.
+Ende.
+Zeige "Los!".
+```
+```ausgabe
 3
 2
 1
-Start!
+Los!
 ```
 
-Weißt du vorher nicht, wie oft es sein wird, nimm `Wiederhole solange`:
+### Jetzt wird es interessant
+
+**Das Problem:** Nur die **geraden** Zahlen ausgeben. Dafür brauchst du etwas aus Lektion 3 —
+*innerhalb* der Schleife.
+
+**Vorhersagen**, dann ausprobieren:
+
+```klar
+Zähle von 1 bis 10 mit i:
+    Wenn i durch 2 teilbar ist:
+        Zeige i.
+    Ende.
+Ende.
+```
+```ausgabe
+2
+4
+6
+8
+10
+```
+
+Zwei Blöcke ineinander, jeder mit seinem eigenen `Ende.` Das ist der Moment, in dem Einrückung
+aufhört, Dekoration zu sein.
+
+### Wenn man vorher nicht weiß, wie oft
 
 ```klar
 Merke 1 als Zahl.
@@ -375,173 +424,96 @@ Zeige "Erste Zweierpotenz über 100: " und Zahl.
 Erste Zweierpotenz über 100: 128
 ```
 
-Vorsicht: Wenn die Bedingung nie falsch wird, läuft die Schleife ewig. In der Spielwiese bricht
-Klarsatz dann von selbst ab — auf dem eigenen Rechner hilft Strg+C.
+Die Bedingung wird **vor jedem Durchlauf** geprüft, auch vor dem allerersten. Ist sie gleich zu
+Beginn falsch, läuft der Block **kein einziges Mal**. Probier es aus: Setz die erste Zeile auf
+`Merke 500 als Zahl.` — dann passiert im Schleifenkörper nichts mehr.
 
-Aus einer Schleife kommst du mit `Höre auf.` heraus, und mit `Mach weiter.` springst du zum
-nächsten Durchlauf:
+Vorsicht andersherum: Wird die Bedingung nie falsch, läuft die Schleife ewig. In der Spielwiese
+bricht Klarsatz dann von selbst ab.
 
-```klar
-Zähle von 1 bis 10 mit i:
-    Wenn i durch 2 teilbar ist, mach weiter.
-    Wenn i größer als 7 ist, höre auf.
-    Zeige i.
-Ende.
-```
-```ausgabe
-1
-3
-5
-7
-```
-
-**Zum Selbermachen:** Zeige das kleine Einmaleins von 1 bis 10 — eine Zeile pro Zahl.
+**Deine Aufgabe:** Gib das Einmaleins der 7 aus — `1 mal 7 ist 7` bis `10 mal 7 ist 70`.
 
 ---
 
-## Lektion 6 — Viele Dinge auf einmal
+## Lektion 6 — Dein erstes Spiel
 
-Eine **Liste** hält viele Werte unter einem Namen:
+Du kannst jetzt Eingaben, Variablen, Entscheidungen und Schleifen. Das reicht für ein richtiges
+Spiel — und zwar für ein bekanntes.
 
-```klar
-Erstelle eine Liste namens Einkauf.
-Füge "Milch" zu Einkauf hinzu.
-Füge "Brot" zu Einkauf hinzu.
-Füge "Äpfel" zu Einkauf hinzu.
-Zeige Einkauf.
-Zeige "Das sind " und die Länge von Einkauf und " Dinge.".
-```
-```ausgabe
-[Milch, Brot, Äpfel]
-Das sind 3 Dinge.
-```
+**Das Problem:** Der Computer denkt sich eine Zahl zwischen 1 und 100 aus. Du rätst. Er sagt
+„höher" oder „tiefer", bis du sie hast, und zählt deine Versuche.
 
-Kürzer geht es beim Anlegen:
+Bevor du weiterliest: Überleg, welche Teile du brauchst.
 
-```klar
-Erstelle eine Liste namens Zahlen mit 3 und 1 und 2.
-Sortiere Zahlen.
-Zeige Zahlen.
-Sortiere Zahlen absteigend.
-Zeige Zahlen.
-```
-```ausgabe
-[1, 2, 3]
-[3, 2, 1]
-```
+<details><summary>Meine Zerlegung — erst aufklappen, wenn du selbst überlegt hast</summary>
 
-### Durchgehen
+1. eine Zahl auswürfeln und merken
+2. einen Zähler für die Versuche
+3. eine Schleife, die läuft, bis geraten wurde
+4. in der Schleife: fragen, vergleichen, Hinweis geben
+5. am Ende: die Versuche ausgeben
 
-`Für jedes` nimmt sich einen Eintrag nach dem anderen vor:
+</details>
 
 ```klar
-Erstelle eine Liste namens Tiere mit "Hund" und "Katze" und "Maus".
-Für jedes Tier in Tiere:
-    Zeige "Ich sehe einen " und Tier und ".".
+Merke Zufallszahl von 1 bis 100 als Gesucht.
+Merke 0 als Versuche.
+Merke falsch als Gefunden.
+
+Zeige "Ich denke mir eine Zahl zwischen 1 und 100.".
+
+Wiederhole solange Gefunden gleich falsch ist:
+    Frage "Dein Tipp: " und merke die Antwort als Tipp.
+    Erhöhe Versuche um 1.
+    Wenn Tipp kleiner als Gesucht ist:
+        Zeige "Höher!".
+    Sonst wenn Tipp größer als Gesucht ist:
+        Zeige "Tiefer!".
+    Sonst:
+        Setze Gefunden auf wahr.
+    Ende.
 Ende.
+
+Zeige "Richtig! Du hast " und Versuche und " Versuche gebraucht.".
+```
+```eingabe
+25
+80
+60
+50
 ```
 ```ausgabe
-Ich sehe einen Hund.
-Ich sehe einen Katze.
-Ich sehe einen Maus.
+Ich denke mir eine Zahl zwischen 1 und 100.
+Höher!
+Tiefer!
+Tiefer!
+Richtig! Du hast 4 Versuche gebraucht.
 ```
 
-(Die Grammatik stimmt nicht ganz — Klarsatz beugt keine Wörter. Dafür weißt du jetzt, warum.)
+Das sind zwanzig Zeilen, und du verstehst jede davon. **Das ist der Punkt dieser Lektion.**
 
-### Einzelne Einträge
+**Verändern.** Und zwar richtig:
 
-Gezählt wird **ab 1**, nicht ab 0:
+* Ändere den Bereich auf 1 bis 10. Wie viele Versuche brauchst du höchstens?
+* Gib nach jedem Tipp aus, der wievielte Versuch das war.
+* Beende das Spiel nach fünf Versuchen mit „Schade!".
 
-```klar
-Erstelle eine Liste namens Farben mit "rot" und "grün" und "blau".
-Zeige das erste Element von Farben.
-Zeige Element 2 von Farben.
-Zeige das letzte Element von Farben.
-Zeige Verkettet von Farben mit ", ".
-```
-```ausgabe
-rot
-grün
-blau
-rot, grün, blau
-```
-
-Greifst du daneben, bekommst du eine klare Meldung statt eines stillen Unfalls.
-
-### Texte sind auch fast Listen
-
-```klar
-Merke "Hallo Welt" als Satz.
-Zeige die Länge von Satz.
-Zeige Zeichen 1 bis 5 von Satz.
-Teile Satz bei " " zu Woerter.
-Zeige Woerter.
-Zeige Großbuchstaben von Satz.
-```
-```ausgabe
-10
-Hallo
-[Hallo, Welt]
-HALLO WELT
-```
-
-**Zum Selbermachen:** Lass den Benutzer drei Lieblingsessen eingeben, sammle sie in einer Liste,
-sortiere sie und zeige sie durchnummeriert an.
+> **Eine Abkürzung — jetzt, wo du sicher bist.** Wenn nach `Wenn` nur *ein* Satz folgt, darf man ihn
+> hinter ein Komma schreiben und spart sich das `Ende.`:
+>
+> `Wenn Tipp kleiner als Gesucht ist, zeige "Höher!".`
+>
+> Benutz das erst, wenn dir die lange Form in Fleisch und Blut übergegangen ist. Kurz ist nicht
+> besser, kurz ist nur kürzer.
 
 ---
 
-## Lektion 7 — Nachschlagen
+## Lektion 7 — Eigene Bausteine
 
-Eine **Tabelle** ordnet jedem Schlüssel einen Wert zu — wie ein Wörterbuch:
+**Das Problem:** Dein Ratespiel ist gewachsen. Wenn du jetzt noch eine zweite Runde einbaust, steht
+die Frage-und-Prüf-Logik zweimal da — und beim nächsten Ändern vergisst du eine Stelle.
 
-```klar
-Erstelle eine Tabelle namens Preise mit "Apfel" als 3 und "Birne" als 2.
-Trage "Kiwi" mit 5 in Preise ein.
-Zeige Wert für "Apfel" in Preise.
-Zeige Preise.
-```
-```ausgabe
-3
-{Apfel: 3, Birne: 2, Kiwi: 5}
-```
-
-Durchgehen kannst du sie auch — dabei bekommst du die Schlüssel:
-
-```klar
-Erstelle eine Tabelle namens Preise mit "Apfel" als 3 und "Birne" als 2.
-Merke 0 als Summe.
-Für jedes Frucht in Preise:
-    Zeige Frucht und " kostet " und Wert für Frucht in Preise und " Euro.".
-    Erhöhe Summe um Wert für Frucht in Preise.
-Ende.
-Zeige "Zusammen: " und Summe und " Euro.".
-```
-```ausgabe
-Apfel kostet 3 Euro.
-Birne kostet 2 Euro.
-Zusammen: 5 Euro.
-```
-
-Ob ein Schlüssel vorkommt, fragst du mit `enthält`:
-
-```klar
-Erstelle eine Tabelle namens Preise mit "Apfel" als 3.
-Wenn Preise enthält "Apfel", zeige "Äpfel haben wir.".
-Wenn nicht Preise enthält "Mango" ist, zeige "Mangos leider nicht.".
-```
-```ausgabe
-Äpfel haben wir.
-Mangos leider nicht.
-```
-
-**Zum Selbermachen:** Bau ein kleines Wörterbuch Deutsch→Englisch und frage den Benutzer nach einem
-Wort. Steht es drin, zeige die Übersetzung, sonst eine freundliche Meldung.
-
----
-
-## Lektion 8 — Eigene Befehle
-
-Wenn dasselbe mehrfach vorkommt, gib ihm einen Namen. Das ist eine **Aufgabe**:
+Die Lösung: Gib einem Stück Programm einen Namen. Das heißt in Klarsatz **Aufgabe**.
 
 ```klar
 Definiere Aufgabe Begrüße mit Name:
@@ -550,18 +522,20 @@ Ende.
 
 Führe Begrüße mit "Anna" aus.
 Führe Begrüße mit "Ben" aus.
+Führe Begrüße mit "Rocco" aus.
 ```
 ```ausgabe
 Hallo, Anna!
 Hallo, Ben!
+Hallo, Rocco!
 ```
 
-Der Name einer Aufgabe ist **ein einziges Wort** — `Begrüße`, nicht `Begrüße den Gast`. Mehrere
-Wörter verbindest du mit einem Unterstrich: `Begrüße_Gast`.
+Einmal beschrieben, dreimal benutzt. Der Name einer Aufgabe ist **ein** Wort — `Begrüße`, nicht
+`Begrüße den Gast`. Mehrere Wörter verbindest du mit Unterstrich: `Begrüße_Gast`.
 
 ### Aufgaben, die etwas zurückgeben
 
-Mit `Gib … zurück` liefert eine Aufgabe ein Ergebnis. Dann benutzt du sie wie einen Wert:
+Bisher hat die Aufgabe etwas *getan*. Sie kann auch etwas *ausrechnen* und zurückgeben:
 
 ```klar
 Definiere Aufgabe Quadrat von x:
@@ -576,74 +550,148 @@ Zeige Quadrat von 3 plus Quadrat von 4.
 25
 ```
 
+**Vorhersagen:** Warum kommt bei der zweiten Zeile 25 heraus und nicht 49?
+
 Mehrere Werte übergibst du mit `und`:
 
 ```klar
-Definiere Aufgabe Rechteckflaeche von Breite und Hoehe:
+Definiere Aufgabe Flaeche von Breite und Hoehe:
     Gib Breite mal Hoehe zurück.
 Ende.
 
-Zeige Rechteckflaeche von 3 und 4.
+Zeige Flaeche von 3 und 4.
 ```
 ```ausgabe
 12
 ```
 
-### Aufgaben dürfen sich selbst aufrufen
+### Warum das wichtig ist
 
-```klar
-Definiere Aufgabe Fakultät von n:
-    Wenn n kleiner als 2 ist:
-        Gib 1 zurück.
-    Ende.
-    Gib n mal (Fakultät von (n minus 1)) zurück.
-Ende.
+Eine Aufgabe ist mehr als Tipparbeit sparen. Sie gibt einem Gedanken einen **Namen**. Wenn in deinem
+Programm `Führe Runde_spielen aus.` steht, versteht man es, ohne die zwanzig Zeilen darunter zu
+lesen.
 
-Zeige Fakultät von 5.
-```
-```ausgabe
-120
-```
-
-Wichtig ist der Ausstieg — hier `Wenn n kleiner als 2 ist`. Ohne ihn liefe die Aufgabe ewig, und
-Klarsatz bricht nach 150 Ebenen ab.
-
-**Zum Selbermachen:** Schreib eine Aufgabe `Grösser`, die von zwei Zahlen die größere zurückgibt.
+**Deine Aufgabe:** Bau aus dem Ratespiel von Lektion 6 eine Aufgabe `Runde`, die eine komplette
+Runde spielt. Ruf sie dreimal auf.
 
 ---
 
-## Lektion 9 — Eigene Dinge
+## Lektion 8 — Viele Werte auf einmal
 
-Manchmal gehören mehrere Werte zusammen. Dann beschreibst du ein **Ding**:
+**Das Problem:** Dein Spiel soll sich die Namen aller Mitspieler merken. Mit Variablen wird das
+mühsam: `Spieler1`, `Spieler2`, `Spieler3` … und bei zehn Spielern?
+
+Dafür gibt es die **Liste**:
 
 ```klar
-Ein Hund hat einen Namen und ein Alter.
-
-Erschaffe einen Hund mit Name "Rocco" und Alter 5 als Rocco.
-Zeige den Namen von Rocco.
-Zeige Rocco.
+Erstelle eine Liste namens Spieler mit "Anna" und "Ben" und "Rocco".
+Zeige Spieler.
+Zeige "Das sind " und die Länge von Spieler und " Mitspieler.".
 ```
 ```ausgabe
-Rocco
-Hund(Namen: Rocco, Alter: 5)
+[Anna, Ben, Rocco]
+Das sind 3 Mitspieler.
 ```
 
-Der erste Satz sagt, **welche Felder** so ein Hund hat. Danach kannst du beliebig viele Hunde
-erschaffen. Felder liest und änderst du mit `von`:
+Eine Liste lässt sich durchgehen — und hier trifft sich alles, was du kannst:
+
+```klar
+Erstelle eine Liste namens Spieler mit "Anna" und "Ben" und "Rocco".
+Für jedes Name in Spieler:
+    Zeige "Willkommen, " und Name und "!".
+Ende.
+```
+```ausgabe
+Willkommen, Anna!
+Willkommen, Ben!
+Willkommen, Rocco!
+```
+
+Wächst eine Liste erst im Lauf des Programms, legst du sie leer an und füllst sie:
+
+```klar
+Erstelle eine Liste namens Einkauf.
+Füge "Milch" zu Einkauf hinzu.
+Füge "Brot" zu Einkauf hinzu.
+Sortiere Einkauf.
+Zeige Verkettet von Einkauf mit ", ".
+```
+```ausgabe
+Brot, Milch
+```
+
+### Einzelne Plätze
+
+```klar
+Erstelle eine Liste namens Farben mit "rot" und "grün" und "blau".
+Zeige das erste Element von Farben.
+Zeige Element 2 von Farben.
+Zeige das letzte Element von Farben.
+```
+```ausgabe
+rot
+grün
+blau
+```
+
+**Gezählt wird ab 1** — das erste Element ist Element 1, so wie man es auf Deutsch sagen würde.
+Merk dir das gut: In Lektion 11 wirst du sehen, dass Python das anders macht, und du wirst
+verstehen, warum das kein Zufall ist.
+
+**Deine Aufgabe:** Lass drei Lieblingsessen eingeben, sammle sie in einer Liste und gib sie
+sortiert und durchnummeriert aus.
+
+---
+
+## Lektion 9 — Daten ordnen (Kür)
+
+> Diese Lektion ist **Kür**, kein Pflichtstoff. Wenn dir Listen gerade reichen, spring zu Lektion 10
+> und komm später wieder. Wer wissen will, wie größere Programme ihre Daten ordnen, liest weiter.
+
+**Das Problem:** Du baust einen Vokabeltrainer. Zu jedem deutschen Wort gehört ein englisches. Eine
+Liste hilft nicht: Sie kennt nur *Plätze*, keine *Zuordnung*.
+
+Dafür gibt es die **Tabelle** — zu jedem Schlüssel ein Wert:
+
+```klar
+Erstelle eine Tabelle namens Vokabeln mit "Hund" als "dog" und "Katze" als "cat".
+Trage "Maus" mit "mouse" in Vokabeln ein.
+Zeige Wert für "Hund" in Vokabeln.
+```
+```ausgabe
+dog
+```
+
+Durchgehen kannst du sie auch — dabei bekommst du die Schlüssel:
+
+```klar
+Erstelle eine Tabelle namens Vokabeln mit "Hund" als "dog" und "Katze" als "cat".
+Für jedes Wort in Vokabeln:
+    Zeige Wort und " heißt " und Wert für Wort in Vokabeln und ".".
+Ende.
+```
+```ausgabe
+Hund heißt dog.
+Katze heißt cat.
+```
+
+### Wenn mehrere Angaben zusammengehören
+
+Ein Mitspieler hat einen Namen *und* Punkte *und* eine Farbe. Drei Listen nebeneinander zu führen,
+die immer gleich sortiert sein müssen, geht schief. Dafür beschreibst du ein **Ding**:
 
 ```klar
 Ein Hund hat einen Namen und ein Alter.
 
 Erschaffe einen Hund mit Name "Rocco" und Alter 5 als Rocco.
 Erhöhe das Alter von Rocco um 1.
-Setze den Namen von Rocco auf "Rocco der Große".
 Zeige den Namen von Rocco und " ist " und Alter von Rocco und " Jahre alt.".
 ```
 ```ausgabe
-Rocco der Große ist 6 Jahre alt.
+Rocco ist 6 Jahre alt.
 ```
 
-Dinge und Listen zusammen sind mächtig:
+Und weil Dinge in Listen dürfen, lässt sich damit eine ganze Mannschaft führen:
 
 ```klar
 Ein Hund hat einen Namen und ein Alter.
@@ -663,143 +711,31 @@ Rocco (5 Jahre)
 Bella (2 Jahre)
 ```
 
-**Zum Selbermachen:** Beschreibe ein Buch mit Titel, Autor und Seitenzahl. Leg drei Bücher an und
-zeige nur die, die mehr als 200 Seiten haben.
+**Deine Aufgabe:** Beschreibe ein Buch mit Titel, Autor und Seitenzahl. Leg drei Bücher in einer
+Liste an und gib nur die aus, die mehr als 200 Seiten haben.
 
 ---
 
-## Lektion 10 — Wenn etwas schiefgeht
+## Kür — Malen mit dem Stift
 
-Manches lässt sich nicht verhindern: Eine Eingabe ist Unsinn, eine Datei fehlt, jemand teilt durch
-null. Dafür gibt es `Versuche`:
+> Auch das hier ist **Kür**. Aber es macht Spaß, und es ist der schnellste Weg, ein Ergebnis zu
+> sehen, auf das man zeigen kann.
 
-```klar
-Versuche:
-    Merke 10 geteilt durch 0 als x.
-    Zeige "Das klappt nie.".
-Bei Fehler:
-    Zeige "Da ist etwas schiefgegangen: " und Fehlermeldung.
-Ende.
-Zeige "Und das Programm läuft weiter.".
-```
-```ausgabe
-Da ist etwas schiefgegangen: Durch null kann man nicht teilen.
-Und das Programm läuft weiter.
-```
+**Das Problem:** Bisher kam alles als Text heraus. Jetzt soll ein Bild entstehen.
 
-Im `Bei Fehler`-Teil steht `Fehlermeldung` bereit — die füllt Klarsatz selbst.
-
-Das ist besonders bei Eingaben nützlich. So fragt man so lange, bis etwas Brauchbares kommt:
+Stell dir einen Stift vor, der in der Mitte der Fläche steht und nach oben schaut. Du schickst ihn
+los, und wo er langgeht, zieht er eine Linie.
 
 ```klar
-Merke 0 als Zahl.
-Wiederhole solange Zahl gleich 0 ist:
-    Frage "Gib eine Zahl größer als 0 ein: " und merke die Antwort als Eingabe.
-    Wenn Eingabe eine Zahl ist und Eingabe größer als 0 ist:
-        Setze Zahl auf Eingabe.
-    Sonst:
-        Zeige "Das war keine Zahl größer als 0.".
-    Ende.
-Ende.
-Zeige "Danke: " und Zahl.
-```
-```eingabe
-abc
--5
-12
-```
-```ausgabe
-Das war keine Zahl größer als 0.
-Das war keine Zahl größer als 0.
-Danke: 12
+Gehe 100 Schritte vor.
+Drehe dich um 90 Grad nach rechts.
+Gehe 100 Schritte vor.
 ```
 
-Wenn eine Bedingung einfach gelten **muss**, sag es geradeheraus. `Stelle sicher` bricht ab, wenn
-sie verletzt ist:
+**Vorhersagen:** Was entsteht hier? Zeichne es auf Papier, bevor du auf *Ausführen* drückst.
 
-```klar
-Definiere Aufgabe Wurzel_von_positiv von x:
-    Stelle sicher, dass x mindestens 0 ist.
-    Gib die Wurzel von x zurück.
-Ende.
-
-Zeige Wurzel_von_positiv von 16.
-```
-```ausgabe
-4
-```
-
-**Zum Selbermachen:** Frage nach zwei Zahlen und teile die erste durch die zweite — aber so, dass
-eine eingegebene 0 nicht das Programm abstürzen lässt.
-
----
-
-## Lektion 11 — Ein Spiel bauen
-
-Jetzt alles zusammen. Wir bauen Zahlenraten: Der Computer denkt sich eine Zahl aus, du rätst, er
-sagt „höher" oder „tiefer" und zählt die Versuche.
-
-Schritt für Schritt:
-
-**1. Die Zahl auswürfeln.** `Zufallszahl von 1 bis 100` liefert eine ganze Zahl.
-
-**2. So lange fragen, bis es stimmt.** Das ist `Wiederhole solange` aus Lektion 5.
-
-**3. Vergleichen und Hinweis geben.** `Wenn` / `Sonst wenn` / `Sonst` aus Lektion 4.
-
-**4. Versuche zählen.** Ein `Erhöhe` aus Lektion 2.
-
-Zusammengesetzt:
-
-```klar
-Anmerkung: Zahlenraten – der Computer denkt sich etwas aus.
-
-Merke Zufallszahl von 1 bis 100 als Gesucht.
-Merke 0 als Versuche.
-Merke falsch als Gefunden.
-
-Zeige "Ich denke mir eine Zahl zwischen 1 und 100.".
-
-Wiederhole solange Gefunden gleich falsch ist:
-    Frage "Dein Tipp: " und merke die Antwort als Tipp.
-    Wenn Tipp keine Zahl ist:
-        Zeige "Das ist keine Zahl.".
-        Mach weiter.
-    Ende.
-    Erhöhe Versuche um 1.
-    Wenn Tipp kleiner als Gesucht ist:
-        Zeige "Höher!".
-    Sonst wenn Tipp größer als Gesucht ist:
-        Zeige "Tiefer!".
-    Sonst:
-        Setze Gefunden auf wahr.
-    Ende.
-Ende.
-
-Zeige "Richtig! Du hast " und Versuche und " Versuche gebraucht.".
-```
-```eingabe
-fünfzig
-25
-80
-60
-50
-```
-```ausgabe
-Ich denke mir eine Zahl zwischen 1 und 100.
-Das ist keine Zahl.
-Höher!
-Tiefer!
-Tiefer!
-Richtig! Du hast 4 Versuche gebraucht.
-```
-
-Die Eingaben oben sind ein Beispiellauf — bei dir würfelt der Computer eine andere Zahl.
-
-### Und jetzt?
-
-Du kennst die ganze Sprache bis auf das **Zeichnen**. Ein Stift steht in der Mitte und schaut nach
-oben; er zieht eine Linie, solange er unten ist. Ein Quadrat ist damit vier Sätze lang:
+Ein Quadrat ist damit vier Sätze lang — und weil vier Mal dasselbe passiert, nimmst du das, was du
+in Lektion 5 gelernt hast:
 
 ```klar
 Nimm die Farbe "gold".
@@ -809,16 +745,159 @@ Wiederhole 4 Mal:
 Ende.
 ```
 
-Alles dazu steht im Kapitel [Zeichnen](https://www.ruthner.at/klarsatz/doku-zeichnen.html). Und
-sonst:
+**Verändern.** Und jetzt wird es interessant:
 
-* **Die Beispielprogramme** in `programme/` — nach Schwierigkeit geordnet. Nimm dir das nächste nach
-  dem, was du schon verstehst, und bau es um.
+* Mach `3 Mal` daraus und dreh um `120 Grad`. Was entsteht?
+* `5 Mal` und `72 Grad`?
+* Fällt dir die Regel auf? *(360 geteilt durch die Anzahl der Ecken.)*
 
-* **Die Sprachreferenz** [`SPRACHE.md`](SPRACHE.md) — dort steht jeder Satz, den Klarsatz kennt.
+Genau das ist ein Vieleck — und du hast es nicht auswendig gelernt, sondern hergeleitet:
 
-* **Der Prüfmodus** `python3 -m klarsatz --pruefe meins.klar` findet Tippfehler und vergessene
-  Variablen, ohne das Programm auszuführen.
+```klar
+Merke 6 als Ecken.
+Nimm die Farbe "türkis".
+Wiederhole Ecken Mal:
+    Gehe 60 Schritte vor.
+    Drehe dich um 360 geteilt durch Ecken Grad nach rechts.
+Ende.
+```
+
+Mit `Hebe den Stift.` bewegst du dich, ohne zu malen, mit `Senke den Stift.` malst du wieder. Und
+mit `Gehe zur Mitte.` fängst du von vorne an.
+
+**Deine Aufgabe:** Zeichne eine Treppe aus fünf Stufen. Danach: Lass sie von einer Schleife
+zeichnen statt von zehn einzelnen Sätzen.
+
+Alles Weitere — Strichstärke, Farben, Spiralen, eine tickende Uhr — steht im Kapitel
+[Zeichnen](https://www.ruthner.at/klarsatz/doku-zeichnen.html). Die Beispiele *Spirale*, *Wellen*
+und *Baum* in der Spielwiese sind auch nur Schleifen mit Stift.
+
+---
+
+## Lektion 10 — Dein Abschlussprojekt
+
+Hier bekommst du keine Lösung. Nur Anforderungen.
+
+**Bau ein eigenes Programm.** Du darfst dir aussuchen, was:
+
+* ein Quiz mit fünf Fragen
+* ein Taschenrechner, der weiterfragt, bis man „ende" tippt
+* ein Vokabeltrainer
+* ein Einkaufsrechner mit Mehrwertsteuer
+* ein winziges Textabenteuer mit drei Räumen
+* etwas ganz anderes
+
+**Dein Programm muss:**
+
+- [ ] mindestens eine Eingabe entgegennehmen
+- [ ] mindestens eine Variable benutzen und verändern
+- [ ] mindestens eine Entscheidung treffen
+- [ ] mindestens eine Schleife enthalten
+- [ ] mindestens eine eigene Aufgabe haben
+- [ ] verständlich reagieren, wenn jemand etwas Unerwartetes eintippt
+
+**So gehst du vor.** Nicht von oben nach unten drauflosschreiben, sondern:
+
+1. Schreib in **einem** deutschen Satz auf, was das Programm können soll.
+2. Zerleg das in drei bis fünf Schritte. Auf Papier, nicht im Kopf.
+3. Bau **einen** Schritt und lass ihn laufen. Erst wenn er tut, was er soll, kommt der nächste.
+4. Wenn ein Fehler kommt: Lektion 4.
+
+Der letzte Punkt ist der wichtigste, und er ist der Unterschied zwischen einem Anfänger und jemandem,
+der programmieren kann: **kleine Schritte, jeden einzeln ausprobiert.**
+
+Wenn dein Programm läuft, nimm dir vor, es um eine Sache zu erweitern, die du dir am Anfang nicht
+zugetraut hättest.
+
+---
+
+## Lektion 11 — Dasselbe in Python
+
+Und jetzt die Sache, auf die dieser ganze Kurs hinausläuft.
+
+**Du hast nicht „Klarsatz gelernt". Du hast programmieren gelernt.** Klarsatz war die Schreibweise,
+in der du es zum ersten Mal gesehen hast. Die Ideen dahinter — Variable, Bedingung, Schleife,
+Aufgabe — sind in jeder Programmiersprache dieselben.
+
+Klarsatz kann dir das zeigen: In der Spielwiese gibt es den Knopf **Als Python**. Auf der
+Kommandozeile heißt er `--nach-python`. Probier das mit deinem Abschlussprojekt aus.
+
+Hier dasselbe Programm zweimal:
+
+```klar
+Merke 10 als Punkte.
+Wenn Punkte mindestens 10 ist:
+    Zeige "Gewonnen!".
+Sonst:
+    Zeige "Noch nicht.".
+Ende.
+```
+```python
+Punkte = 10
+if (Punkte >= 10):
+    print('Gewonnen!')
+else:
+    print('Noch nicht.')
+```
+
+Zeile für Zeile:
+
+| Klarsatz | Python | dieselbe Idee |
+|---|---|---|
+| `Merke 10 als Punkte.` | `Punkte = 10` | Variable anlegen |
+| `Wenn … ist:` | `if …:` | Bedingung |
+| `Punkte mindestens 10` | `Punkte >= 10` | vergleichen |
+| `Sonst:` | `else:` | der andere Weg |
+| `Zeige …` | `print(…)` | ausgeben |
+| `Ende.` | *(Einrückung)* | Ende des Blocks |
+
+**Nichts Neues.** Nur andere Zeichen.
+
+Auch eine Schleife:
+
+```klar
+Zähle von 1 bis 5 mit i:
+    Zeige i.
+Ende.
+```
+```python
+for i in range(1, 5 + 1):
+    print(i)
+```
+
+**Vorhersagen:** Warum steht da `range(1, 5 + 1)` und nicht `range(1, 5)`?
+
+<details><summary>Antwort</summary>
+
+Weil `range` in Python die **obere Grenze nicht mitzählt**. `range(1, 5)` gäbe 1, 2, 3, 4 — die 5
+fehlte. Klarsatz zählt `von 1 bis 5` so, wie man es auf Deutsch meint: die 5 gehört dazu. Der
+Übersetzer schreibt darum `5 + 1` und macht den Unterschied damit sichtbar, statt ihn zu verstecken.
+
+</details>
+
+### Und das mit dem Zählen ab 1
+
+In Lektion 8 hast du gelernt: Das erste Element ist Element 1. In Python ist es Element 0:
+
+| Klarsatz | Python |
+|---|---|
+| `das erste Element von Farben` | `Farben[0]` |
+| `Element 2 von Farben` | `Farben[1]` |
+
+Das ist kein Fehler auf einer der beiden Seiten. Es ist eine **Entscheidung**, und die beiden
+Sprachen haben sie verschieden getroffen: Klarsatz zählt wie Menschen, Python zählt wie die meisten
+Programmiersprachen — nämlich den Abstand vom Anfang.
+
+Genau das ist die letzte Lektion dieses Kurses:
+
+> Programmiersprachen treffen unterschiedliche Entscheidungen.
+> Wer die Idee dahinter verstanden hat, lernt die nächste Sprache als Schreibweise — nicht von vorn.
+
+### Wie es weitergeht
+
+* Übersetze dein Abschlussprojekt mit **Als Python** und lies es Zeile für Zeile.
+* Tipp den Python-Code irgendwo ein, wo er läuft, und ändere etwas.
+* Wenn dir dabei nichts wirklich fremd vorkommt: Dann hat dieser Kurs funktioniert.
 
 ---
 
@@ -827,9 +906,10 @@ sonst:
 | Fehler | Richtig |
 |---|---|
 | `Zeige "Hallo"` | Der **Punkt** am Ende fehlt: `Zeige "Hallo".` |
+| `Zeige Hallo.` | Ohne Anführungszeichen ist das ein Name, kein Text. |
 | `Wenn Name "Anna" ist:` | `gleich` ist Pflicht: `Wenn Name gleich "Anna" ist:` |
+| `Setze Punkte auf 0.` ohne vorheriges `Merke` | `Setze` ändert nur, was es schon gibt. |
 | `Definiere Aufgabe Zeige Summe:` | Aufgabennamen sind **ein** Wort: `Zeige_Summe` |
-| `Setze Punkte auf 0.` ohne vorheriges `Merke` | `Setze` ändert nur, was es schon gibt. Zuerst `Merke 0 als Punkte.` |
 | `Zeige Element 0 von Liste.` | Gezählt wird ab **1**. |
-| `Merke 3,5 als x.` | In der Eingabe wird der **Punkt** benutzt: `Merke 3.5 als x.` Angezeigt wird dann `3,5`. |
-| Ein Block ohne `Ende.` | Jeder `:`-Block braucht sein `Ende.` — außer der Kurzform mit Komma. |
+| `Merke 3,5 als x.` | In der Eingabe der **Punkt**: `Merke 3.5 als x.` Angezeigt wird `3,5`. |
+| Ein Block ohne `Ende.` | Jeder `:`-Block braucht sein `Ende.` |

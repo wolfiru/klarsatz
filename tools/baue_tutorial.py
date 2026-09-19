@@ -76,13 +76,29 @@ def tabelle(zeilen):
     return aus
 
 
-def codeblock(art, inhalt):
+BESCHRIFTUNG = {
+    "eingabe": "Deine Eingaben",
+    "ausgabe": "Das kommt heraus",
+    "fehler": "So meldet sich Klarsatz",
+    "python": "Dasselbe in Python",
+}
+
+
+def codeblock(art, inhalt, absichtlich_kaputt=False):
     roh = html.escape("\n".join(inhalt))
     if art == "klar":
-        return [f'<pre class="klar"><code>{roh}</code></pre>']
-    beschriftung = "Deine Eingaben" if art == "eingabe" else "Das kommt heraus"
-    return [f'<div class="tut-{art}"><span class="tut-marke">{beschriftung}</span>',
+        # Absichtlich kaputte Beispiele darf tools/pruefe_webseite.py nicht anmeckern.
+        marke = ' data-pruefung="nein"' if absichtlich_kaputt else ""
+        return [f'<pre class="klar"{marke}><code>{roh}</code></pre>']
+    return [f'<div class="tut-{art}"><span class="tut-marke">{BESCHRIFTUNG.get(art, art)}</span>',
             f"<pre><code>{roh}</code></pre></div>"]
+
+
+def folgt_fehlerblock(zeilen, i):
+    """Steht hinter diesem Codeblock eine erwartete Fehlermeldung?"""
+    while i < len(zeilen) and not zeilen[i].strip():
+        i += 1
+    return i < len(zeilen) and zeilen[i].strip() == "```fehler"
 
 
 def nach_html(markdown):
@@ -99,7 +115,7 @@ def nach_html(markdown):
                 inhalt.append(zeilen[i])
                 i += 1
             i += 1
-            aus += codeblock(art, inhalt)
+            aus += codeblock(art, inhalt, absichtlich_kaputt=(art == "klar" and folgt_fehlerblock(zeilen, i)))
             continue
 
         if z.startswith("# "):                       # Titel steht schon im Seitenkopf
@@ -133,12 +149,22 @@ def nach_html(markdown):
             aus += tabelle(block)
             continue
 
-        if z.startswith("> "):
-            block = []
-            while i < len(zeilen) and zeilen[i].startswith("> "):
-                block.append(zeilen[i][2:])
+        if z.startswith(">"):
+            # Auch eine Zeile, die nur aus '>' besteht, gehört dazu — sie trennt Absätze
+            # innerhalb des Zitats.
+            absaetze, laufend = [], []
+            while i < len(zeilen) and zeilen[i].startswith(">"):
+                rest = zeilen[i][1:].lstrip()
+                if rest:
+                    laufend.append(rest)
+                elif laufend:
+                    absaetze.append(" ".join(laufend))
+                    laufend = []
                 i += 1
-            aus.append(f"<blockquote><p>{inline(' '.join(block))}</p></blockquote>")
+            if laufend:
+                absaetze.append(" ".join(laufend))
+            inhalt_html = "".join(f"<p>{inline(a)}</p>" for a in absaetze)
+            aus.append(f"<blockquote>{inhalt_html}</blockquote>")
             continue
 
         if z.startswith("* "):
@@ -164,6 +190,12 @@ def nach_html(markdown):
         while i < len(zeilen) and zeilen[i].strip() and not zeilen[i].startswith(("#", "|", ">", "* ", "```", "---")):
             absatz.append(zeilen[i].strip())
             i += 1
+        if not absatz:
+            # Sicherheitsnetz: Kommt hier eine Zeile an, die keiner Regel entspricht, wird sie
+            # übernommen und übersprungen. Ohne das stünde der Zähler still — ein Hänger.
+            aus.append(inline(z.strip()))
+            i += 1
+            continue
         aus.append(f"<p>{inline(' '.join(absatz))}</p>")
 
     return "\n".join(aus), lektionen
