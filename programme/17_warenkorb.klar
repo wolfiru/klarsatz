@@ -1,0 +1,76 @@
+Anmerkung: Einfacher Shop-Simulator mit Warenkorb.
+
+Erstelle eine Tabelle namens Preise
+    mit "Apfel" als 1.20 und "Brot" als 2.50 und "Milch" als 1.10
+    und "Käse" als 3.80 und "Schokolade" als 2.20.
+
+Erstelle eine Liste namens Warenkorb.
+
+Definiere Aufgabe PreislisteAnzeigen:
+    Zeige "=== Preisliste ===".
+    Für jedes Produkt in Preise:
+        Zeige "  " und Produkt und ": " und Formatiert von (Wert für Produkt in Preise) auf 2 Stellen und " €".
+    Ende.
+    Zeige "".
+Ende.
+
+Definiere Aufgabe WarenkorbAnzeigen:
+    Wenn die Länge von Warenkorb höchstens 0 ist:
+        Zeige "Der Warenkorb ist leer.".
+    Sonst:
+        Zeige "=== Dein Warenkorb ===".
+        Merke 0 als Summe.
+        Für jedes Artikel in Warenkorb:
+            Merke Wert für Artikel in Preise als Preis.
+            Zeige "  - " und Artikel und " (" und Formatiert von Preis auf 2 Stellen und " €)".
+            Erhöhe Summe um Preis.
+        Ende.
+        Zeige "------------------------".
+        Zeige "Summe: " und Formatiert von Summe auf 2 Stellen und " €".
+    Ende.
+    Zeige "".
+Ende.
+
+Definiere Aufgabe ArtikelHinzufuegen mit Name:
+    Wenn Preise enthält Name:
+        Füge Name zum Warenkorb hinzu.
+        Zeige Name und " wurde hinzugefügt.".
+    Sonst:
+        Zeige "Dieses Produkt kenne ich nicht.".
+    Ende.
+Ende.
+
+Anmerkung: Hauptprogramm
+Zeige "Willkommen im Klarsatz-Shop!".
+Zeige "".
+
+Wiederhole 20 Mal:
+    Führe PreislisteAnzeigen aus.
+    Führe WarenkorbAnzeigen aus.
+
+    Frage "Was möchtest du tun? (hinzufügen / entfernen / fertig)" und merke die Antwort als Befehl.
+
+    Wenn Befehl gleich "fertig" ist:
+        Höre auf.
+    Ende.
+
+    Wenn Befehl gleich "hinzufügen" ist:
+        Frage "Welches Produkt?" und merke die Antwort als Produkt.
+        Führe ArtikelHinzufuegen mit Produkt aus.
+    Ende.
+
+    Wenn Befehl gleich "entfernen" ist:
+        Frage "Welches Produkt entfernen?" und merke die Antwort als Produkt.
+        Wenn Warenkorb enthält Produkt:
+            Entferne Produkt aus Warenkorb.
+            Zeige Produkt und " wurde entfernt.".
+        Sonst:
+            Zeige "Das liegt nicht im Warenkorb.".
+        Ende.
+    Ende.
+
+    Zeige "".
+Ende.
+
+Zeige "Danke für deinen Einkauf!".
+Führe WarenkorbAnzeigen aus.

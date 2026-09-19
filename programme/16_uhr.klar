@@ -1,0 +1,50 @@
+Anmerkung: Eine Analoguhr, die wirklich geht — sie zeichnet sich jede Sekunde neu.
+
+Wiederhole solange wahr ist:
+    Lösche die Zeichnung.
+
+    Merke die aktuelle Stunde als Stunde.
+    Merke die aktuelle Minute als Minute.
+    Merke die aktuelle Sekunde als Sekunde.
+
+    Anmerkung: Zifferblatt — zwölf Striche, die vollen Viertelstunden länger.
+    Nimm die Farbe "grau".
+    Zähle von 1 bis 12 mit i:
+        Gehe zur Mitte.
+        Drehe dich um i mal 30 Grad nach rechts.
+        Hebe den Stift.
+        Gehe 110 Schritte vor.
+        Senke den Stift.
+        Wenn i durch 3 teilbar ist:
+            Nimm die Strichstärke 5.
+            Gehe 25 Schritte vor.
+        Sonst:
+            Nimm die Strichstärke 2.
+            Gehe 15 Schritte vor.
+        Ende.
+    Ende.
+
+    Anmerkung: Stundenzeiger — 30 Grad je Stunde, dazu ein halbes Grad je Minute.
+    Gehe zur Mitte.
+    Nimm die Farbe "gold".
+    Nimm die Strichstärke 7.
+    Drehe dich um Stunde mal 30 plus Minute geteilt durch 2 Grad nach rechts.
+    Gehe 65 Schritte vor.
+
+    Anmerkung: Minutenzeiger — sechs Grad je Minute.
+    Gehe zur Mitte.
+    Nimm die Farbe "weiß".
+    Nimm die Strichstärke 4.
+    Drehe dich um Minute mal 6 Grad nach rechts.
+    Gehe 100 Schritte vor.
+
+    Anmerkung: Sekundenzeiger — dünn und rot.
+    Gehe zur Mitte.
+    Nimm die Farbe "rot".
+    Nimm die Strichstärke 2.
+    Drehe dich um Sekunde mal 6 Grad nach rechts.
+    Gehe 108 Schritte vor.
+
+    Anmerkung: Eine Sekunde Pause — dann von vorn.
+    Warte 1 Sekunde.
+Ende.

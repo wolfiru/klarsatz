@@ -1,0 +1,190 @@
+<p class="lede">Drei Wege, mehrere Werte zusammenzuhalten: <strong>Listen</strong> sammeln der Reihe nach, <strong>Tabellen</strong> ordnen jedem Schlüssel einen Wert zu, <strong>Dinge</strong> fassen zusammengehörige Felder unter einem Namen.</p>
+
+<h2 id="listen">Listen anlegen und füllen</h2>
+<p class="h2-sub">Erstelle, Füge hinzu, Entferne, Sortiere</p>
+
+<div class="code-kopf"><span class="code-titel">Grundbefehle</span></div>
+<pre class="klar">Erstelle eine Liste namens Einkauf.
+Erstelle eine Liste namens Zahlen mit 3 und 1 und 2.
+
+Füge "Milch" zur Einkauf hinzu.
+Füge "Brot" zur Einkauf hinzu.
+Füge "Äpfel" zur Einkauf hinzu.
+
+Entferne "Brot" aus Einkauf.
+
+Sortiere Einkauf.
+Sortiere Zahlen absteigend.
+
+Zeige Einkauf.
+Zeige Zahlen.</pre>
+
+<div class="tab-huelle">
+<table>
+<thead><tr><th>Satz</th><th>Wirkung</th></tr></thead>
+<tbody>
+<tr><td><code>Erstelle eine Liste namens L.</code></td><td>legt eine leere Liste an</td></tr>
+<tr><td><code>Erstelle eine Liste namens L mit a und b.</code></td><td>legt sie gleich gefüllt an</td></tr>
+<tr><td><code>Füge Wert zur L hinzu.</code></td><td>hängt hinten an</td></tr>
+<tr><td><code>Entferne Wert aus L.</code></td><td>nimmt den Wert heraus</td></tr>
+<tr><td><code>Entferne Element n aus L.</code></td><td>nimmt den n-ten Eintrag heraus</td></tr>
+<tr><td><code>Entferne das erste / das letzte Element aus L.</code></td><td>nimmt vorne bzw. hinten weg</td></tr>
+<tr><td><code>Sortiere L.</code> · <code>Sortiere L absteigend.</code></td><td>auf- bzw. absteigend</td></tr>
+<tr><td><code>Kopiere L als N.</code></td><td>echte Kopie — siehe Hinweis unten</td></tr>
+<tr><td><code>die Länge von L</code></td><td>Anzahl der Einträge</td></tr>
+<tr><td><code>L enthält Wert</code></td><td>Prüfung, ob der Wert vorkommt</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="notiz regel">
+<span class="notiz-titel">Listen sind Verweise</span>
+<p><code>Merke Einkauf als Zweitname.</code> gibt derselben Liste einen zweiten Namen — wer über den einen etwas hinzufügt, sieht es auch über den anderen. Eine eigenständige zweite Liste entsteht mit <code>Kopiere Einkauf als Sicherung.</code></p>
+</div>
+
+<h2 id="zugriff">Auf Einträge zugreifen</h2>
+<p class="h2-sub">Gezählt wird ab 1</p>
+
+<div class="code-kopf"><span class="code-titel">Einzelne Einträge und Ausschnitte</span></div>
+<pre class="klar">Erstelle eine Liste namens Einkauf
+    mit "Milch" und "Brot" und "Äpfel" und "Kaffee".
+
+Zeige das erste Element von Einkauf.
+Zeige das letzte Element von Einkauf.
+Zeige Element 2 von Einkauf.
+
+Merke 3 als Nr.
+Zeige Element Nr von Einkauf.
+Zeige Element (Nr minus 1) von Einkauf.
+
+Zeige Elemente 2 bis 3 von Einkauf.
+Zeige ein zufälliges Element von Einkauf.
+Zeige die Länge von Einkauf.</pre>
+
+<p>Die Nummer darf eine Zahl, ein Name oder eine Rechnung in Klammern sein.</p>
+
+<div class="notiz warnung">
+<span class="notiz-titel">Hinter dem Ende gibt es nichts</span>
+<p>Ein Zugriff außerhalb der Liste ist <strong>immer</strong> ein Fehler mit klarer Meldung — nie ein stiller Fehlgriff und nie ein leerer Wert. Wer damit rechnen muss, fängt ihn mit <a href="doku-aufgaben.html#fehler">Versuche</a> ab oder prüft vorher die Länge.</p>
+</div>
+
+<h2 id="tabellen">Tabellen</h2>
+<p class="h2-sub">Schlüssel zeigt auf Wert</p>
+
+<p>Eine Tabelle ordnet jedem Schlüssel — einem Text oder einer Zahl — einen Wert zu. Die Reihenfolge, in der eingetragen wurde, bleibt erhalten.</p>
+
+<div class="code-kopf"><span class="code-titel">Tabellen im Einsatz</span></div>
+<pre class="klar">Erstelle eine Tabelle namens Preise mit "Apfel" als 3 und "Birne" als 2.
+
+Trage "Kiwi" mit 5 in Preise ein.
+Zeige Wert für "Apfel" in Preise.
+
+Wenn Preise enthält "Kiwi", zeige "Kiwi ist eingetragen.".
+Entferne "Birne" aus Preise.
+
+Zeige "Es sind " und die Länge von Preise und " Sorten:".
+Für jede Frucht in Preise:
+    Zeige "  " und Frucht und ": " und Wert für Frucht in Preise.
+Ende.</pre>
+
+<div class="tab-huelle">
+<table>
+<thead><tr><th>Satz</th><th>Wirkung</th></tr></thead>
+<tbody>
+<tr><td><code>Erstelle eine Tabelle namens T.</code></td><td>legt eine leere Tabelle an</td></tr>
+<tr><td><code>Erstelle eine Tabelle namens T mit "a" als 1.</code></td><td>legt sie gefüllt an</td></tr>
+<tr><td><code>Trage Schlüssel mit Wert in T ein.</code></td><td>einträgt oder überschreibt</td></tr>
+<tr><td><code>Wert für Schlüssel in T</code></td><td>liest den Wert</td></tr>
+<tr><td><code>T enthält Schlüssel</code></td><td>prüft, ob es den Schlüssel gibt</td></tr>
+<tr><td><code>Entferne Schlüssel aus T.</code></td><td>nimmt den Eintrag heraus</td></tr>
+<tr><td><code>die Länge von T</code></td><td>Anzahl der Einträge</td></tr>
+<tr><td><code>Für jedes S in T: … Ende.</code></td><td>geht durch die <strong>Schlüssel</strong></td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="notiz">
+<span class="notiz-titel">Wofür Tabellen?</span>
+<p>Überall dort, wo etwas nachgeschlagen wird: Preise je Ware, Punkte je Spieler, Anzahl je Wort. Was mit zwei Listen und einer Suchschleife mühsam wäre, ist mit einer Tabelle ein Satz.</p>
+</div>
+
+<h2 id="texte">Texte zerlegen und zusammensetzen</h2>
+<p class="h2-sub">Teile, Verkettet, Zeichen, Ersetze</p>
+
+<div class="code-kopf"><span class="code-titel">Vom Text zur Liste und zurück</span></div>
+<pre class="klar">Merke "Klarsatz liest sich wie ein Satz" als Satz.
+Teile Satz bei " " zu Woerter.
+
+Zeige "Der Satz hat " und die Länge von Woerter und " Wörter:".
+Für jedes Wort in Woerter:
+    Zeige "  " und Wort.
+Ende.
+
+Anmerkung: Der Rückweg — eine Liste zu einem Text verbinden.
+Zeige Verkettet von Woerter mit ", ".
+
+Anmerkung: Ausschnitte und Ersetzungen.
+Zeige Zeichen 1 bis 9 von Satz.
+Merke "Hallo Welt" als Gruss.
+Ersetze "Welt" durch "Klarsatz" in Gruss.
+Zeige Gruss.
+
+Anmerkung: Text zu Zahl — versteht auch das deutsche Komma.
+Zeige Zahlenwert von "3,5" plus 1.</pre>
+
+<div class="tab-huelle">
+<table>
+<thead><tr><th>Schreibweise</th><th>Ergebnis</th></tr></thead>
+<tbody>
+<tr><td><code>Teile t bei "…" zu L.</code></td><td>Text → Liste von Texten</td></tr>
+<tr><td><code>Verkettet von L mit ", "</code></td><td>Liste → Text</td></tr>
+<tr><td><code>Zeichen a bis b von t</code></td><td>Ausschnitt eines Textes, ab 1 gezählt</td></tr>
+<tr><td><code>Elemente a bis b von L</code></td><td>Ausschnitt einer Liste</td></tr>
+<tr><td><code>Ersetze "alt" durch "neu" in N.</code></td><td>ersetzt im Text unter dem Namen N</td></tr>
+<tr><td><code>Zahlenwert von t</code></td><td>Text → Zahl (<code>"3,5"</code> → <code>3.5</code>)</td></tr>
+</tbody>
+</table>
+</div>
+
+<p><code>"\n"</code> steht für den Zeilenumbruch — damit zerlegt <code>Teile Inhalt bei "\n" zu Zeilen.</code> einen mehrzeiligen Text in seine Zeilen.</p>
+
+<h2 id="dinge">Dinge</h2>
+<p class="h2-sub">Eigene Strukturen mit Feldern</p>
+
+<p>Ein <em>Ding</em> fasst mehrere Werte unter einem Namen zusammen. Zuerst wird die Bauart beschrieben, dann werden einzelne Exemplare erschaffen.</p>
+
+<div class="code-kopf"><span class="code-titel">Beschreiben, erschaffen, benutzen</span></div>
+<pre class="klar">Ein Hund hat einen Namen und ein Alter.
+
+Erschaffe einen Hund mit Name "Rocco" und Alter 5 als Waldi.
+
+Zeige den Namen von Waldi.
+Zeige das Alter von Waldi.
+
+Setze das Alter von Waldi auf 6.
+Zeige "Nach dem Geburtstag: " und das Alter von Waldi.</pre>
+
+<div class="notiz regel">
+<span class="notiz-titel">Alle Felder müssen belegt sein</span>
+<p>Beim Erschaffen ist jedes Feld anzugeben — ein Wert ist in Klarsatz nie „einfach leer“. Das erspart die halbfertigen Datensätze, an denen Programme später scheitern.</p>
+</div>
+
+<p>Feldnamen dürfen leicht gebeugt werden: <code>Name</code> und <code>Namen</code> meinen dasselbe, ebenso <code>Zahl</code> und <code>Zahlen</code>. Beim Anzeigen eines ganzen Dings erscheint der Feldname allerdings so, wie er in der Definition stand.</p>
+
+<div class="code-kopf"><span class="code-titel">Dinge in Listen</span></div>
+<pre class="klar">Ein Hund hat einen Namen und ein Alter und eine Rasse.
+
+Anmerkung: Lange Sätze darf man umbrechen — Einrückung ist bedeutungslos.
+Erschaffe einen Hund mit Name "Rocco" und Alter 5
+    und Rasse "Mischling" als Waldi.
+Erschaffe einen Hund mit Name "Luna" und Alter 2
+    und Rasse "Beagle" als Nachbarhund.
+
+Erstelle eine Liste namens Heim.
+Füge Waldi zur Heim hinzu.
+Füge Nachbarhund zur Heim hinzu.
+
+Für jeden Hund in Heim:
+    Zeige den Namen von Hund und " (" und die Rasse von Hund und ")".
+    Zeige "   " und das Alter von Hund und " Jahre alt".
+Ende.</pre>

@@ -1,0 +1,50 @@
+Anmerkung: Taschenrechner – rechnet mit zwei Zahlen. Beenden mit: ende
+
+Definiere Aufgabe Klein von wert:
+    Verbinde wert zu Ergebnis.
+    Gib Kleinbuchstaben von Ergebnis zurück.
+Ende.
+
+Erstelle eine Liste namens Erlaubt mit "+" und "-" und "*" und "/" und "^" und "%".
+
+Zeige "=== Taschenrechner ===".
+Zeige "Rechenarten:  +  -  *  /  ^ (hoch)  % (Rest)".
+
+Merke dir wahr als weiter.
+Wiederhole solange weiter ist:
+    Zeige "".
+    Frage "Rechenart (oder ende): " und merke dir die Antwort als Eingabe.
+    Merke dir Klein von Eingabe als Art.
+    Wenn Art gleich "ende" ist:
+        Merke dir falsch als weiter.
+    Sonst wenn nicht Erlaubt enthält Art ist:
+        Zeige "Diese Rechenart kenne ich nicht.".
+    Sonst:
+        Frage "Erste Zahl: " und merke dir die Antwort als a.
+        Frage "Zweite Zahl: " und merke dir die Antwort als b.
+        Wenn a keine Zahl ist oder b keine Zahl ist:
+            Zeige "Das sind keine Zahlen.".
+        Sonst:
+            Versuche:
+                Wenn Art gleich "+" ist:
+                    Merke dir a plus b als Ergebnis.
+                Sonst wenn Art gleich "-" ist:
+                    Merke dir a minus b als Ergebnis.
+                Sonst wenn Art gleich "*" ist:
+                    Merke dir a mal b als Ergebnis.
+                Sonst wenn Art gleich "/" ist:
+                    Merke dir a geteilt durch b als Ergebnis.
+                Sonst wenn Art gleich "^" ist:
+                    Merke dir a hoch b als Ergebnis.
+                Sonst:
+                    Merke dir den Rest von a geteilt durch b als Ergebnis.
+                Ende.
+                Zeige a und " " und Art und " " und b und " = " und Ergebnis.
+            Bei Fehler:
+                Zeige "Das geht nicht: " und Fehlermeldung.
+            Ende.
+        Ende.
+    Ende.
+Ende.
+
+Zeige "Tschüss!".

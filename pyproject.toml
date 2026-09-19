@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "klarsatz"
+version = "0.7.1"
+description = "Klarsatz – eine Programmiersprache, die wie Deutsch klingt (Interpreter, Prüfer, Formatierer, Konsole)"
+readme = "README.md"
+license = { file = "LICENSE" }
+requires-python = ">=3.10"
+dependencies = []                      # bewusst keine: reine Standardbibliothek (läuft auch in Pyodide)
+
+[project.optional-dependencies]
+entwicklung = ["pygments", "playwright"]
+
+[project.scripts]
+klarsatz = "klarsatz.cli:main"
+
+[tool.setuptools]
+packages = ["klarsatz"]

@@ -1,0 +1,44 @@
+Anmerkung: Kopfrechentrainer – 10 Aufgaben (plus, minus, mal).
+
+Zeige "=== Kopfrechnen ===".
+Merke 0 als Punkte.
+
+Zähle von 1 bis 10 mit Nr:
+    Merke Zufallszahl von 1 bis 3 als Art.
+    Wenn Art gleich 1 ist:
+        Merke Zufallszahl von 1 bis 50 als a.
+        Merke Zufallszahl von 1 bis 50 als b.
+        Merke a plus b als Loesung.
+        Verbinde a und " + " und b und " = " zu Aufgabe_text.
+    Sonst wenn Art gleich 2 ist:
+        Merke Zufallszahl von 10 bis 60 als a.
+        Merke Zufallszahl von 1 bis a als b.
+        Merke a minus b als Loesung.
+        Verbinde a und " - " und b und " = " zu Aufgabe_text.
+    Sonst:
+        Merke Zufallszahl von 2 bis 12 als a.
+        Merke Zufallszahl von 2 bis 12 als b.
+        Merke a mal b als Loesung.
+        Verbinde a und " x " und b und " = " zu Aufgabe_text.
+    Ende.
+    Verbinde "Aufgabe " und Nr und "/10:  " und Aufgabe_text zu Fragetext.
+    Frage Fragetext und merke die Antwort als Eingabe.
+    Wenn Eingabe eine Zahl ist und Eingabe gleich Loesung ist:
+        Zeige "Richtig!".
+        Erhöhe Punkte um 1.
+    Sonst:
+        Zeige "Leider falsch – richtig ist " und Loesung und ".".
+    Ende.
+Ende.
+
+Zeige "".
+Zeige "Du hast " und Punkte und " von 10 Aufgaben richtig gelöst.".
+Wenn Punkte gleich 10 ist:
+    Zeige "Perfekt!".
+Sonst wenn Punkte mindestens 8 ist:
+    Zeige "Sehr gut!".
+Sonst wenn Punkte mindestens 5 ist:
+    Zeige "Gut gemacht – noch ein bisschen Übung.".
+Sonst:
+    Zeige "Übung macht den Meister – versuch es gleich nochmal!".
+Ende.

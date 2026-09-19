@@ -1,0 +1,113 @@
+{
+  "hinweis": "Regeln für die Hervorhebung in JavaScript: new RegExp(regex, 'imuy'). 'bereiche' ist ein Name für den ganzen Treffer oder eine Liste (ein Name pro Klammergruppe, null = ohne Farbe).",
+  "namen": {
+    "kommentar": "comment.line.klarsatz",
+    "text": "string.quoted.double.klarsatz",
+    "zahl": "constant.numeric.klarsatz",
+    "steuerung": "keyword.control.klarsatz",
+    "anweisung": "keyword.other.statement.klarsatz",
+    "funktion": "support.function.builtin.klarsatz",
+    "konstante": "constant.language.klarsatz",
+    "operator": "keyword.operator.word.klarsatz",
+    "funktionsname": "entity.name.function.klarsatz",
+    "typname": "entity.name.type.klarsatz",
+    "zeichen": "punctuation.separator.klarsatz"
+  },
+  "regeln": [
+    {
+      "regex": "(?:anmerkung)\\s*:[^\\n]*",
+      "bereiche": "kommentar"
+    },
+    {
+      "regex": "\"[^\"\\n]*\"",
+      "bereiche": "text"
+    },
+    {
+      "regex": "„[^“”\"\\n]*[“”\"]",
+      "bereiche": "text"
+    },
+    {
+      "regex": "-?\\d+(?:\\.\\d+)?",
+      "bereiche": "zahl"
+    },
+    {
+      "regex": "((?:definiere))(\\s+)((?:aufgabe))(\\s+)(\\p{L}(?:\\p{L}|\\d|_)*)",
+      "bereiche": [
+        "steuerung",
+        null,
+        "steuerung",
+        null,
+        "funktionsname"
+      ]
+    },
+    {
+      "regex": "^(\\s*)(\\p{L}(?:\\p{L}|\\d|_)*)(\\s+)((?:hat))(?![\\p{L}\\p{N}_])",
+      "bereiche": [
+        null,
+        "typname",
+        null,
+        "operator"
+      ]
+    },
+    {
+      "regex": "((?:f(?:ü|ue)r))(\\s+)((?:immer))(?![\\p{L}\\p{N}_])",
+      "bereiche": [
+        "steuerung",
+        null,
+        "operator"
+      ]
+    },
+    {
+      "regex": "((?:gro(?:ß|ss)buchstaben|kleinbuchstaben|rechtsb(?:ü|ue)ndig|arkuscosinus|arkuskosinus|arkustangens|linksb(?:ü|ue)ndig|aufgerundet|zufallszahl|abgerundet|arku(?:ß|ss)inus|formatiert|zahlenwert|verkettet|gerundet|cosinus|kosinus|tangens|betrag|l(?:ä|ae)nge|wurzel|sinus|rest))(?=\\s+(?:von)(?![\\p{L}\\p{N}_]))",
+      "bereiche": "funktion"
+    },
+    {
+      "regex": "((?:wert))(?=\\s+(?:f(?:ü|ue)r)(?![\\p{L}\\p{N}_]))",
+      "bereiche": "funktion"
+    },
+    {
+      "regex": "((?:element))(?=\\s+(?:\\d|\\(|(?:von)(?![\\p{L}\\p{N}_])|\\p{L}(?:\\p{L}|\\d|_)*\\s+(?:von)(?![\\p{L}\\p{N}_])))",
+      "bereiche": "funktion"
+    },
+    {
+      "regex": "((?:zuf(?:ä|ae)lliges|zuf(?:ä|ae)llige|letzte|erste))(?=\\s+(?:element)(?![\\p{L}\\p{N}_]))",
+      "bereiche": "funktion"
+    },
+    {
+      "regex": "((?:ein|eine|keine))(\\s+)((?:zahl|text|liste|tabelle))(?=\\s+(?:ist|sind)(?![\\p{L}\\p{N}_]))",
+      "bereiche": [
+        "operator",
+        null,
+        "typname"
+      ]
+    },
+    {
+      "regex": "((?:liste|tabelle))(\\s+)((?:namens))(?![\\p{L}\\p{N}_])",
+      "bereiche": [
+        "typname",
+        null,
+        "operator"
+      ]
+    },
+    {
+      "regex": "(?:wiederhole|definiere|versuche|aufgabe|solange|zur(?:ü|ue)ck|fehler|sicher|stelle|weiter|z(?:ä|ae)hle|h(?:ö|oe)re|jeden|jedes|sonst|da(?:ß|ss)|ende|f(?:ü|ue)r|jede|mach|wenn|bei|gib)(?![\\p{L}\\p{N}_])",
+      "bereiche": "steuerung"
+    },
+    {
+      "regex": "(?:verringere|erschaffe|verdopple|entferne|erstelle|halbiere|schreibe|sortiere|verbinde|erh(?:ö|oe)he|ersetze|kopiere|l(?:ö|oe)sche|f(?:ü|ue)hre|drehe|frage|f(?:ü|ue)ge|merke|senke|setze|teile|trage|warte|zeige|gehe|hebe|lies|nimm)(?![\\p{L}\\p{N}_])",
+      "bereiche": "anweisung"
+    },
+    {
+      "regex": "(?:strichst(?:ä|ae)rke|r(?:ü|ue)ckw(?:ä|ae)rts|absteigend|h(?:ö|oe)chstens|mindestens|akt(?:ü|ue)llen|akt(?:ü|ue)ller|akt(?:ü|ue)lles|schritten|abw(?:ä|ae)rts|akt(?:ü|ue)lle|enth(?:ä|ae)lt|gr(?:ö|oe)(?:ß|ss)er|schritte|sekunden|geteilt|kleiner|sekunde|stellen|teilbar|gleich|namens|durch|hinzu|immer|keine|minus|nicht|grad|hoch|oder|plus|sind|als|auf|aus|bis|hat|ist|mal|mit|und|von|in|um|zu)(?![\\p{L}\\p{N}_])",
+      "bereiche": "operator"
+    },
+    {
+      "regex": "(?:falsch|wahr)(?![\\p{L}\\p{N}_])",
+      "bereiche": "konstante"
+    },
+    {
+      "regex": "[.,:()]",
+      "bereiche": "zeichen"
+    }
+  ]
+}

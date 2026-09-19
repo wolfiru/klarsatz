@@ -1,0 +1,120 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "Klarsatz",
+  "scopeName": "source.klarsatz",
+  "fileTypes": [
+    "klar"
+  ],
+  "patterns": [
+    {
+      "match": "(?i:anmerkung)\\s*:[^\\n]*",
+      "name": "comment.line.klarsatz"
+    },
+    {
+      "match": "\"[^\"\\n]*\"",
+      "name": "string.quoted.double.klarsatz"
+    },
+    {
+      "match": "„[^“”\"\\n]*[“”\"]",
+      "name": "string.quoted.double.klarsatz"
+    },
+    {
+      "match": "-?\\d+(?:\\.\\d+)?",
+      "name": "constant.numeric.klarsatz"
+    },
+    {
+      "match": "\\b((?i:definiere))(\\s+)((?i:aufgabe))(\\s+)(\\p{L}(?:\\p{L}|\\d|_)*)",
+      "captures": {
+        "1": {
+          "name": "keyword.control.klarsatz"
+        },
+        "3": {
+          "name": "keyword.control.klarsatz"
+        },
+        "5": {
+          "name": "entity.name.function.klarsatz"
+        }
+      }
+    },
+    {
+      "match": "^(\\s*)(\\p{L}(?:\\p{L}|\\d|_)*)(\\s+)((?i:hat))\\b",
+      "captures": {
+        "2": {
+          "name": "entity.name.type.klarsatz"
+        },
+        "4": {
+          "name": "keyword.operator.word.klarsatz"
+        }
+      }
+    },
+    {
+      "match": "\\b((?i:f(?:ü|ue)r))(\\s+)((?i:immer))\\b",
+      "captures": {
+        "1": {
+          "name": "keyword.control.klarsatz"
+        },
+        "3": {
+          "name": "keyword.operator.word.klarsatz"
+        }
+      }
+    },
+    {
+      "match": "\\b((?i:gro(?:ß|ss)buchstaben|kleinbuchstaben|rechtsb(?:ü|ue)ndig|arkuscosinus|arkuskosinus|arkustangens|linksb(?:ü|ue)ndig|aufgerundet|zufallszahl|abgerundet|arku(?:ß|ss)inus|formatiert|zahlenwert|verkettet|gerundet|cosinus|kosinus|tangens|betrag|l(?:ä|ae)nge|wurzel|sinus|rest))(?=\\s+(?i:von)\\b)",
+      "name": "support.function.builtin.klarsatz"
+    },
+    {
+      "match": "\\b((?i:wert))(?=\\s+(?i:f(?:ü|ue)r)\\b)",
+      "name": "support.function.builtin.klarsatz"
+    },
+    {
+      "match": "\\b((?i:element))(?=\\s+(?:\\d|\\(|(?i:von)\\b|\\p{L}(?:\\p{L}|\\d|_)*\\s+(?i:von)\\b))",
+      "name": "support.function.builtin.klarsatz"
+    },
+    {
+      "match": "\\b((?i:zuf(?:ä|ae)lliges|zuf(?:ä|ae)llige|letzte|erste))(?=\\s+(?i:element)\\b)",
+      "name": "support.function.builtin.klarsatz"
+    },
+    {
+      "match": "\\b((?i:ein|eine|keine))(\\s+)((?i:zahl|text|liste|tabelle))(?=\\s+(?i:ist|sind)\\b)",
+      "captures": {
+        "1": {
+          "name": "keyword.operator.word.klarsatz"
+        },
+        "3": {
+          "name": "entity.name.type.klarsatz"
+        }
+      }
+    },
+    {
+      "match": "\\b((?i:liste|tabelle))(\\s+)((?i:namens))\\b",
+      "captures": {
+        "1": {
+          "name": "entity.name.type.klarsatz"
+        },
+        "3": {
+          "name": "keyword.operator.word.klarsatz"
+        }
+      }
+    },
+    {
+      "match": "\\b(?i:wiederhole|definiere|versuche|aufgabe|solange|zur(?:ü|ue)ck|fehler|sicher|stelle|weiter|z(?:ä|ae)hle|h(?:ö|oe)re|jeden|jedes|sonst|da(?:ß|ss)|ende|f(?:ü|ue)r|jede|mach|wenn|bei|gib)\\b",
+      "name": "keyword.control.klarsatz"
+    },
+    {
+      "match": "\\b(?i:verringere|erschaffe|verdopple|entferne|erstelle|halbiere|schreibe|sortiere|verbinde|erh(?:ö|oe)he|ersetze|kopiere|l(?:ö|oe)sche|f(?:ü|ue)hre|drehe|frage|f(?:ü|ue)ge|merke|senke|setze|teile|trage|warte|zeige|gehe|hebe|lies|nimm)\\b",
+      "name": "keyword.other.statement.klarsatz"
+    },
+    {
+      "match": "\\b(?i:strichst(?:ä|ae)rke|r(?:ü|ue)ckw(?:ä|ae)rts|absteigend|h(?:ö|oe)chstens|mindestens|akt(?:ü|ue)llen|akt(?:ü|ue)ller|akt(?:ü|ue)lles|schritten|abw(?:ä|ae)rts|akt(?:ü|ue)lle|enth(?:ä|ae)lt|gr(?:ö|oe)(?:ß|ss)er|schritte|sekunden|geteilt|kleiner|sekunde|stellen|teilbar|gleich|namens|durch|hinzu|immer|keine|minus|nicht|grad|hoch|oder|plus|sind|als|auf|aus|bis|hat|ist|mal|mit|und|von|in|um|zu)\\b",
+      "name": "keyword.operator.word.klarsatz"
+    },
+    {
+      "match": "\\b(?i:falsch|wahr)\\b",
+      "name": "constant.language.klarsatz"
+    },
+    {
+      "match": "[.,:()]",
+      "name": "punctuation.separator.klarsatz"
+    }
+  ]
+}

@@ -1,0 +1,167 @@
+<p class="lede">Klarsatz ist eine <strong>kontrollierte natürliche Sprache</strong>. Programme lesen sich wie deutsche Anweisungen, folgen aber festen Satzmustern. Dieses Kapitel erklärt, wie ein Satz gebaut ist, wie man etwas ausgibt und einliest und wie man Werte merkt.</p>
+
+<h2 id="satzbau">Ein Satz ist ein Befehl</h2>
+<p class="h2-sub">Die zehn Grundregeln</p>
+
+<p>Jeder Klarsatz-Befehl ist ein Satz: Er beginnt mit einem Verb im Imperativ und endet mit einem <strong>Punkt</strong>. Zeilenumbrüche und Einrückung sind für den Interpreter bedeutungslos — sie dienen allein dem Lesen.</p>
+
+<div class="code-kopf"><span class="code-titel">Der kleinste Satz</span></div>
+<pre class="klar">Zeige "Hallo Welt".</pre>
+
+<div class="tab-huelle">
+<table>
+<thead><tr><th>Regel</th><th>Beispiel</th></tr></thead>
+<tbody>
+<tr><td>Ein Satz ist ein Befehl und endet mit einem Punkt.</td><td><code>Zeige "Hallo".</code></td></tr>
+<tr><td>Befehle stehen im Imperativ am Satzanfang.</td><td><code>Merke</code>, <code>Setze</code>, <code>Zeige</code></td></tr>
+<tr><td>Blöcke beginnen mit <code>:</code> und enden mit <code>Ende.</code></td><td><code>Wiederhole 3 Mal: … Ende.</code></td></tr>
+<tr><td>Artikel werden überlesen.</td><td><code>Zeige die Summe.</code> = <code>Zeige Summe.</code></td></tr>
+<tr><td>Füllwörter ebenso.</td><td><code>Merke dir 5 als Zahl.</code> = <code>Merke 5 als Zahl.</code></td></tr>
+<tr><td>Groß- und Kleinschreibung ist egal.</td><td><code>Zähle</code> = <code>zaehle</code> = <code>ZAEHLE</code></td></tr>
+<tr><td><code>ä ö ü ß</code> gelten wie <code>ae oe ue ss</code>.</td><td><code>Größe</code> = <code>Groesse</code></td></tr>
+<tr><td>Namen werden nicht gebeugt.</td><td><code>Zahl</code>, nicht „der Zahl“</td></tr>
+<tr><td>Zeilenumbrüche und Einrückung sind bedeutungslos.</td><td>Einrückung dient nur dem Lesen.</td></tr>
+<tr><td>Kommentar: <code>Anmerkung:</code> bis zum Zeilenende.</td><td><code>Anmerkung: erklärt etwas.</code></td></tr>
+<tr><td>Klammern gibt es nur für Rechnungen und Argumente.</td><td><code>Wurzel von (a plus b)</code></td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="notiz regel">
+<span class="notiz-titel">Artikel und Füllwörter sind erlaubt, nicht nötig</span>
+<p>Die Wörter <em>der, die, das, den, dem, ein, eine, einen</em> und ihre Geschwister werden beim Lesen übersprungen. Man darf sie schreiben, damit der Satz natürlich klingt — verlangt werden sie nie.</p>
+<p>Dasselbe gilt für <em>dir, dich, mir, mich, uns, sich</em> und <em>bitte</em>. So darf man schreiben, wie man spricht:</p>
+<pre class="klar" style="margin-top:14px">Merke dir 5 als Zahl.
+Bitte zeige mir die Zahl.
+Drehe dich um 90 Grad nach rechts.</pre>
+<p style="margin-top:12px">Im <a href="spielplatz.html#beispiel=schreibweise">Spielplatz</a> führt das Beispiel <em>So darf man schreiben</em> alle diese Freiheiten an einem Stück vor.</p>
+</div>
+
+<h2 id="werte">Werte: Zahlen, Texte, Wahrheit</h2>
+<p class="h2-sub">Was in einem Programm vorkommen darf</p>
+
+<p>Texte stehen zwischen <code>"…"</code> oder <code>„…“</code>. Zahlen schreibt man mit Punkt als Dezimaltrenner: <code>42</code>, <code>3.14</code>, negative direkt mit Vorzeichen: <code>-5</code>. Die <strong>Ausgabe</strong> erfolgt dagegen deutsch — aus <code>3.5</code> wird auf dem Bildschirm <code>3,5</code>. Wahrheitswerte heißen <code>wahr</code> und <code>falsch</code>.</p>
+
+<div class="code-kopf"><span class="code-titel">Werte und ihre Ausgabe</span></div>
+<pre class="klar">Zeige 42.
+Zeige -5.
+Zeige 3.5.
+Zeige "Ein Text".
+Zeige „Auch so geht es“.
+Zeige wahr.</pre>
+
+<div class="notiz warnung">
+<span class="notiz-titel">Kein Dezimalkomma in der Eingabe</span>
+<p>Im Quelltext trennt das Komma Satzteile — deshalb muss eine Kommazahl dort mit Punkt geschrieben werden: <code>3.14</code>, nie <code>3,14</code>. Angezeigt wird sie anschließend trotzdem deutsch.</p>
+</div>
+
+<h2 id="ausgabe">Ausgeben und Einlesen</h2>
+<p class="h2-sub">Zeige, Frage und das verbindende „und“</p>
+
+<p><code>Zeige</code> schreibt eine Zeile. Mehrere Teile werden mit <code>und</code> aneinandergehängt — ohne Leerzeichen dazwischen, man setzt es also selbst.</p>
+
+<div class="code-kopf"><span class="code-titel">Ausgabe zusammensetzen</span></div>
+<pre class="klar">Merke 12 als Summe.
+Zeige "Hallo Welt".
+Zeige "Summe: " und Summe.
+Zeige "Von " und 1 und " bis " und 10 und ".".</pre>
+
+<p><code>Frage</code> liest eine Eingabe ein und merkt sie unter einem Namen. Sieht die Antwort wie eine Zahl aus, <strong>wird</strong> sie zur Zahl — sonst bleibt sie ein Text. Ob das eine oder das andere vorliegt, lässt sich mit <code>eine Zahl</code> beziehungsweise <code>keine Zahl</code> prüfen.</p>
+
+<div class="code-kopf"><span class="code-titel">Eingabe einlesen</span></div>
+<pre class="klar">Frage "Wie heißt du?" und merke die Antwort als Name.
+Zeige "Hallo, " und Name und "!".
+
+Frage "Wie alt bist du?" und merke die Antwort als Alter.
+Wenn Alter keine Zahl ist:
+    Zeige "Das war keine Zahl.".
+Sonst wenn Alter mindestens 18 ist:
+    Zeige "Willkommen.".
+Ende.</pre>
+
+<p>Einzelne Buchstaben eines Textes holt man mit <code>Element 1 von Antwort</code>. Bei einer Antwort, die zur Zahl geworden ist, führt das zu einem Fehler — der sich mit <a href="doku-aufgaben.html#fehler">Versuche</a> abfangen lässt.</p>
+
+<div class="notiz">
+<span class="notiz-titel">Im Spielplatz</span>
+<p>Der <a href="spielplatz.html">Spielplatz</a> hat keine Tastatureingabe während des Laufs. Antworten für <code>Frage</code> trägt man vorab in das Feld <em>Eingaben</em> ein — eine Antwort je Zeile, in der Reihenfolge, in der gefragt wird.</p>
+</div>
+
+<h2 id="variablen">Werte merken</h2>
+<p class="h2-sub">Merke, Setze und die kurzen Rechenbefehle</p>
+
+<p><code>Merke</code> legt einen Namen an oder überschreibt ihn. <code>Setze</code> ändert einen Namen, der bereits existiert — schreibt man sich dabei vertippt, meldet Klarsatz das, statt still eine zweite Variable anzulegen.</p>
+
+<div class="code-kopf"><span class="code-titel">Anlegen und Ändern</span></div>
+<pre class="klar">Merke 5 als Zahl.                 Anmerkung: anlegen oder überschreiben
+Merke für immer 3.14159 als Pi.   Anmerkung: Konstante, nicht mehr änderbar
+Setze die Zahl auf 7.             Anmerkung: ändern, Name muss existieren
+
+Erhöhe die Zahl um 1.             Anmerkung: ohne "um" wird um 1 erhöht
+Erhöhe die Zahl.
+Verringere die Zahl um 2.
+Verdopple die Zahl.
+Halbiere die Zahl.
+Zeige die Zahl.
+
+Merke "Wolfgang" als Name.
+Verbinde "Hallo, " und Name zu Gruss.
+Zeige Gruss.</pre>
+
+<div class="tab-huelle">
+<table>
+<thead><tr><th>Befehl</th><th>Wirkung</th></tr></thead>
+<tbody>
+<tr><td><code>Merke Wert als Name.</code></td><td>Legt den Namen an oder überschreibt ihn.</td></tr>
+<tr><td><code>Merke für immer Wert als Name.</code></td><td>Legt eine Konstante an.</td></tr>
+<tr><td><code>Setze Name auf Wert.</code></td><td>Ändert einen vorhandenen Namen.</td></tr>
+<tr><td><code>Erhöhe Name um n.</code></td><td>Zählt hinauf, ohne <code>um</code> um 1.</td></tr>
+<tr><td><code>Verringere Name um n.</code></td><td>Zählt hinunter, ohne <code>um</code> um 1.</td></tr>
+<tr><td><code>Verdopple Name.</code> · <code>Halbiere Name.</code></td><td>Mal zwei, geteilt durch zwei.</td></tr>
+<tr><td><code>Verbinde a und b zu Name.</code></td><td>Hängt zwei Werte zu einem Text zusammen.</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="notiz">
+<span class="notiz-titel">Tippfehler werden erkannt</span>
+<p>Benutzt ein Satz einen Namen, den es nicht gibt, nennt die Fehlermeldung den ähnlichsten vorhandenen: <em>Meintest du 'Summe'?</em> Das erspart die Suche nach der Stelle, an der sich ein Buchstabe verirrt hat.</p>
+</div>
+
+<h2 id="kommentare">Anmerkungen</h2>
+<p class="h2-sub">Notizen für Menschen</p>
+
+<p>Alles hinter <code>Anmerkung:</code> bis zum Zeilenende wird überlesen. Anmerkungen dürfen am Zeilenanfang oder hinter einem Satz stehen.</p>
+
+<div class="code-kopf"><span class="code-titel">Anmerkungen im Quelltext</span></div>
+<pre class="klar">Anmerkung: Dieses Programm rechnet den Kreisumfang aus.
+
+Merke für immer 3.14159 als Pi.
+Merke 5 als Radius.
+Merke 2 mal Pi mal Radius als Umfang.   Anmerkung: U = 2 · π · r
+Zeige "Umfang: " und Formatiert von Umfang auf 2 Stellen.</pre>
+
+<h2 id="stolperfallen">Häufige Stolperfallen</h2>
+<p class="h2-sub">Was Anfängern zuerst passiert</p>
+
+<p>Klarsatz liest sich wie Deutsch — und genau das verführt zu Sätzen, die <em>fast</em> stimmen. Diese sechs Fälle erwischen fast jeden einmal.</p>
+
+<div class="tab-huelle">
+<table>
+<thead><tr><th>Falsch</th><th>Richtig</th><th>Warum</th></tr></thead>
+<tbody>
+<tr><td><code>Wenn Befehl "fertig" ist:</code></td><td><code>Wenn Befehl gleich "fertig" ist:</code></td><td>Zwischen zwei Werte gehört immer ein Vergleichswort.</td></tr>
+<tr><td><code>Definiere Aufgabe Zeige Preisliste:</code></td><td><code>Definiere Aufgabe PreislisteAnzeigen:</code></td><td>Ein Aufgabenname ist <strong>ein</strong> Wort — sonst gilt das zweite als Parameter.</td></tr>
+<tr><td><code>Zeige "Hallo"</code></td><td><code>Zeige "Hallo".</code></td><td>Jeder Satz endet mit einem Punkt.</td></tr>
+<tr><td><code>Wiederhole 3 Mal: Zeige "hi".</code></td><td>… <code>Ende.</code> dahinter</td><td>Was mit <code>:</code> beginnt, endet mit <code>Ende.</code></td></tr>
+<tr><td><code>Zeige die Zahlen.</code> (für <code>Zahl</code>)</td><td><code>Zeige die Zahl.</code></td><td>Namen werden nicht gebeugt — nur Feldnamen von Dingen dürfen das.</td></tr>
+<tr><td><code>Wenn x größer als 3 ist, zeige "a". Zeige "b".</code></td><td>Blockform mit <code>:</code> und <code>Ende.</code></td><td>Die Kurzform führt genau <strong>einen</strong> Satz aus.</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="notiz">
+<span class="notiz-titel">Der Prüfmodus findet das alles</span>
+<p>Statt zu raten, lässt man prüfen — ohne das Programm auszuführen:</p>
+<p style="margin-top:10px"><code>python3 -m klarsatz --pruefe programm.klar</code></p>
+<p>Im <a href="spielplatz.html">Spielplatz</a> macht das der Knopf <em>Prüfen</em>. Er nennt Zeile, Spalte und meist auch gleich den richtigen Namen: „Meintest du 'Summe'?“</p>
+</div>

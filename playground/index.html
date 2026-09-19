@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Klarsatz – Spielwiese</title>
+  <link rel="stylesheet" href="klarsatz-playground.css">
+  <style>
+    body { margin: 0; padding: 1.5rem 1rem 3rem; font: 16px/1.5 system-ui, sans-serif; background: #eef1f6; color: #1f2430; }
+    @media (prefers-color-scheme: dark) { body { background: #0f1218; color: #e6e9ef; } }
+    main { max-width: 68rem; margin: 0 auto; }
+    h1 { margin: 0 0 .25rem; } p { margin: .25rem 0 1rem; } .klein { opacity: .7; font-size: .9em; margin-top: 1rem; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Klarsatz – Spielwiese</h1>
+    <p>Programmiere auf Deutsch: Wähle ein Beispiel, ändere es und drücke <strong>Strg+Enter</strong>.</p>
+    <div id="spielwiese"></div>
+    <p class="klein">Alles läuft in deinem Browser (Python über Pyodide) – nichts wird an einen Server geschickt.</p>
+  </main>
+  <script type="module">
+    import { erstelle } from "./klarsatz-playground.js";
+    erstelle(document.getElementById("spielwiese"));
+  </script>
+</body>
+</html>

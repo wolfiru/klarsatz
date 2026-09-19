@@ -1,0 +1,153 @@
+Anmerkung: Mini-Textadventure — erkunde ein verlassenes Haus.
+Anmerkung: Befehle: gehen [richtung], nehmen [gegenstand], inventar, ansehen, hilfe, ende
+
+Anmerkung: --- Räume ---
+Erstelle eine Tabelle namens RaumBeschreibung
+    mit "Start" als "Du stehst in einem kleinen, schwach beleuchteten Raum. Es riecht nach altem Holz."
+    und "Flur" als "Ein langer, kühler Flur. An den Wänden hängen verblasste Bilder."
+    und "Küche" als "Eine verlassene Küche. Auf dem Tisch liegt etwas Glänzendes."
+    und "Garten" als "Du trittst in einen überwucherten Garten. Frische Luft!"
+    und "Keller" als "Ein dunkler Keller. Es ist feucht und kalt hier unten.".
+
+Erstelle eine Tabelle namens Ausgaenge
+    mit "Start" als "norden:Flur"
+    und "Flur" als "süden:Start, osten:Küche, westen:Keller"
+    und "Küche" als "westen:Flur, norden:Garten"
+    und "Garten" als "süden:Küche"
+    und "Keller" als "osten:Flur".
+
+Anmerkung: --- Gegenstände ---
+Erstelle eine Tabelle namens GegenstandOrt
+    mit "schlüssel" als "Küche"
+    und "lampe" als "Keller"
+    und "brief" als "Garten".
+
+Erstelle eine Liste namens Inventar.
+
+Merke "Start" als AktuellerRaum.
+Merke falsch als SpielBeendet.
+
+Definiere Aufgabe RaumAnzeigen:
+    Zeige "".
+    Zeige "=== " und AktuellerRaum und " ===".
+    Zeige Wert für AktuellerRaum in RaumBeschreibung.
+    Zeige "".
+    Zeige "Ausgänge: " und Wert für AktuellerRaum in Ausgaenge.
+    Zeige "".
+
+    Für jedes Ding in GegenstandOrt:
+        Wenn Wert für Ding in GegenstandOrt gleich AktuellerRaum ist:
+            Zeige "Du siehst hier: " und Ding und ".".
+        Ende.
+    Ende.
+Ende.
+
+Definiere Aufgabe InventarAnzeigen:
+    Wenn die Länge von Inventar höchstens 0 ist:
+        Zeige "Dein Inventar ist leer.".
+    Sonst:
+        Zeige "Du trägst:".
+        Für jedes Ding in Inventar:
+            Zeige "  - " und Ding.
+        Ende.
+    Ende.
+Ende.
+
+Definiere Aufgabe Nehmen mit Name:
+    Wenn GegenstandOrt enthält Name:
+        Wenn Wert für Name in GegenstandOrt gleich AktuellerRaum ist:
+            Füge Name zum Inventar hinzu.
+            Entferne Name aus GegenstandOrt.
+            Zeige "Du nimmst " und Name und " auf.".
+        Sonst:
+            Zeige "Das ist hier nicht zu finden.".
+        Ende.
+    Sonst:
+        Zeige "So etwas gibt es hier nicht.".
+    Ende.
+Ende.
+
+Definiere Aufgabe Gehen mit Richtung:
+    Merke Wert für AktuellerRaum in Ausgaenge als Moeglichkeiten.
+    Teile Moeglichkeiten bei ", " zu ListeDerAusgaenge.
+
+    Merke falsch als Gefunden.
+
+    Für jedes Eintrag in ListeDerAusgaenge:
+        Teile Eintrag bei ":" zu Teile.
+        Merke Element 1 von Teile als RichtungName.
+        Merke Element 2 von Teile als ZielRaum.
+
+        Wenn RichtungName gleich Richtung ist:
+            Setze AktuellerRaum auf ZielRaum.
+            Setze Gefunden auf wahr.
+            Zeige "Du gehst nach " und Richtung und ".".
+        Ende.
+    Ende.
+
+    Wenn Gefunden gleich falsch ist:
+        Zeige "In diese Richtung kannst du nicht gehen.".
+    Ende.
+Ende.
+
+Anmerkung: --- Hauptprogramm ---
+Zeige "Willkommen im verlassenen Haus!".
+Zeige "Tippe 'hilfe', um die Befehle zu sehen.".
+Zeige "".
+
+Wiederhole 50 Mal:
+    Wenn SpielBeendet gleich wahr ist:
+        Höre auf.
+    Ende.
+
+    Führe RaumAnzeigen aus.
+
+    Frage "Was möchtest du tun?" und merke die Antwort als Eingabe.
+    Merke Kleinbuchstaben von Eingabe als Befehl.
+
+    Wenn Befehl gleich "hilfe" ist:
+        Zeige "Mögliche Befehle:".
+        Zeige "  gehen [norden/süden/osten/westen]".
+        Zeige "  nehmen [gegenstand]".
+        Zeige "  inventar".
+        Zeige "  ansehen".
+        Zeige "  ende".
+    Ende.
+
+    Wenn Befehl gleich "inventar" ist:
+        Führe InventarAnzeigen aus.
+    Ende.
+
+    Wenn Befehl gleich "ansehen" ist:
+        Führe RaumAnzeigen aus.
+    Ende.
+
+    Wenn Befehl gleich "ende" ist:
+        Zeige "Du verlässt das Abenteuer. Auf Wiedersehen!".
+        Setze SpielBeendet auf wahr.
+    Ende.
+
+    Anmerkung: Gehen
+    Wenn Befehl enthält "gehen":
+        Teile Befehl bei " " zu Worte.
+        Wenn die Länge von Worte mindestens 2 ist:
+            Merke Element 2 von Worte als Richtung.
+            Führe Gehen mit Richtung aus.
+        Sonst:
+            Zeige "Wohin möchtest du gehen? (z.B. gehen norden)".
+        Ende.
+    Ende.
+
+    Anmerkung: Nehmen
+    Wenn Befehl enthält "nehmen":
+        Teile Befehl bei " " zu Worte.
+        Wenn die Länge von Worte mindestens 2 ist:
+            Merke Element 2 von Worte als Gegenstand.
+            Führe Nehmen mit Gegenstand aus.
+        Sonst:
+            Zeige "Was möchtest du nehmen?".
+        Ende.
+    Ende.
+Ende.
+
+Zeige "Spiel beendet.".

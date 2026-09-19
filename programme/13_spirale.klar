@@ -1,0 +1,19 @@
+Anmerkung: Eine Spirale, die mit jeder Drehung länger und bunter wird.
+
+Erstelle eine Liste namens Farben mit "gold" und "orange" und "rot" und "rosa"
+    und "lila" und "blau" und "türkis" und "grün".
+
+Nimm die Strichstärke 2.
+Merke 5 als Laenge.
+Merke 0 als Nummer.
+
+Wiederhole 60 Mal:
+    Merke den Rest von Nummer geteilt durch 8 als Stelle.
+    Nimm die Farbe Element (Stelle plus 1) von Farben.
+    Gehe Laenge Schritte vor.
+    Drehe dich um 61 Grad nach rechts.
+    Setze Laenge auf Laenge plus 4.
+    Erhöhe Nummer.
+Ende.
+
+Zeige "60 Striche in acht Farben.".

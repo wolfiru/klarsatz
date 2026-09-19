@@ -1,0 +1,70 @@
+Anmerkung: Zahlenraten – DU denkst dir eine Zahl von 1 bis 10, der COMPUTER errät sie.
+Anmerkung: Er tippt immer auf die Mitte (Halbierungsverfahren) und braucht höchstens 4 Tipps.
+
+Anmerkung: Erster Buchstabe der Eingabe, klein geschrieben. Bei leerer Eingabe oder einer Zahl kommt "?".
+Definiere Aufgabe Kürzel von text:
+    Versuche:
+        Gib Kleinbuchstaben von (Element 1 von text) zurück.
+    Bei Fehler:
+        Gib "?" zurück.
+    Ende.
+Ende.
+
+Definiere Aufgabe Spielrunde:
+    Merke 1 als Untergrenze.
+    Merke 10 als Obergrenze.
+    Merke 0 als Tipps.
+    Merke falsch als gefunden.
+    Merke falsch als geschummelt.
+
+    Wiederhole solange nicht gefunden ist und nicht geschummelt ist:
+        Anmerkung: Die Mitte berechnen, abgerundet (über den Rest).
+        Merke Untergrenze plus Obergrenze als Summe.
+        Merke den Rest von Summe geteilt durch 2 als Ueberrest.
+        Merke (Summe minus Ueberrest) geteilt durch 2 als Tipp.
+        Erhöhe Tipps um 1.
+        Verbinde "Tipp " und Tipps und ": Ist es die " und Tipp und "?  (h = höher, n = niedriger, r = richtig) " zu Fragetext.
+
+        Merke falsch als verstanden.
+        Wiederhole solange nicht verstanden ist:
+            Frage Fragetext und merke die Antwort als Eingabe.
+            Merke Kürzel von Eingabe als Buchstabe.
+            Wenn Buchstabe gleich "r" ist:
+                Merke wahr als gefunden.
+                Merke wahr als verstanden.
+            Sonst wenn Buchstabe gleich "h" ist:
+                Merke Tipp plus 1 als Untergrenze.
+                Merke wahr als verstanden.
+            Sonst wenn Buchstabe gleich "n" ist:
+                Merke Tipp minus 1 als Obergrenze.
+                Merke wahr als verstanden.
+            Sonst:
+                Zeige "Das habe ich nicht verstanden. Bitte antworte mit h, n oder r.".
+            Ende.
+        Ende.
+
+        Wenn nicht gefunden ist und Untergrenze größer als Obergrenze ist:
+            Merke wahr als geschummelt.
+        Ende.
+    Ende.
+
+    Wenn gefunden ist:
+        Zeige "Geschafft! Deine Zahl ist die " und Tipp und " – ich habe " und Tipps und " Tipp(s) gebraucht.".
+    Sonst:
+        Zeige "Da stimmt etwas nicht: Nach deinen Antworten kann es keine Zahl von 1 bis 10 sein. Hast du geschummelt?".
+    Ende.
+Ende.
+
+Zeige "=== Zahlenraten ===".
+Zeige "Denk dir eine Zahl von 1 bis 10 aus – ich errate sie!".
+
+Merke wahr als weiterspielen.
+Wiederhole solange weiterspielen ist:
+    Führe Spielrunde aus.
+    Frage "Noch eine Runde? (j/n) " und merke die Antwort als Nochmal.
+    Wenn Kürzel von Nochmal nicht gleich "j" ist:
+        Merke falsch als weiterspielen.
+    Ende.
+Ende.
+
+Zeige "Danke fürs Spielen!".

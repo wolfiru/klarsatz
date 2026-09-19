@@ -1,0 +1,74 @@
+Anmerkung: Palindrom-Prüfer und Buchstabenzähler.
+
+Anmerkung: Nur die Buchstaben und Ziffern eines Textes, klein geschrieben.
+Definiere Aufgabe Nur_Buchstaben von wert:
+    Verbinde wert zu Roh.
+    Merke "" als Ergebnis.
+    Für jedes Zeichen in Roh:
+        Merke Kleinbuchstaben von Zeichen als Klein.
+        Wenn Klein mindestens "a" ist und Klein höchstens "z" ist:
+            Verbinde Ergebnis und Klein zu Ergebnis.
+        Sonst wenn Klein mindestens "0" ist und Klein höchstens "9" ist:
+            Verbinde Ergebnis und Klein zu Ergebnis.
+        Ende.
+    Ende.
+    Gib Ergebnis zurück.
+Ende.
+
+Definiere Aufgabe Umgedreht von wert:
+    Merke "" als Ergebnis.
+    Für jedes Zeichen in wert:
+        Verbinde Zeichen und Ergebnis zu Ergebnis.
+    Ende.
+    Gib Ergebnis zurück.
+Ende.
+
+Erstelle eine Liste namens Vokale mit "a" und "e" und "i" und "o" und "u" und "ä" und "ö" und "ü".
+
+Zeige "=== Palindrome und Textanalyse ===".
+
+Merke wahr als weiter.
+Wiederhole solange weiter ist:
+    Zeige "".
+    Zeige "1 = Ist mein Text ein Palindrom?".
+    Zeige "2 = Buchstaben, Vokale und Wörter zählen".
+    Zeige "0 = Ende".
+    Frage "Auswahl: " und merke die Antwort als Wahl.
+    Wenn Wahl gleich 1 ist:
+        Frage "Wort oder Satz: " und merke die Antwort als Eingabe.
+        Merke Nur_Buchstaben von Eingabe als Sauber.
+        Merke Umgedreht von Sauber als Rueckwaerts.
+        Wenn Sauber gleich "" ist:
+            Zeige "Da sind gar keine Buchstaben drin.".
+        Sonst wenn Sauber gleich Rueckwaerts ist:
+            Zeige "Ja, das ist ein Palindrom! (" und Sauber und ")".
+        Sonst:
+            Zeige "Nein. Rückwärts steht dort: " und Rueckwaerts.
+        Ende.
+    Sonst wenn Wahl gleich 2 ist:
+        Frage "Text: " und merke die Antwort als Eingabe.
+        Verbinde Eingabe zu Satz.
+        Teile Satz bei " " zu Teile.
+        Merke 0 als Woerter.
+        Für jedes Teil in Teile:
+            Wenn Teil nicht gleich "" ist, erhöhe Woerter um 1.
+        Ende.
+        Merke 0 als Buchstaben.
+        Merke 0 als Vokalzahl.
+        Für jedes Zeichen in Satz:
+            Merke Kleinbuchstaben von Zeichen als Klein.
+            Wenn Klein mindestens "a" ist und Klein höchstens "z" ist, erhöhe Buchstaben um 1.
+            Wenn Vokale enthält Klein, erhöhe Vokalzahl um 1.
+        Ende.
+        Zeige "Wörter: " und Woerter.
+        Zeige "Buchstaben: " und Buchstaben.
+        Zeige "Vokale: " und Vokalzahl.
+        Zeige "Konsonanten: " und Buchstaben minus Vokalzahl.
+    Sonst wenn Wahl gleich 0 ist:
+        Merke falsch als weiter.
+    Sonst:
+        Zeige "Das habe ich nicht verstanden.".
+    Ende.
+Ende.
+
+Zeige "Tschüss!".

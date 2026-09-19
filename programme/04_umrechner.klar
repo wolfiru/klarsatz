@@ -1,0 +1,70 @@
+Anmerkung: Umrechner – Temperatur, Länge und Währung.
+
+Definiere Aufgabe Zahl_holen von Fragetext:
+    Wiederhole solange wahr ist:
+        Frage Fragetext und merke dir die Antwort als Eingabe.
+        Wenn Eingabe eine Zahl ist:
+            Gib Eingabe zurück.
+        Ende.
+        Zeige "Das ist keine Zahl – bitte nochmal.".
+    Ende.
+Ende.
+
+Anmerkung: Fragt so lange, bis ein Wechselkurs größer als 0 eingegeben wurde.
+Definiere Aufgabe Kurs_holen:
+    Wiederhole solange wahr ist:
+        Merke dir Zahl_holen von "Wechselkurs (1 Euro = ? Fremdwährung): " als K.
+        Wenn K größer als 0 ist:
+            Gib K zurück.
+        Ende.
+        Zeige "Der Kurs muss größer als 0 sein.".
+    Ende.
+Ende.
+
+Zeige "=== Umrechner ===".
+
+Merke dir wahr als weiter.
+Wiederhole solange weiter ist:
+    Zeige "".
+    Zeige "1 = Celsius in Fahrenheit".
+    Zeige "2 = Fahrenheit in Celsius".
+    Zeige "3 = Kilometer in Meilen".
+    Zeige "4 = Meilen in Kilometer".
+    Zeige "5 = Euro in Fremdwährung".
+    Zeige "6 = Fremdwährung in Euro".
+    Zeige "0 = Ende".
+    Frage "Auswahl: " und merke dir die Antwort als Wahl.
+    Wenn Wahl gleich 1 ist:
+        Merke dir Zahl_holen von "Grad Celsius: " als C.
+        Merke dir C mal 9 geteilt durch 5 plus 32 als F.
+        Zeige C und " °C = " und Formatiert von F auf 2 Stellen und " °F".
+    Sonst wenn Wahl gleich 2 ist:
+        Merke dir Zahl_holen von "Grad Fahrenheit: " als F.
+        Merke dir (F minus 32) mal 5 geteilt durch 9 als C.
+        Zeige F und " °F = " und Formatiert von C auf 2 Stellen und " °C".
+    Sonst wenn Wahl gleich 3 ist:
+        Merke dir Zahl_holen von "Kilometer: " als Km.
+        Merke dir Km mal 0.621371 als Meilen.
+        Zeige Km und " km = " und Formatiert von Meilen auf 2 Stellen und " Meilen".
+    Sonst wenn Wahl gleich 4 ist:
+        Merke dir Zahl_holen von "Meilen: " als Meilen.
+        Merke dir Meilen mal 1.609344 als Km.
+        Zeige Meilen und " Meilen = " und Formatiert von Km auf 2 Stellen und " km".
+    Sonst wenn Wahl gleich 5 ist:
+        Merke dir Zahl_holen von "Betrag in Euro: " als Euros.
+        Merke dir Kurs_holen als Kurs.
+        Merke dir Euros mal Kurs als Fremd.
+        Zeige Formatiert von Euros auf 2 Stellen und " Euro = " und Formatiert von Fremd auf 2 Stellen und " Fremdwährung".
+    Sonst wenn Wahl gleich 6 ist:
+        Merke dir Zahl_holen von "Betrag in Fremdwährung: " als Fremd.
+        Merke dir Kurs_holen als Kurs.
+        Merke dir Fremd geteilt durch Kurs als Euros.
+        Zeige Formatiert von Fremd auf 2 Stellen und " Fremdwährung = " und Formatiert von Euros auf 2 Stellen und " Euro".
+    Sonst wenn Wahl gleich 0 ist:
+        Merke dir falsch als weiter.
+    Sonst:
+        Zeige "Das habe ich nicht verstanden.".
+    Ende.
+Ende.
+
+Zeige "Tschüss!".

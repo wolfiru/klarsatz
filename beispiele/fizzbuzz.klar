@@ -1,0 +1,6 @@
+Zähle von 1 bis 100 mit i:
+    Wenn i durch 15 teilbar ist, zeige "FizzBuzz".
+    Sonst wenn i durch 3 teilbar ist, zeige "Fizz".
+    Sonst wenn i durch 5 teilbar ist, zeige "Buzz".
+    Sonst zeige i.
+Ende.

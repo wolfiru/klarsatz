@@ -1,0 +1,103 @@
+Anmerkung: Galgenmännchen – gegen den Computer oder zu zweit.
+
+Definiere Aufgabe Klein von wert:
+    Verbinde wert zu Ergebnis.
+    Gib Kleinbuchstaben von Ergebnis zurück.
+Ende.
+
+Anmerkung: Erster Buchstabe der Eingabe, klein geschrieben ("?" bei leerer Eingabe).
+Definiere Aufgabe Erster von wert:
+    Merke Klein von wert als Text_klein.
+    Wenn Text_klein gleich "" ist, gib "?" zurück.
+    Gib Element 1 von Text_klein zurück.
+Ende.
+
+Definiere Aufgabe Ist_Buchstabe von zeichen:
+    Merke Klein von zeichen als Kleiner_Buchstabe.
+    Wenn Kleiner_Buchstabe mindestens "a" ist und Kleiner_Buchstabe höchstens "z" ist, gib wahr zurück.
+    Gib falsch zurück.
+Ende.
+
+Erstelle eine Liste namens Woerter mit "programm" und "computer" und "tastatur" und "bildschirm"
+    und "schleife" und "variable" und "aufgabe" und "klarsatz" und "wolke" und "gebirge".
+
+Erstelle eine Liste namens Bilder mit
+    "  +---+\n  |   |\n      |\n      |\n      |\n      |\n========="
+    und "  +---+\n  |   |\n  O   |\n      |\n      |\n      |\n========="
+    und "  +---+\n  |   |\n  O   |\n  |   |\n      |\n      |\n========="
+    und "  +---+\n  |   |\n  O   |\n /|   |\n      |\n      |\n========="
+    und "  +---+\n  |   |\n  O   |\n /|\  |\n      |\n      |\n========="
+    und "  +---+\n  |   |\n  O   |\n /|\  |\n /    |\n      |\n========="
+    und "  +---+\n  |   |\n  O   |\n /|\  |\n / \  |\n      |\n=========".
+
+Zeige "=== Galgenmännchen ===".
+Frage "1 = gegen den Computer, 2 = zu zweit: " und merke die Antwort als Modus.
+
+Wenn Modus gleich 2 ist:
+    Frage "Spieler 1, gib ein geheimes Wort ein: " und merke die Antwort als Eingabe.
+    Merke Klein von Eingabe als Wort.
+    Wiederhole 40 Mal:
+        Zeige "".
+    Ende.
+    Zeige "Spieler 2 ist dran!".
+Sonst:
+    Merke Zufallszahl von 1 bis Länge von Woerter als Nummer.
+    Merke Element Nummer von Woerter als Wort.
+Ende.
+
+Merke 0 als Fehler.
+Merke 6 als Maximum.
+Erstelle eine Liste namens Erraten.
+Merke falsch als gewonnen.
+Merke falsch als fertig.
+
+Wiederhole solange nicht fertig ist:
+    Merke "" als Anzeige.
+    Merke 0 als Offen.
+    Für jedes Zeichen in Wort:
+        Wenn nicht Ist_Buchstabe von Zeichen ist:
+            Verbinde Anzeige und Zeichen und " " zu Anzeige.
+        Sonst wenn Erraten enthält Zeichen:
+            Verbinde Anzeige und Zeichen und " " zu Anzeige.
+        Sonst:
+            Verbinde Anzeige und "_ " zu Anzeige.
+            Erhöhe Offen um 1.
+        Ende.
+    Ende.
+
+    Merke Fehler plus 1 als Bildnummer.
+    Zeige "".
+    Zeige Element Bildnummer von Bilder.
+    Zeige "Wort: " und Anzeige.
+    Zeige "Fehler: " und Fehler und " von " und Maximum.
+
+    Wenn Offen gleich 0 ist:
+        Merke wahr als gewonnen.
+        Merke wahr als fertig.
+    Sonst wenn Fehler mindestens Maximum ist:
+        Merke wahr als fertig.
+    Sonst:
+        Frage "Dein Buchstabe: " und merke die Antwort als Eingabe.
+        Merke Erster von Eingabe als Tipp.
+        Wenn nicht Ist_Buchstabe von Tipp ist:
+            Zeige "Bitte einen Buchstaben eingeben.".
+        Sonst wenn Erraten enthält Tipp:
+            Zeige "Den hattest du schon.".
+        Sonst:
+            Füge Tipp zu Erraten hinzu.
+            Wenn Wort enthält Tipp:
+                Zeige "Treffer!".
+            Sonst:
+                Zeige "Leider nicht.".
+                Erhöhe Fehler um 1.
+            Ende.
+        Ende.
+    Ende.
+Ende.
+
+Zeige "".
+Wenn gewonnen ist:
+    Zeige "Gewonnen! Das Wort war: " und Wort.
+Sonst:
+    Zeige "Verloren. Das Wort war: " und Wort.
+Ende.

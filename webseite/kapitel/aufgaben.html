@@ -1,0 +1,133 @@
+<p class="lede">Aufgaben sind das, was anderswo Funktionen heißt: ein Stück Programm mit Namen, das sich aufrufen lässt — als Befehl oder als Wert. Dazu kommt in diesem Kapitel, was passiert, wenn etwas schiefgeht.</p>
+
+<h2 id="definieren">Aufgaben definieren</h2>
+<p class="h2-sub">Definiere Aufgabe … Ende.</p>
+
+<div class="code-kopf"><span class="code-titel">Mit und ohne Rückgabe</span></div>
+<pre class="klar">Anmerkung: Eine Aufgabe, die etwas tut.
+Definiere Aufgabe Begrüße mit Name:
+    Zeige "Hallo, " und Name und "!".
+Ende.
+
+Anmerkung: Eine Aufgabe, die etwas liefert.
+Definiere Aufgabe Summe von a und b:
+    Gib a plus b zurück.
+Ende.
+
+Führe Begrüße mit "Wolfgang" aus.
+Zeige Summe von 3 und 4.</pre>
+
+<p><code>von</code> und <code>mit</code> sind austauschbar — man nimmt, was sich besser liest. Mehrere Argumente werden mit <code>und</code> aneinandergereiht.</p>
+
+<div class="notiz warnung">
+<span class="notiz-titel">Der Name ist ein einziges Wort</span>
+<p><code>Definiere Aufgabe Zeige Preisliste:</code> geht <strong>nicht</strong> — Klarsatz liest das als Aufgabe <em>Zeige</em> mit einem Parameter <em>Preisliste</em>. Setz die Wörter zusammen: <code>Definiere Aufgabe PreislisteAnzeigen:</code> oder <code>Definiere Aufgabe ZeigePreisliste:</code></p>
+</div>
+
+<div class="notiz regel">
+<span class="notiz-titel">Zwei Arten, eine Aufgabe zu rufen</span>
+<p><strong>Als Befehl</strong>, wenn sie etwas tut: <code>Führe Begrüße mit "Anna" aus.</code> — ein eigener Satz.</p>
+<p><strong>Als Wert</strong>, wenn sie etwas zurückgibt: <code>Zeige Summe von 3 und 4.</code> — mitten in einem Satz, dort wo sonst eine Zahl stünde.</p>
+<p>Eine Aufgabe ohne <code>Gib … zurück</code> lässt sich nicht als Wert benutzen; eine mit Rückgabe darf man mit <code>Führe … aus</code> trotzdem aufrufen und das Ergebnis verfallen lassen.</p>
+</div>
+
+<div class="tab-huelle">
+<table>
+<thead><tr><th>Satz</th><th>Wirkung</th></tr></thead>
+<tbody>
+<tr><td><code>Definiere Aufgabe N mit a:</code></td><td>beginnt die Definition</td></tr>
+<tr><td><code>Gib Wert zurück.</code></td><td>beendet die Aufgabe mit einem Ergebnis</td></tr>
+<tr><td><code>Führe N mit x aus.</code></td><td>Aufruf als Befehl</td></tr>
+<tr><td><code>Zeige N von x.</code></td><td>Aufruf als Wert</td></tr>
+</tbody>
+</table>
+</div>
+
+<h2 id="sichtbarkeit">Sichtbarkeit und Reihenfolge</h2>
+<p class="h2-sub">Was drinnen bleibt, was draußen gilt</p>
+
+<ul>
+<li>Namen, die <strong>in</strong> einer Aufgabe angelegt werden, sind außen unsichtbar.</li>
+<li>Globale Namen sind innen <strong>lesbar</strong>.</li>
+<li>Aufgaben dürfen <strong>vor</strong> ihrer Definition benutzt werden — die Anzahl der Parameter wird vorab gelesen, damit <code>und</code> eindeutig bleibt.</li>
+<li>Aufgaben dürfen sich <strong>selbst</strong> aufrufen, bis zu 150 Ebenen tief.</li>
+<li>Eine Variable darf <strong>nicht</strong> heißen wie eine Aufgabe — das meldet Klarsatz schon beim Lesen.</li>
+</ul>
+
+<div class="code-kopf"><span class="code-titel">Rekursion</span></div>
+<pre class="klar">Definiere Aufgabe Fakultät von n:
+    Wenn n höchstens 1 ist, gib 1 zurück.
+    Merke Fakultät von (n minus 1) als Rest.
+    Gib n mal Rest zurück.
+Ende.
+
+Zähle von 1 bis 10 mit i:
+    Zeige i und "! = " und Fakultät von i.
+Ende.</pre>
+
+<div class="notiz">
+<span class="notiz-titel">Klammern bei zusammengesetzten Argumenten</span>
+<p>Ein Argument ist ein einfacher Wert. Steht dort eine Rechnung, gehört sie in Klammern: <code>Fakultät von (n minus 1)</code>. Ohne Klammern wäre nicht zu erkennen, wo das Argument aufhört.</p>
+</div>
+
+<h2 id="fehler">Fehler abfangen</h2>
+<p class="h2-sub">Versuche … Bei Fehler … Ende.</p>
+
+<p>Tritt im <code>Versuche</code>-Block ein Fehler auf, springt der Ablauf in den <code>Bei Fehler</code>-Block. Der Name <code>Fehlermeldung</code> ist dort automatisch gefüllt — man muss ihn nicht anlegen.</p>
+
+<div class="code-kopf"><span class="code-titel">Fehlerbehandlung</span></div>
+<pre class="klar">Versuche:
+    Merke 10 geteilt durch 0 als x.
+    Zeige x.
+Bei Fehler:
+    Zeige "Problem: " und Fehlermeldung.
+Ende.
+
+Erstelle eine Liste namens Zahlen mit 3 und 1 und 2.
+Versuche:
+    Zeige Element 9 von Zahlen.
+Bei Fehler:
+    Zeige "Es gibt keinen 9. Eintrag: " und Fehlermeldung.
+Ende.
+
+Zeige "Das Programm läuft weiter.".</pre>
+
+<h3>Zusicherungen</h3>
+<p><code>Stelle sicher, dass …</code> prüft eine Bedingung und bricht das Programm ab, wenn sie nicht stimmt. Gedacht für Annahmen, die gelten <em>müssen</em> — nicht für erwartbare Fehleingaben.</p>
+
+<div class="code-kopf"><span class="code-titel">Zusicherung</span></div>
+<pre class="klar">Merke 5 als Guthaben.
+Stelle sicher, dass Guthaben größer als 0 ist.
+Zeige "Das Guthaben ist in Ordnung.".</pre>
+
+<div class="notiz warnung">
+<span class="notiz-titel">Das Schrittlimit ist kein Fehler</span>
+<p>Bricht der Interpreter wegen des Schrittlimits ab, lässt sich das <strong>nicht</strong> mit <code>Versuche</code> abfangen. Sonst könnte ein Programm seine eigene Notbremse überstimmen.</p>
+</div>
+
+<h2 id="dateien">Dateien</h2>
+<p class="h2-sub">Lies und Schreibe — im Spielplatz gesperrt</p>
+
+<div class="code-kopf"><span class="code-titel">Dateizugriff</span></div>
+<pre class="klar" data-probieren="nein">Lies die Datei "daten.txt" als Inhalt.
+Teile Inhalt bei "\n" zu Zeilen.
+Zeige "Die Datei hat " und die Länge von Zeilen und " Zeilen.".
+
+Schreibe "Fertig." in die Datei "out.txt".</pre>
+
+<div class="tab-huelle">
+<table>
+<thead><tr><th>Einstellung</th><th>Wirkung</th></tr></thead>
+<tbody>
+<tr><td>ohne Angabe</td><td>nur der Arbeitsordner und alles darunter — kein <code>..</code>, keine absoluten Pfade, kein Ausbruch über Verknüpfungen</td></tr>
+<tr><td><code>--dateien-ordner ORDNER</code></td><td>beschränkt auf diesen Ordner</td></tr>
+<tr><td><code>--ohne-dateien</code></td><td>jeder Dateizugriff gesperrt</td></tr>
+<tr><td><code>--dateien-ueberall</code></td><td>hebt den Schutz auf — nur für eigene Programme</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="notiz warnung">
+<span class="notiz-titel">Im Spielplatz gibt es keine Festplatte</span>
+<p>Der <a href="spielplatz.html">Spielplatz</a> arbeitet mit einem Dateisystem im Arbeitsspeicher: <code>Schreibe</code> legt dort etwas ab, das mit dem Lauf wieder verschwindet. Auf eine echte Festplatte wird nichts geschrieben — weder auf deine noch auf den Server. Am eigenen Rechner gilt stattdessen die Tabelle oben.</p>
+</div>

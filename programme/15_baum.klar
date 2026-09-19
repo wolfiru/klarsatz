@@ -1,0 +1,32 @@
+Anmerkung: Ein rekursiver Baum — jeder Ast trägt zwei kleinere Äste.
+
+Definiere Aufgabe Ast mit Laenge und Tiefe:
+    Wenn Tiefe größer als 0 ist:
+        Gehe Laenge Schritte vor.
+
+        Anmerkung: Linker Ast
+        Drehe dich um 30 Grad nach links.
+        Führe Ast mit (Laenge mal 0.7) und (Tiefe minus 1) aus.
+        Drehe dich um 30 Grad nach rechts.
+
+        Anmerkung: Rechter Ast
+        Drehe dich um 30 Grad nach rechts.
+        Führe Ast mit (Laenge mal 0.7) und (Tiefe minus 1) aus.
+        Drehe dich um 30 Grad nach links.
+
+        Anmerkung: Zurück zum Ausgangspunkt
+        Gehe Laenge Schritte zurück.
+    Ende.
+Ende.
+
+Nimm die Farbe "braun".
+Nimm die Strichstärke 3.
+
+Anmerkung: Etwas nach unten setzen, damit der Baum ins Bild passt.
+Hebe den Stift.
+Gehe 180 Schritte zurück.
+Senke den Stift.
+
+Führe Ast mit 90 und 7 aus.
+
+Zeige "Fertig – ein rekursiver Baum!".

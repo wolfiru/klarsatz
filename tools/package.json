@@ -1,0 +1,9 @@
+{
+  "name": "klarsatz-werkzeuge",
+  "private": true,
+  "description": "Nur für die Entwicklung: prüft die TextMate-Grammatik mit dem echten VS-Code-Tokenizer.",
+  "devDependencies": {
+    "vscode-oniguruma": "^2.0.1",
+    "vscode-textmate": "^9.0.0"
+  }
+}

@@ -1,0 +1,23 @@
+Merke 10 als Zahl.
+
+Versuche:
+    Merke Zahl geteilt durch 0 als Ergebnis.
+    Zeige "Das kommt nie an.".
+Bei Fehler:
+    Zeige "Da ging etwas schief: " und Fehlermeldung.
+Ende.
+
+Versuche:
+    Zeige Summme.
+Bei Fehler:
+    Zeige "Fehler: " und Fehlermeldung.
+Ende.
+
+Versuche:
+    Lies die Datei "gibt-es-nicht.txt" als Inhalt.
+Bei Fehler:
+    Zeige "Datei nicht gefunden: " und Fehlermeldung.
+Ende.
+
+Stelle sicher, dass Zahl größer als 100 ist.
+Zeige "wird nicht erreicht".

@@ -1,0 +1,89 @@
+/* Klarsatz-Spielwiese – alle Klassen beginnen mit kp-, Farben lassen sich über --kp-… anpassen. */
+.kp {
+  --kp-bg: #ffffff; --kp-bg2: #f6f7f9; --kp-rand: #d5d9e0; --kp-text: #1f2430; --kp-dezent: #6b7280;
+  --kp-akzent: #2563eb; --kp-fehler: #c62828; --kp-warnung: #b26a00; --kp-hinweis: #4b6584; --kp-ok: #2e7d32;
+  --kp-fehler-bg: rgba(198, 40, 40, .14); --kp-warnung-bg: rgba(178, 106, 0, .16); --kp-hinweis-bg: rgba(75, 101, 132, .13);
+  --kp-t-kommentar: #6a737d; --kp-t-text: #1a7f37; --kp-t-zahl: #b45309; --kp-t-steuerung: #7c3aed;
+  --kp-t-anweisung: #1d4ed8; --kp-t-funktion: #0f766e; --kp-t-konstante: #b45309; --kp-t-operator: #64748b;
+  --kp-t-funktionsname: #9a6700; --kp-t-typname: #0e7490; --kp-t-zeichen: #94a3b8;
+  --kp-schrift: ui-monospace, "Cascadia Code", "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+  --kp-hoehe: 26rem;
+  color: var(--kp-text); background: var(--kp-bg); border: 1px solid var(--kp-rand); border-radius: 10px;
+  font: 15px/1.45 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; overflow: hidden;
+}
+@media (prefers-color-scheme: dark) {
+  .kp {
+    --kp-bg: #161a22; --kp-bg2: #1d222c; --kp-rand: #2f3644; --kp-text: #e6e9ef; --kp-dezent: #9aa3b2;
+    --kp-akzent: #6ea8fe; --kp-fehler: #ff8a80; --kp-warnung: #ffc069; --kp-hinweis: #9fb4cc; --kp-ok: #7ee787;
+    --kp-fehler-bg: rgba(255, 138, 128, .17); --kp-warnung-bg: rgba(255, 192, 105, .16); --kp-hinweis-bg: rgba(159, 180, 204, .13);
+    --kp-t-kommentar: #8b949e; --kp-t-text: #7ee787; --kp-t-zahl: #ffb86b; --kp-t-steuerung: #c4a0ff;
+    --kp-t-anweisung: #79b8ff; --kp-t-funktion: #56d4c4; --kp-t-konstante: #ffb86b; --kp-t-operator: #9fb0c3;
+    --kp-t-funktionsname: #f2cc60; --kp-t-typname: #67e0f2; --kp-t-zeichen: #6b7688;
+  }
+}
+.kp *, .kp *::before, .kp *::after { box-sizing: border-box; }
+
+.kp-leiste { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; padding: .6rem .75rem; background: var(--kp-bg2); border-bottom: 1px solid var(--kp-rand); }
+.kp-beispiel { display: flex; align-items: center; gap: .4rem; color: var(--kp-dezent); }
+.kp-auswahl, .kp-knopf { font: inherit; color: var(--kp-text); background: var(--kp-bg); border: 1px solid var(--kp-rand); border-radius: 6px; padding: .3rem .6rem; }
+.kp-knopf { cursor: pointer; }
+.kp-knopf:hover:not(:disabled) { border-color: var(--kp-akzent); }
+.kp-knopf:disabled { opacity: .5; cursor: progress; }
+.kp-lauf { background: var(--kp-akzent); border-color: var(--kp-akzent); color: #fff; font-weight: 600; }
+@media (prefers-color-scheme: dark) { .kp-lauf { color: #0b1220; } }
+.kp-status { margin-left: auto; color: var(--kp-dezent); font-size: .9em; }
+.kp-status-fehler { color: var(--kp-fehler); } .kp-status-ok { color: var(--kp-ok); } .kp-status-wartet { color: var(--kp-akzent); }
+
+.kp-haelften { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); }
+@media (max-width: 800px) { .kp-haelften { grid-template-columns: 1fr; } }
+.kp-editor { display: flex; height: var(--kp-hoehe); border-right: 1px solid var(--kp-rand); background: var(--kp-bg); min-width: 0; }
+@media (max-width: 800px) { .kp-editor { border-right: 0; border-bottom: 1px solid var(--kp-rand); } }
+
+.kp-nummern, .kp-hervor, .kp-text { font: 14px/1.55 var(--kp-schrift); tab-size: 4; margin: 0; white-space: pre; letter-spacing: 0; }
+.kp-nummern { padding: .6rem .5rem; text-align: right; color: var(--kp-dezent); user-select: none; overflow: hidden; background: var(--kp-bg2); border-right: 1px solid var(--kp-rand); min-width: 2.6rem; }
+.kp-eingabebereich { position: relative; flex: 1; min-width: 0; }
+.kp-hervor, .kp-text { position: absolute; inset: 0; padding: .6rem .75rem; border: 0; width: 100%; height: 100%; overflow: auto; }
+.kp-hervor { overflow: hidden; pointer-events: none; color: var(--kp-text); }
+.kp-text { resize: none; background: transparent; color: transparent; -webkit-text-fill-color: transparent; caret-color: var(--kp-text); outline: none; }
+.kp-text::selection { background: rgba(110, 168, 254, .35); -webkit-text-fill-color: transparent; }
+.kp-editor:focus-within { box-shadow: inset 0 0 0 2px color-mix(in srgb, var(--kp-akzent) 55%, transparent); }
+
+.kp-zeile { display: inline-block; min-width: 100%; }
+.kp-marke-fehler { background: var(--kp-fehler-bg); } .kp-marke-warnung { background: var(--kp-warnung-bg); } .kp-marke-hinweis { background: var(--kp-hinweis-bg); }
+.kp-t-kommentar { color: var(--kp-t-kommentar); font-style: italic; } .kp-t-text { color: var(--kp-t-text); } .kp-t-zahl { color: var(--kp-t-zahl); }
+.kp-t-steuerung { color: var(--kp-t-steuerung); font-weight: 600; } .kp-t-anweisung { color: var(--kp-t-anweisung); font-weight: 600; }
+.kp-t-funktion { color: var(--kp-t-funktion); } .kp-t-konstante { color: var(--kp-t-konstante); } .kp-t-operator { color: var(--kp-t-operator); }
+.kp-t-funktionsname { color: var(--kp-t-funktionsname); font-weight: 600; } .kp-t-typname { color: var(--kp-t-typname); font-weight: 600; } .kp-t-zeichen { color: var(--kp-t-zeichen); }
+
+.kp-rechts { display: flex; flex-direction: column; height: var(--kp-hoehe); min-width: 0; background: var(--kp-bg2); }
+.kp-ausgabe { flex: 1; overflow: auto; padding: .6rem .75rem; font: 14px/1.55 var(--kp-schrift); white-space: pre-wrap; word-break: break-word; min-height: 11rem; }
+/* Sobald etwas gezeichnet wird, kommt die Leinwand dazu — dann wächst die ganze
+   Fläche, damit unter dem Bild noch genug Platz zum Lesen bleibt. */
+.kp-mit-bild .kp-rechts, .kp-mit-bild .kp-editor { height: calc(var(--kp-hoehe) + 16rem); }
+.kp-aus { min-height: 1.55em; }
+.kp-frage { display: flex; flex-wrap: wrap; align-items: baseline; }
+.kp-prompt { color: var(--kp-dezent); white-space: pre; }
+.kp-antwort { color: var(--kp-akzent); font-weight: 600; }
+.kp-antwortfeld { flex: 1; min-width: 6rem; font: inherit; color: var(--kp-text); background: var(--kp-bg); border: 1px solid var(--kp-akzent); border-radius: 4px; padding: 0 .35rem; }
+.kp-ende { margin-top: .5rem; color: var(--kp-dezent); font-style: italic; }
+.kp-fehlertext { margin: .5rem 0 0; padding: .5rem .6rem; border-left: 3px solid var(--kp-fehler); background: var(--kp-fehler-bg); color: var(--kp-text); font: inherit; white-space: pre-wrap; }
+
+.kp-befunde { list-style: none; margin: 0; padding: 0; max-height: 40%; overflow: auto; border-top: 1px solid var(--kp-rand); }
+.kp-befunde:empty { display: none; }
+.kp-b { padding: .35rem .75rem; border-bottom: 1px solid var(--kp-rand); font-size: .92em; }
+.kp-b-knopf { font: inherit; font-weight: 600; background: none; border: 0; padding: 0; cursor: pointer; text-decoration: underline; color: inherit; }
+.kp-b-fehler { color: var(--kp-fehler); } .kp-b-warnung { color: var(--kp-warnung); } .kp-b-hinweis { color: var(--kp-hinweis); } .kp-b-ok { color: var(--kp-ok); }
+.kp-b-text { color: var(--kp-text); }
+
+/* Zeichenfläche: erscheint nur, wenn ein Programm etwas gezeichnet hat. */
+.kp-leinwand {
+  display: block;
+  width: 100%;
+  border-bottom: 1px solid var(--kp-rand);
+  background: var(--kp-bg2);
+}
+.kp-leinwand[hidden] { display: none; }
+
+/* "Neu" leert das Blatt – etwas zurückhaltender als die Ausführen-Knöpfe. */
+.kp-neu { opacity: .85; }
+.kp-neu:hover { opacity: 1; }

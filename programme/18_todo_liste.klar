@@ -1,0 +1,107 @@
+Anmerkung: To-do-Liste mit Menü. Gespeichert wird in der Datei todo.txt (im aktuellen Ordner).
+Anmerkung: Format pro Zeile:  0;Titel  (offen)  oder  1;Titel  (erledigt)
+
+Eintrag hat Titel und Erledigt.
+Erstelle eine Liste namens Eintraege.
+
+Definiere Aufgabe Speichern:
+    Merke "" als Inhalt.
+    Für jedes E in Eintraege:
+        Wenn Erledigt von E ist, merke "1" als Kennung.
+        Sonst merke "0" als Kennung.
+        Verbinde Inhalt und Kennung und ";" und Titel von E und "\n" zu Inhalt.
+    Ende.
+    Versuche:
+        Schreibe Inhalt in die Datei "todo.txt".
+    Bei Fehler:
+        Zeige "Speichern hat nicht geklappt: " und Fehlermeldung.
+    Ende.
+Ende.
+
+Definiere Aufgabe Anzeigen:
+    Wenn Länge von Eintraege gleich 0 ist:
+        Zeige "(Die Liste ist leer.)".
+    Sonst:
+        Merke 0 als Nr.
+        Für jedes E in Eintraege:
+            Erhöhe Nr um 1.
+            Wenn Erledigt von E ist, merke "[x] " als Haken.
+            Sonst merke "[ ] " als Haken.
+            Zeige Nr und ". " und Haken und Titel von E.
+        Ende.
+    Ende.
+Ende.
+
+Anmerkung: Fragt nach einer Nummer aus der Liste; gibt 0 zurück, wenn die Eingabe nicht passt.
+Definiere Aufgabe Nummer_holen:
+    Frage "Nummer: " und merke die Antwort als Eingabe.
+    Wenn Eingabe keine Zahl ist oder Eingabe kleiner als 1 ist oder Eingabe größer als Länge von Eintraege ist:
+        Zeige "Diese Nummer gibt es nicht.".
+        Gib 0 zurück.
+    Ende.
+    Wenn Eingabe nicht gleich Abgerundet von Eingabe ist:
+        Zeige "Diese Nummer gibt es nicht.".
+        Gib 0 zurück.
+    Ende.
+    Gib Eingabe zurück.
+Ende.
+
+Anmerkung: Gespeicherte Einträge laden (gibt es die Datei noch nicht, startet die Liste leer).
+Versuche:
+    Lies die Datei "todo.txt" als Inhalt.
+Bei Fehler:
+    Merke "" als Inhalt.
+Ende.
+Teile Inhalt bei "\n" zu Zeilen.
+Für jedes Zeile in Zeilen:
+    Wenn Zeile nicht gleich "" ist:
+        Teile Zeile bei ";" zu Teile.
+        Merke falsch als Fertig.
+        Wenn Element 1 von Teile gleich "1" ist, merke wahr als Fertig.
+        Erschaffe Eintrag mit Titel Element 2 von Teile und Erledigt Fertig als Neu.
+        Füge Neu zu Eintraege hinzu.
+    Ende.
+Ende.
+
+Zeige "=== To-do-Liste ===".
+Merke wahr als weiter.
+Wiederhole solange weiter ist:
+    Zeige "".
+    Führe Anzeigen aus.
+    Zeige "".
+    Zeige "1 = Neu   2 = Abhaken   3 = Löschen   0 = Ende".
+    Frage "Auswahl: " und merke die Antwort als Wahl.
+    Wenn Wahl gleich 1 ist:
+        Frage "Was ist zu tun? " und merke die Antwort als Text_neu.
+        Verbinde Text_neu zu Titel_neu.
+        Wenn Titel_neu gleich "" ist:
+            Zeige "Leer geht nicht.".
+        Sonst wenn Titel_neu enthält ";" ist:
+            Zeige "Bitte ohne Semikolon schreiben.".
+        Sonst:
+            Erschaffe Eintrag mit Titel Titel_neu und Erledigt falsch als Neu.
+            Füge Neu zu Eintraege hinzu.
+            Führe Speichern aus.
+        Ende.
+    Sonst wenn Wahl gleich 2 ist:
+        Merke Nummer_holen als Nr.
+        Wenn Nr größer als 0 ist:
+            Merke Element Nr von Eintraege als E.
+            Setze Erledigt von E auf wahr.
+            Führe Speichern aus.
+        Ende.
+    Sonst wenn Wahl gleich 3 ist:
+        Merke Nummer_holen als Nr.
+        Wenn Nr größer als 0 ist:
+            Merke Element Nr von Eintraege als E.
+            Entferne E aus Eintraege.
+            Führe Speichern aus.
+        Ende.
+    Sonst wenn Wahl gleich 0 ist:
+        Merke falsch als weiter.
+    Sonst:
+        Zeige "Das habe ich nicht verstanden.".
+    Ende.
+Ende.
+
+Zeige "Bis bald!".

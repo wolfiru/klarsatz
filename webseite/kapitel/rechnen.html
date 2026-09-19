@@ -1,0 +1,242 @@
+<p class="lede">Klarsatz rechnet mit ausgeschriebenen Wörtern statt mit Symbolen: <code>plus</code> statt <code>+</code>, <code>mal</code> statt <code>*</code>. Vergleiche liest man ebenso — <code>größer als</code>, <code>mindestens</code>, <code>durch 3 teilbar</code>.</p>
+
+<h2 id="grundrechenarten">Grundrechenarten</h2>
+<p class="h2-sub">Punkt vor Strich, hoch bindet am stärksten</p>
+
+<div class="code-kopf"><span class="code-titel">Die sechs Rechenarten</span></div>
+<pre class="klar">Merke 7 als a.
+Merke 3 als b.
+
+Zeige a plus b.
+Zeige a minus b.
+Zeige a mal b.
+Zeige a geteilt durch b.
+Zeige a hoch b.
+Zeige den Rest von a geteilt durch b.
+
+Zeige -5 plus 2.              Anmerkung: negative Zahl, direkt vor der Ziffer
+Zeige minus a.                Anmerkung: Vorzeichen vor einem Namen
+Zeige 2 plus 3 mal 4.         Anmerkung: Punkt vor Strich, also 14
+Zeige (2 plus 3) mal 4.       Anmerkung: mit Klammern 20</pre>
+
+<div class="notiz regel">
+<span class="notiz-titel">Geteilt durch bleibt ganz, wenn es aufgeht</span>
+<p><code>10 geteilt durch 2</code> ergibt <code>5</code>, nicht <code>5,0</code>. Erst wenn die Teilung nicht aufgeht, entsteht eine Kommazahl. Das Teilen durch <code>0</code> ist ein Fehler, der sich mit <a href="doku-aufgaben.html#fehler">Versuche</a> abfangen lässt.</p>
+</div>
+
+<h2 id="funktionen">Umwandeln und Runden</h2>
+<p class="h2-sub">Wurzel, Betrag, Länge, Rundung, Zufall</p>
+
+<div class="tab-huelle">
+<table>
+<thead><tr><th>Schreibweise</th><th>Ergebnis</th></tr></thead>
+<tbody>
+<tr><td><code>die Wurzel von x</code></td><td>Quadratwurzel</td></tr>
+<tr><td><code>der Betrag von x</code></td><td>Wert ohne Vorzeichen</td></tr>
+<tr><td><code>die Länge von Text_oder_Liste</code></td><td>Anzahl Zeichen bzw. Einträge</td></tr>
+<tr><td><code>Kleinbuchstaben von Text</code></td><td>alles klein</td></tr>
+<tr><td><code>Großbuchstaben von Text</code></td><td>alles groß</td></tr>
+<tr><td><code>Abgerundet von x</code></td><td>ganze Zahl, abwärts</td></tr>
+<tr><td><code>Aufgerundet von x</code></td><td>ganze Zahl, aufwärts</td></tr>
+<tr><td><code>Gerundet von x</code></td><td>ganze Zahl, kaufmännisch (<code>2.5</code> → <code>3</code>)</td></tr>
+<tr><td><code>Gerundet von x auf n Stellen</code></td><td><strong>Zahl</strong>, auf n Nachkommastellen</td></tr>
+<tr><td><code>Zahlenwert von t</code></td><td>Text → Zahl, auch mit Komma (<code>"3,5"</code>)</td></tr>
+<tr><td><code>Formatiert von x auf 2 Stellen</code></td><td><strong>Text</strong>: <code>3.14159</code> → <code>"3,14"</code></td></tr>
+<tr><td><code>Zufallszahl von 1 bis 10</code></td><td>ganze Zahl, beide Grenzen inklusive</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="code-kopf"><span class="code-titel">Umwandlungen in der Praxis</span></div>
+<pre class="klar">Merke für immer 3.14159 als Pi.
+Merke 5 als Radius.
+Merke Pi mal Radius hoch 2 als Fläche.
+
+Zeige "Fläche genau:    " und Fläche.
+Zeige "Auf 2 Stellen:   " und Formatiert von Fläche auf 2 Stellen.
+Zeige "Gerundet:        " und Gerundet von Fläche.
+Zeige "Wurzel von 144:  " und die Wurzel von 144.
+Zeige "Betrag von -8:   " und den Betrag von minus 8.
+Zeige "Länge von Hallo: " und die Länge von "Hallo".
+Zeige "Auf 2 Stellen:   " und Gerundet von Fläche auf 2 Stellen.
+Zeige "Text zu Zahl:    " und Zahlenwert von "3,5" plus 1.
+Zeige "Ein Würfelwurf:  " und Zufallszahl von 1 bis 6.</pre>
+
+<div class="notiz warnung">
+<span class="notiz-titel">Argumente sind einfache Werte</span>
+<p><code>Wurzel von</code>, <code>Länge von</code> und Aufgaben nehmen einen einfachen Wert — eine Zahl, einen Namen, einen Text. Steht dort eine Rechnung, gehört sie in Klammern: <code>Wurzel von (a plus b)</code>.</p>
+</div>
+
+<h2 id="spalten">Spalten ausrichten</h2>
+<p class="h2-sub">Damit Tabellen untereinander stehen</p>
+
+<p><code>Formatiert</code> bestimmt, wie viele Nachkommastellen eine Zahl hat — nicht, wie breit sie wird. Sobald Werte unterschiedlich lang sind (<code>7</code> neben <code>1234</code>, oder ein Minuszeichen), verrutschen die Spalten. Dafür gibt es das Auffüllen:</p>
+
+<div class="code-kopf"><span class="code-titel">Eine Tabelle, die stimmt</span></div>
+<pre class="klar">Erstelle eine Liste namens Messwerte mit 7 und 42.5 und -1234 und 0.75.
+
+Zeige Rechtsbündig von "Wert" auf 12 Zeichen.
+Zeige "------------".
+Für jeden Wert in Messwerte:
+    Zeige Rechtsbündig von (Formatiert von Wert auf 2 Stellen) auf 12 Zeichen.
+Ende.</pre>
+
+<div class="tab-huelle">
+<table>
+<tbody>
+<tr><td><code>Rechtsbündig von x auf n Zeichen</code></td><td>füllt links mit Leerzeichen auf — für Zahlen</td></tr>
+<tr><td><code>Linksbündig von x auf n Zeichen</code></td><td>füllt rechts auf — für Wörter</td></tr>
+</tbody>
+</table>
+</div>
+
+<p>Ist der Wert länger als die angegebene Breite, bleibt er vollständig stehen — abgeschnitten wird nie.</p>
+
+<h2 id="winkel">Winkelfunktionen</h2>
+<p class="h2-sub">In Grad, nicht im Bogenmaß</p>
+
+<p>Sinus, Kosinus und Tangens rechnen mit <strong>Grad</strong> — derselben Einheit, in der auch gezeichnet wird (<code>Drehe dich um 90 Grad</code>). Kein Umrechnen, kein Bogenmaß.</p>
+
+<div class="code-kopf"><span class="code-titel">Die sechs Funktionen</span></div>
+<pre class="klar">Zeige den Sinus von 30.
+Zeige den Kosinus von 60.
+Zeige den Tangens von 45.
+
+Zeige den Arkussinus von 0.5.
+Zeige den Arkuskosinus von 1.
+Zeige den Arkustangens von 1.</pre>
+
+<p><code>Cosinus</code> darf man auch mit C schreiben. Die drei Umkehrfunktionen liefern wieder Grad zurück.</p>
+
+<div class="notiz regel">
+<span class="notiz-titel">Glatte Werte statt Rechenrauschen</span>
+<p>Der Kosinus von 90 Grad ist in Klarsatz glatt <code>0</code> — nicht <code>0,0000000000000000612</code>, wie es ein Taschenrechner oft zeigt. Ebenso ist der Tangens von 45 Grad genau <code>1</code>. Das Rauschen wird weggerundet, damit die Zahlen so aussehen, wie sie gemeint sind.</p>
+<p>Der Tangens von 90 oder 270 Grad ist nicht bestimmt — dort meldet Klarsatz einen Fehler, statt eine riesige Zahl zu liefern.</p>
+</div>
+
+<div class="code-kopf"><span class="code-titel">Wozu das gut ist: eine Linie in beliebige Richtung</span></div>
+<pre class="klar">Anmerkung: Länge und Richtung von einem Punkt zum anderen ausrechnen.
+Merke 40 als Rechts.
+Merke 30 als Hinauf.
+
+Merke die Wurzel von (Rechts mal Rechts plus Hinauf mal Hinauf) als Strecke.
+Merke 90 minus den Arkustangens von (Hinauf geteilt durch Rechts) als Richtung.
+
+Zeige "Strecke:  " und Strecke.
+Zeige "Richtung: " und Richtung und " Grad".
+
+Nimm die Farbe "gold".
+Drehe dich um Richtung Grad nach rechts.
+Gehe Strecke Schritte vor.</pre>
+
+<p>Genau so zeichnet das Beispiel <em>20 Sinus und Kosinus</em> im <a href="spielplatz.html">Spielplatz</a> seine Wellenlinien.</p>
+
+<h2 id="vergleiche">Vergleichen</h2>
+<p class="h2-sub">Größer, kleiner, mindestens, teilbar</p>
+
+<p>Das Wörtchen <code>ist</code> darf vor oder hinter dem Vergleich stehen — beides ist richtig: <code>Wenn a größer als 10 ist:</code> und <code>Wenn a ist größer als 10:</code>.</p>
+
+<div class="notiz warnung">
+<span class="notiz-titel">Gleichheit braucht das Wort <em>gleich</em></span>
+<p>So natürlich es klingt — <code>Wenn Befehl "fertig" ist:</code> versteht Klarsatz nicht. Zwischen die beiden Werte gehört immer ein Vergleichswort:</p>
+<p style="margin-top:10px"><code>Wenn Befehl gleich "fertig" ist:</code> &nbsp; oder &nbsp; <code>Wenn Befehl ist gleich "fertig":</code></p>
+<p>Das ist der häufigste Anfängerfehler in Klarsatz. Der Prüfmodus zeigt ihn sofort: <code>python3 -m klarsatz --pruefe programm.klar</code></p>
+</div>
+
+<div class="tab-huelle">
+<table>
+<thead><tr><th>Vergleich</th><th>Bedeutung</th></tr></thead>
+<tbody>
+<tr><td><code>a gleich b</code></td><td>gleich</td></tr>
+<tr><td><code>a nicht gleich b</code></td><td>ungleich</td></tr>
+<tr><td><code>a größer als b</code> · <code>a kleiner als b</code></td><td>echt größer / kleiner</td></tr>
+<tr><td><code>a mindestens b</code></td><td>größer oder gleich</td></tr>
+<tr><td><code>a höchstens b</code></td><td>kleiner oder gleich</td></tr>
+<tr><td><code>a durch 3 teilbar</code></td><td>Rest ist null</td></tr>
+<tr><td><code>a nicht durch 3 teilbar</code></td><td>Rest ist nicht null</td></tr>
+<tr><td><code>Liste enthält Wert</code></td><td>kommt in der Liste vor</td></tr>
+<tr><td><code>Text enthält Textstück</code></td><td>kommt im Text vor</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="code-kopf"><span class="code-titel">Vergleiche lesen sich vor</span></div>
+<pre class="klar">Merke 17 als Zahl.
+
+Wenn Zahl größer als 10 ist, zeige "größer als zehn".
+Wenn Zahl mindestens 17 ist, zeige "mindestens siebzehn".
+Wenn Zahl nicht durch 2 teilbar ist, zeige "ungerade".
+
+Merke "aeiou" als Vokale.
+Wenn Vokale enthält "e", zeige "e ist ein Vokal".
+Wenn nicht Vokale enthält "z" ist, zeige "z ist keiner".
+
+Anmerkung: Texte werden nach deutscher Reihenfolge verglichen.
+Wenn "Äpfel" kleiner als "Birnen" ist, zeige "Äpfel kommen zuerst".</pre>
+
+<h2 id="typen">Typ prüfen</h2>
+<p class="h2-sub">Zahl, Text oder Liste?</p>
+
+<p>Besonders nach <code>Frage</code> ist wichtig, was man bekommen hat: Antworten, die wie Zahlen aussehen, <em>sind</em> Zahlen, alles andere ist Text.</p>
+
+<div class="code-kopf"><span class="code-titel">Typprüfungen</span></div>
+<pre class="klar">Frage "Zahl oder Wort?" und merke die Antwort als Eingabe.
+
+Wenn Eingabe eine Zahl ist:
+    Zeige "Das Doppelte wäre " und Eingabe mal 2.
+Sonst wenn Eingabe ein Text ist:
+    Zeige "Das Wort hat " und die Länge von Eingabe und " Zeichen.".
+Ende.
+
+Erstelle eine Liste namens Zahlen mit 1 und 2 und 3.
+Wenn Zahlen eine Liste ist, zeige "Ja, eine Liste.".</pre>
+
+<div class="tab-huelle">
+<table>
+<thead><tr><th>Prüfung</th><th>Trifft zu, wenn …</th></tr></thead>
+<tbody>
+<tr><td><code>Wert eine Zahl</code></td><td>der Wert eine Zahl ist</td></tr>
+<tr><td><code>Wert keine Zahl</code></td><td>der Wert keine Zahl ist</td></tr>
+<tr><td><code>Wert ein Text</code></td><td>der Wert ein Text ist</td></tr>
+<tr><td><code>Wert eine Liste</code></td><td>der Wert eine Liste ist</td></tr>
+<tr><td><code>Wert eine Tabelle</code></td><td>der Wert eine Tabelle ist</td></tr>
+</tbody>
+</table>
+</div>
+
+<h2 id="logik">Verknüpfen</h2>
+<p class="h2-sub">und, oder, nicht</p>
+
+<p>Mehrere Bedingungen lassen sich mit <code>und</code>, <code>oder</code> und <code>nicht</code> verbinden. <strong><code>und</code> bindet stärker als <code>oder</code></strong> — wie Punkt vor Strich.</p>
+
+<div class="code-kopf"><span class="code-titel">Zusammengesetzte Bedingungen</span></div>
+<pre class="klar">Merke 25 als Alter.
+Merke wahr als Mitglied.
+
+Wenn Alter mindestens 18 ist und Alter höchstens 67 ist:
+    Zeige "Im erwerbsfähigen Alter.".
+Ende.
+
+Wenn Alter kleiner als 18 ist oder Alter größer als 67 ist:
+    Zeige "Ermäßigt.".
+Ende.
+
+Wenn Mitglied gleich wahr ist und nicht Alter kleiner als 18 ist:
+    Zeige "Vollmitglied.".
+Ende.</pre>
+
+<p>Reicht die feste Reihenfolge nicht, setzt man Klammern:</p>
+
+<div class="code-kopf"><span class="code-titel">Klammern in Bedingungen</span></div>
+<pre class="klar">Merke 5 als a.
+Merke 1 als b.
+Merke 3 als c.
+
+Wenn (a kleiner als 1 oder b gleich 1) und c gleich 3 ist:
+    Zeige "Die Klammer entscheidet.".
+Ende.</pre>
+
+<div class="notiz">
+<span class="notiz-titel">Ohne Klammern gilt: und vor oder</span>
+<p><code>a oder b und c</code> bedeutet <code>a oder (b und c)</code>. Wer es anders meint, klammert — seit Version 0.2 geht das auch in Bedingungen, nicht nur beim Rechnen.</p>
+</div>

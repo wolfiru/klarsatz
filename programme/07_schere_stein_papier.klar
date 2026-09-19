@@ -1,0 +1,54 @@
+Anmerkung: Schere, Stein, Papier gegen den Computer. Beenden mit: ende
+
+Definiere Aufgabe Klein von wert:
+    Verbinde wert zu Ergebnis.
+    Gib Kleinbuchstaben von Ergebnis zurück.
+Ende.
+
+Erstelle eine Liste namens Namen mit "Schere" und "Stein" und "Papier".
+
+Zeige "=== Schere, Stein, Papier ===".
+Zeige "Tippe schere, stein oder papier – oder ende zum Beenden.".
+
+Merke 0 als Deine_Punkte.
+Merke 0 als Computer_Punkte.
+Merke wahr als weiter.
+Wiederhole solange weiter ist:
+    Zeige "".
+    Frage "Deine Wahl: " und merke die Antwort als Eingabe.
+    Merke Klein von Eingabe als Wort.
+    Merke 0 als Meine.
+    Wenn Wort gleich "schere" ist, merke 1 als Meine.
+    Sonst wenn Wort gleich "stein" ist, merke 2 als Meine.
+    Sonst wenn Wort gleich "papier" ist, merke 3 als Meine.
+
+    Wenn Wort gleich "ende" ist:
+        Merke falsch als weiter.
+    Sonst wenn Meine gleich 0 ist:
+        Zeige "Das kenne ich nicht – bitte schere, stein oder papier.".
+    Sonst:
+        Merke Zufallszahl von 1 bis 3 als Seine.
+        Zeige "Du: " und Element Meine von Namen und "   Computer: " und Element Seine von Namen.
+        Anmerkung: Stein schlägt Schere, Papier schlägt Stein, Schere schlägt Papier.
+        Merke den Rest von (Meine minus Seine) geteilt durch 3 als Unterschied.
+        Wenn Unterschied gleich 0 ist:
+            Zeige "Unentschieden.".
+        Sonst wenn Unterschied gleich 1 ist:
+            Zeige "Du gewinnst diese Runde!".
+            Erhöhe Deine_Punkte um 1.
+        Sonst:
+            Zeige "Der Computer gewinnt diese Runde.".
+            Erhöhe Computer_Punkte um 1.
+        Ende.
+        Zeige "Stand – du: " und Deine_Punkte und ", Computer: " und Computer_Punkte.
+    Ende.
+Ende.
+
+Zeige "".
+Wenn Deine_Punkte größer als Computer_Punkte ist:
+    Zeige "Endstand " und Deine_Punkte und ":" und Computer_Punkte und " – du hast gewonnen!".
+Sonst wenn Deine_Punkte kleiner als Computer_Punkte ist:
+    Zeige "Endstand " und Deine_Punkte und ":" und Computer_Punkte und " – der Computer hat gewonnen.".
+Sonst:
+    Zeige "Endstand " und Deine_Punkte und ":" und Computer_Punkte und " – unentschieden.".
+Ende.

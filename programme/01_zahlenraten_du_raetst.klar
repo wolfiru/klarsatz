@@ -1,0 +1,70 @@
+Anmerkung: Zahlenraten – der COMPUTER denkt sich eine Zahl aus, DU rätst. Aufgeben mit: ende
+
+Definiere Aufgabe Klein von wert:
+    Verbinde wert zu Ergebnis.
+    Gib Kleinbuchstaben von Ergebnis zurück.
+Ende.
+
+Erstelle eine Liste namens Grenzen mit 10 und 100 und 1000.
+Erstelle eine Liste namens Optimal mit 4 und 7 und 10.
+
+Zeige "=== Zahlenraten ===".
+
+Merke wahr als weiterspielen.
+Wiederhole solange weiterspielen ist:
+    Zeige "".
+    Zeige "Stufe 1: Zahl von 1 bis 10".
+    Zeige "Stufe 2: Zahl von 1 bis 100".
+    Zeige "Stufe 3: Zahl von 1 bis 1000".
+    Merke 0 als Stufe.
+    Wiederhole solange Stufe gleich 0 ist:
+        Frage "Welche Stufe (1, 2 oder 3)? " und merke die Antwort als Eingabe.
+        Wenn Eingabe eine Zahl ist und Eingabe mindestens 1 ist und Eingabe höchstens 3 ist und Eingabe gleich Abgerundet von Eingabe ist:
+            Merke Eingabe als Stufe.
+        Sonst:
+            Zeige "Bitte 1, 2 oder 3 eingeben.".
+        Ende.
+    Ende.
+
+    Merke Element Stufe von Grenzen als Grenze.
+    Merke Zufallszahl von 1 bis Grenze als Geheim.
+    Merke 0 als Versuche.
+    Merke falsch als fertig.
+    Zeige "Ich habe mir eine Zahl von 1 bis " und Grenze und " ausgedacht.".
+
+    Wiederhole solange nicht fertig ist:
+        Verbinde "Dein Tipp (1 bis " und Grenze und ", oder ende): " zu Fragetext.
+        Frage Fragetext und merke die Antwort als Eingabe.
+        Wenn Klein von Eingabe gleich "ende" ist:
+            Zeige "Schade! Die Zahl war " und Geheim und ".".
+            Merke wahr als fertig.
+        Sonst wenn Eingabe keine Zahl ist:
+            Zeige "Das ist keine Zahl.".
+        Sonst wenn Eingabe kleiner als 1 oder Eingabe größer als Grenze ist:
+            Zeige "Bitte eine Zahl von 1 bis " und Grenze und ".".
+        Sonst:
+            Erhöhe Versuche um 1.
+            Wenn Eingabe kleiner als Geheim ist:
+                Zeige "Zu klein – versuch eine größere Zahl.".
+            Sonst wenn Eingabe größer als Geheim ist:
+                Zeige "Zu groß – versuch eine kleinere Zahl.".
+            Sonst:
+                Zeige "Richtig! Die Zahl war " und Geheim und " – du hast " und Versuche und " Versuche gebraucht.".
+                Merke Element Stufe von Optimal als Bestwert.
+                Wenn Versuche höchstens Bestwert ist:
+                    Zeige "Besser geht es mit Halbieren kaum – stark!".
+                Sonst:
+                    Zeige "Tipp: Rate immer die Mitte, dann schaffst du es in höchstens " und Bestwert und " Versuchen.".
+                Ende.
+                Merke wahr als fertig.
+            Ende.
+        Ende.
+    Ende.
+
+    Frage "Noch eine Runde? (j/n) " und merke die Antwort als Nochmal.
+    Wenn Klein von Nochmal nicht gleich "j" ist:
+        Merke falsch als weiterspielen.
+    Ende.
+Ende.
+
+Zeige "Danke fürs Spielen!".

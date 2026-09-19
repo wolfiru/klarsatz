@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.pytest_cache/
+
+# Werkzeuge (optional, wird mit `cd tools && npm install` geholt)
+tools/node_modules/
+playground/node_modules/
+
+# Editor und Betriebssystem
+*.swp
+*~
+.DS_Store
+.vscode/
+.idea/
+
+# Hinweis: playground/klarsatz-py.zip, playground/beispiele.json und die
+# hervorhebung.json sind zwar erzeugt (tools/baue_playground.py,
+# tools/baue_editor.py), liegen aber bewusst mit im Repository: so ist ein
+# ausgecheckter Stand sofort lauffähig — dieses Repository ist in erster
+# Linie ein Sicherungsnetz, nicht eine Bauanleitung.

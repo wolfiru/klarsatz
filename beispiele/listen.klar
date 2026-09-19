@@ -1,0 +1,25 @@
+Erstelle eine Liste namens Einkauf.
+Füge "Milch" zur Einkauf hinzu.
+Füge "Brot" zur Einkauf hinzu.
+Füge "Äpfel" zur Einkauf hinzu.
+Füge "Eier" zur Einkauf hinzu.
+Zeige Einkauf.
+
+Sortiere Einkauf.
+Zeige "Sortiert: " und Einkauf.
+Zeige "Erstes: " und das erste Element von Einkauf.
+Zeige "Zweites: " und Element 2 von Einkauf.
+Zeige "Anzahl: " und die Länge von Einkauf.
+
+Entferne "Brot" aus Einkauf.
+
+Für jedes Element in der Einkauf:
+    Zeige "- " und das Element.
+Ende.
+
+Anmerkung: Zahlen zählen, mit Abbruch und Überspringen
+Zähle von 1 bis 10 mit i:
+    Wenn i gleich 3 ist, mach weiter.
+    Wenn i größer als 6 ist, höre auf.
+    Zeige "i = " und i.
+Ende.

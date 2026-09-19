@@ -1,0 +1,124 @@
+<p class="lede">Zwei Dinge unterscheiden ein Programm von einer Liste: Es kann <strong>entscheiden</strong> und es kann <strong>wiederholen</strong>. Klarsatz schreibt beides aus — <code>Wenn … Sonst … Ende.</code> und fünf Arten von Schleifen.</p>
+
+<h2 id="wenn">Bedingungen</h2>
+<p class="h2-sub">Blockform mit Ende</p>
+
+<p>Die Blockform beginnt mit einem Doppelpunkt und endet mit <code>Ende.</code>. Dazwischen dürfen beliebig viele Sätze stehen. <code>Sonst wenn</code> darf beliebig oft vorkommen, <code>Sonst</code> genau einmal am Schluss.</p>
+
+<div class="code-kopf"><span class="code-titel">Blockform</span></div>
+<pre class="klar">Merke 17 als Zahl.
+
+Wenn die Zahl größer als 10 ist:
+    Zeige "groß".
+    Zeige "genauer: " und Zahl.
+Sonst wenn die Zahl gleich 10 ist:
+    Zeige "genau zehn".
+Sonst:
+    Zeige "klein".
+Ende.</pre>
+
+<h3>Kurzform</h3>
+<p>Steht nur ein einziger Satz im Zweig, passt alles in eine Zeile — mit Komma statt Doppelpunkt und <strong>ohne</strong> eigenes <code>Ende.</code>.</p>
+
+<div class="code-kopf"><span class="code-titel">Kurzform</span></div>
+<pre class="klar">Zähle von 1 bis 30 mit i:
+    Wenn i durch 15 teilbar ist, zeige "FizzBuzz".
+    Sonst wenn i durch 3 teilbar ist, zeige "Fizz".
+    Sonst wenn i durch 5 teilbar ist, zeige "Buzz".
+    Sonst zeige i.
+Ende.</pre>
+
+<div class="notiz warnung">
+<span class="notiz-titel">Genau ein Satz</span>
+<p>Die Kurzform führt <strong>einen</strong> Satz aus. Sollen es mehrere sein, ist die Blockform nötig. Das <code>Ende.</code> im Beispiel oben gehört zur <code>Zähle</code>-Schleife, nicht zur Bedingung.</p>
+</div>
+
+<h2 id="wiederhole">Wiederhole</h2>
+<p class="h2-sub">Eine feste Anzahl oder solange etwas gilt</p>
+
+<div class="code-kopf"><span class="code-titel">Feste Anzahl</span></div>
+<pre class="klar">Wiederhole 3 Mal:
+    Zeige "Klarsatz".
+Ende.</pre>
+
+<div class="code-kopf"><span class="code-titel">Solange eine Bedingung gilt</span></div>
+<pre class="klar">Merke 1 als n.
+Wiederhole solange n kleiner als 100 ist:
+    Verdopple n.
+    Zeige n.
+Ende.</pre>
+
+<h2 id="zaehle">Zähle</h2>
+<p class="h2-sub">Aufwärts, rückwärts, in Schritten</p>
+
+<p><code>Zähle</code> legt einen Namen an, der bei jedem Durchlauf den aktuellen Wert trägt. Läuft nur aufwärts, solange nichts anderes dabeisteht — ist der Startwert größer als das Ziel, läuft die Schleife <strong>gar nicht</strong>.</p>
+
+<div class="code-kopf"><span class="code-titel">Die drei Zählformen</span></div>
+<pre class="klar">Zähle von 1 bis 5 mit i:
+    Zeige i.
+Ende.
+
+Zähle von 5 bis 1 rückwärts mit i:
+    Zeige i.
+Ende.
+
+Zähle von 0 bis 50 in Schritten von 10 mit i:
+    Zeige i.
+Ende.</pre>
+
+<p>Statt <code>rückwärts</code> darf auch <code>abwärts</code> stehen — beides bedeutet dasselbe.</p>
+
+<h2 id="fuerjedes">Für jedes</h2>
+<p class="h2-sub">Durch Listen und Texte gehen</p>
+
+<p><code>Für jedes</code> geht eine Liste Eintrag für Eintrag durch — und einen Text Zeichen für Zeichen. Der Laufname ist frei wählbar; <code>jedes</code>, <code>jede</code> und <code>jeden</code> sind gleichwertig, man nimmt, was zum Wort passt.</p>
+
+<div class="code-kopf"><span class="code-titel">Über eine Liste</span></div>
+<pre class="klar">Erstelle eine Liste namens Einkauf mit "Milch" und "Brot" und "Äpfel".
+
+Für jedes Element in Einkauf:
+    Zeige "- " und Element.
+Ende.
+
+Merke 0 als Summe.
+Erstelle eine Liste namens Zahlen mit 12 und 7 und 23.
+Für jeden Wert in Zahlen:
+    Setze Summe auf Summe plus Wert.
+Ende.
+Zeige "Summe: " und Summe.</pre>
+
+<h2 id="abbruch">Abbrechen und Überspringen</h2>
+<p class="h2-sub">Höre auf, Mach weiter</p>
+
+<div class="tab-huelle">
+<table>
+<thead><tr><th>Satz</th><th>Wirkung</th></tr></thead>
+<tbody>
+<tr><td><code>Höre auf.</code></td><td>Verlässt die Schleife sofort.</td></tr>
+<tr><td><code>Mach weiter.</code></td><td>Springt zum nächsten Durchlauf.</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="code-kopf"><span class="code-titel">Beides im Einsatz</span></div>
+<pre class="klar">Anmerkung: Zeigt ungerade Zahlen, hört aber bei 9 auf.
+Zähle von 1 bis 20 mit k:
+    Wenn k durch 2 teilbar ist, mach weiter.
+    Wenn k größer als 9 ist, höre auf.
+    Zeige k.
+Ende.
+
+Anmerkung: Die erste Zahl suchen, die durch 7 und 11 teilbar ist.
+Merke 1 als n.
+Wiederhole solange wahr ist:
+    Erhöhe n.
+    Wenn n durch 7 teilbar ist und n durch 11 teilbar ist:
+        Zeige "Gefunden: " und n.
+        Höre auf.
+    Ende.
+Ende.</pre>
+
+<div class="notiz">
+<span class="notiz-titel">Endlosschleifen laufen nicht ewig</span>
+<p><code>Wiederhole solange wahr ist:</code> braucht ein <code>Höre auf.</code>, sonst läuft die Schleife für immer. Der Interpreter bricht spätestens nach dem eingestellten Schrittlimit ab — dieses Limit lässt sich bewusst <strong>nicht</strong> mit <code>Versuche</code> abfangen.</p>
+</div>

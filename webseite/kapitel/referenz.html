@@ -1,0 +1,283 @@
+<p class="lede">Alles auf einen Blick: sämtliche Satzmuster, die reservierten Wörter, der Aufruf des Interpreters samt Prüfmodus und Formatierer, die Sicherheitsvorkehrungen und die bekannten Grenzen. Stand: Version 0.2.0.</p>
+
+<h2 id="befehle">Alle Satzmuster</h2>
+<p class="h2-sub">Nachschlagewerk</p>
+
+<h3>Ausgabe und Eingabe</h3>
+<div class="tab-huelle">
+<table>
+<tbody>
+<tr><td><code>Zeige Wert.</code></td><td>Gibt eine Zeile aus</td></tr>
+<tr><td><code>Zeige a und b.</code></td><td>Hängt Teile direkt aneinander</td></tr>
+<tr><td><code>Frage "…" und merke die Antwort als N.</code></td><td>Liest eine Eingabe ein</td></tr>
+</tbody>
+</table>
+</div>
+
+<h3>Variablen</h3>
+<div class="tab-huelle">
+<table>
+<tbody>
+<tr><td><code>Merke Wert als N.</code></td><td>Anlegen oder überschreiben</td></tr>
+<tr><td><code>Merke für immer Wert als N.</code></td><td>Konstante</td></tr>
+<tr><td><code>Setze N auf Wert.</code></td><td>Ändern, Name muss existieren</td></tr>
+<tr><td><code>Erhöhe N um n.</code> · <code>Verringere N um n.</code></td><td>Ohne <code>um</code> um 1</td></tr>
+<tr><td><code>Verdopple N.</code> · <code>Halbiere N.</code></td><td>Mal zwei, geteilt durch zwei</td></tr>
+<tr><td><code>Verbinde a und b zu N.</code></td><td>Zu einem Text zusammenhängen</td></tr>
+<tr><td><code>Kopiere L als N.</code></td><td>Echte Kopie einer Liste oder Tabelle</td></tr>
+</tbody>
+</table>
+</div>
+
+<h3>Rechnen</h3>
+<div class="tab-huelle">
+<table>
+<tbody>
+<tr><td><code>a plus b</code> · <code>a minus b</code> · <code>a mal b</code></td><td>Grundrechenarten</td></tr>
+<tr><td><code>a geteilt durch b</code> · <code>a hoch b</code></td><td>Teilen, Potenz</td></tr>
+<tr><td><code>der Rest von a geteilt durch b</code></td><td>Divisionsrest</td></tr>
+<tr><td><code>-5</code> · <code>minus x</code></td><td>Negative Zahl, Vorzeichen</td></tr>
+<tr><td><code>die Wurzel von x</code> · <code>der Betrag von x</code></td><td>Wurzel, Betrag</td></tr>
+<tr><td><code>der Sinus von g</code> · <code>Kosinus</code> · <code>Tangens</code></td><td>Winkel in <strong>Grad</strong>; <code>Cosinus</code> geht auch</td></tr>
+<tr><td><code>der Arkussinus von x</code> · <code>Arkuskosinus</code> · <code>Arkustangens</code></td><td>Umkehrung, liefert Grad</td></tr>
+<tr><td><code>die Länge von x</code></td><td>Zeichen, Einträge oder Tabellengröße</td></tr>
+<tr><td><code>Kleinbuchstaben von t</code> · <code>Großbuchstaben von t</code></td><td>Schreibweise ändern</td></tr>
+<tr><td><code>Abgerundet / Aufgerundet / Gerundet von x</code></td><td>Ganze Zahlen (kaufmännisch)</td></tr>
+<tr><td><code>Gerundet von x auf n Stellen</code></td><td>Zahl mit n Nachkommastellen</td></tr>
+<tr><td><code>Formatiert von x auf n Stellen</code></td><td><strong>Text</strong> mit Komma: <code>"3,14"</code></td></tr>
+<tr><td><code>Rechtsbündig von x auf n Zeichen</code> · <code>Linksbündig</code></td><td>Füllt mit Leerzeichen auf — für Tabellen</td></tr>
+<tr><td><code>Zahlenwert von t</code></td><td>Text → Zahl, versteht das Komma</td></tr>
+<tr><td><code>Zufallszahl von a bis b</code></td><td>Grenzen inklusive</td></tr>
+<tr><td><code>die aktuelle Stunde</code> · <code>Minute</code> · <code>Sekunde</code></td><td>Uhr des Rechners, je Lauf einmal abgelesen</td></tr>
+<tr><td><code>der aktuelle Tag</code> · <code>Monat</code> · <code>das aktuelle Jahr</code></td><td>Datum</td></tr>
+</tbody>
+</table>
+</div>
+
+<h3>Vergleichen und Verknüpfen</h3>
+<div class="tab-huelle">
+<table>
+<tbody>
+<tr><td><code>a gleich b</code> · <code>a nicht gleich b</code></td><td>Gleichheit</td></tr>
+<tr><td><code>a größer als b</code> · <code>a kleiner als b</code></td><td>Echter Vergleich</td></tr>
+<tr><td><code>a mindestens b</code> · <code>a höchstens b</code></td><td>Mit Gleichheit</td></tr>
+<tr><td><code>a durch n teilbar</code> · <code>a nicht durch n teilbar</code></td><td>Teilbarkeit</td></tr>
+<tr><td><code>L enthält Wert</code> · <code>Text enthält Stück</code></td><td>Enthaltensein (auch Tabellenschlüssel)</td></tr>
+<tr><td><code>x eine Zahl</code> · <code>x keine Zahl</code></td><td>Typprüfung</td></tr>
+<tr><td><code>x ein Text</code> · <code>x eine Liste</code> · <code>x eine Tabelle</code></td><td>Typprüfung</td></tr>
+<tr><td><code>und</code> · <code>oder</code> · <code>nicht</code></td><td><code>und</code> bindet vor <code>oder</code></td></tr>
+<tr><td><code>( … )</code></td><td>Klammern, auch in Bedingungen</td></tr>
+</tbody>
+</table>
+</div>
+
+<h3>Ablauf</h3>
+<div class="tab-huelle">
+<table>
+<tbody>
+<tr><td><code>Wenn … : … Sonst wenn … : … Sonst: … Ende.</code></td><td>Bedingung, Blockform</td></tr>
+<tr><td><code>Wenn …, satz.</code> · <code>Sonst satz.</code></td><td>Kurzform, genau ein Satz</td></tr>
+<tr><td><code>Wiederhole n Mal: … Ende.</code></td><td>Feste Anzahl</td></tr>
+<tr><td><code>Wiederhole solange …: … Ende.</code></td><td>Bedingte Schleife</td></tr>
+<tr><td><code>Zähle von a bis b mit i: … Ende.</code></td><td>Aufwärts; Start &gt; Ziel läuft nie</td></tr>
+<tr><td><code>Zähle von a bis b rückwärts mit i:</code></td><td>Abwärts (auch <code>abwärts</code>)</td></tr>
+<tr><td><code>Zähle von a bis b in Schritten von n mit i:</code></td><td>Schrittweite</td></tr>
+<tr><td><code>Für jedes E in L: … Ende.</code></td><td>Liste, Text oder Tabellenschlüssel</td></tr>
+<tr><td><code>Höre auf.</code> · <code>Mach weiter.</code></td><td>Abbrechen, überspringen</td></tr>
+</tbody>
+</table>
+</div>
+
+<h3>Zeichnen</h3>
+<div class="tab-huelle">
+<table>
+<tbody>
+<tr><td><code>Gehe n Schritte vor.</code> · <code>zurück.</code></td><td>Stift bewegen, dabei malen</td></tr>
+<tr><td><code>Drehe dich um n Grad nach links.</code> · <code>nach rechts.</code></td><td><code>dich</code> und <code>nach</code> sind freiwillig</td></tr>
+<tr><td><code>Hebe den Stift.</code> · <code>Senke den Stift.</code></td><td>malen aus, malen an</td></tr>
+<tr><td><code>Gehe zur Mitte.</code></td><td>zurück zum Start, wieder nach oben schauend</td></tr>
+<tr><td><code>Nimm die Farbe "gold".</code></td><td>rot blau grün gelb gold orange lila rosa türkis braun grau schwarz weiß</td></tr>
+<tr><td><code>Nimm die Strichstärke n.</code></td><td>1 bis 50</td></tr>
+<tr><td><code>Lösche die Zeichnung.</code></td><td>Leert die Fläche, der Stift bleibt stehen</td></tr>
+<tr><td><code>Warte n Sekunden.</code></td><td>Pause, 0 bis 60 s; zählt nicht als Rechenzeit</td></tr>
+<tr><td><code>Wiederhole dieses Programm jede Sekunde.</code></td><td>Kurzform: ganzes Programm im Takt neu (auch <code>alle n Sekunden</code>)</td></tr>
+</tbody>
+</table>
+</div>
+
+<h3>Listen</h3>
+<div class="tab-huelle">
+<table>
+<tbody>
+<tr><td><code>Erstelle eine Liste namens L.</code></td><td>Leere Liste</td></tr>
+<tr><td><code>Erstelle eine Liste namens L mit a und b.</code></td><td>Gefüllte Liste</td></tr>
+<tr><td><code>Füge Wert zur L hinzu.</code></td><td>Hinten anhängen</td></tr>
+<tr><td><code>Entferne Wert aus L.</code></td><td>Wert herausnehmen</td></tr>
+<tr><td><code>Entferne Element n aus L.</code></td><td>n-ten Eintrag herausnehmen</td></tr>
+<tr><td><code>Entferne das erste / das letzte Element aus L.</code></td><td>Vorne bzw. hinten wegnehmen</td></tr>
+<tr><td><code>Sortiere L.</code> · <code>Sortiere L absteigend.</code></td><td>Sortieren</td></tr>
+<tr><td><code>das erste / das letzte Element von L</code></td><td>Randeinträge</td></tr>
+<tr><td><code>Element n von L</code></td><td>Gezählt ab 1</td></tr>
+<tr><td><code>Elemente a bis b von L</code></td><td>Ausschnitt</td></tr>
+<tr><td><code>ein zufälliges Element von L</code></td><td>Zufälliger Eintrag</td></tr>
+</tbody>
+</table>
+</div>
+
+<h3>Tabellen</h3>
+<div class="tab-huelle">
+<table>
+<tbody>
+<tr><td><code>Erstelle eine Tabelle namens T.</code></td><td>Leere Tabelle</td></tr>
+<tr><td><code>Erstelle eine Tabelle namens T mit "a" als 1.</code></td><td>Gefüllte Tabelle</td></tr>
+<tr><td><code>Trage Schlüssel mit Wert in T ein.</code></td><td>Eintragen oder überschreiben</td></tr>
+<tr><td><code>Wert für Schlüssel in T</code></td><td>Wert lesen</td></tr>
+<tr><td><code>Entferne Schlüssel aus T.</code></td><td>Eintrag löschen</td></tr>
+</tbody>
+</table>
+</div>
+
+<h3>Texte</h3>
+<div class="tab-huelle">
+<table>
+<tbody>
+<tr><td><code>Teile t bei "…" zu L.</code></td><td>Text zerlegen</td></tr>
+<tr><td><code>Verkettet von L mit ", "</code></td><td>Liste zu Text verbinden</td></tr>
+<tr><td><code>Zeichen a bis b von t</code></td><td>Ausschnitt, ab 1 gezählt</td></tr>
+<tr><td><code>Ersetze "alt" durch "neu" in N.</code></td><td>Im Text unter N ersetzen</td></tr>
+</tbody>
+</table>
+</div>
+
+<h3>Dinge</h3>
+<div class="tab-huelle">
+<table>
+<tbody>
+<tr><td><code>Ein X hat einen A und ein B.</code></td><td>Ding beschreiben</td></tr>
+<tr><td><code>Erschaffe einen X mit A … und B … als N.</code></td><td>Ding erschaffen</td></tr>
+<tr><td><code>den A von N</code></td><td>Feld lesen</td></tr>
+<tr><td><code>Setze den A von N auf Wert.</code></td><td>Feld ändern</td></tr>
+</tbody>
+</table>
+</div>
+
+<h3>Aufgaben, Fehler, Dateien</h3>
+<div class="tab-huelle">
+<table>
+<tbody>
+<tr><td><code>Definiere Aufgabe N mit a und b: … Ende.</code></td><td>Definition (<code>von</code> = <code>mit</code>)</td></tr>
+<tr><td><code>Gib Wert zurück.</code></td><td>Ergebnis liefern</td></tr>
+<tr><td><code>Führe N mit x aus.</code></td><td>Aufruf als Befehl</td></tr>
+<tr><td><code>Versuche: … Bei Fehler: … Ende.</code></td><td><code>Fehlermeldung</code> ist gefüllt</td></tr>
+<tr><td><code>Stelle sicher, dass … .</code></td><td>Zusicherung, bricht sonst ab</td></tr>
+<tr><td><code>Lies die Datei "…" als N.</code></td><td>Datei lesen</td></tr>
+<tr><td><code>Schreibe "…" in die Datei "…".</code></td><td>Datei schreiben</td></tr>
+<tr><td><code>Anmerkung: …</code></td><td>Kommentar bis Zeilenende</td></tr>
+</tbody>
+</table>
+</div>
+
+<h2 id="reserviert">Reservierte Wörter</h2>
+<p class="h2-sub">Taugen nicht als Namen</p>
+
+<pre class="schale"><code>als        auf        aus        bei        bis        dass       durch
+ende       enthält    falsch     geteilt    gleich     größer     hat
+hinzu      hoch       höchstens  in         ist        jede       jeden
+jedes      keine      kleiner    mal        mindestens minus      mit
+nicht      oder       plus       sind       solange    sonst      teilbar
+um         und        von        wahr       wenn       zu         zurück</code></pre>
+
+<div class="notiz">
+<span class="notiz-titel">Umlaute zählen doppelt</span>
+<p>Da <code>ä ö ü ß</code> wie <code>ae oe ue ss</code> behandelt werden, ist mit <code>größer</code> auch <code>groesser</code> belegt. Alltagswörter wie <code>Zahl</code>, <code>Text</code> oder <code>Wert</code> sind dagegen bewusst <strong>nicht</strong> reserviert — sie dürfen Namen sein. Eine Variable darf allerdings nicht heißen wie eine Aufgabe.</p>
+</div>
+
+<h2 id="aufruf">Interpreter aufrufen</h2>
+<p class="h2-sub">Reines Python 3, ab Version 3.10, ohne weitere Abhängigkeiten</p>
+
+<div class="code-kopf"><span class="code-titel">Kommandozeile</span></div>
+<pre class="schale"><code>python3 -m klarsatz programme/03_taschenrechner.klar   # Programm ausführen
+python3 -m klarsatz                                    # interaktive Konsole
+python3 -m klarsatz --pruefe programm.klar             # Fehler finden, ohne auszuführen
+python3 -m klarsatz --formatiere --ersetzen programm.klar
+python3 -m klarsatz --help</code></pre>
+
+<div class="tab-huelle">
+<table>
+<thead><tr><th>Schalter</th><th>Wirkung</th></tr></thead>
+<tbody>
+<tr><td><code>--pruefe</code></td><td>Prüft ohne auszuführen: Tippfehler mit „Meintest du …?“, Endlosschleifen, unerreichbarer Code, Aufgaben ohne Rückgabe und mehr.</td></tr>
+<tr><td><code>--streng</code></td><td>Mit <code>--pruefe</code>: auch Hinweise und Warnungen gelten als Fehler.</td></tr>
+<tr><td><code>--formatiere [--ersetzen]</code></td><td>Rückt das Programm sauber ein, ohne den Inhalt zu ändern.</td></tr>
+<tr><td><code>--nach-python</code></td><td>Übersetzt das Programm in lesbares Python — die Brücke zu einer verbreiteten Sprache.</td></tr>
+<tr><td><code>--tokens</code> · <code>--ast</code></td><td>Zeigt die gelesenen Wörter beziehungsweise den Syntaxbaum.</td></tr>
+<tr><td><code>--limit SCHRITTE</code></td><td>Abbruch nach so vielen Schritten. Nicht mit <code>Versuche</code> abfangbar.</td></tr>
+<tr><td><code>--zeit SEKUNDEN</code></td><td>Abbruch nach so vielen Sekunden.</td></tr>
+<tr><td><code>--streng-grenzen</code></td><td>Knappe Grenzen für Zeit, Speicher und Größe — für fremde Programme.</td></tr>
+<tr><td><code>--seed N</code></td><td>Macht <code>Zufallszahl</code> reproduzierbar.</td></tr>
+<tr><td><code>--bild DATEI.SVG</code></td><td>Speichert die Zeichnung des Programms als SVG-Bild.</td></tr>
+<tr><td><code>--ohne-dateien</code></td><td>Sperrt jeden Dateizugriff.</td></tr>
+<tr><td><code>--dateien-ordner ORDNER</code></td><td>Erlaubt Dateien nur in diesem Ordner.</td></tr>
+<tr><td><code>--dateien-ueberall</code></td><td>Hebt den Ordnerschutz auf — nur für eigene Programme.</td></tr>
+</tbody>
+</table>
+</div>
+
+<p>Der Interpreter besteht aus den Stufen <strong>Lexer → Satzmuster-Parser → Syntaxbaum → Interpreter</strong>, dazu Prüfer, Formatierer, Konsole und die Web-Schnittstelle, über die auch der <a href="spielplatz.html">Spielplatz</a> läuft.</p>
+
+<h2 id="sicherheit">Sicherheitsvorkehrungen</h2>
+<p class="h2-sub">Was der Interpreter absichert — und was nicht</p>
+
+<div class="tab-huelle">
+<table>
+<thead><tr><th>Gefahr</th><th>Maßnahme</th></tr></thead>
+<tbody>
+<tr><td>Endlosschleife</td><td><code>--limit</code> (Schritte) und <code>--zeit</code> (Sekunden); beides nicht mit <code>Versuche</code> abfangbar</td></tr>
+<tr><td>Speicherfresser</td><td>Grenzen für Text, Liste, Tabelle, Zahlengröße, Ausgabe, Eingabezeile und Programmgröße</td></tr>
+<tr><td>Absturz durch Verschachtelung</td><td>Tiefengrenze im Parser, Rekursionsgrenze für Aufgaben — kein Python-Traceback dringt durch</td></tr>
+<tr><td>Dateien</td><td>Standard: nur der Arbeitsordner und darunter — kein <code>..</code>, keine absoluten Pfade, kein Ausbruch über Verknüpfungen</td></tr>
+<tr><td>Code-Einschleusung</td><td>Kein <code>eval</code>, kein <code>exec</code>, kein Nachladen, kein Zugriff auf Python-Objekte</td></tr>
+<tr><td>Netzwerk, Prozesse</td><td>Gibt es in der Sprache nicht</td></tr>
+</tbody>
+</table>
+</div>
+
+<h3>Was nicht abgesichert ist</h3>
+<ul>
+<li>Der Interpreter läuft im selben Python-Prozess: ein Fehler <em>im Interpreter selbst</em> könnte Grenzen umgehen.</li>
+<li>Die Zeitgrenze wird nur zwischen Schritten geprüft — eine einzelne, sehr teure Rechnung läuft zu Ende, begrenzt durch die Zahlengröße.</li>
+<li><code>--dateien-ueberall</code> hebt den Ordnerschutz bewusst auf.</li>
+<li>Keine Prüfung durch Dritte, kein Fuzzing über die mitgelieferten Tests hinaus.</li>
+</ul>
+
+<div class="notiz warnung">
+<span class="notiz-titel">Ehrlich gesagt</span>
+<p>Klarsatz ist ein <strong>Lern- und Hobbyprojekt</strong>. Der Interpreter ist so gebaut, dass ein Programm möglichst wenig anrichten kann — er ist aber <strong>keine geprüfte Sandbox</strong>. Fremde, nicht vertrauenswürdige Programme gehören zusätzlich in einen Container oder unter einen Benutzer mit wenigen Rechten. Der <a href="spielplatz.html">Spielplatz</a> dieser Seite geht deshalb den anderen Weg: Er führt gar nichts auf dem Server aus, sondern alles im Browser des Besuchers.</p>
+</div>
+
+<h2 id="grenzen">Bekannte Grenzen</h2>
+<p class="h2-sub">Stand Version 0.2.0</p>
+
+<ul>
+<li>Kein Dezimalkomma in Zahlen<em>eingaben</em> — das Komma trennt Satzteile. Die Ausgabe ist deutsch, und <code>Zahlenwert von "3,5"</code> versteht das Komma.</li>
+<li>Die Kurzform von <code>Wenn …, …</code> führt genau <strong>einen</strong> Satz aus; für mehrere Befehle die Blockform nehmen. In <code>Sonst</code>-Ketten bindet ein <code>Sonst</code> an das nächstliegende passende <code>Wenn</code>.</li>
+<li>Argumente von Aufgaben sind einfache Werte: <code>Quadrat von x plus 1</code> bedeutet <code>(Quadrat von x) plus 1</code>. <code>--pruefe</code> weist darauf hin.</li>
+<li>Beim Anzeigen eines Dings steht der Feldname so, wie er in der Definition stand (<code>Namen: Rocco</code>).</li>
+<li><code>Zähle von 5 bis 1</code> läuft <strong>nie</strong> — abwärts zählt man mit <code>rückwärts</code>. In Version 0.1 war das noch anders.</li>
+<li>Der Prüfer arbeitet ohne Datenfluss: kein Typwissen, „benutzt vor angelegt“ nur nach Zeilenreihenfolge.</li>
+</ul>
+
+<h2 id="geplant">Noch offen</h2>
+<p class="h2-sub">Aus dem Entwurf, noch nicht gebaut</p>
+
+<div class="tab-huelle">
+<table>
+<tbody>
+<tr><td><code>Falls vorhanden:</code></td><td>Optionalwerte</td></tr>
+<tr><td><code>Diese Aufgabe darf nur lesen.</code></td><td>Fähigkeiten je Aufgabe</td></tr>
+<tr><td><code>Warte n Sekunden.</code></td><td>Im Browser heikel, deshalb zurückgestellt</td></tr>
+<tr><td>Mehrere Sätze in der Kurzform von <code>Wenn</code></td><td>Bequemlichkeit</td></tr>
+<tr><td>Bytecode-VM oder Compiler</td><td>Statt reiner Auswertung des Syntaxbaums</td></tr>
+</tbody>
+</table>
+</div>

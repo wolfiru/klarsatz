@@ -1,0 +1,87 @@
+Anmerkung: Sinus und Kosinus als Wellenlinien — Gold und Türkis.
+Anmerkung: Zeigt die neuen Winkelfunktionen und wie man damit Linien zeichnet.
+
+Merke 60 als Hoehe.        Anmerkung: Ausschlag der Welle
+Merke 0.55 als Breite.     Anmerkung: Schritte je Grad
+Merke 6 als Schritt.       Anmerkung: Grad je Teilstück
+
+Anmerkung: Setzt den Stift auf einen Punkt: X nach rechts, Y nach oben.
+Definiere Aufgabe StellDichAuf mit X und Y:
+    Gehe zur Mitte.
+    Hebe den Stift.
+    Drehe dich um 90 Grad nach rechts.
+    Gehe X Schritte vor.
+    Drehe dich um 90 Grad nach links.
+    Gehe Y Schritte vor.
+Ende.
+
+Anmerkung: Zieht eine Linie von einem Punkt zum anderen. Richtung und Länge
+Anmerkung: rechnet sie selbst aus — mit Arkustangens und Wurzel.
+Definiere Aufgabe LinieZu mit X1 und Y1 und X2 und Y2:
+    Merke X2 minus X1 als Rechts.
+    Merke Y2 minus Y1 als Hinauf.
+    Merke die Wurzel von (Rechts mal Rechts plus Hinauf mal Hinauf) als Strecke.
+
+    Anmerkung: 0 Grad zeigt nach oben, im Uhrzeigersinn. Für Schritte nach rechts
+    Anmerkung: gilt darum: Winkel = 90 Grad minus die Steigung als Winkel gelesen.
+    Merke 90 minus den Arkustangens von (Hinauf geteilt durch Rechts) als Richtung.
+
+    Führe StellDichAuf mit X1 und Y1 aus.
+    Senke den Stift.
+    Drehe dich um Richtung Grad nach rechts.
+    Gehe Strecke Schritte vor.
+Ende.
+
+Anmerkung: ===== Achsen =====
+Nimm die Farbe "grau".
+Nimm die Strichstärke 1.
+Führe LinieZu mit -105 und 0 und 105 und 0 aus.
+Führe StellDichAuf mit 0 und -75 aus.
+Senke den Stift.
+Gehe 150 Schritte vor.
+
+Anmerkung: Kleine Marken alle 90 Grad
+Zähle von -180 bis 180 in Schritten von 90 mit Marke:
+    Führe StellDichAuf mit (Marke mal Breite) und -4 aus.
+    Senke den Stift.
+    Gehe 8 Schritte vor.
+Ende.
+
+Anmerkung: ===== Die beiden Wellen =====
+Nimm die Strichstärke 3.
+Merke -180 als Winkel.
+
+Wiederhole solange Winkel kleiner als 180 ist:
+    Merke Winkel plus Schritt als Weiter.
+
+    Anmerkung: Sinus in Gold
+    Nimm die Farbe "gold".
+    Führe LinieZu mit (Winkel mal Breite) und (den Sinus von Winkel mal Hoehe)
+        und (Weiter mal Breite) und (den Sinus von Weiter mal Hoehe) aus.
+
+    Anmerkung: Kosinus in Türkis
+    Nimm die Farbe "türkis".
+    Führe LinieZu mit (Winkel mal Breite) und (den Kosinus von Winkel mal Hoehe)
+        und (Weiter mal Breite) und (den Kosinus von Weiter mal Hoehe) aus.
+
+    Setze Winkel auf Weiter.
+Ende.
+
+Gehe zur Mitte.
+
+Anmerkung: ===== Und die Zahlen dazu =====
+Anmerkung: "Rechtsbündig ... auf n Zeichen" lässt die Spalten untereinander stehen.
+Zeige Rechtsbündig von "Winkel" auf 8 Zeichen
+    und Rechtsbündig von "Sinus" auf 10 Zeichen
+    und Rechtsbündig von "Kosinus" auf 10 Zeichen.
+Zeige "----------------------------".
+
+Zähle von 0 bis 360 in Schritten von 45 mit Grad:
+    Verbinde Grad und "°" zu Marke.
+    Zeige Rechtsbündig von Marke auf 8 Zeichen
+        und Rechtsbündig von (Formatiert von (den Sinus von Grad) auf 3 Stellen) auf 10 Zeichen
+        und Rechtsbündig von (Formatiert von (den Kosinus von Grad) auf 3 Stellen) auf 10 Zeichen.
+Ende.
+
+Zeige "".
+Zeige "Gold ist der Sinus, Türkis der Kosinus — beide um 90 Grad versetzt.".

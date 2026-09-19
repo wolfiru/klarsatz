@@ -1,0 +1,41 @@
+Anmerkung: Notenrechner – österreichische Schulnoten: 1 = Sehr gut ... 5 = Nicht genügend.
+
+Zeige "=== Notenrechner ===".
+Zeige "Gib deine Noten von 1 bis 5 ein. Mit einer leeren Eingabe bist du fertig.".
+
+Erstelle eine Liste namens Noten.
+Merke wahr als weiter.
+Wiederhole solange weiter ist:
+    Frage "Note: " und merke die Antwort als Eingabe.
+    Wenn Eingabe gleich "" ist:
+        Merke falsch als weiter.
+    Sonst wenn Eingabe keine Zahl ist:
+        Zeige "Das ist keine Zahl.".
+    Sonst wenn Eingabe kleiner als 1 oder Eingabe größer als 5 ist:
+        Zeige "Bitte eine Note von 1 bis 5.".
+    Sonst:
+        Füge Eingabe zu Noten hinzu.
+    Ende.
+Ende.
+
+Zeige "".
+Wenn Länge von Noten gleich 0 ist:
+    Zeige "Es wurden keine Noten eingegeben.".
+Sonst:
+    Merke 0 als Summe.
+    Merke 0 als Fuenfer.
+    Für jedes Note in Noten:
+        Erhöhe Summe um Note.
+        Wenn Note gleich 5 ist, erhöhe Fuenfer um 1.
+    Ende.
+    Merke Summe geteilt durch Länge von Noten als Durchschnitt.
+    Sortiere Noten.
+    Zeige "Anzahl der Noten: " und Länge von Noten.
+    Zeige "Sortiert: " und Noten.
+    Zeige "Beste Note: " und das erste Element von Noten.
+    Zeige "Schlechteste Note: " und das letzte Element von Noten.
+    Zeige "Durchschnitt: " und Formatiert von Durchschnitt auf 2 Stellen.
+    Wenn Fuenfer größer als 0 ist:
+        Zeige "Achtung: " und Fuenfer und " x Nicht genügend.".
+    Ende.
+Ende.

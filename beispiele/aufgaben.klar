@@ -1,0 +1,26 @@
+Definiere Aufgabe Begrüße mit Name:
+    Zeige "Hallo, " und Name und "!".
+Ende.
+
+Definiere Aufgabe Quadrat von x:
+    Gib x mal x zurück.
+Ende.
+
+Definiere Aufgabe Fakultät von n:
+    Wenn n kleiner als 2 ist:
+        Gib 1 zurück.
+    Ende.
+    Gib n mal (Fakultät von (n minus 1)) zurück.
+Ende.
+
+Definiere Aufgabe Summe von a und b:
+    Gib a plus b zurück.
+Ende.
+
+Führe Begrüße mit "Wolfgang" aus.
+Zeige "5 zum Quadrat: " und Quadrat von 5.
+Zeige "3 + 4 = " und Summe von 3 und 4.
+
+Zähle von 0 bis 10 mit k:
+    Zeige k und "! = " und Fakultät von k.
+Ende.

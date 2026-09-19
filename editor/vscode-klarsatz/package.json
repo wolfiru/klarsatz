@@ -1,0 +1,47 @@
+{
+  "name": "klarsatz",
+  "displayName": "Klarsatz",
+  "version": "0.7.1",
+  "publisher": "klarsatz",
+  "description": "Syntax-Hervorhebung, Einrückung und Snippets für Klarsatz – die Programmiersprache, die wie Deutsch klingt.",
+  "engines": {
+    "vscode": "^1.75.0"
+  },
+  "categories": [
+    "Programming Languages",
+    "Snippets"
+  ],
+  "keywords": [
+    "klarsatz",
+    "deutsch",
+    "programmiersprache"
+  ],
+  "contributes": {
+    "languages": [
+      {
+        "id": "klarsatz",
+        "aliases": [
+          "Klarsatz",
+          "klarsatz"
+        ],
+        "extensions": [
+          ".klar"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "klarsatz",
+        "scopeName": "source.klarsatz",
+        "path": "./syntaxes/klarsatz.tmLanguage.json"
+      }
+    ],
+    "snippets": [
+      {
+        "language": "klarsatz",
+        "path": "./snippets/klarsatz.json"
+      }
+    ]
+  }
+}

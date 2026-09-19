@@ -1,0 +1,75 @@
+Anmerkung: Vokabeltrainer Deutsch -> Englisch. Eigene Wörter lassen sich hinzufügen.
+
+Definiere Aufgabe Klein von wert:
+    Verbinde wert zu Ergebnis.
+    Gib Kleinbuchstaben von Ergebnis zurück.
+Ende.
+
+Wort hat Deutsch und Englisch.
+Erstelle eine Liste namens Vokabeln.
+
+Definiere Aufgabe Lerne mit deutsch und englisch:
+    Erschaffe Wort mit Deutsch deutsch und Englisch englisch als Neu.
+    Füge Neu zu Vokabeln hinzu.
+Ende.
+
+Führe Lerne mit "Hund" und "dog" aus.
+Führe Lerne mit "Katze" und "cat" aus.
+Führe Lerne mit "Haus" und "house" aus.
+Führe Lerne mit "Buch" und "book" aus.
+Führe Lerne mit "Wasser" und "water" aus.
+Führe Lerne mit "Apfel" und "apple" aus.
+Führe Lerne mit "Schule" und "school" aus.
+Führe Lerne mit "Freund" und "friend" aus.
+Führe Lerne mit "Fenster" und "window" aus.
+Führe Lerne mit "Straße" und "street" aus.
+
+Zeige "=== Vokabeltrainer ===".
+
+Merke wahr als weiter.
+Wiederhole solange weiter ist:
+    Zeige "".
+    Zeige "1 = Abfragen (5 Fragen)".
+    Zeige "2 = Neues Wort lernen".
+    Zeige "3 = Alle Wörter zeigen".
+    Zeige "0 = Ende".
+    Frage "Auswahl: " und merke die Antwort als Wahl.
+    Wenn Wahl gleich 1 ist:
+        Merke 0 als Punkte.
+        Merke 5 als Fragen.
+        Wenn Länge von Vokabeln kleiner als 5 ist, merke Länge von Vokabeln als Fragen.
+        Wiederhole Fragen Mal:
+            Merke Zufallszahl von 1 bis Länge von Vokabeln als Nummer.
+            Merke Element Nummer von Vokabeln als W.
+            Verbinde "Wie heißt „" und Deutsch von W und "“ auf Englisch? " zu Fragetext.
+            Frage Fragetext und merke die Antwort als Eingabe.
+            Merke Klein von Eingabe als Gegeben.
+            Wenn Gegeben gleich Klein von (Englisch von W) ist:
+                Zeige "Richtig!".
+                Erhöhe Punkte um 1.
+            Sonst:
+                Zeige "Leider falsch. Richtig ist: " und Englisch von W.
+            Ende.
+        Ende.
+        Zeige "Ergebnis: " und Punkte und " von " und Fragen und " richtig.".
+    Sonst wenn Wahl gleich 2 ist:
+        Frage "Deutsches Wort: " und merke die Antwort als D.
+        Frage "Englisches Wort: " und merke die Antwort als E.
+        Wenn D gleich "" ist oder E gleich "" ist:
+            Zeige "Bitte beides ausfüllen.".
+        Sonst:
+            Führe Lerne mit D und E aus.
+            Zeige "Gespeichert: " und D und " = " und E.
+        Ende.
+    Sonst wenn Wahl gleich 3 ist:
+        Für jedes W in Vokabeln:
+            Zeige Deutsch von W und " = " und Englisch von W.
+        Ende.
+    Sonst wenn Wahl gleich 0 ist:
+        Merke falsch als weiter.
+    Sonst:
+        Zeige "Das habe ich nicht verstanden.".
+    Ende.
+Ende.
+
+Zeige "Bis zum nächsten Mal!".

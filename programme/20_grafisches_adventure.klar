@@ -1,0 +1,602 @@
+Anmerkung: Grafisches Textadventure — finde das Marmeladenglas, öffne es,
+Anmerkung: nimm den Schlüssel, schließe die Küchentür auf und gehe in den Garten.
+
+Anmerkung: ========== DATEN ==========
+
+Erstelle eine Tabelle namens RaumBeschreibung
+    mit "Start" als "Ein kleiner, schwach beleuchteter Raum. Es riecht nach altem Holz."
+    und "Flur" als "Ein langer, kühler Flur. An den Wänden hängen verblasste Bilder."
+    und "Küche" als "Eine verlassene Küche. Nach Norden führt eine Tür in den Garten."
+    und "Garten" als "Ein überwucherter Garten. Frische Luft!"
+    und "Keller" als "Ein dunkler Keller. Feucht und kalt.".
+
+Erstelle eine Tabelle namens Ausgaenge
+    mit "Start" als "norden:Flur"
+    und "Flur" als "süden:Start, osten:Küche, westen:Keller"
+    und "Küche" als "westen:Flur"
+    und "Garten" als "süden:Küche"
+    und "Keller" als "osten:Flur".
+
+Erstelle eine Tabelle namens RaumFarbe
+    mit "Start" als "braun" und "Flur" als "grau" und "Küche" als "orange"
+    und "Garten" als "grün" und "Keller" als "blau".
+
+Erstelle eine Tabelle namens GegenstandOrt.
+Erstelle eine Liste namens MoeglicheRaeume mit "Flur" und "Küche" und "Keller".
+Merke ein zufälliges Element von MoeglicheRaeume als GlasRaum.
+Trage "marmeladenglas" mit GlasRaum in GegenstandOrt ein.
+Trage "lampe" mit "Keller" in GegenstandOrt ein.
+
+Erstelle eine Liste namens Inventar.
+Merke wahr als TuerVerschlossen.
+Merke falsch als GlasGeoeffnet.
+Merke falsch als SpielGewonnen.
+Merke falsch als SpielBeendet.
+Merke "Start" als AktuellerRaum.
+
+Anmerkung: ========== ZEICHNEN ==========
+
+Anmerkung: Ein Kasten, gezeichnet von der linken unteren Ecke aus, Blick nach Norden —
+Anmerkung: genau so, wie "StellDichAuf" den Stift hinterlässt.
+Definiere Aufgabe Kasten mit Breite und Hoehe:
+    Wiederhole 2 Mal:
+        Gehe Hoehe Schritte vor.
+        Drehe dich um 90 Grad nach rechts.
+        Gehe Breite Schritte vor.
+        Drehe dich um 90 Grad nach rechts.
+    Ende.
+Ende.
+
+Anmerkung: Eine Wand, 140 lang, 70 vom Mittelpunkt entfernt. 0 Grad ist Norden,
+Anmerkung: dann im Uhrzeigersinn. Ist dort eine Tür, bleibt in der Mitte eine Lücke.
+Definiere Aufgabe Wand mit Winkel und MitTuer:
+    Gehe zur Mitte.
+    Drehe dich um Winkel Grad nach rechts.
+    Hebe den Stift.
+    Gehe 70 Schritte vor.
+    Drehe dich um 90 Grad nach rechts.
+    Gehe 70 Schritte zurück.
+    Senke den Stift.
+
+    Wenn MitTuer gleich wahr ist:
+        Gehe 52 Schritte vor.
+        Hebe den Stift.
+        Gehe 36 Schritte vor.
+        Senke den Stift.
+        Gehe 52 Schritte vor.
+    Sonst:
+        Gehe 140 Schritte vor.
+    Ende.
+Ende.
+
+Anmerkung: Eine offene Tür — wie im Grundriss: Das Türblatt hängt am Rand der Öffnung
+Anmerkung: und steht nach draußen auf. Mittig würde es den Durchgang versperren.
+Definiere Aufgabe Durchgang mit Winkel:
+    Gehe zur Mitte.
+    Drehe dich um Winkel Grad nach rechts.
+    Hebe den Stift.
+    Gehe 70 Schritte vor.
+    Drehe dich um 90 Grad nach rechts.
+    Gehe 18 Schritte zurück.
+    Drehe dich um 90 Grad nach links.
+    Senke den Stift.
+    Nimm die Strichstärke 5.
+    Gehe 26 Schritte vor.
+Ende.
+
+Anmerkung: Ein verschlossenes Türblatt: quer in der Öffnung.
+Definiere Aufgabe TuerVerschlossenZeichnen mit Winkel:
+    Gehe zur Mitte.
+    Drehe dich um Winkel Grad nach rechts.
+    Hebe den Stift.
+    Gehe 70 Schritte vor.
+    Drehe dich um 90 Grad nach rechts.
+    Gehe 17 Schritte zurück.
+    Senke den Stift.
+    Nimm die Strichstärke 7.
+    Gehe 34 Schritte vor.
+Ende.
+
+Anmerkung: Ein Kreis, genähert durch ein Zwölfeck — Klarsatz kennt nur gerade Strecken.
+Definiere Aufgabe Kreis mit Seite:
+    Wiederhole 12 Mal:
+        Gehe Seite Schritte vor.
+        Drehe dich um 30 Grad nach rechts.
+    Ende.
+Ende.
+
+Anmerkung: Ein Kreis, dessen MITTE an der angegebenen Stelle liegt.
+Anmerkung: Nötig, weil "Kreis" am Rand beginnt: Die Mitte liegt vom Startpunkt aus
+Anmerkung: 1,866 Seitenlängen rechts und eine halbe Seitenlänge vor.
+Definiere Aufgabe KreisUm mit Seitlich und Hoehe und Seite:
+    Führe StellDichAuf mit (Seitlich minus (Seite mal 1.866)) und (Hoehe minus (Seite geteilt durch 2)) aus.
+    Senke den Stift.
+    Führe Kreis mit Seite aus.
+Ende.
+
+Anmerkung: Stellt den Stift auf einen Punkt im Raum: Versatz nach rechts, Hoehe nach oben.
+Definiere Aufgabe StellDichAuf mit Versatz und Hoehe:
+    Gehe zur Mitte.
+    Hebe den Stift.
+    Drehe dich um 90 Grad nach rechts.
+    Gehe Versatz Schritte vor.
+    Drehe dich um 90 Grad nach links.
+    Gehe Hoehe Schritte vor.
+Ende.
+
+Anmerkung: Die Spielfigur — Kopf, Körper, Arme, Beine.
+Definiere Aufgabe Strichmaennchen mit Seitlich:
+    Nimm die Farbe "weiß".
+    Nimm die Strichstärke 2.
+
+    Anmerkung: Kopf — die Mitte liegt einen Kopfradius über dem Hals (Höhe -12).
+    Führe KreisUm mit Seitlich und -2.3 und 5 aus.
+
+    Anmerkung: Körper
+    Führe StellDichAuf mit Seitlich und -12 aus.
+    Senke den Stift.
+    Gehe 22 Schritte zurück.
+
+    Anmerkung: Arme
+    Führe StellDichAuf mit (Seitlich minus 11) und -20 aus.
+    Senke den Stift.
+    Drehe dich um 90 Grad nach rechts.
+    Gehe 22 Schritte vor.
+
+    Anmerkung: Linkes Bein
+    Führe StellDichAuf mit Seitlich und -34 aus.
+    Senke den Stift.
+    Drehe dich um 205 Grad nach rechts.
+    Gehe 18 Schritte vor.
+
+    Anmerkung: Rechtes Bein
+    Führe StellDichAuf mit Seitlich und -34 aus.
+    Senke den Stift.
+    Drehe dich um 155 Grad nach rechts.
+    Gehe 18 Schritte vor.
+Ende.
+
+Anmerkung: Ein Marmeladenglas: Körper, Deckel — und etwas Glänzendes darin, solange es zu ist.
+Definiere Aufgabe GlasZeichnen mit Versatz:
+    Nimm die Farbe "orange".
+    Nimm die Strichstärke 3.
+    Führe StellDichAuf mit Versatz und 16 aus.
+    Senke den Stift.
+    Führe Kasten mit 20 und 26 aus.
+
+    Anmerkung: Deckel oben drauf
+    Führe StellDichAuf mit Versatz und 42 aus.
+    Nimm die Strichstärke 6.
+    Senke den Stift.
+    Drehe dich um 90 Grad nach rechts.
+    Gehe 20 Schritte vor.
+
+    Wenn GlasGeoeffnet gleich falsch ist:
+        Anmerkung: Der Schlüssel schimmert durch das Glas.
+        Nimm die Farbe "gold".
+        Nimm die Strichstärke 2.
+        Führe StellDichAuf mit (Versatz plus 5) und 24 aus.
+        Senke den Stift.
+        Drehe dich um 90 Grad nach rechts.
+        Gehe 10 Schritte vor.
+        Drehe dich um 90 Grad nach links.
+        Gehe 5 Schritte vor.
+    Ende.
+Ende.
+
+Anmerkung: Ein Schlüssel: Ring und Bart.
+Definiere Aufgabe SchluesselZeichnen mit Versatz:
+    Nimm die Farbe "gold".
+    Nimm die Strichstärke 3.
+
+    Anmerkung: Ring
+    Führe KreisUm mit (Versatz plus 5) und 30 und 5 aus.
+
+    Anmerkung: Schaft nach rechts
+    Führe StellDichAuf mit (Versatz plus 12) und 30 aus.
+    Senke den Stift.
+    Drehe dich um 90 Grad nach rechts.
+    Gehe 20 Schritte vor.
+
+    Anmerkung: Bart
+    Drehe dich um 90 Grad nach rechts.
+    Gehe 8 Schritte vor.
+Ende.
+
+Anmerkung: Eine Öllampe: Fuß und Flamme.
+Definiere Aufgabe LampeZeichnen mit Versatz:
+    Nimm die Farbe "gelb".
+    Nimm die Strichstärke 3.
+    Führe StellDichAuf mit Versatz und 18 aus.
+    Senke den Stift.
+    Führe Kasten mit 22 und 14 aus.
+
+    Anmerkung: Flamme
+    Führe StellDichAuf mit (Versatz plus 11) und 32 aus.
+    Senke den Stift.
+    Gehe 12 Schritte vor.
+Ende.
+
+Anmerkung: Zeichnet den Gegenstand, der zum Namen passt.
+Definiere Aufgabe GegenstandZeichnen mit Name und Versatz:
+    Wenn Name gleich "marmeladenglas" ist, führe GlasZeichnen mit Versatz aus.
+    Wenn Name gleich "schlüssel" ist, führe SchluesselZeichnen mit Versatz aus.
+    Wenn Name gleich "lampe" ist, führe LampeZeichnen mit Versatz aus.
+Ende.
+
+Anmerkung: Das Abschlussbild: draußen vor dem Haus.
+Definiere Aufgabe GartenZeichnen:
+    Anmerkung: Wiese
+    Nimm die Farbe "grün".
+    Nimm die Strichstärke 7.
+    Führe StellDichAuf mit -115 und -56 aus.
+    Senke den Stift.
+    Drehe dich um 90 Grad nach rechts.
+    Gehe 230 Schritte vor.
+
+    Anmerkung: Sonne mit Strahlen
+    Nimm die Farbe "gelb".
+    Nimm die Strichstärke 3.
+    Führe KreisUm mit 75 und 58 und 7 aus.
+    Zähle von 1 bis 8 mit Strahl:
+        Führe StellDichAuf mit 75 und 58 aus.
+        Drehe dich um Strahl mal 45 Grad nach rechts.
+        Hebe den Stift.
+        Gehe 17 Schritte vor.
+        Senke den Stift.
+        Gehe 9 Schritte vor.
+    Ende.
+
+    Anmerkung: Haus
+    Nimm die Farbe "braun".
+    Nimm die Strichstärke 3.
+    Führe StellDichAuf mit -75 und -55 aus.
+    Senke den Stift.
+    Führe Kasten mit 72 und 52 aus.
+
+    Anmerkung: Dach — vom linken Giebelpunkt zur Spitze und wieder hinunter.
+    Führe StellDichAuf mit -75 und -3 aus.
+    Senke den Stift.
+    Drehe dich um 50 Grad nach rechts.
+    Gehe 47 Schritte vor.
+    Drehe dich um 80 Grad nach rechts.
+    Gehe 47 Schritte vor.
+
+    Anmerkung: Tür
+    Nimm die Farbe "gold".
+    Führe StellDichAuf mit -60 und -55 aus.
+    Senke den Stift.
+    Führe Kasten mit 16 und 28 aus.
+
+    Anmerkung: Fenster
+    Nimm die Farbe "türkis".
+    Führe StellDichAuf mit -32 und -28 aus.
+    Senke den Stift.
+    Führe Kasten mit 18 und 18 aus.
+    Führe StellDichAuf mit -23 und -28 aus.
+    Senke den Stift.
+    Gehe 18 Schritte vor.
+    Führe StellDichAuf mit -32 und -19 aus.
+    Senke den Stift.
+    Drehe dich um 90 Grad nach rechts.
+    Gehe 18 Schritte vor.
+
+    Anmerkung: Baum: Stamm und Krone
+    Nimm die Farbe "braun".
+    Nimm die Strichstärke 6.
+    Führe StellDichAuf mit 62 und -56 aus.
+    Senke den Stift.
+    Gehe 34 Schritte vor.
+    Nimm die Farbe "grün".
+    Nimm die Strichstärke 3.
+    Führe KreisUm mit 62 und -10 und 11 aus.
+Ende.
+
+Anmerkung: Ein Zimmer: Wände, Türen, Gegenstände.
+Definiere Aufgabe ZimmerZeichnen:
+    Merke Wert für AktuellerRaum in Ausgaenge als Wege.
+
+    Anmerkung: Wo ist eine Tür? Die Küche hat auch nach Norden eine — nur verschlossen.
+    Merke falsch als NachNorden.
+    Merke falsch als NachOsten.
+    Merke falsch als NachSueden.
+    Merke falsch als NachWesten.
+    Wenn Wege enthält "norden", setze NachNorden auf wahr.
+    Wenn Wege enthält "osten", setze NachOsten auf wahr.
+    Wenn Wege enthält "süden", setze NachSueden auf wahr.
+    Wenn Wege enthält "westen", setze NachWesten auf wahr.
+    Wenn AktuellerRaum gleich "Küche" ist, setze NachNorden auf wahr.
+
+    Anmerkung: Vier Wände — mit Lücke, wo eine Tür ist.
+    Nimm die Farbe Wert für AktuellerRaum in RaumFarbe.
+    Nimm die Strichstärke 3.
+    Führe Wand mit 0 und NachNorden aus.
+    Führe Wand mit 90 und NachOsten aus.
+    Führe Wand mit 180 und NachSueden aus.
+    Führe Wand mit 270 und NachWesten aus.
+
+    Anmerkung: Offene Durchgänge in Gold.
+    Nimm die Farbe "gold".
+    Wenn Wege enthält "norden", führe Durchgang mit 0 aus.
+    Wenn Wege enthält "osten", führe Durchgang mit 90 aus.
+    Wenn Wege enthält "süden", führe Durchgang mit 180 aus.
+    Wenn Wege enthält "westen", führe Durchgang mit 270 aus.
+
+    Anmerkung: Die verschlossene Küchentür: ein rotes Türblatt in der Öffnung.
+    Wenn AktuellerRaum gleich "Küche" ist:
+        Wenn TuerVerschlossen gleich wahr ist:
+            Nimm die Farbe "rot".
+            Führe TuerVerschlossenZeichnen mit 0 aus.
+        Ende.
+    Ende.
+
+    Anmerkung: Gegenstände, die hier liegen — jeder mit eigenem Symbol, nebeneinander.
+    Merke -34 als Versatz.
+    Für jedes Ding in GegenstandOrt:
+        Wenn Wert für Ding in GegenstandOrt gleich AktuellerRaum ist:
+            Führe GegenstandZeichnen mit Ding und Versatz aus.
+            Setze Versatz auf Versatz plus 34.
+        Ende.
+    Ende.
+Ende.
+
+Definiere Aufgabe RaumZeichnen:
+    Anmerkung: Zuerst die alte Zeichnung weg — sonst liegen die Räume übereinander.
+    Lösche die Zeichnung.
+
+    Wenn AktuellerRaum gleich "Garten" ist:
+        Führe GartenZeichnen aus.
+    Sonst:
+        Führe ZimmerZeichnen aus.
+    Ende.
+
+    Anmerkung: Und du selbst — im Garten ein Stück neben dem Haus.
+    Wenn AktuellerRaum gleich "Garten" ist:
+        Führe Strichmaennchen mit 18 aus.
+    Sonst:
+        Führe Strichmaennchen mit 0 aus.
+    Ende.
+    Gehe zur Mitte.
+Ende.
+
+Anmerkung: ========== SPIEL ==========
+
+Anmerkung: Viele tippen ohne Umlaute. Diese Tabelle bringt solche Eingaben
+Anmerkung: auf die Schreibweise, die das Spiel intern benutzt.
+Erstelle eine Tabelle namens Ersatzschreibung
+    mit "schluessel" als "schlüssel"
+    und "sueden" als "süden"
+    und "kueche" als "Küche"
+    und "tuer" als "tür".
+
+Anmerkung: Dasselbe kann man verschieden sagen: nimm, nehme, nehmen, aufheben …
+Anmerkung: Diese Aufgabe macht aus allem die eine Form, mit der das Spiel arbeitet.
+Definiere Aufgabe Grundform mit Wort:
+    Wenn Wort enthält "nimm" oder Wort enthält "nehm" oder Wort enthält "aufheb" ist, gib "nehmen" zurück.
+    Wenn Wort enthält "geh" oder Wort enthält "lauf" ist, gib "gehen" zurück.
+    Wenn Wort enthält "aufschl", gib "aufschließen" zurück.
+    Wenn Wort enthält "öffn" oder Wort enthält "oeffn" oder Wort enthält "mach" ist, gib "öffnen" zurück.
+    Wenn Wort enthält "invent" oder Wort enthält "tasche" ist, gib "inventar" zurück.
+    Wenn Wort enthält "anseh" oder Wort enthält "schau" oder Wort enthält "umseh" ist, gib "ansehen" zurück.
+    Wenn Wort enthält "hilf", gib "hilfe" zurück.
+    Wenn Wort enthält "ende" oder Wort enthält "beend" oder Wort enthält "schluss" ist, gib "ende" zurück.
+    Gib Wort zurück.
+Ende.
+
+Definiere Aufgabe Kanonisch mit Wort:
+    Wenn Ersatzschreibung enthält Wort, gib Wert für Wort in Ersatzschreibung zurück.
+    Gib Wort zurück.
+Ende.
+
+Anmerkung: Was man sieht, wenn ein Gegenstand herumliegt.
+Definiere Aufgabe GegenstandBeschreiben mit Name:
+    Wenn Name gleich "marmeladenglas" ist:
+        Wenn GlasGeoeffnet gleich falsch ist:
+            Zeige "Hier steht ein Marmeladenglas. Es ist verschlossen, und darin glänzt etwas.".
+        Sonst:
+            Zeige "Hier steht ein leeres Marmeladenglas.".
+        Ende.
+    Sonst:
+        Wenn Name gleich "schlüssel" ist:
+            Zeige "Ein alter, rostiger Schlüssel liegt hier.".
+        Sonst:
+            Zeige "Du siehst hier: " und Name und ".".
+        Ende.
+    Ende.
+Ende.
+
+Definiere Aufgabe RaumAnzeigen:
+    Zeige "".
+    Zeige "=== " und AktuellerRaum und " ===".
+    Zeige Wert für AktuellerRaum in RaumBeschreibung.
+    Zeige "Ausgänge: " und Wert für AktuellerRaum in Ausgaenge.
+
+    Wenn AktuellerRaum gleich "Küche" ist:
+        Wenn TuerVerschlossen gleich wahr ist:
+            Zeige "Die Tür nach Norden ist verschlossen (im Bild rot).".
+        Sonst:
+            Zeige "Die Tür nach Norden steht offen.".
+        Ende.
+    Ende.
+
+    Für jedes Ding in GegenstandOrt:
+        Wenn Wert für Ding in GegenstandOrt gleich AktuellerRaum ist:
+            Führe GegenstandBeschreiben mit Ding aus.
+        Ende.
+    Ende.
+
+    Führe RaumZeichnen aus.
+Ende.
+
+Definiere Aufgabe InventarAnzeigen:
+    Wenn die Länge von Inventar höchstens 0 ist:
+        Zeige "Dein Inventar ist leer.".
+    Sonst:
+        Zeige "Du trägst:".
+        Für jedes Ding in Inventar:
+            Wenn Ding gleich "marmeladenglas" ist:
+                Wenn GlasGeoeffnet gleich falsch ist:
+                    Zeige "  - marmeladenglas (verschlossen — etwas glänzt darin)".
+                Sonst:
+                    Zeige "  - marmeladenglas (leer)".
+                Ende.
+            Sonst:
+                Zeige "  - " und Ding.
+            Ende.
+        Ende.
+    Ende.
+Ende.
+
+Definiere Aufgabe Nehmen mit Name:
+    Wenn GegenstandOrt enthält Name:
+        Wenn Wert für Name in GegenstandOrt gleich AktuellerRaum ist:
+            Füge Name zum Inventar hinzu.
+            Entferne Name aus GegenstandOrt.
+            Zeige "Du nimmst " und Name und " auf.".
+            Wenn Name gleich "marmeladenglas" ist:
+                Wenn GlasGeoeffnet gleich falsch ist:
+                    Zeige "Du schüttelst es — drinnen klimpert etwas Metallenes.".
+                Ende.
+            Ende.
+        Sonst:
+            Zeige "Das ist hier nicht zu finden.".
+        Ende.
+    Sonst:
+        Zeige "So etwas gibt es hier nicht.".
+    Ende.
+Ende.
+
+Definiere Aufgabe Oeffnen mit Name:
+    Wenn Name gleich "marmeladenglas" ist:
+        Wenn Inventar enthält "marmeladenglas":
+            Wenn GlasGeoeffnet gleich falsch ist:
+                Setze GlasGeoeffnet auf wahr.
+                Anmerkung: Der Schlüssel fällt heraus und liegt im Raum — aufheben musst du ihn selbst.
+                Trage "schlüssel" mit AktuellerRaum in GegenstandOrt ein.
+                Zeige "Du öffnest das Marmeladenglas …".
+                Zeige "Ein alter Schlüssel fällt heraus und liegt nun vor dir.".
+                Zeige "(Mit 'nehmen schlüssel' hebst du ihn auf.)".
+            Sonst:
+                Zeige "Das Glas ist schon offen und leer.".
+            Ende.
+        Sonst:
+            Zeige "Du hast kein Marmeladenglas.".
+        Ende.
+    Sonst:
+        Zeige "Das kannst du nicht öffnen.".
+    Ende.
+Ende.
+
+Definiere Aufgabe Aufschliessen:
+    Wenn AktuellerRaum gleich "Küche" ist:
+        Wenn TuerVerschlossen gleich wahr ist:
+            Wenn Inventar enthält "schlüssel":
+                Setze TuerVerschlossen auf falsch.
+                Trage "Küche" mit "westen:Flur, norden:Garten" in Ausgaenge ein.
+                Zeige "Du steckst den Schlüssel ins Schloss und drehst um.".
+                Zeige "Die Tür zum Garten knarrt und öffnet sich!".
+            Sonst:
+                Zeige "Du brauchst einen Schlüssel dafür.".
+            Ende.
+        Sonst:
+            Zeige "Die Tür ist schon offen.".
+        Ende.
+    Sonst:
+        Zeige "Hier gibt es keine verschlossene Tür.".
+    Ende.
+Ende.
+
+Definiere Aufgabe Gehen mit Richtung:
+    Teile Wert für AktuellerRaum in Ausgaenge bei ", " zu Wege.
+    Merke falsch als Gefunden.
+
+    Für jedes Weg in Wege:
+        Teile Weg bei ":" zu Stuecke.
+        Wenn Element 1 von Stuecke gleich Richtung ist:
+            Setze AktuellerRaum auf Element 2 von Stuecke.
+            Setze Gefunden auf wahr.
+            Zeige "Du gehst nach " und Richtung und ".".
+            Wenn AktuellerRaum gleich "Garten" ist:
+                Setze SpielGewonnen auf wahr.
+                Zeige "".
+                Zeige "*** Du hast den Garten erreicht! Glückwunsch! ***".
+            Ende.
+        Ende.
+    Ende.
+
+    Wenn Gefunden gleich falsch ist:
+        Zeige "In diese Richtung kannst du nicht gehen.".
+    Ende.
+Ende.
+
+Anmerkung: ========== HAUPTPROGRAMM ==========
+
+Zeige "Willkommen im verlassenen Haus!".
+Zeige "Ziel: Marmeladenglas finden und öffnen, Schlüssel aufheben, Küchentür aufschließen, Garten erreichen.".
+Zeige "Tippe 'hilfe' für alle Befehle.".
+
+Wiederhole 60 Mal:
+    Wenn SpielBeendet gleich wahr ist, höre auf.
+    Wenn SpielGewonnen gleich wahr ist, höre auf.
+
+    Führe RaumAnzeigen aus.
+
+    Frage "Was möchtest du tun?" und merke die Antwort als Eingabe.
+    Merke Kleinbuchstaben von Eingabe als Befehl.
+    Teile Befehl bei " " zu Worte.
+    Merke Grundform von (Element 1 von Worte) als Tat.
+
+    Wenn Tat gleich "hilfe" ist:
+        Zeige "Befehle: gehen [norden/süden/osten/westen], nehmen [ding], öffnen [ding],".
+        Zeige "          aufschließen, inventar, ansehen, ende".
+        Zeige "(Du darfst auch 'nimm' sagen und Umlaute umschreiben: oeffnen, schluessel.)".
+    Ende.
+
+    Wenn Tat gleich "inventar" ist, führe InventarAnzeigen aus.
+    Wenn Tat gleich "aufschließen" ist, führe Aufschliessen aus.
+
+    Anmerkung: "ansehen" braucht nichts zu tun — die Schleife zeigt den Raum gleich
+    Anmerkung: wieder an. Sonst stünde alles doppelt da.
+    Wenn Tat gleich "ansehen" ist, zeige "Du siehst dich um …".
+
+    Wenn Tat gleich "ende" ist:
+        Zeige "Abenteuer beendet.".
+        Setze SpielBeendet auf wahr.
+    Ende.
+
+    Wenn Tat gleich "gehen" ist:
+        Wenn die Länge von Worte mindestens 2 ist:
+            Merke Kanonisch von (das letzte Element von Worte) als Ziel.
+            Führe Gehen mit Ziel aus.
+        Sonst:
+            Zeige "Wohin? (z. B. gehen norden)".
+        Ende.
+    Ende.
+
+    Wenn Tat gleich "nehmen" ist:
+        Wenn die Länge von Worte mindestens 2 ist:
+            Merke Kanonisch von (das letzte Element von Worte) als Gesucht.
+            Führe Nehmen mit Gesucht aus.
+        Sonst:
+            Zeige "Was nehmen?".
+        Ende.
+    Ende.
+
+    Wenn Tat gleich "öffnen" ist:
+        Wenn die Länge von Worte mindestens 2 ist:
+            Merke Kanonisch von (das letzte Element von Worte) als Gesucht.
+            Führe Oeffnen mit Gesucht aus.
+        Sonst:
+            Zeige "Was öffnen?".
+        Ende.
+    Ende.
+Ende.
+
+Wenn SpielGewonnen gleich wahr ist:
+    Anmerkung: Das Abschlussbild — die Schleife ist schon verlassen, also hier noch einmal zeichnen.
+    Führe RaumAnzeigen aus.
+    Zeige "".
+    Zeige "Du genießt die frische Luft im Garten. Ende.".
+Sonst:
+    Zeige "Spiel beendet.".
+Ende.

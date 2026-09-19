@@ -1,0 +1,70 @@
+Anmerkung: Primzahlen – Primzahltest, alle Primzahlen bis zu einer Grenze, alle Teiler einer Zahl.
+
+Definiere Aufgabe Primzahl von n:
+    Wenn n kleiner als 2 ist, gib falsch zurück.
+    Merke dir 2 als Teiler.
+    Wiederhole solange Teiler mal Teiler höchstens n ist:
+        Wenn n durch Teiler teilbar ist, gib falsch zurück.
+        Erhöhe Teiler um 1.
+    Ende.
+    Gib wahr zurück.
+Ende.
+
+Anmerkung: Fragt so lange, bis eine ganze Zahl von 1 bis 100000 eingegeben wurde.
+Definiere Aufgabe Ganzzahl von Fragetext:
+    Wiederhole solange wahr ist:
+        Frage Fragetext und merke dir die Antwort als Eingabe.
+        Wenn Eingabe keine Zahl ist oder Eingabe kleiner als 1 ist oder Eingabe nicht gleich Abgerundet von Eingabe ist:
+            Zeige "Bitte eine ganze Zahl ab 1 eingeben.".
+        Sonst wenn Eingabe größer als 100000 ist:
+            Zeige "Das ist für dieses Programm zu groß (höchstens 100000).".
+        Sonst:
+            Gib Eingabe zurück.
+        Ende.
+    Ende.
+Ende.
+
+Zeige "=== Primzahlen ===".
+
+Merke dir wahr als weiter.
+Wiederhole solange weiter ist:
+    Zeige "".
+    Zeige "1 = Ist eine Zahl eine Primzahl?".
+    Zeige "2 = Alle Primzahlen bis zu einer Grenze".
+    Zeige "3 = Alle Teiler einer Zahl".
+    Zeige "0 = Ende".
+    Frage "Auswahl: " und merke dir die Antwort als Wahl.
+    Wenn Wahl gleich 1 ist:
+        Merke dir Ganzzahl von "Welche Zahl? " als N.
+        Wenn Primzahl von N ist:
+            Zeige N und " ist eine Primzahl.".
+        Sonst:
+            Zeige N und " ist keine Primzahl.".
+        Ende.
+    Sonst wenn Wahl gleich 2 ist:
+        Merke dir Ganzzahl von "Bis zu welcher Zahl? " als Grenze.
+        Erstelle eine Liste namens Funde.
+        Zähle von 2 bis Grenze mit k:
+            Wenn Primzahl von k ist, füge k zu Funde hinzu.
+        Ende.
+        Zeige "Primzahlen bis " und Grenze und ":".
+        Zeige Funde.
+        Zeige "Anzahl: " und Länge von Funde.
+    Sonst wenn Wahl gleich 3 ist:
+        Merke dir Ganzzahl von "Von welcher Zahl willst du die Teiler? " als N.
+        Erstelle eine Liste namens Alle.
+        Zähle von 1 bis N mit k:
+            Wenn N durch k teilbar ist, füge k zu Alle hinzu.
+        Ende.
+        Zeige "Teiler von " und N und ": " und Alle.
+        Wenn Länge von Alle gleich 2 ist:
+            Zeige "(Es sind nur zwei – also ist " und N und " eine Primzahl.)".
+        Ende.
+    Sonst wenn Wahl gleich 0 ist:
+        Merke dir falsch als weiter.
+    Sonst:
+        Zeige "Das habe ich nicht verstanden.".
+    Ende.
+Ende.
+
+Zeige "Tschüss!".

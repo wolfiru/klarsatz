@@ -1,0 +1,23 @@
+Anmerkung: Zeichnet Vielecke mit immer mehr Ecken, jedes in einer anderen Farbe.
+
+Definiere Aufgabe Vieleck mit Ecken und Laenge:
+    Merke 360 geteilt durch Ecken als Winkel.
+    Zähle von 1 bis Ecken mit i:
+        Gehe Laenge Schritte vor.
+        Drehe dich um Winkel Grad nach rechts.
+    Ende.
+Ende.
+
+Erstelle eine Liste namens Farben mit "rot" und "orange" und "gold" und "grün" und "türkis" und "blau".
+
+Nimm die Strichstärke 2.
+Merke 2 als Ecken.
+
+Für jeden Ton in Farben:
+    Erhöhe Ecken.
+    Nimm die Farbe Ton.
+    Führe Vieleck mit Ecken und 60 aus.
+    Drehe dich um 60 Grad nach links.
+Ende.
+
+Zeige "Sechs Vielecke, von drei bis acht Ecken.".

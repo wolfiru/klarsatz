@@ -1,0 +1,29 @@
+Merke für immer 3.14159 als Pi.
+Merke 7 als a.
+Merke 2 als b.
+
+Merke a plus b als Summe.
+Merke a geteilt durch b als Quotient.
+Merke den Rest von a geteilt durch b als Rest.
+Merke die Wurzel von 16 als Ergebnis.
+Merke 2 hoch 10 als Potenz.
+
+Zeige "Summe: " und Summe.
+Zeige "Quotient: " und Quotient.
+Zeige "Rest: " und Rest.
+Zeige "Wurzel: " und Ergebnis.
+Zeige "2 hoch 10: " und Potenz.
+Zeige "Pi: " und Pi.
+
+Merke 5 als Zahl.
+Erhöhe die Zahl um 1.
+Verdopple die Zahl.
+Zeige "Zahl: " und Zahl.
+
+Wenn die Zahl größer als 10 ist:
+    Zeige "groß".
+Sonst wenn die Zahl gleich 10 ist:
+    Zeige "genau zehn".
+Sonst:
+    Zeige "klein".
+Ende.

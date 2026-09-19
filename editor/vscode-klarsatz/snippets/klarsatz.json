@@ -1,0 +1,151 @@
+{
+  "Ausgabe": {
+    "prefix": "zeige",
+    "description": "Text oder Wert ausgeben",
+    "body": [
+      "Zeige ${1:\"Hallo\"}."
+    ]
+  },
+  "Eingabe": {
+    "prefix": "frage",
+    "description": "Eine Eingabe abfragen",
+    "body": [
+      "Frage \"${1:Wie heißt du?} \" und merke die Antwort als ${2:Name}."
+    ]
+  },
+  "Wenn": {
+    "prefix": "wenn",
+    "description": "Bedingung mit Block",
+    "body": [
+      "Wenn ${1:Zahl größer als 10} ist:",
+      "    ${0:Zeige \"groß\".}",
+      "Ende."
+    ]
+  },
+  "Wenn … Sonst": {
+    "prefix": "wennsonst",
+    "description": "Bedingung mit Sonst-Zweig",
+    "body": [
+      "Wenn ${1:Zahl größer als 10} ist:",
+      "    ${2:Zeige \"groß\".}",
+      "Sonst:",
+      "    ${0:Zeige \"klein\".}",
+      "Ende."
+    ]
+  },
+  "Wenn … Sonst wenn": {
+    "prefix": "wennsonstwenn",
+    "description": "Mehrere Fälle",
+    "body": [
+      "Wenn ${1:a gleich 1} ist:",
+      "    ${2:Zeige \"eins\".}",
+      "Sonst wenn ${3:a gleich 2} ist:",
+      "    ${4:Zeige \"zwei\".}",
+      "Sonst:",
+      "    ${0:Zeige \"anders\".}",
+      "Ende."
+    ]
+  },
+  "Wiederhole": {
+    "prefix": "wiederhole",
+    "description": "Schleife mit fester Anzahl",
+    "body": [
+      "Wiederhole ${1:5} Mal:",
+      "    ${0:Zeige \"Hallo\".}",
+      "Ende."
+    ]
+  },
+  "Solange": {
+    "prefix": "solange",
+    "description": "Schleife mit Bedingung",
+    "body": [
+      "Wiederhole solange ${1:Zahl kleiner als 10} ist:",
+      "    ${0:Erhöhe Zahl um 1.}",
+      "Ende."
+    ]
+  },
+  "Zähle": {
+    "prefix": "zaehle",
+    "description": "Zählschleife",
+    "body": [
+      "Zähle von ${1:1} bis ${2:10} mit ${3:i}:",
+      "    ${0:Zeige ${3:i}.}",
+      "Ende."
+    ]
+  },
+  "Für jedes": {
+    "prefix": "fuer",
+    "description": "Durch eine Liste gehen",
+    "body": [
+      "Für jedes ${1:Element} in ${2:Liste}:",
+      "    ${0:Zeige ${1:Element}.}",
+      "Ende."
+    ]
+  },
+  "Aufgabe": {
+    "prefix": "aufgabe",
+    "description": "Aufgabe (Funktion) mit Rückgabewert",
+    "body": [
+      "Definiere Aufgabe ${1:Quadrat} von ${2:x}:",
+      "    Gib ${0:x mal x} zurück.",
+      "Ende."
+    ]
+  },
+  "Aufgabe ohne Wert": {
+    "prefix": "aufgabeohne",
+    "description": "Aufgabe ohne Rückgabewert",
+    "body": [
+      "Definiere Aufgabe ${1:Begrüße} mit ${2:Name}:",
+      "    ${0:Zeige \"Hallo, \" und ${2:Name}.}",
+      "Ende."
+    ]
+  },
+  "Versuche": {
+    "prefix": "versuche",
+    "description": "Fehler abfangen",
+    "body": [
+      "Versuche:",
+      "    ${1:Zeige 1 geteilt durch 0.}",
+      "Bei Fehler:",
+      "    ${0:Zeige \"Problem: \" und Fehlermeldung.}",
+      "Ende."
+    ]
+  },
+  "Ding": {
+    "prefix": "ding",
+    "description": "Ein Ding (Struktur) beschreiben",
+    "body": [
+      "${1:Hund} hat ${2:einen Namen} und ${3:ein Alter}."
+    ]
+  },
+  "Erschaffe": {
+    "prefix": "erschaffe",
+    "description": "Ein Ding erschaffen",
+    "body": [
+      "Erschaffe ${1:Hund} mit ${2:Name} ${3:\"Rocco\"} und ${4:Alter} ${5:5} als ${0:Waldi}."
+    ]
+  },
+  "Liste": {
+    "prefix": "liste",
+    "description": "Eine Liste anlegen",
+    "body": [
+      "Erstelle eine Liste namens ${1:Einkauf} mit ${0:\"Milch\" und \"Brot\"}."
+    ]
+  },
+  "Tabelle": {
+    "prefix": "tabelle",
+    "description": "Eine Tabelle anlegen",
+    "body": [
+      "Erstelle eine Tabelle namens ${1:Preise} mit ${0:\"Apfel\" als 3}."
+    ]
+  },
+  "Programmgerüst": {
+    "prefix": "programm",
+    "description": "Kleines Programm mit Frage und Ausgabe",
+    "body": [
+      "Anmerkung: ${1:Was macht das Programm?}",
+      "Frage \"${2:Wie heißt du?} \" und merke die Antwort als ${3:Name}.",
+      "Zeige \"Hallo, \" und ${3:Name} und \"!\".$0"
+    ]
+  }
+}

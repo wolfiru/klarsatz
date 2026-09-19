@@ -1,0 +1,216 @@
+<p class="lede">Ein Stift steht in der Mitte der Zeichenfläche und schaut nach oben. Man schickt ihn los, lässt ihn abbiegen — und aus vier Sätzen wird ein Quadrat. Kein Koordinatensystem, keine Klammern: nur Anweisungen, die man auch einem Menschen geben könnte.</p>
+
+<h2 id="erste-linie">Die erste Linie</h2>
+<p class="h2-sub">Gehe und Drehe</p>
+
+<p>Zwei Befehle genügen für fast alles: gehen und abbiegen. Die Schrittzahl ist eine Zahl, der Winkel wird in Grad angegeben.</p>
+
+<div class="code-kopf"><span class="code-titel">Ein Winkel</span></div>
+<pre class="klar">Gehe 100 Schritte vor.
+Drehe dich um 90 Grad nach rechts.
+Gehe 100 Schritte vor.</pre>
+
+<p>Die Wörter <code>dich</code> und <code>nach</code> darf man weglassen — <code>Drehe um 90 Grad rechts.</code> bedeutet dasselbe. Rückwärts geht es ohne Umdrehen mit <code>Gehe 50 Schritte zurück.</code></p>
+
+<div class="notiz regel">
+<span class="notiz-titel">Wo der Stift steht</span>
+<p>Zu Beginn steht er in der Mitte und schaut <strong>nach oben</strong>. <code>Gehe zur Mitte.</code> bringt ihn jederzeit dorthin zurück — samt Blickrichtung.</p>
+</div>
+
+<h2 id="formen">Formen aus Schleifen</h2>
+<p class="h2-sub">Vier Sätze, ein Quadrat</p>
+
+<p>Jede geschlossene Form entsteht, indem man immer wieder dasselbe tut. Die Winkelsumme einer Runde ist stets 360 Grad: Ein Quadrat dreht viermal um 90, ein Dreieck dreimal um 120, ein Fünfeck fünfmal um 72.</p>
+
+<div class="code-kopf"><span class="code-titel">Quadrat</span></div>
+<pre class="klar">Wiederhole 4 Mal:
+    Gehe 120 Schritte vor.
+    Drehe dich um 90 Grad nach rechts.
+Ende.</pre>
+
+<div class="code-kopf"><span class="code-titel">Beliebige Vielecke — mit einer Aufgabe</span></div>
+<pre class="klar">Definiere Aufgabe Vieleck mit Ecken und Laenge:
+    Merke 360 geteilt durch Ecken als Winkel.
+    Zähle von 1 bis Ecken mit i:
+        Gehe Laenge Schritte vor.
+        Drehe dich um Winkel Grad nach rechts.
+    Ende.
+Ende.
+
+Führe Vieleck mit 3 und 90 aus.
+Führe Vieleck mit 6 und 60 aus.
+Führe Vieleck mit 12 und 30 aus.</pre>
+
+<h2 id="stift">Stift heben und senken</h2>
+<p class="h2-sub">Bewegen, ohne zu malen</p>
+
+<p>Mit gehobenem Stift bewegt sich der Stift weiter, zieht aber keine Linie. So setzt man ab und beginnt an anderer Stelle neu.</p>
+
+<div class="code-kopf"><span class="code-titel">Zwei getrennte Formen</span></div>
+<pre class="klar">Anmerkung: ein Quadrat …
+Wiederhole 4 Mal:
+    Gehe 120 Schritte vor.
+    Drehe dich um 90 Grad nach rechts.
+Ende.
+
+Anmerkung: … ein Stück weiter, ohne Spur …
+Hebe den Stift.
+Gehe 170 Schritte vor.
+Senke den Stift.
+
+Anmerkung: … und ein Dreieck.
+Wiederhole 3 Mal:
+    Gehe 120 Schritte vor.
+    Drehe dich um 120 Grad nach rechts.
+Ende.</pre>
+
+<h2 id="farben">Farben und Strichstärke</h2>
+<p class="h2-sub">Dreizehn Farben mit deutschen Namen</p>
+
+<div class="code-kopf"><span class="code-titel">Farbwechsel</span></div>
+<pre class="klar">Nimm die Strichstärke 4.
+
+Erstelle eine Liste namens Farben mit "rot" und "orange" und "gold" und "grün" und "blau" und "lila".
+
+Für jeden Ton in Farben:
+    Nimm die Farbe Ton.
+    Gehe 90 Schritte vor.
+    Drehe dich um 60 Grad nach rechts.
+Ende.</pre>
+
+<div class="tab-huelle">
+<table>
+<thead><tr><th>Satz</th><th>Wirkung</th></tr></thead>
+<tbody>
+<tr><td><code>Gehe n Schritte vor.</code> · <code>zurück.</code></td><td>bewegt den Stift, malt dabei</td></tr>
+<tr><td><code>Drehe dich um n Grad nach links.</code> · <code>nach rechts.</code></td><td>ändert die Richtung</td></tr>
+<tr><td><code>Hebe den Stift.</code> · <code>Senke den Stift.</code></td><td>malen aus, malen an</td></tr>
+<tr><td><code>Gehe zur Mitte.</code></td><td>zurück zum Start, wieder nach oben</td></tr>
+<tr><td><code>Nimm die Farbe "gold".</code></td><td>färbt alles Folgende</td></tr>
+<tr><td><code>Nimm die Strichstärke n.</code></td><td>1 bis 50</td></tr>
+</tbody>
+</table>
+</div>
+
+<p>Zur Wahl stehen <code>rot</code>, <code>blau</code>, <code>grün</code>, <code>gelb</code>, <code>gold</code>, <code>orange</code>, <code>lila</code>, <code>rosa</code>, <code>türkis</code>, <code>braun</code>, <code>grau</code>, <code>schwarz</code> und <code>weiß</code>. Bei einem Tippfehler schlägt Klarsatz die ähnlichste Farbe vor.</p>
+
+<h2 id="spirale">Wenn sich etwas ändert</h2>
+<p class="h2-sub">Kleine Abweichungen, große Wirkung</p>
+
+<p>Interessant wird es, wenn bei jeder Wiederholung etwas anders ist. Eine Spirale entsteht, indem die Strecke wächst — und weil 61 Grad knapp an einem Sechstel von 360 vorbeizielt, dreht sich die ganze Figur langsam mit.</p>
+
+<div class="code-kopf"><span class="code-titel">Bunte Spirale</span></div>
+<pre class="klar">Erstelle eine Liste namens Farben mit "gold" und "orange" und "rot" und "rosa"
+    und "lila" und "blau" und "türkis" und "grün".
+
+Nimm die Strichstärke 2.
+Merke 5 als Laenge.
+Merke 0 als Nummer.
+
+Wiederhole 60 Mal:
+    Merke den Rest von Nummer geteilt durch 8 als Stelle.
+    Nimm die Farbe Element (Stelle plus 1) von Farben.
+    Gehe Laenge Schritte vor.
+    Drehe dich um 61 Grad nach rechts.
+    Setze Laenge auf Laenge plus 4.
+    Erhöhe Nummer.
+Ende.</pre>
+
+<div class="notiz">
+<span class="notiz-titel">Zum Ausprobieren</span>
+<p>Ändere die 61 in 60 — dann schließt sich alles zu einem Sechseck. Mit 59 dreht sich die Spirale andersherum. Mit 90 entsteht eine viereckige Schnecke. Dieser eine Wert verändert das ganze Bild.</p>
+</div>
+
+<h2 id="uhr">Eine Uhr, die die Zeit kennt</h2>
+<p class="h2-sub">Zeichnen trifft Uhrzeit</p>
+
+<p>Klarsatz kann die Uhr des Rechners lesen: <code>die aktuelle Stunde</code>, <code>die aktuelle Minute</code>, <code>die aktuelle Sekunde</code> — und ebenso <code>der aktuelle Tag</code>, <code>der aktuelle Monat</code>, <code>das aktuelle Jahr</code>. Damit wird aus dem Zeichnen eine Anzeige.</p>
+
+<p>Die Winkel sind einfacher, als man denkt: Ein voller Kreis hat 360 Grad, eine Stunde ist ein Zwölftel davon (30 Grad), eine Minute ein Sechzigstel (6 Grad). Und weil der Stift nach oben startet und „nach rechts“ im Uhrzeigersinn dreht, passt die Sprache ohne Umrechnung zum Zifferblatt.</p>
+
+<div class="code-kopf"><span class="code-titel">Die drei Zeiger</span></div>
+<pre class="klar">Merke die aktuelle Stunde als Stunde.
+Merke die aktuelle Minute als Minute.
+Merke die aktuelle Sekunde als Sekunde.
+
+Anmerkung: Stundenzeiger — 30 Grad je Stunde, dazu ein halbes Grad je Minute.
+Gehe zur Mitte.
+Nimm die Farbe "gold".
+Nimm die Strichstärke 7.
+Drehe dich um Stunde mal 30 plus Minute geteilt durch 2 Grad nach rechts.
+Gehe 65 Schritte vor.
+
+Anmerkung: Minutenzeiger — sechs Grad je Minute.
+Gehe zur Mitte.
+Nimm die Farbe "weiß".
+Nimm die Strichstärke 4.
+Drehe dich um Minute mal 6 Grad nach rechts.
+Gehe 100 Schritte vor.
+
+Anmerkung: Sekundenzeiger — dünn und rot.
+Gehe zur Mitte.
+Nimm die Farbe "rot".
+Nimm die Strichstärke 2.
+Drehe dich um Sekunde mal 6 Grad nach rechts.
+Gehe 108 Schritte vor.
+
+Zeige "Es ist " und Stunde und " Uhr " und Minute und ".".</pre>
+
+<p>Das vollständige Programm mit Zifferblatt liegt im Spielplatz unter <em>15 Analoguhr</em>.</p>
+
+<div class="notiz">
+<span class="notiz-titel">Die Zeit steht still — innerhalb eines Durchlaufs</span>
+<p>Die Uhr wird je Durchlauf nur <strong>einmal</strong> abgelesen. Sonst könnte zwischen Minuten- und Sekundenzeiger eine Sekunde vergehen und die Uhr falsch gehen.</p>
+</div>
+
+<h2 id="bewegung">Eine Uhr, die wirklich geht</h2>
+<p class="h2-sub">Warte und Lösche die Zeichnung</p>
+
+<p>Bis hierher entstand ein Standbild. Damit daraus eine laufende Anzeige wird, braucht es zwei Sätze: einen, der die Fläche leert, und einen, der eine Pause macht.</p>
+
+<div class="tab-huelle">
+<table>
+<tbody>
+<tr><td><code>Lösche die Zeichnung.</code></td><td>Nimmt alles Gemalte weg — der Stift bleibt, wo er ist</td></tr>
+<tr><td><code>Warte 1 Sekunde.</code></td><td>Pause, 0 bis 60 Sekunden, auch <code>Warte 0.5 Sekunden.</code></td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="code-kopf"><span class="code-titel">Das Grundgerüst jeder laufenden Anzeige</span></div>
+<pre class="klar" data-pruefung="nein">Wiederhole solange wahr ist:
+    Lösche die Zeichnung.
+
+    Anmerkung: … hier das Bild für diesen Augenblick zeichnen …
+
+    Warte 1 Sekunde.
+Ende.</pre>
+
+<p>Die vollständige gehende Uhr steht im Spielplatz unter <em>15 Analoguhr</em>. Sie zeichnet sich jede Sekunde neu — der Sekundenzeiger springt wirklich weiter.</p>
+
+<div class="notiz regel">
+<span class="notiz-titel">Warum das im Browser funktioniert</span>
+<p>Ein Programm mit Endlosschleife wird nie fertig — trotzdem sieht man etwas. Der Spielplatz zeigt jede Ausgabe und jeden Strich in dem Augenblick, in dem er entsteht, statt auf das Ende zu warten. Und der Knopf <em>Ausführen</em> wird währenddessen zu <em>Anhalten</em>.</p>
+<p>Gewartete Zeit zählt übrigens nicht als Rechenzeit — sonst würde die Zeitgrenze eine Uhr abwürgen, die brav jede Sekunde einmal schläft.</p>
+</div>
+
+<div class="notiz">
+<span class="notiz-titel">Kurzform für einfache Fälle</span>
+<p>Statt Endlosschleife geht auch: <code>Wiederhole dieses Programm jede Sekunde.</code> (oder <code>alle 5 Sekunden.</code>) als letzter Satz. Dann läuft das ganze Programm im Takt neu. Auf der Kommandozeile ist das die bessere Wahl — dort schreibt <code>--bild uhr.svg</code> bei jedem Takt ein frisches Bild.</p>
+</div>
+
+<h2 id="wohin">Wo das Bild entsteht</h2>
+<p class="h2-sub">Der Interpreter malt nicht selbst</p>
+
+<p>Klarsatz kennt keine Bildschirme. Ein Zeichenbefehl erzeugt nur die Notiz „von hier nach da, in dieser Farbe, in dieser Stärke“ — was daraus wird, entscheidet die Umgebung:</p>
+
+<ul>
+<li>Im <a href="spielplatz.html">Spielplatz</a> erscheint über der Ausgabe eine Leinwand, sobald ein Programm etwas zeichnet.</li>
+<li>Am eigenen Rechner schreibt <code>python3 -m klarsatz --bild bild.svg programm.klar</code> die Zeichnung in eine SVG-Datei, die jeder Browser und jedes Grafikprogramm öffnet.</li>
+<li>Ohne Zeichenfläche läuft das Programm trotzdem — es entsteht eben kein Bild.</li>
+</ul>
+
+<div class="notiz">
+<span class="notiz-titel">Warum so herum?</span>
+<p>Weil die Sprache dadurch überall gleich bleibt. Dasselbe Programm zeichnet im Browser auf eine Leinwand und auf der Kommandozeile in eine Datei, ohne ein einziges geändertes Wort.</p>
+</div>
