@@ -138,38 +138,6 @@ Ende.</pre>
 
         <p class="spannung-fazit reveal">Die <strong>Kontrolle</strong> ist kein Rückschritt gegenüber der <strong>Natürlichkeit</strong> — sie ist ihre Bedingung. Das Stichwort heißt <strong>Eindeutigkeit</strong>: Ein Parser, der aus echtem Deutsch erraten müsste, was gemeint ist, wäre unberechenbar — und Raten ist das Letzte, was ein Programm tun soll. Die Kunst liegt darin, den Spielraum <em>innerhalb</em> der Muster so groß zu machen, dass sich der Zwang nicht wie Zwang anfühlt.</p>
 
-        <div class="feature-grid">
-            <article class="feature reveal" style="--i:0">
-                <span class="feature-num">i.</span>
-                <h3>Feste Satzmuster</h3>
-                <p>Jeder Befehl folgt einem festen Muster, das sich vorlesen lässt. Der Parser versteht nicht, was du <em>meinst</em> — er erkennt, welchem Muster dein Satz entspricht. Genau deshalb bleibt die Sprache eindeutig, obwohl sie nach Deutsch klingt.</p>
-            </article>
-            <article class="feature reveal" style="--i:1">
-                <span class="feature-num">ii.</span>
-                <h3>Artikel sind erlaubt</h3>
-                <p><code>Zeige die Summe.</code> und <code>Zeige Summe.</code> sind dasselbe. Artikel, Umlautschreibung und Groß&#8209;/Kleinschreibung werden überlesen, damit der Satz natürlich bleiben darf.</p>
-            </article>
-            <article class="feature reveal" style="--i:2">
-                <span class="feature-num">iii.</span>
-                <h3>Fehler, die man versteht</h3>
-                <p>Unbekannte Namen führen nicht zu einem Absturz, sondern zu einem Vorschlag: „Meintest du 'Summe'?“ Zugriffe hinter das Listenende sind immer ein klarer Fehler, nie ein stiller Fehlgriff.</p>
-            </article>
-            <article class="feature reveal" style="--i:3">
-                <span class="feature-num">iv.</span>
-                <h3>Deutsche Zahlen</h3>
-                <p>Kommazahlen erscheinen in der Ausgabe so, wie man sie hier schreibt: <code>3,5</code> statt <code>3.5</code>. Texte werden nach deutscher Sortierreihenfolge verglichen — Äpfel vor Birnen.</p>
-            </article>
-            <article class="feature reveal" style="--i:4">
-                <span class="feature-num">v.</span>
-                <h3>Klein genug zum Verstehen</h3>
-                <p>Der Interpreter ist reines Python 3 ohne Fremdpakete und besteht aus überschaubaren Stufen: Lexer, Satzmuster&#8209;Parser, Syntaxbaum, Interpreter. Kein <code>eval</code>, kein Nachladen von Code.</p>
-            </article>
-            <article class="feature reveal" style="--i:5">
-                <span class="feature-num">vi.</span>
-                <h3>Zum Lernen gebaut</h3>
-                <p>Klarsatz ist ein Lernprojekt — für alle, die das Programmieren nicht gleichzeitig mit einer Fremdsprache lernen wollen. Die Sprache erklärt sich beim Lesen.</p>
-            </article>
-        </div>
     </section>
 
     <section class="section" id="lernen">
@@ -381,7 +349,7 @@ Ende.</pre>
 
     <section class="section" id="bausteine">
         <div class="section-head reveal">
-            <span class="eyebrow">07 — Bausteine</span>
+            <span class="eyebrow">07 — Die Sprache</span>
             <h2>Alles, was eine Sprache <em>braucht.</em></h2>
             <p class="section-sub">Werte merken, entscheiden, wiederholen, zeichnen, sammeln, gliedern — in Sätzen, die man laut lesen kann.</p>
         </div>
@@ -461,6 +429,40 @@ Zeige den Namen von Waldi.</pre>
         <p class="reveal" style="margin-top:40px">
             <a href="doku.html" class="btn btn-secondary">Zur vollständigen Dokumentation</a>
         </p>
+        <p class="section-sub reveal" style="margin-top:56px">Und ein paar Entscheidungen, die man erst beim Benutzen merkt:</p>
+
+        <div class="feature-grid">
+            <article class="feature reveal" style="--i:0">
+                <span class="feature-num">i.</span>
+                <h3>Feste Satzmuster</h3>
+                <p>Jeder Befehl folgt einem festen Muster, das sich vorlesen lässt. Der Parser versteht nicht, was du <em>meinst</em> — er erkennt, welchem Muster dein Satz entspricht. Genau deshalb bleibt die Sprache eindeutig, obwohl sie nach Deutsch klingt.</p>
+            </article>
+            <article class="feature reveal" style="--i:1">
+                <span class="feature-num">ii.</span>
+                <h3>Artikel sind erlaubt</h3>
+                <p><code>Zeige die Summe.</code> und <code>Zeige Summe.</code> sind dasselbe. Artikel, Umlautschreibung und Groß&#8209;/Kleinschreibung werden überlesen, damit der Satz natürlich bleiben darf.</p>
+            </article>
+            <article class="feature reveal" style="--i:2">
+                <span class="feature-num">iii.</span>
+                <h3>Fehler, die man versteht</h3>
+                <p>Unbekannte Namen führen nicht zu einem Absturz, sondern zu einem Vorschlag: „Meintest du 'Summe'?“ Zugriffe hinter das Listenende sind immer ein klarer Fehler, nie ein stiller Fehlgriff.</p>
+            </article>
+            <article class="feature reveal" style="--i:3">
+                <span class="feature-num">iv.</span>
+                <h3>Deutsche Zahlen</h3>
+                <p>Kommazahlen erscheinen in der Ausgabe so, wie man sie hier schreibt: <code>3,5</code> statt <code>3.5</code>. Texte werden nach deutscher Sortierreihenfolge verglichen — Äpfel vor Birnen.</p>
+            </article>
+            <article class="feature reveal" style="--i:4">
+                <span class="feature-num">v.</span>
+                <h3>Klein genug zum Verstehen</h3>
+                <p>Der Interpreter ist reines Python 3 ohne Fremdpakete und besteht aus überschaubaren Stufen: Lexer, Satzmuster&#8209;Parser, Syntaxbaum, Interpreter. Kein <code>eval</code>, kein Nachladen von Code.</p>
+            </article>
+            <article class="feature reveal" style="--i:5">
+                <span class="feature-num">vi.</span>
+                <h3>Zum Lernen gebaut</h3>
+                <p>Klarsatz ist ein Lernprojekt — für alle, die das Programmieren nicht gleichzeitig mit einer Fremdsprache lernen wollen. Die Sprache erklärt sich beim Lesen.</p>
+            </article>
+        </div>
     </section>
 
     <section class="section" id="download">
