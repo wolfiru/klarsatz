@@ -400,3 +400,72 @@ class Spielwiese(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+WEBORDNER = Path("/var/www/html/klarsatz")
+
+
+@unittest.skipUnless(HAT_PLAYWRIGHT and not os.environ.get("KLARSATZ_KEIN_BROWSER"),
+                     "Playwright fehlt oder KLARSATZ_KEIN_BROWSER ist gesetzt")
+@unittest.skipUnless((WEBORDNER / "tutorial.html").exists() and (WEBORDNER / "pyodide").is_dir(),
+                     "Die veröffentlichte Webseite liegt hier nicht")
+class WegInDieSpielwiese(unittest.TestCase):
+    """Vom Kurs in den Editor.
+
+    Das Tutorial sagt "probier das aus" — also muss es auch einen Weg dorthin geben. Der
+    entsteht erst im Browser: assets/app.js hängt an jeden Codeblock mit Kopf den Link
+    "Im Spielplatz öffnen" und packt das Programm kodiert in die Adresse. Nur hier lässt
+    sich prüfen, dass diese Kette hält.
+
+    Geprüft wird gegen die **veröffentlichte** Seite; wo die nicht liegt, wird übersprungen.
+    """
+
+    @classmethod
+    def setUpClass(cls):
+        handler = functools.partial(_Still, directory=str(WEBORDNER))
+        cls.server = http.server.ThreadingHTTPServer(("127.0.0.1", 0), handler)
+        threading.Thread(target=cls.server.serve_forever, daemon=True).start()
+        cls.basis = f"http://127.0.0.1:{cls.server.server_address[1]}/"
+        cls.pw = sync_playwright().start()
+        try:
+            cls.browser = cls.pw.chromium.launch()
+            cls.s = cls.browser.new_page(viewport={"width": 1280, "height": 900})
+        except Exception as e:
+            cls.pw.stop()
+            cls.server.shutdown()
+            raise unittest.SkipTest(f"Browser nicht verfügbar: {str(e)[:120]}")
+
+    @classmethod
+    def tearDownClass(cls):
+        for schliesse in (getattr(cls, "browser", None), getattr(cls, "pw", None)):
+            try:
+                (schliesse.close if hasattr(schliesse, "close") else schliesse.stop)()
+            except Exception:
+                pass
+        cls.server.shutdown()
+
+    def test_jeder_codeblock_der_kurse_laesst_sich_oeffnen(self):
+        for seite in ("tutorial.html", "tutorial-zeichnen.html"):
+            with self.subTest(seite=seite):
+                self.s.goto(self.basis + seite)
+                self.s.wait_for_selector("a.probier", timeout=30000)
+                bloecke = self.s.locator("pre.klar").count()
+                links = self.s.locator("a.probier").count()
+                self.assertEqual(links, bloecke,
+                                 f"{seite}: {bloecke} Beispiele, aber nur {links} zum Öffnen.")
+
+    def test_das_programm_landet_wirklich_im_editor(self):
+        self.s.goto(self.basis + "tutorial.html")
+        self.s.wait_for_selector("a.probier", timeout=30000)
+        ziel = self.s.get_attribute("a.probier", "href")
+        self.assertTrue(ziel.startswith("spielplatz.html#code="), ziel[:40])
+
+        self.s.goto(self.basis + ziel)
+        self.s.wait_for_function("() => !document.querySelector('.kp-lauf').disabled", timeout=180000)
+        self.assertIn("Zeige", self.s.input_value(".kp-text"))
+
+    def test_leeres_blatt_zum_selbertippen(self):
+        """Die Aufgaben im Kurs brauchen eine leere Fläche."""
+        self.s.goto(self.basis + "spielplatz.html#beispiel=")
+        self.s.wait_for_function("() => !document.querySelector('.kp-lauf').disabled", timeout=180000)
+        self.assertEqual(self.s.input_value(".kp-text").strip(), "")

@@ -37,8 +37,13 @@ ersten Satz bis zum eigenen Programm — und zeigt dir am Ende dasselbe Programm
 sondern das Muster *vorhersagen → ausprobieren → verändern*, hat eine eigene Lektion übers
 Fehlerlesen und endet mit einem Projekt ohne Musterlösung.
 
-Nichts darin ist abgetippt: Ein Test führt alle 36 Beispiele aus und vergleicht Ausgaben,
-Fehlermeldungen und sogar die Python-Übersetzung mit dem, was im Text steht.
+Danach gibt es einen zweiten Kurs: **[Zeichnen](docs/TUTORIAL-ZEICHNEN.md)** in acht Lektionen,
+vom ersten Strich bis zum bewegten Bild ([auch als
+Webseite](https://www.ruthner.at/klarsatz/tutorial-zeichnen.html)).
+
+Nichts darin ist abgetippt. Ein Test führt jedes Beispiel aus und vergleicht Ausgaben,
+Fehlermeldungen und die Python-Übersetzung mit dem, was im Text steht — beim Grafikkurs sogar die
+Bilder selbst: Anzahl der Striche, Farben, und ob eine Figur geschlossen ist.
 
 Dazu gibt es die **[Projektseite mit Dokumentation](https://www.ruthner.at/klarsatz/)**.
 
@@ -182,7 +187,7 @@ abgesichert ist und was nicht, steht ehrlich in **[`docs/SICHERHEIT.md`](docs/SI
 | `klarsatz/` | das Paket: Lexer, Parser, Interpreter, Prüfer, Formatierer, Konsole, Web-Schnittstelle, Python-Übersetzer |
 | `programme/` | zwanzig Beispielprogramme |
 | `beispiele/` | kleine Sprachbeispiele, je ein Thema |
-| `docs/` | Tutorial, Sprachreferenz, Programmübersicht, Sicherheit |
+| `docs/` | die beiden Kurse, Sprachreferenz, Programmübersicht, Sicherheit |
 | `playground/` | die Spielwiese für den Browser (Editor, Pyodide-Worker) |
 | `editor/` | VS-Code-Erweiterung, TextMate-Grammatik |
 | `webseite/` | die Seiten von [ruthner.at/klarsatz](https://www.ruthner.at/klarsatz/): `seiten/` und `assets/` von Hand, `kapitel/` als Quelle der Doku-Kapitel |

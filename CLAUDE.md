@@ -29,9 +29,12 @@ python3 tools/veroeffentliche_webseite.py     # Seiten + Bausteine, baut die Kap
 python3 tools/veroeffentliche_spielwiese.py   # playground/ -> spielwiese/
 python3 tools/baue_archiv.py                  # ZIP + Prüfsumme + Versionsangaben in den Seiten
 ```
-Das **Tutorial** ist die Ausnahme: Es wird in `docs/TUTORIAL.md` geschrieben (dort prüft
-`tests/test_tutorial.py` jeden Block nach) und von `tools/baue_tutorial.py` zur Seite `tutorial.html`
-gemacht — nie die HTML-Seite bearbeiten, sonst ist die Änderung beim nächsten Bauen weg.
+Die **Kurse** sind die Ausnahme: `docs/TUTORIAL.md` und `docs/TUTORIAL-ZEICHNEN.md` werden als
+Markdown geschrieben (dort prüfen `tests/test_tutorial.py` und `tests/test_tutorial_zeichnen.py`
+jeden Block nach) und von `tools/baue_tutorial.py` zu `tutorial.html` bzw. `tutorial-zeichnen.html`
+gemacht — nie die HTML-Seiten bearbeiten, sonst ist die Änderung beim nächsten Bauen weg.
+Codeblöcke bekommen dabei einen `code-kopf`; **nur daran** hängt `assets/app.js` den Link
+„Im Spielplatz öffnen".
 
 Cache-Stempel (`?v=…`) stehen **nicht** in `webseite/`; die setzt `tools/stempel_webseite.py` beim Veröffentlichen
 aus dem Dateiinhalt. Nur im Webordner liegen: `doku-*.html` (erzeugt), `spielwiese/`, `downloads/`, `pyodide/`.

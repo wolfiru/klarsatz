@@ -1,6 +1,14 @@
 # Änderungen
 
 ## Unveröffentlicht
+- **Grafikkurs** (`docs/TUTORIAL-ZEICHNEN.md`, `tutorial-zeichnen.html`): acht Lektionen vom
+  ersten Strich über Vielecke, Farben, Muster und Zufall bis zum bewegten Bild. **Auch die
+  Zeichnungen werden nachgerechnet** — ein ```zeichnung-Block kündigt Strichzahl, Farben und
+  geschlossene Figuren an, der Test prüft es am gemeldeten Strichverlauf nach. Dabei kamen zwei
+  falsche Behauptungen des Kurses ans Licht: `Gehe zur Mitte` malt **nicht** mit.
+- **Der Weg vom Kurs in die Spielwiese.** Über jedem Beispiel steht jetzt „Im Spielplatz öffnen",
+  und das Programm landet mit einem Klick im Editor; für die Übungsaufgaben gibt es einen Link
+  auf ein leeres Blatt. Vorher sagte das Tutorial „probier das aus", ohne zu verraten, wo.
 - **Tutorial neu gebaut — vom Sprachkurs zum Programmierkurs.** Jede Lektion beginnt jetzt mit
   einem Problem statt mit einem Befehl, und jede folgt dem Muster *vorhersagen → ausprobieren →
   verändern*. Neu: eine eigene Lektion **„Fehler sind normal"** mit absichtlich kaputten

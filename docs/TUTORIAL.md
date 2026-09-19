@@ -6,6 +6,16 @@ Python.
 Du brauchst nichts zu installieren: Öffne die [Spielwiese](https://www.ruthner.at/klarsatz/spielplatz.html),
 wähle oben **Leeres Blatt** und tippe mit.
 
+> **Wo tippe ich das ein?** In der Spielwiese — das ist der Editor mit dem grünen
+> *Ausführen*-Knopf. Du kommst auf zwei Wegen hin:
+>
+> * Über jedem Beispiel steht **„Im Spielplatz öffnen"**. Ein Klick, und das Programm steht
+>   dort schon im Editor — du kannst es sofort ändern und laufen lassen.
+> * Für die Aufgaben („Deine Aufgabe: …") brauchst du ein **[leeres Blatt](https://www.ruthner.at/klarsatz/spielplatz.html#beispiel=)**.
+>   Dort tippst du selbst.
+>
+> Am besten lässt du die Spielwiese in einem zweiten Fenster offen, neben diesem Kurs.
+
 **So funktioniert dieser Kurs.** Jede Lektion beginnt mit einem Problem, nicht mit einem Befehl.
 Dann kommt immer dieselbe Schleife:
 
@@ -875,6 +885,45 @@ fehlte. Klarsatz zählt `von 1 bis 5` so, wie man es auf Deutsch meint: die 5 ge
 
 </details>
 
+Auch ein eigener Baustein:
+
+```klar
+Definiere Aufgabe Begrüße mit Name:
+    Zeige "Hallo, " und Name und "!".
+Ende.
+
+Führe Begrüße mit "Anna" aus.
+```
+```python
+def Begrüße(Name):
+    print('Hallo, ', Name, '!', sep='')
+
+Begrüße('Anna')
+```
+
+| Klarsatz | Python |
+|---|---|
+| `Definiere Aufgabe Begrüße mit Name:` | `def Begrüße(Name):` |
+| `Führe Begrüße mit "Anna" aus.` | `Begrüße('Anna')` |
+
+Und eine Liste:
+
+```klar
+Erstelle eine Liste namens Farben mit "rot" und "grün" und "blau".
+Zeige das erste Element von Farben.
+Für jedes Farbe in Farben:
+    Zeige Farbe.
+Ende.
+```
+```python
+Farben = ['rot', 'grün', 'blau']
+print(Farben[0])
+for Farbe in Farben:
+    print(Farbe)
+```
+
+Hier fällt etwas auf — und das ist der nächste Abschnitt.
+
 ### Und das mit dem Zählen ab 1
 
 In Lektion 8 hast du gelernt: Das erste Element ist Element 1. In Python ist es Element 0:
@@ -883,6 +932,8 @@ In Lektion 8 hast du gelernt: Das erste Element ist Element 1. In Python ist es 
 |---|---|
 | `das erste Element von Farben` | `Farben[0]` |
 | `Element 2 von Farben` | `Farben[1]` |
+
+Genau das steht oben in der Übersetzung: Aus `das erste Element` wird `Farben[0]`.
 
 Das ist kein Fehler auf einer der beiden Seiten. Es ist eine **Entscheidung**, und die beiden
 Sprachen haben sie verschieden getroffen: Klarsatz zählt wie Menschen, Python zählt wie die meisten
@@ -893,10 +944,29 @@ Genau das ist die letzte Lektion dieses Kurses:
 > Programmiersprachen treffen unterschiedliche Entscheidungen.
 > Wer die Idee dahinter verstanden hat, lernt die nächste Sprache als Schreibweise — nicht von vorn.
 
+### Wo tippt man Python ein?
+
+Dieselbe Frage wie am Anfang dieses Kurses — hier die Antworten, von einfach nach richtig:
+
+| Womit | Wie du hinkommst |
+|---|---|
+| **Online, ohne Installation** | Auf [python.org](https://www.python.org/shell/) oder bei [Programiz](https://www.programiz.com/python-programming/online-compiler/) gibt es ein Eingabefeld im Browser — wie die Spielwiese, nur für Python. Zum Ausprobieren einzelner Zeilen ideal. |
+| **Thonny** *(empfohlen zum Lernen)* | Ein kleiner Editor, eigens für Anfänger gemacht: [thonny.org](https://thonny.org). Python ist gleich mit dabei, man installiert nur eine Sache. Er zeigt beim Laufen Schritt für Schritt, was das Programm gerade tut. |
+| **IDLE** | Ist bei jeder Python-Installation von [python.org](https://www.python.org/downloads/) dabei. Schlicht, aber genügt. |
+| **Auf dem Raspberry Pi** | Python und Thonny sind schon installiert — einfach im Menü suchen. |
+
+Ein Python-Programm ist eine Textdatei, die auf `.py` endet. Speichere sie als `meins.py` und
+drück in Thonny auf *Run*.
+
+> **Ein Unterschied, den du gleich merken wirst:** Python spricht Englisch, auch bei Fehlern.
+> Statt „Hier fehlt ein Punkt am Satzende" steht dort `SyntaxError: invalid syntax`. Das ist
+> gewöhnungsbedürftig, aber es ist dieselbe Art von Nachricht — und du weißt jetzt, dass man sie
+> liest, statt zu erschrecken.
+
 ### Wie es weitergeht
 
 * Übersetze dein Abschlussprojekt mit **Als Python** und lies es Zeile für Zeile.
-* Tipp den Python-Code irgendwo ein, wo er läuft, und ändere etwas.
+* Tipp es in Thonny ein und lass es dort laufen. Ändere eine Zahl. Es tut, was du erwartest.
 * Wenn dir dabei nichts wirklich fremd vorkommt: Dann hat dieser Kurs funktioniert.
 
 ---

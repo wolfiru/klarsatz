@@ -76,6 +76,33 @@ Form neben der automatischen Zahlenerkennung. Didaktisch wertvoll („Daten habe
 eine kleine Parser-Erweiterung, bricht nichts. Die Grenzen der Automatik stehen inzwischen im
 Tutorial (Lektion 2).
 
+## Grafikkurs und der Weg in die Spielwiese (19.09.2026)
+
+**`docs/TUTORIAL-ZEICHNEN.md` / `tutorial-zeichnen.html`** — acht Lektionen: der Stift, Vielecke und
+die 360er-Regel, Farbe und Strichstärke, den Stift heben, Schleife in der Schleife, Zufall, eigene
+Bausteine, Bewegung (löschen → zeichnen → warten, dazu der Takt).
+
+**Auch Zeichnungen werden nachgerechnet.** Ein ```zeichnung-Block kündigt an, was entsteht:
+
+    striche: 4
+    farben: gold
+    geschlossen: ja
+
+`tests/test_tutorial_zeichnen.py` prüft das am gemeldeten Strichverlauf nach — Anzahl, Farben
+(Hexwert zurück auf den deutschen Namen) und ob Anfang und Ende zusammenfallen. Es hat sofort zwei
+falsche Behauptungen des Kurses gefunden: **`Gehe zur Mitte` malt nicht mit.**
+
+**Der Weg vom Kurs in die Spielwiese** war der eigentliche Mangel: Das Tutorial sagte „probier das
+aus", ohne zu verraten, wo. `assets/app.js` hängt den Link „Im Spielplatz öffnen" nur an Codeblöcke,
+vor denen ein `<div class="code-kopf">` steht — den erzeugte `baue_tutorial.py` nicht. Jetzt schon,
+dazu ein Hinweiskasten oben in beiden Kursen und ein Link auf ein leeres Blatt
+(`spielplatz.html#beispiel=`) für die Übungsaufgaben. Geprüft von der neuen Klasse
+`WegInDieSpielwiese` in `tests/test_browser.py`, die gegen die **veröffentlichte** Seite läuft und
+sich überspringt, wo die nicht liegt.
+
+`tools/baue_tutorial.py` baut jetzt mehrere Kurse aus einer Liste `KURSE`; ein weiterer Kurs ist
+ein Markdown-Datei plus ein Eintrag.
+
 ## Webseite (Stand 19.09.2026)
 
 **Die Webseite liegt seit 19.09.2026 mit im Repository** (`webseite/`) und wird dort bearbeitet, nicht im

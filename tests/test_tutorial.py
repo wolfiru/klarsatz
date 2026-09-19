@@ -32,6 +32,7 @@ class Block:
     hat_ausgabe: bool = False
     fehler: list = field(default_factory=list)      # absichtlich kaputt: erwartete Meldung
     python: list = field(default_factory=list)      # erwartete Übersetzung
+    zeichnung: list = field(default_factory=list)   # erwartetes Bild (striche/farben/geschlossen)
 
 
 def lies_bloecke(text):
@@ -42,7 +43,7 @@ def lies_bloecke(text):
         zeile = zeilen[i]
         if zeile.startswith("## "):
             lektion = zeile[3:].strip()
-        treffer = re.match(r"^(\s*)```(klar|eingabe|ausgabe|fehler|python)\s*$", zeile)
+        treffer = re.match(r"^(\s*)```(klar|eingabe|ausgabe|fehler|python|zeichnung)\s*$", zeile)
         if not treffer:
             i += 1
             continue
@@ -63,6 +64,8 @@ def lies_bloecke(text):
                 bloecke[-1].fehler = inhalt
             elif art == "python":
                 bloecke[-1].python = inhalt
+            elif art == "zeichnung":
+                bloecke[-1].zeichnung = inhalt
             else:
                 bloecke[-1].ausgabe = inhalt
                 bloecke[-1].hat_ausgabe = True

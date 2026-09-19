@@ -26,6 +26,11 @@ UMLEITUNG = {
     "SPRACHE.md": "doku-referenz.html",
     "PROGRAMME.md": "https://github.com/wolfiru/klarsatz/blob/main/docs/PROGRAMME.md",
     "https://www.ruthner.at/klarsatz/spielplatz.html": "spielplatz.html",
+    "https://www.ruthner.at/klarsatz/spielplatz.html#beispiel=": "spielplatz.html#beispiel=",
+    "https://www.ruthner.at/klarsatz/tutorial.html": "tutorial.html",
+    "https://www.ruthner.at/klarsatz/tutorial-zeichnen.html": "tutorial-zeichnen.html",
+    "TUTORIAL.md": "tutorial.html",
+    "TUTORIAL-ZEICHNEN.md": "tutorial-zeichnen.html",
     "https://www.ruthner.at/klarsatz/doku-zeichnen.html": "doku-zeichnen.html",
 }
 
@@ -89,7 +94,12 @@ def codeblock(art, inhalt, absichtlich_kaputt=False):
     if art == "klar":
         # Absichtlich kaputte Beispiele darf tools/pruefe_webseite.py nicht anmeckern.
         marke = ' data-pruefung="nein"' if absichtlich_kaputt else ""
-        return [f'<pre class="klar"{marke}><code>{roh}</code></pre>']
+        # Der Kopf ist nicht Zierde: assets/app.js hängt genau dort den Link
+        # "Im Spielplatz öffnen" an — mit dem Programm schon im Editor. Ohne Kopf
+        # steht der Lernende vor einem Beispiel, das er nirgends ausprobieren kann.
+        titel = "Absichtlich falsch" if absichtlich_kaputt else "Zum Ausprobieren"
+        return [f'<div class="code-kopf"><span class="code-titel">{titel}</span></div>',
+                f'<pre class="klar"{marke}><code>{roh}</code></pre>']
     return [f'<div class="tut-{art}"><span class="tut-marke">{BESCHRIFTUNG.get(art, art)}</span>',
             f"<pre><code>{roh}</code></pre></div>"]
 
@@ -206,9 +216,9 @@ GERUEST = """<!DOCTYPE html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Klarsatz in elf Lektionen lernen — vom ersten Satz bis zum eigenen Spiel. Jedes Beispiel läuft, alle Ausgaben werden nachgerechnet.">
+<meta name="description" content="__BESCHREIBUNG__">
 <meta name="theme-color" content="#0c0e0b">
-<title>Klarsatz lernen — Tutorial</title>
+<title>__TITEL__</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230c0e0b'/%3E%3Crect x='14' y='20' width='28' height='3' rx='1.5' fill='%23d9b45a'/%3E%3Crect x='14' y='30' width='36' height='3' rx='1.5' fill='%23f3efe6' opacity='.6'/%3E%3Crect x='14' y='40' width='20' height='3' rx='1.5' fill='%23f3efe6' opacity='.6'/%3E%3Crect x='38' y='40' width='4' height='3' rx='1.5' fill='%23d9b45a'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -238,15 +248,15 @@ GERUEST = """<!DOCTYPE html>
 </nav>
 
 <header class="seitenkopf">
-    <p class="kicker">Tutorial · elf Lektionen</p>
-    <h1>Klarsatz lernen</h1>
+    <p class="kicker">__KICKER__</p>
+    <h1>__UEBERSCHRIFT__</h1>
 </header>
 
 <main>
 <div class="doku-layout">
 
     <aside class="doku-seitenleiste">
-        <span class="sl-titel">Lektionen</span>
+        <span class="sl-titel">__SL_TITEL__</span>
         <ol>
 __LEKTIONEN__
         </ol>
@@ -255,10 +265,7 @@ __LEKTIONEN__
     <article class="doku-inhalt tut-inhalt">
 __INHALT__
 
-<nav class="blaettern">
-    <a href="doku.html"><span class="bl-label">Danach</span>Die Dokumentation</a>
-    <a href="spielplatz.html"><span class="bl-label">Sofort</span>Im Spielplatz üben</a>
-</nav>
+__BLAETTERN__
 
     </article>
 
@@ -280,18 +287,69 @@ __INHALT__
 """
 
 
+# Jeder Kurs ist eine Markdown-Datei und eine Seite. Mehr braucht es nicht.
+KURSE = [
+    {
+        "quelle": "docs/TUTORIAL.md",
+        "datei": "tutorial.html",
+        "titel": "Klarsatz lernen — Tutorial",
+        "ueberschrift": "Klarsatz lernen",
+        "kicker": "Tutorial · elf Lektionen",
+        "sl_titel": "Lektionen",
+        "beschreibung": "Programmieren lernen in elf Lektionen — vom ersten Satz bis zum eigenen "
+                        "Programm, und am Ende dasselbe in Python. Jedes Beispiel läuft.",
+        "blaettern": [("Weiter", "tutorial-zeichnen.html", "Zeichnen lernen"),
+                      ("Sofort", "spielplatz.html", "Im Spielplatz üben")],
+    },
+    {
+        "quelle": "docs/TUTORIAL-ZEICHNEN.md",
+        "datei": "tutorial-zeichnen.html",
+        "titel": "Zeichnen lernen — Klarsatz",
+        "ueberschrift": "Zeichnen mit Klarsatz",
+        "kicker": "Grafikkurs · acht Lektionen",
+        "sl_titel": "Lektionen",
+        "beschreibung": "Vom ersten Strich zum bewegten Bild: ein Grafikkurs in acht Lektionen. "
+                        "Jede Zeichnung wird nachgerechnet — Striche, Farben, geschlossene Figuren.",
+        "blaettern": [("Davor", "tutorial.html", "Das Tutorial"),
+                      ("Sofort", "spielplatz.html", "Im Spielplatz üben")],
+    },
+]
+
+
+def baue(kurs, ziel):
+    quelle = WURZEL / kurs["quelle"]
+    if not quelle.exists():
+        print(f"  übersprungen: {kurs['quelle']} gibt es nicht", file=sys.stderr)
+        return None
+    inhalt, lektionen = nach_html(quelle.read_text(encoding="utf-8"))
+    liste = "\n".join(f'            <li><a href="#{marke}">{html.escape(titel.split("—", 1)[-1].strip())}</a></li>'
+                      for marke, titel in lektionen)
+    blaettern = "\n".join(f'    <a href="{href}"><span class="bl-label">{label}</span>{text}</a>'
+                          for label, href, text in kurs["blaettern"])
+    seite = (GERUEST
+             .replace("__LEKTIONEN__", liste)
+             .replace("__INHALT__", inhalt)
+             .replace("__TITEL__", html.escape(kurs["titel"]))
+             .replace("__UEBERSCHRIFT__", html.escape(kurs["ueberschrift"]))
+             .replace("__KICKER__", html.escape(kurs["kicker"]))
+             .replace("__SL_TITEL__", html.escape(kurs["sl_titel"]))
+             .replace("__BESCHREIBUNG__", html.escape(kurs["beschreibung"]))
+             .replace("__BLAETTERN__", f'<nav class="blaettern">\n{blaettern}\n</nav>'))
+    (ziel / kurs["datei"]).write_text(seite, encoding="utf-8")
+    return len(seite), len(lektionen)
+
+
 def main() -> int:
     ziel = Path(sys.argv[1]) if len(sys.argv) > 1 else VORGABE
     if not ziel.is_dir():
         print(f"Zielordner {ziel} gibt es nicht.", file=sys.stderr)
         return 2
 
-    inhalt, lektionen = nach_html(QUELLE.read_text(encoding="utf-8"))
-    liste = "\n".join(f'            <li><a href="#{marke}">{html.escape(titel.split("—", 1)[-1].strip())}</a></li>'
-                      for marke, titel in lektionen)
-    seite = GERUEST.replace("__LEKTIONEN__", liste).replace("__INHALT__", inhalt)
-    (ziel / "tutorial.html").write_text(seite, encoding="utf-8")
-    print(f"gebaut: tutorial.html ({len(seite)} Bytes, {len(lektionen)} Lektionen)")
+    for kurs in KURSE:
+        ergebnis = baue(kurs, ziel)
+        if ergebnis:
+            groesse, anzahl = ergebnis
+            print(f"gebaut: {kurs['datei']} ({groesse} Bytes, {anzahl} Lektionen)")
 
     werkzeug = WURZEL / "tools" / "stempel_webseite.py"
     if werkzeug.exists():
