@@ -199,7 +199,36 @@ Ende.</pre>
             <h2>Ausprobieren, <em>ohne etwas zu riskieren.</em></h2>
             <p class="section-sub">Der Spielplatz führt Klarsatz-Programme direkt im Browser aus — und zeigt Zeichnungen auf einer Leinwand gleich daneben. Nichts davon verlässt das Fenster.</p>
         </div>
-        <div class="sicher-grid reveal">
+
+        <div class="sicher-zahlen reveal">
+            <div class="beleg-zahlen">
+                <div class="beleg-zahl">
+                    <strong>60 000</strong>
+                    <span>verdorbene Programme ausprobiert</span>
+                </div>
+                <div class="beleg-zahl">
+                    <strong>16</strong>
+                    <span>Arten, ein Programm zu zerstören</span>
+                </div>
+                <div class="beleg-zahl beleg-zahl-gut">
+                    <strong>0</strong>
+                    <span>Abstürze, 0 Hänger</span>
+                </div>
+            </div>
+            <p>Wir haben versucht, es kaputtzumachen: Ein Werkzeug zerhackt die Beispielprogramme
+               nach dem Zufallsprinzip und verfüttert die Trümmer an den Interpreter. Nichts ist
+               abgestürzt, nichts hängen geblieben — jedes Mal kam eine ruhige deutsche
+               Fehlermeldung.</p>
+        </div>
+
+        <p class="reveal" style="margin-top:36px">
+            <a href="spielplatz.html" class="btn btn-primary">Spielplatz öffnen</a>
+        </p>
+
+        <details class="tiefer reveal">
+            <summary>Wie das im Einzelnen abgesichert ist</summary>
+            <div class="tiefer-inhalt">
+                <div class="sicher-grid reveal">
             <article class="sicher-karte">
                 <h3>Nichts wird geschrieben</h3>
                 <p>Im Spielplatz arbeiten <code>Lies</code> und <code>Schreibe</code> auf einem Dateisystem im Arbeitsspeicher, das mit dem Lauf verschwindet. Es gibt keinen Weg von einem Programm auf eine Festplatte — weder auf deine noch auf den Server.</p>
@@ -221,8 +250,9 @@ Ende.</pre>
                 <p>Klarsatz kennt kein <code>eval</code>, kein Nachladen und keinen Zugriff auf darunterliegende Funktionen. Ein Programm kann nur das, was in dieser Dokumentation steht.</p>
             </article>
         </div>
-        <div class="beleg reveal">
-            <div class="beleg-text">
+
+                <div class="beleg">
+                    <div class="beleg-text">
                 <h3>Und woher wissen wir das?</h3>
                 <p>Weil wir versucht haben, es kaputtzumachen. Ein eigenes Werkzeug nimmt die
                    Beispielprogramme und zerhackt sie nach dem Zufallsprinzip: Es löscht Zeichen,
@@ -233,28 +263,12 @@ Ende.</pre>
                 <p>Erlaubt ist dabei nur <strong>eins</strong>: eine ruhige deutsche Fehlermeldung.
                    Stürzt etwas ab oder bleibt hängen, zählt das als Treffer.</p>
             </div>
-            <div class="beleg-zahlen">
-                <div class="beleg-zahl">
-                    <strong>60 000</strong>
-                    <span>verdorbene Programme ausprobiert</span>
-                </div>
-                <div class="beleg-zahl">
-                    <strong>16</strong>
-                    <span>Arten, ein Programm zu zerstören</span>
-                </div>
-                <div class="beleg-zahl beleg-zahl-gut">
-                    <strong>0</strong>
-                    <span>Abstürze, 0 Hänger</span>
-                </div>
-            </div>
-            <p class="beleg-fuss">Jeder dieser Läufe lässt sich einzeln nachstellen — und einmal pro
+                    <p class="beleg-fuss">Jeder dieser Läufe lässt sich einzeln nachstellen — und einmal pro
                Woche läuft die Prüfung automatisch neu, mit anderen Zufallszahlen. Was das belegt und
                was nicht, steht in <a href="https://github.com/wolfiru/klarsatz/blob/main/docs/SICHERHEIT.md" rel="noopener">docs/SICHERHEIT.md</a>.</p>
-        </div>
-
-        <p class="reveal" style="margin-top:36px">
-            <a href="spielplatz.html" class="btn btn-primary">Spielplatz öffnen</a>
-        </p>
+                </div>
+            </div>
+        </details>
     </section>
 
     <section class="section" id="fuerwen">

@@ -1909,3 +1909,47 @@ kbd {
 }
 
 .lh-aus strong { color: var(--paper); }
+
+
+/* ── Sicherheit: Zahlen vorn, Methodik zum Aufklappen ────────────────────── */
+
+.sicher-zahlen {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 36px;
+    align-items: center;
+    margin-top: 30px;
+    padding: 26px 30px;
+    background: var(--ink-2);
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--moss);
+    border-radius: var(--radius);
+}
+
+.sicher-zahlen .beleg-zahlen { display: flex; flex-direction: column; gap: 18px; }
+.sicher-zahlen p { margin: 0; font-size: 0.97rem; line-height: 1.7; color: var(--paper-dim); max-width: 66ch; }
+
+@media (max-width: 760px) {
+    .sicher-zahlen { grid-template-columns: 1fr; gap: 22px; padding: 22px; }
+    .sicher-zahlen .beleg-zahlen { flex-direction: row; flex-wrap: wrap; gap: 24px; }
+}
+
+/* Für die Neugierigen — aber nicht im Weg der anderen. */
+.tiefer { margin-top: 36px; border-top: 1px solid var(--line); }
+
+.tiefer > summary {
+    cursor: pointer;
+    padding: 18px 0 0;
+    font-family: var(--sans);
+    font-size: 0.92rem;
+    letter-spacing: 0.04em;
+    color: var(--paper-dim);
+    list-style: none;
+}
+
+.tiefer > summary::-webkit-details-marker { display: none; }
+.tiefer > summary::before { content: "▸ "; color: var(--gold); }
+.tiefer[open] > summary::before { content: "▾ "; }
+.tiefer > summary:hover { color: var(--paper); }
+.tiefer-inhalt { padding-top: 26px; }
+.tiefer-inhalt .beleg { margin-top: 28px; }
