@@ -12,7 +12,9 @@
 # Wer nur Text ändert, kann auch direkt die erzeugten Dateien bearbeiten — dann aber
 # die Änderung nach kapitel/ zurückschreiben, sonst überschreibt der nächste Lauf sie.
 set -eu
-ZIEL=/var/www/html/klarsatz
+# Zielordner als erstes Argument, sonst der Webordner. So kann man die Seiten
+# auch versuchsweise woandershin bauen, ohne die veröffentlichte Seite anzufassen.
+ZIEL=${1:-/var/www/html/klarsatz}
 FRAG="$(dirname "$0")/kapitel"
 
 # Kapitel: id|datei|Nummer|Titel|Untertitel(meta description)

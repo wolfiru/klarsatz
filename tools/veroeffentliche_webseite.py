@@ -54,7 +54,7 @@ def main() -> int:
     # einer Änderung am gemeinsamen Kopf oder Fuß nicht mehr zusammen.
     bauskript = QUELLE / "baue_doku.sh"
     if bauskript.exists():
-        ergebnis = subprocess.run(["bash", str(bauskript)], cwd=QUELLE,
+        ergebnis = subprocess.run(["bash", str(bauskript), str(ziel)], cwd=QUELLE,
                                   capture_output=True, text=True)
         if ergebnis.returncode != 0:
             print(ergebnis.stdout + ergebnis.stderr, file=sys.stderr)
