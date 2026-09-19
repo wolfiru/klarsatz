@@ -1,4 +1,5 @@
 """Hervorhebung: Pygments, TextMate (VS Code) und JavaScript-Regeln stammen aus derselben Regelliste."""
+import importlib.util
 import json
 import re
 import shutil
@@ -9,6 +10,8 @@ from pathlib import Path
 from klarsatz.hervorhebung import TEXTMATE, js_regeln, pygments_lexer, regeln, textmate_grammatik
 from klarsatz.parser import RESERVIERT, STARTER
 from klarsatz.sprachdaten import (ANWEISUNGEN, BINDEWOERTER, KONSTANTEN, KONTROLLE, alternative, wort_regex)
+
+HAT_PYGMENTS = importlib.util.find_spec("pygments") is not None
 
 WURZEL = Path(__file__).resolve().parent.parent
 PROGRAMME = sorted(list((WURZEL / "programme").glob("*.klar")) + list((WURZEL / "beispiele").glob("*.klar")))
@@ -53,6 +56,7 @@ class Sprachdaten(unittest.TestCase):
             self.assertTrue(r.fullmatch(w), w)
 
 
+@unittest.skipUnless(HAT_PYGMENTS, "pygments fehlt")
 class PygmentsLexer(unittest.TestCase):
     def test_verlustfrei_fuer_alle_programme(self):
         for datei in PROGRAMME:
@@ -124,7 +128,7 @@ class GeneriertesIstAktuell(unittest.TestCase):
         self.assertEqual(len(regeln(r"\p{L}")), len(regeln(r"[^\W\d_]")))
 
 
-@unittest.skipUnless(shutil.which("node") and (WURZEL / "tools/node_modules/vscode-textmate").exists(),
+@unittest.skipUnless(HAT_PYGMENTS and shutil.which("node") and (WURZEL / "tools/node_modules/vscode-textmate").exists(),
                      "node oder tools/node_modules fehlt (cd tools && npm install)")
 class MitEchtemVSCodeTokenizer(unittest.TestCase):
     def test_pygments_und_textmate_faerben_gleich(self):
@@ -141,7 +145,7 @@ class MitEchtemVSCodeTokenizer(unittest.TestCase):
                 self.assertEqual(a, b)
 
 
-@unittest.skipUnless(shutil.which("node"), "node fehlt")
+@unittest.skipUnless(HAT_PYGMENTS and shutil.which("node"), "pygments oder node fehlt")
 class MitJavaScript(unittest.TestCase):
     def test_javascript_und_pygments_faerben_gleich(self):
         roh = subprocess.run(["node", str(WURZEL / "tools/tokenisiere_js.mjs"), *[str(p) for p in PROGRAMME]],

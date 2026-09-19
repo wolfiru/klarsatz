@@ -61,7 +61,14 @@ def main():
 
     with zipfile.ZipFile(ziel / "klarsatz-py.zip", "w", zipfile.ZIP_DEFLATED) as z:
         for datei in sorted((WURZEL / "klarsatz").glob("*.py")):
-            z.write(datei, f"klarsatz/{datei.name}")
+            # Fester Zeitstempel und feste Rechte: sonst steckt in der ZIP das
+            # Änderungsdatum der Dateien, und derselbe Quelltext ergäbe auf jedem
+            # Rechner eine andere Datei. Die CI prüft, ob das Erzeugte noch zur
+            # Quelle passt — das geht nur, wenn das Erzeugen reproduzierbar ist.
+            eintrag = zipfile.ZipInfo(f"klarsatz/{datei.name}", date_time=(1980, 1, 1, 0, 0, 0))
+            eintrag.compress_type = zipfile.ZIP_DEFLATED
+            eintrag.external_attr = 0o644 << 16
+            z.writestr(eintrag, datei.read_bytes())
 
     beispiele = []
     for (ordner, name), (gruppe, titel) in TITEL.items():
