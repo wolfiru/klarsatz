@@ -2090,8 +2090,20 @@ kbd {
 .bruecke-tabelle pre { margin: 0; padding: 12px 14px; font-size: 0.82rem; line-height: 1.6; }
 .bruecke-tabelle pre.schale { border-left-color: #7aa7d9; }
 
+.bruecke-punkt {
+    margin: 30px 0 0;
+    padding-top: 26px;
+    border-top: 1px solid var(--line);
+    font-family: var(--serif);
+    font-size: clamp(1.25rem, 2.4vw, 1.7rem);
+    line-height: 1.35;
+    color: var(--paper);
+}
+
+.bruecke-punkt em { color: var(--moss); font-style: italic; }
+
 .bruecke-fuss {
-    margin: 22px 0 0;
+    margin: 18px 0 0;
     font-size: 0.89rem;
     line-height: 1.65;
     color: var(--paper-faint);
