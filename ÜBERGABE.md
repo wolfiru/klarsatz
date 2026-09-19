@@ -71,10 +71,12 @@ Tabellen als Kür, eine Kür übers Zeichnen, ein Abschlussprojekt ohne Musterl�
 * **Füllwörter und Synonyme abschaffen.** Das ist die These des Projekts. Stattdessen zeigt das
   Tutorial eine bevorzugte Schreibweise und erwähnt die Varianten einmal.
 
-**Noch offen aus derselben Kritik:** `Frage "…" als Zahl und merke …` als *zusätzliche*, explizite
-Form neben der automatischen Zahlenerkennung. Didaktisch wertvoll („Daten haben Typen"), technisch
-eine kleine Parser-Erweiterung, bricht nichts. Die Grenzen der Automatik stehen inzwischen im
-Tutorial (Lektion 2).
+**Erledigt am 19.09.2026:** `Frage "…" als Zahl und merke …` (und `als Text`) gibt es jetzt.
+Der Knackpunkt war, dass `Zahl` und `Text` bewusst **nicht** reserviert sind — man darf Variablen
+so nennen. Gelöst über die Stellung: Die Typangabe steht *vor* `und merke`, der Variablenname
+dahinter. `Frage "?" als Zahl und merke die Antwort als Zahl.` ist damit gültig und eindeutig.
+`als Zahl` wirft bei falscher Eingabe einen abfangbaren `LaufzeitFehler`, dessen Meldung gleich den
+besseren Weg nennt. Das Tutorial zeigt in Lektion 2 die ausdrückliche Form zuerst.
 
 ## Grafikkurs und der Weg in die Spielwiese (19.09.2026)
 

@@ -157,10 +157,13 @@ Zeige a mal b.
 21
 ```
 
-Sieht eine Antwort wie eine Zahl aus, wird sie zur Zahl — damit kann man rechnen:
+### Zahl oder Text?
+
+Bisher waren die Antworten Namen — also Text. Wenn du mit einer Antwort **rechnen** willst, sag das
+dazu: `als Zahl`.
 
 ```klar
-Frage "Wie alt bist du? " und merke die Antwort als Alter.
+Frage "Wie alt bist du? " als Zahl und merke die Antwort als Alter.
 Zeige "In zehn Jahren bist du " und Alter plus 10 und ".".
 ```
 ```eingabe
@@ -169,6 +172,39 @@ Zeige "In zehn Jahren bist du " und Alter plus 10 und ".".
 ```ausgabe
 In zehn Jahren bist du 50.
 ```
+
+**Warum muss man das dazusagen?** Weil `40` und `"40"` für einen Computer zwei verschiedene Dinge
+sind: eine Zahl, mit der man rechnet, und ein Text aus zwei Ziffern. Bei einer Telefonnummer oder
+einer Postleitzahl willst du gerade **nicht** rechnen — dafür gibt es `als Text`:
+
+```klar
+Frage "Postleitzahl? " als Text und merke die Antwort als PLZ.
+Zeige "Du wohnst in " und PLZ und ".".
+```
+```eingabe
+3100
+```
+```ausgabe
+Du wohnst in 3100.
+```
+
+Und wenn jemand etwas eintippt, das keine Zahl ist? Dann sagt Klarsatz das — und gleich dazu, was
+man stattdessen tun kann:
+
+```klar
+Frage "Wie alt bist du? " als Zahl und merke die Antwort als Alter.
+Zeige Alter.
+```
+```eingabe
+ungefähr vierzig
+```
+```fehler
+Hier war eine Zahl gefragt, 'ungefähr vierzig' ist aber keine.
+```
+
+> **Und ohne Angabe?** Dann rät Klarsatz: Sieht die Antwort wie eine Zahl aus, wird sie zur Zahl.
+> Das ist bequem und für kurze Programme völlig in Ordnung — du siehst es in den Beispielen der
+> Spielwiese oft so. Für alles, was verlässlich sein soll, schreib lieber dazu, was du erwartest.
 
 > **Was zählt als Zahl?** Klarsatz schaut sich die Antwort an. Als Zahl gelten `5`, `-5`, `3.5`
 > **und** `3,5` (beim Eintippen darfst du das deutsche Komma benutzen), auch mit Leerzeichen

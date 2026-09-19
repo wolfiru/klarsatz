@@ -36,7 +36,16 @@ Zeige "Hallo Welt".
 Zeige "Summe: " und Summe.                    Anmerkung: 'und' klebt Teile direkt aneinander
 Frage "Wie heißt du?" und merke die Antwort als Name.
 ```
-Eine Antwort, die wie eine Zahl aussieht, wird zur Zahl. Einen einzelnen Buchstaben eines Textes
+```
+Frage "Wie alt bist du? " als Zahl und merke die Antwort als Alter.
+Frage "Postleitzahl? " als Text und merke die Antwort als PLZ.
+```
+Mit `als Zahl` bzw. `als Text` sagst du ausdrücklich, was du erwartest. `als Zahl` bricht mit einer
+deutschen Meldung ab, wenn etwas anderes kommt (abfangbar mit `Versuche`); `als Text` verhindert die
+Umwandlung, damit `"3100"` eine Postleitzahl bleibt und keine Zahl wird. Die Angabe steht **vor**
+`und merke` — dadurch bleibt `… und merke die Antwort als Zahl.` weiterhin ein Variablenname.
+
+Ohne Angabe gilt wie bisher: Eine Antwort, die wie eine Zahl aussieht, wird zur Zahl. Einen einzelnen Buchstaben eines Textes
 bekommst du mit `Element 1 von Antwort` (Zahl-Antworten führen dabei zu einem Fehler, den man mit
 `Versuche` abfangen kann – siehe `programme/08_zahlenraten_computer_raet.klar`).
 

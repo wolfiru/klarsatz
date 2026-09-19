@@ -1,4 +1,5 @@
-"""Neue Sprachbefehle: negative Zahlen, Tabellen, Textwerkzeuge, Listenwerkzeuge, Klammern in Bedingungen."""
+"""Neue Sprachbefehle: negative Zahlen, Tabellen, Textwerkzeuge, Listenwerkzeuge,
+Klammern in Bedingungen, ausdrücklich getippte Eingaben."""
 import random
 import unittest
 
@@ -259,3 +260,64 @@ class Zusammenspiel(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class FrageMitTyp(unittest.TestCase):
+    """`Frage "..." als Zahl und merke die Antwort als x.`
+
+    Die Automatik („sieht aus wie eine Zahl, also ist es eine") bleibt. Daneben kann man
+    jetzt ausdrücklich sagen, was man erwartet — damit Lernende merken, dass Daten einen
+    Typ haben, statt sich darauf zu verlassen, dass es schon passt.
+    """
+
+    def test_als_zahl_ergibt_eine_zahl(self):
+        self.assertEqual(
+            laufe('Frage "Alter? " als Zahl und merke die Antwort als Alter.\nZeige Alter plus 1.',
+                  ["40"]), ["41"])
+
+    def test_als_zahl_nimmt_auch_kommazahlen(self):
+        self.assertEqual(
+            laufe('Frage "Preis? " als Zahl und merke die Antwort als p.\nZeige p mal 2.',
+                  ["1,5"]), ["3"])
+
+    def test_als_zahl_beschwert_sich_freundlich(self):
+        with self.assertRaisesRegex(LaufzeitFehler, "Hier war eine Zahl gefragt"):
+            laufe('Frage "Alter? " als Zahl und merke die Antwort als Alter.', ["abc"])
+
+    def test_die_meldung_sagt_wie_man_es_besser_macht(self):
+        with self.assertRaisesRegex(LaufzeitFehler, "Wenn Alter eine Zahl ist"):
+            laufe('Frage "Alter? " als Zahl und merke die Antwort als Alter.', ["x"])
+
+    def test_als_text_verhindert_die_umwandlung(self):
+        """Eine Postleitzahl ist keine Zahl, mit der man rechnet."""
+        self.assertEqual(
+            laufe('Frage "PLZ? " als Text und merke die Antwort als PLZ.\n'
+                  'Wenn PLZ ein Text ist, zeige "Text".\nSonst zeige "Zahl".', ["3100"]), ["Text"])
+
+    def test_ohne_angabe_bleibt_alles_wie_bisher(self):
+        self.assertEqual(
+            laufe('Frage "? " und merke die Antwort als a.\n'
+                  'Wenn a eine Zahl ist, zeige "Zahl".\nSonst zeige "Text".', ["7"]), ["Zahl"])
+
+    def test_eine_variable_darf_weiterhin_zahl_heissen(self):
+        """Die Typangabe steht vor dem 'und merke' — dahinter ist 'Zahl' ein ganz normaler Name."""
+        self.assertEqual(
+            laufe('Frage "? " und merke die Antwort als Zahl.\nZeige Zahl.', ["7"]), ["7"])
+
+    def test_beides_zugleich(self):
+        self.assertEqual(
+            laufe('Frage "? " als Zahl und merke die Antwort als Zahl.\nZeige Zahl plus 1.',
+                  ["7"]), ["8"])
+
+    def test_unbekannter_typ_ist_ein_name(self):
+        """'als Farbe' ist keine Typangabe — dann muss der Satz wie bisher scheitern."""
+        with self.assertRaises(SyntaxFehler):
+            laufe('Frage "? " als Farbe und merke die Antwort als x.', ["rot"])
+
+    def test_der_fehler_laesst_sich_abfangen(self):
+        self.assertEqual(
+            laufe('Versuche:\n'
+                  '    Frage "Alter? " als Zahl und merke die Antwort als Alter.\n'
+                  'Bei Fehler:\n'
+                  '    Zeige "Das war keine Zahl.".\n'
+                  'Ende.', ["abc"]), ["Das war keine Zahl."])

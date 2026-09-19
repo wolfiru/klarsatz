@@ -1,6 +1,13 @@
 # Änderungen
 
 ## Unveröffentlicht
+- **`Frage "…" als Zahl` und `als Text`**: Man kann jetzt ausdrücklich sagen, was man erwartet.
+  `als Zahl` bricht mit einer deutschen Meldung ab, wenn etwas anderes kommt — und die Meldung
+  sagt gleich, wie man stattdessen so lange fragt, bis es passt. `als Text` verhindert die
+  Umwandlung, damit eine Postleitzahl `"3100"` bleibt. Ohne Angabe ändert sich **nichts**.
+  Die Typangabe steht vor `und merke`; dadurch bleiben `Zahl` und `Text` weiterhin erlaubte
+  Variablennamen (`… und merke die Antwort als Zahl.` tut, was es immer tat). Das Tutorial zeigt
+  jetzt die ausdrückliche Form zuerst — „Daten haben einen Typ" ist ein Konzept, keine Formalie.
 - **Grafikkurs** (`docs/TUTORIAL-ZEICHNEN.md`, `tutorial-zeichnen.html`): acht Lektionen vom
   ersten Strich über Vielecke, Farben, Muster und Zufall bis zum bewegten Bild. **Auch die
   Zeichnungen werden nachgerechnet** — ein ```zeichnung-Block kündigt Strichzahl, Farben und

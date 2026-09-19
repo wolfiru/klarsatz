@@ -188,8 +188,15 @@ class NachPython:
         return [self._a(k[2])]
 
     def s_frage(self, k):
-        self.hinweise.append("'Frage' macht aus einer Eingabe, die wie eine Zahl aussieht, automatisch eine "
-                             "Zahl – in Python steht hier immer ein Text.")
+        typ = k[5] if len(k) > 5 else None
+        if typ == "zahl":
+            self.hinweise.append("'Frage ... als Zahl' wird zu float(input(...)). Python zeigt dann 40.0, "
+                                 "wo Klarsatz 40 schreibt; und bei einer falschen Eingabe kommt ein "
+                                 "ValueError statt einer deutschen Meldung.")
+            return [f"{self._n(k[3], k[4])} = float(input({self._a(k[2])}))"]
+        if typ != "text":
+            self.hinweise.append("'Frage' macht aus einer Eingabe, die wie eine Zahl aussieht, automatisch eine "
+                                 "Zahl – in Python steht hier immer ein Text.")
         return [f"{self._n(k[3], k[4])} = input({self._a(k[2])})"]
 
     def s_liste_neu(self, k):

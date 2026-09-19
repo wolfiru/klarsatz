@@ -211,12 +211,26 @@ class Interpreter:
         self.aus(text)
 
     def _a_frage(self, k, b):
-        _, z, frage, n, anz = k
+        _, z, frage, n, anz = k[:5]
+        typ = k[5] if len(k) > 5 else None
         try:
             antwort = self.eingabe(als_text(self.auswerten(frage, b)) + " ")
         except EOFError:
             raise LaufzeitFehler("Es kam keine Eingabe.", z)
-        b.lege_an(n, anz, _auto_zahl(antwort.strip()[:self.grenzen.eingabe]))
+        roh = antwort.strip()[:self.grenzen.eingabe]
+
+        if typ == "text":
+            wert = roh                       # ausdrücklich Text: "5" bleibt "5"
+        elif typ == "zahl":
+            wert = _auto_zahl(roh)
+            if not _ist_zahl(wert):
+                raise LaufzeitFehler(
+                    f"Hier war eine Zahl gefragt, '{roh}' ist aber keine. "
+                    "Wenn du so lange fragen willst, bis eine Zahl kommt, lass 'als Zahl' weg "
+                    f"und prüfe mit 'Wenn {anz} eine Zahl ist'.", z)
+        else:
+            wert = _auto_zahl(roh)           # wie bisher: sieht es aus wie eine Zahl, ist es eine
+        b.lege_an(n, anz, wert)
 
     def _a_merke(self, k, b):
         _, z, ausdruck, n, anz, konstant = k

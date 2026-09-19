@@ -117,5 +117,22 @@ class Grenzen(unittest.TestCase):
             uebersetzer._satz(("gibtesnicht", 1))
 
 
+
+class GetippteEingabe(unittest.TestCase):
+    def test_als_zahl_wird_zu_float(self):
+        py = nach_python('Frage "Alter? " als Zahl und merke die Antwort als Alter.')
+        self.assertIn("Alter = float(input('Alter? '))", py)
+        self.assertIn("float(input", py)
+
+    def test_als_text_wird_zu_schlichtem_input(self):
+        py = nach_python('Frage "PLZ? " als Text und merke die Antwort als PLZ.')
+        self.assertIn("PLZ = input('PLZ? ')", py)
+        self.assertNotIn("float", py)
+
+    def test_ohne_angabe_bleibt_der_hinweis_auf_die_automatik(self):
+        py = nach_python('Frage "? " und merke die Antwort als a.')
+        self.assertIn("a = input(", py)
+        self.assertIn("automatisch eine Zahl", py)
+
 if __name__ == "__main__":
     unittest.main()

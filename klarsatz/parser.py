@@ -215,6 +215,14 @@ class Parser:
     def s_frage(self):
         z = self.nimm().zeile
         frage = self.summe()
+        # Optional: "Frage ... als Zahl und merke ...". Die Typangabe steht *vor* dem
+        # "und merke" — dadurch ist sie eindeutig von einem Variablennamen "Zahl"
+        # zu unterscheiden, der hinter dem zweiten "als" stünde. Darum müssen "Zahl"
+        # und "Text" auch nicht reserviert werden.
+        typ = None
+        if self.ist_wort("als") and self.peek(1).art == "WORT" and self.peek(1).norm in ("zahl", "text"):
+            self.nimm()
+            typ = self.nimm().norm
         self.erwarte_wort("und")
         self.erwarte_wort("merke", "merke")
         if self.ist_wort("antwort"):
@@ -222,7 +230,7 @@ class Parser:
         self.erwarte_wort("als")
         t = self.name(True)
         self.punkt()
-        return ("frage", z, frage, t.norm, t.wert)
+        return ("frage", z, frage, t.norm, t.wert, typ)
 
     # Variablen -----------------------------------------------------
     def s_merke(self):
