@@ -2097,3 +2097,18 @@ kbd {
     color: var(--paper-faint);
     max-width: 74ch;
 }
+
+
+/* ── Die These in einem Satz ─────────────────────────────────────────────── */
+
+.these {
+    margin: 26px 0 0;
+    padding: 4px 0 4px 22px;
+    border-left: 2px solid var(--gold);
+    max-width: 78ch;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: var(--paper-dim);
+}
+
+.these strong { color: var(--paper); }
