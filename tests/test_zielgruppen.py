@@ -24,9 +24,14 @@ def aus_readme():
 
 def aus_webseite():
     text = SEITE.read_text(encoding="utf-8")
+    # Nur innerhalb der Eignungstabelle suchen. Die Seite hat inzwischen weitere
+    # Tabellen mit <th scope="row">, und ein Muster über die ganze Datei läuft
+    # sonst quer durch sie hindurch.
+    tabelle = re.search(r'<table class="eignung">.*?</table>', text, re.S)
+    assert tabelle, "Die Eignungstabelle fehlt auf der Seite."
     zeilen = {}
     for treffer in re.finditer(r'<th scope="row">(.+?)</th>\s*<td><span class="eig-messer"[^>]*'
-                               r'aria-label="(\d+) von 10"', text, re.S):
+                               r'aria-label="(\d+) von 10"', tabelle.group(0), re.S):
         zeilen[treffer.group(1)] = int(treffer.group(2))
     return zeilen
 
