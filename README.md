@@ -2,6 +2,10 @@
 
 **Eine Programmiersprache, die wie Deutsch klingt.**
 
+Am ehrlichsten beschrieben: ein kleines, aber konsequent durchgezogenes **Experiment** darüber, wie
+weit man eine formale Programmiersprache an natürliche deutsche Satzstrukturen annähern kann, ohne
+deren Eindeutigkeit aufzugeben.
+
 Zwei Sätze zur Einordnung, damit die Erwartung stimmt:
 
 **Klarsatz ist keine natürliche Sprache.** Es ist eine Programmiersprache, deren Syntax sich an

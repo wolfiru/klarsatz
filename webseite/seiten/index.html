@@ -42,18 +42,18 @@
 
 <header class="hero" id="top">
     <div class="hero-inner reveal">
-        <p class="kicker">Programmieren lernen auf Deutsch · Version <span data-download="version">0.7.1</span></p>
+        <p class="kicker">Ein Sprachexperiment · Version <span data-download="version">0.7.1</span></p>
         <h1>Programme,<br>die sich lesen<br><em>wie ein Satz.</em></h1>
-        <p class="lede">Klarsatz ist weniger eine neue Programmiersprache als eine <strong>Schreibweise zum Programmieren&#8209;Lernen</strong>: Jeder Befehl steht im Imperativ, jeder Satz endet mit einem Punkt. Was dasteht, ist genau das, was passiert — kein Klammerdickicht, keine englischen Abkürzungen. Wer damit denken gelernt hat, zieht weiter; einen Knopf <em>Als&nbsp;Python</em> gibt es dafür.</p>
+        <p class="lede"><strong>Wie nah kann eine formale Programmiersprache an deutsche Sätze heranrücken, ohne ihre Eindeutigkeit zu verlieren?</strong> Klarsatz ist der Versuch, das herauszufinden — konsequent durchgezogen bis in die Fehlermeldungen. Der praktische Gewinn zeigt sich beim Lernen: Wer programmieren lernt, entziffert sonst gleichzeitig eine fremde Zeichensprache. Diese zweite Hürde fällt hier für eine Weile weg — und am Ende steht dasselbe Programm in Python daneben.</p>
         <div class="hero-actions">
             <a href="spielplatz.html" class="btn btn-primary">Gleich ausprobieren</a>
             <a href="doku.html" class="btn btn-link">Dokumentation lesen</a>
         </div>
     </div>
     <div class="hero-meta reveal" style="--i:2">
-        <span>Feste deutsche Satzmuster</span>
+        <span>Eindeutig trotz Alltagssprache</span>
         <span>Läuft im Browser</span>
-        <span>Ohne Dateizugriff</span>
+        <span>Führt weiter zu Python</span>
     </div>
 </header>
 
@@ -61,10 +61,31 @@
 
     <section class="section" id="idee">
         <div class="section-head reveal">
-            <span class="eyebrow">01 — Idee</span>
-            <h2>Der Quelltext <em>ist</em> die Erklärung.</h2>
-            <p class="section-sub">Klarsatz nimmt die Sprache ernst, in der wir ohnehin über Programme reden. Wer den Satz versteht, versteht den Befehl. Wichtig dabei: Klarsatz ist <strong>keine natürliche Sprache</strong> — es ist eine Programmiersprache, deren Syntax sich an deutscher Alltagssprache orientiert. Der Parser erkennt feste Satzmuster, nicht beliebiges Deutsch. <code>Sag Hallo.</code> versteht er nicht, <code>Zeige "Hallo".</code> schon.</p>
+            <span class="eyebrow">01 — Die Idee</span>
+            <h2>Natürlich genug zum Lesen.<br><em>Streng genug zum Rechnen.</em></h2>
+            <p class="section-sub">Klarsatz ist eine <strong>kontrollierte natürliche Sprache</strong>. In diesem Begriff steckt die ganze Idee — und eine Spannung, die man aushalten muss: Die Sprache soll klingen wie Deutsch, darf aber nicht so beliebig sein wie Deutsch. Sie darf deutsch <em>aussehen</em>. Sie darf nicht deutsch <em>raten</em>.</p>
         </div>
+        <div class="vergleich reveal spannung">
+            <div class="v-spalte">
+                <p class="v-titel">Natürlichkeit</p>
+                <div class="code-kopf"><span class="code-titel">Artikel, Füllwörter, Schreibweise — alles egal</span></div>
+<pre class="klar" data-pruefung="nein">Zeige die Summe.
+Merke dir die 5 als Zahl.
+Zeige mir bitte "Hallo".</pre>
+                <p class="v-text">Wer den Satz laut vorliest, hat den Befehl schon erklärt. Artikel und Höflichkeitswörter werden überlesen, Groß&#8209;/Kleinschreibung ist egal, Umlaute darf man als <code>ae</code>/<code>oe</code>/<code>ue</code> schreiben.</p>
+            </div>
+            <div class="v-spalte">
+                <p class="v-titel">Kontrolle</p>
+                <div class="code-kopf"><span class="code-titel">Das Muster ist Pflicht</span></div>
+<pre class="klar" data-pruefung="nein">Wenn Alter mindestens 18 ist:
+    Zeige "Erwachsen".
+Ende.</pre>
+                <p class="v-text">Jeder Satz muss auf ein festes Muster passen. Der Punkt am Ende ist Pflicht, <code>gleich</code> ist Pflicht, jeder Block braucht sein <code>Ende.</code> — und <code>Sag Hallo.</code> versteht Klarsatz nicht, so klar der Satz für uns auch ist.</p>
+            </div>
+        </div>
+
+        <p class="spannung-fazit reveal">Diese zweite Spalte ist kein Rückschritt gegenüber der ersten, sondern ihre Bedingung: <strong>Eindeutigkeit.</strong> Ein Parser, der aus echtem Deutsch erraten müsste, was gemeint ist, wäre unberechenbar — und Raten ist das Letzte, was ein Programm tun soll. Die Kunst liegt darin, den Spielraum <em>innerhalb</em> der Muster so groß zu machen, dass sich der Zwang nicht wie Zwang anfühlt.</p>
+
         <div class="feature-grid">
             <article class="feature reveal" style="--i:0">
                 <span class="feature-num">i.</span>
@@ -103,18 +124,18 @@
         <div class="section-head reveal">
             <span class="eyebrow">02 — Erster Blick</span>
             <h2>Dasselbe Programm, <em>zweimal erzählt.</em></h2>
-            <p class="section-sub">Links, wie es die meisten Sprachen schreiben. Rechts, wie Klarsatz es sagt.</p>
+            <p class="section-sub">Beide Programme tun dasselbe — links Python, rechts Klarsatz. Die <strong>Konzepte sind identisch</strong>: eine Schleife, drei Bedingungen, eine Ausgabe. Verschieden ist nur, wie viel man vorher wissen muss, um die linke Spalte zu lesen.</p>
         </div>
         <div class="vergleich reveal">
             <div class="v-spalte">
-                <p class="v-titel">Gewohnt</p>
-<pre class="schale"><code>for i in range(1, 31):
-    if i % 15 == 0:
-        print("FizzBuzz")
-    elif i % 3 == 0:
-        print("Fizz")
-    elif i % 5 == 0:
-        print("Buzz")
+                <p class="v-titel">Python</p>
+<pre class="schale" data-erzeugt="nach-python"><code>for i in range(1, 30 + 1):
+    if (i % 15 == 0):
+        print('FizzBuzz')
+    elif (i % 3 == 0):
+        print('Fizz')
+    elif (i % 5 == 0):
+        print('Buzz')
     else:
         print(i)</code></pre>
             </div>
@@ -128,6 +149,24 @@
     Sonst zeige i.
 Ende.</pre>
             </div>
+        </div>
+
+        <div class="warum reveal">
+            <h3>Warum dann nicht gleich Python?</h3>
+            <p>Oft ist das die richtige Antwort — und die Seite sagt das auch: Wer Englisch kann und
+               loslegen will, sollte gleich Python nehmen. Klarsatz ist für die anderen gebaut.</p>
+            <p>Beim Lesen der linken Spalte muss man <strong>gleichzeitig</strong> sechs Dinge
+               wissen, die mit Programmieren nichts zu tun haben: dass <code>range(1, 31)</code> bei
+               30 aufhört, dass <code>%</code> den Rest einer Division meint, dass <code>==</code>
+               etwas anderes ist als <code>=</code>, was <code>elif</code> abkürzt, wofür der
+               Doppelpunkt steht und dass die Einrückung nicht Zierde ist. Wer das erste Mal
+               programmiert, lernt also zwei Dinge auf einmal — und scheitert meist am zweiten,
+               obwohl er das erste verstanden hätte.</p>
+            <p>Klarsatz nimmt diese zweite Hürde für eine Weile weg. Nicht für immer: Am Ende des
+               Tutorials steht dasselbe Programm in Python daneben, Zeile für Zeile, mit derselben
+               Bedeutung. Der Satz, auf den alles hinausläuft, lautet dann
+               <em>„Du hast nicht Klarsatz gelernt — du hast programmieren gelernt."</em></p>
+            <p class="warum-fuss"><a href="tutorial.html" class="btn btn-secondary">Das Tutorial ansehen</a></p>
         </div>
     </section>
 
@@ -394,7 +433,7 @@ python3 -m klarsatz programme/03_taschenrechner.klar</code></pre>
         <div class="section-head reveal">
             <span class="eyebrow">07 — Stand</span>
             <h2>Wo Klarsatz gerade <em>steht.</em></h2>
-            <p class="section-sub">Version <span data-download="version">0.7.1</span> — die Sprache ist vollständig benutzbar und wird weiter ausgebaut.</p>
+            <p class="section-sub">Version <span data-download="version">0.7.1</span>. Am ehrlichsten beschrieben: ein kleines, aber konsequent durchgezogenes Experiment darüber, wie weit man eine formale Programmiersprache an natürliche deutsche Satzstrukturen annähern kann, ohne deren Eindeutigkeit aufzugeben. Was daraus geworden ist, steht hier — samt dem, was fehlt.</p>
         </div>
 
         <div class="feature-grid reveal">
