@@ -15,6 +15,14 @@ HEIM = Path("/var/www/html/index.html")
 WORT = {9: "neun", 20: "zwanzig", 29: "neunundzwanzig"}
 
 
+def ist_ruthner_at():
+    """Liegt unter /var/www/html/index.html wirklich die Startseite von ruthner.at?"""
+    try:
+        return "klarsatz/" in HEIM.read_text(encoding="utf-8")
+    except OSError:
+        return False
+
+
 class Beispielzahlen(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
@@ -38,7 +46,10 @@ class Beispielzahlen(unittest.TestCase):
         self.assertIsNotNone(m, "Der Hinweis in der Sofort-Demo nennt keine Zahl mehr.")
         self.assertEqual(int(m.group(1)), self.spielwiese)
 
-    @unittest.skipUnless(HEIM.exists(), "Die Startseite von ruthner.at liegt hier nicht")
     def test_ruthner_at_nennt_dieselbe_zahl(self):
-        text = HEIM.read_text(encoding="utf-8")
-        self.assertIn(f"{WORT[self.spielwiese]} Beispielprogramme", text)
+        """Nur auf Wolfgangs Rechner. Auf einem CI-Läufer liegt unter diesem Pfad die
+        Standardseite von Apache — die Datei ist also da, aber es ist nicht unsere."""
+        if not ist_ruthner_at():
+            self.skipTest("Die Startseite von ruthner.at liegt hier nicht")
+        self.assertIn(f"{WORT[self.spielwiese]} Beispielprogramme",
+                      HEIM.read_text(encoding="utf-8"))
