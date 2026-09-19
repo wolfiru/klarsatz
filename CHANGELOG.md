@@ -1,6 +1,14 @@
 # Änderungen
 
 ## Unveröffentlicht
+- **Tutorial** (`docs/TUTORIAL.md`): elf Lektionen vom ersten Satz bis zum selbstgebauten
+  Zahlenraten — Ausgabe, Variablen, Eingabe, Entscheidungen, Schleifen, Listen, Tabellen, Aufgaben,
+  Dinge, Fehlerbehandlung, ein Spiel. `tests/test_tutorial.py` führt alle 42 Beispiele aus und
+  vergleicht ihre Ausgabe mit dem Text; das Tutorial kann also nicht veralten.
+  `tools/baue_tutorial.py` macht daraus die Seite `tutorial.html` — eine Quelle, zwei Ausgaben.
+- **Richtiggestellt:** Mehrere Stellen der Webseite nannten noch Version 0.2 (Kopf der Startseite,
+  Doku-Übersicht, Referenz), während der Download bei 0.7.1 stand. Sie tragen jetzt
+  `data-download="version"` und werden beim Archivbau mitgezogen.
 - **Fuzz-Test** (`tests/test_fuzz.py`, `tests/fuzzer.py`, `tools/fuzze.py`): Gültige Programme werden
   zufällig zerhackt — Zeichen, Wörter, Zeilen, Einrückung, Punkte, Zahlen, Texte — und an alles
   verfüttert, was Quelltext entgegennimmt: Ausführen, Prüfen, Formatieren, Übersetzen nach Python.

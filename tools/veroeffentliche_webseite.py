@@ -60,8 +60,18 @@ def main() -> int:
             print(ergebnis.stdout + ergebnis.stderr, file=sys.stderr)
             return ergebnis.returncode
         print("  " + ergebnis.stdout.strip().splitlines()[-1])
-    else:
-        subprocess.run([sys.executable, str(WURZEL / "tools" / "stempel_webseite.py"), str(ziel)])
+
+    # Das Tutorial entsteht aus docs/TUTORIAL.md — dort wird es auch geprüft.
+    tutorial = WURZEL / "tools" / "baue_tutorial.py"
+    if tutorial.exists():
+        ergebnis = subprocess.run([sys.executable, str(tutorial), str(ziel)],
+                                  capture_output=True, text=True)
+        if ergebnis.returncode != 0:
+            print(ergebnis.stdout + ergebnis.stderr, file=sys.stderr)
+            return ergebnis.returncode
+        print("  " + ergebnis.stdout.strip().splitlines()[0])
+
+    subprocess.run([sys.executable, str(WURZEL / "tools" / "stempel_webseite.py"), str(ziel)])
     return 0
 
 

@@ -29,6 +29,10 @@ python3 tools/veroeffentliche_webseite.py     # Seiten + Bausteine, baut die Kap
 python3 tools/veroeffentliche_spielwiese.py   # playground/ -> spielwiese/
 python3 tools/baue_archiv.py                  # ZIP + Prüfsumme + Versionsangaben in den Seiten
 ```
+Das **Tutorial** ist die Ausnahme: Es wird in `docs/TUTORIAL.md` geschrieben (dort prüft
+`tests/test_tutorial.py` jeden Block nach) und von `tools/baue_tutorial.py` zur Seite `tutorial.html`
+gemacht — nie die HTML-Seite bearbeiten, sonst ist die Änderung beim nächsten Bauen weg.
+
 Cache-Stempel (`?v=…`) stehen **nicht** in `webseite/`; die setzt `tools/stempel_webseite.py` beim Veröffentlichen
 aus dem Dateiinhalt. Nur im Webordner liegen: `doku-*.html` (erzeugt), `spielwiese/`, `downloads/`, `pyodide/`.
 

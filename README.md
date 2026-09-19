@@ -31,6 +31,12 @@ installieren. Der Interpreter läuft als WebAssembly in einem Web-Worker, ohne S
 Zugriff auf die Festplatte. 29 Beispielprogramme sind zum Hineinladen hinterlegt, vom Zahlenraten
 bis zum grafischen Textadventure.
 
+Du willst die Sprache von Grund auf lernen? Das **[Tutorial](docs/TUTORIAL.md)** führt in elf
+Lektionen vom ersten Satz bis zum eigenen Spiel — [auch als
+Webseite](https://www.ruthner.at/klarsatz/tutorial.html). Jedes Beispiel darin läuft wirklich: Ein
+Test führt alle 42 Programme aus und vergleicht ihre Ausgabe mit dem, was im Text steht. Das
+Tutorial kann also nicht veralten.
+
 Dazu gibt es die **[Projektseite mit Dokumentation](https://www.ruthner.at/klarsatz/)**.
 
 ## Auf dem eigenen Rechner
@@ -150,7 +156,7 @@ abgesichert ist und was nicht, steht ehrlich in **[`docs/SICHERHEIT.md`](docs/SI
 | `klarsatz/` | das Paket: Lexer, Parser, Interpreter, Prüfer, Formatierer, Konsole, Web-Schnittstelle, Python-Übersetzer |
 | `programme/` | zwanzig Beispielprogramme |
 | `beispiele/` | kleine Sprachbeispiele, je ein Thema |
-| `docs/` | Sprachreferenz, Programmübersicht, Sicherheit |
+| `docs/` | Tutorial, Sprachreferenz, Programmübersicht, Sicherheit |
 | `playground/` | die Spielwiese für den Browser (Editor, Pyodide-Worker) |
 | `editor/` | VS-Code-Erweiterung, TextMate-Grammatik |
 | `webseite/` | die Seiten von [ruthner.at/klarsatz](https://www.ruthner.at/klarsatz/): `seiten/` und `assets/` von Hand, `kapitel/` als Quelle der Doku-Kapitel |

@@ -32,12 +32,16 @@ die Weiterarbeit (z. B. mit Claude Code auf dem Raspberry Pi). Arbeitsregeln: `C
    Jeder Beschuss hat seine eigene Saat: `python3 tools/fuzze.py --wiederhole SAAT` stellt ihn allein nach.
    Ergebnis bisher: **keine Panne** (siehe `docs/SICHERHEIT.md`). Rund ein Fünftel der Mutanten dringt bis in
    den Interpreter vor — ein eigener Test wacht darüber, damit der Fuzzer nicht unbemerkt flach wird.
-2. **Tutorial** (`docs/TUTORIAL.md`, noch nicht gemacht): ~10 kurze Lektionen mit lauffähigen Blöcken. Idee: Blöcke
-   ```` ```klar ````, optional ```` ```eingabe ```` und ```` ```ausgabe ````; ein Test führt sie mit festem Seed aus und
-   vergleicht – so bleibt das Tutorial korrekt. Lektionen: Hallo, Variablen/Rechnen, Eingabe, Entscheidungen,
-   Schleifen, Listen, Aufgaben, Dinge, Tabellen, Fehler abfangen, ein Spiel bauen. Später als Seiten der Webseite.
+2. **Tutorial — gebaut am 19.09.2026.** `docs/TUTORIAL.md`: elf Lektionen vom ersten Satz bis zum
+   selbstgebauten Zahlenraten. Genau wie geplant umgesetzt: ```` ```klar ````-Blöcke, dazu ```` ```eingabe ````
+   und ```` ```ausgabe ````; `tests/test_tutorial.py` führt alle 42 Blöcke mit festem Startwert aus und vergleicht
+   die Ausgabe Zeile für Zeile mit dem, was im Text steht. Eine falsche Zahl im Tutorial lässt also den Test
+   scheitern, mit Lektion und Zeilennummer.
+   Auf der Webseite steht es unter `tutorial.html`, erzeugt von `tools/baue_tutorial.py` aus derselben
+   Markdown-Datei — eine Quelle, zwei Ausgaben. Die Codeblöcke dort werden zusätzlich von
+   `tools/pruefe_webseite.py` geprüft (97 Blöcke insgesamt, 0 beanstandet).
 3. **Webseite** – ~~offen~~ **gebaut am 18.09.2026**, siehe Abschnitt „Webseite" weiter unten.
-   Offen geblieben: Tutorial-Seiten (hängt an Punkt 2).
+   Die Tutorial-Seite kam am 19.09.2026 dazu (siehe Punkt 2).
 4. **Browser-Testfehler — geklärt und erledigt (19.09.2026).** Deine Vermutung stimmte: An der Spielwiese lag
    es nicht. Nach dem Zeitlimit-Abbruch ist `#zweite .kp-lauf` vorhanden, sichtbar und nicht deaktiviert,
    und der zweite Lauf gelingt — er dauert nur rund 11 Sekunden, weil Pyodide dabei neu geladen wird.
