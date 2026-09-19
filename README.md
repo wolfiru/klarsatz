@@ -2,11 +2,12 @@
 
 **Eine Programmiersprache, die wie Deutsch klingt.**
 
-Am ehrlichsten beschrieben: ein kleines, aber konsequent durchgezogenes **Experiment** darüber, wie
-weit man eine formale Programmiersprache an natürliche deutsche Satzstrukturen annähern kann, ohne
-deren Eindeutigkeit aufzugeben.
+Klarsatz ist ein bewusst begrenztes **Sprachdesign-Experiment mit einem klaren pädagogischen
+Ziel**: Programmieranfänger sollen algorithmisches Denken lernen, ohne gleichzeitig eine
+fremdsprachliche Programmiersyntax entschlüsseln zu müssen. Die Frage dahinter: Wie weit kann man
+eine formale Sprache an deutsche Satzstrukturen annähern, ohne ihre Eindeutigkeit aufzugeben?
 
-Zwei Sätze zur Einordnung, damit die Erwartung stimmt:
+Zwei Sätze zur Abgrenzung, damit die Erwartung stimmt:
 
 **Klarsatz ist keine natürliche Sprache.** Es ist eine Programmiersprache, deren Syntax sich an
 deutscher Alltagssprache orientiert: feste Satzmuster, die sich vorlesen lassen. `Sag Hallo.`

@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "klarsatz"
 version = "0.7.1"
-description = "Klarsatz – eine Programmiersprache, die wie Deutsch klingt (Interpreter, Prüfer, Formatierer, Konsole)"
+description = "Klarsatz – ein Sprachdesign-Experiment zum Programmieren-Lernen auf Deutsch (Interpreter, Prüfer, Formatierer, Konsole)"
 readme = "README.md"
 license = { file = "LICENSE" }
 requires-python = ">=3.10"
