@@ -2044,3 +2044,56 @@ kbd {
     .zweiterkurs { grid-template-columns: 1fr; gap: 26px; padding: 24px; }
     .zk-bild { display: flex; justify-content: center; }
 }
+
+
+/* ── Die Brücke: ein Konzept, zwei Schreibweisen ─────────────────────────── */
+
+.bruecke { margin-bottom: 44px; }
+.bruecke h3 { font-family: var(--sans); font-size: 1.1rem; margin: 0 0 10px; }
+.bruecke > p { margin: 0 0 22px; font-size: 0.95rem; line-height: 1.7; color: var(--paper-dim); max-width: 74ch; }
+
+.bruecke-tabelle { width: 100%; border-collapse: collapse; min-width: 720px; }
+
+.bruecke-tabelle th[scope="col"] {
+    font-family: var(--sans);
+    font-size: 0.74rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--paper-faint);
+    font-weight: 600;
+    padding: 0 16px 12px 0;
+    text-align: left;
+}
+
+.bruecke-tabelle th[scope="row"] {
+    font-family: var(--sans);
+    font-weight: 600;
+    font-size: 0.93rem;
+    color: var(--paper);
+    width: 20%;
+    padding: 18px 16px 18px 0;
+    vertical-align: top;
+    text-transform: none;
+    letter-spacing: 0;
+}
+
+.bruecke-tabelle td {
+    width: 40%;
+    padding: 12px 16px 12px 0;
+    vertical-align: top;
+    border-top: 1px solid var(--line);
+}
+
+.bruecke-tabelle th[scope="row"] { border-top: 1px solid var(--line); }
+
+/* Die Kästen in der Tabelle dürfen nicht so viel Luft haben wie einzeln stehende. */
+.bruecke-tabelle pre { margin: 0; padding: 12px 14px; font-size: 0.82rem; line-height: 1.6; }
+.bruecke-tabelle pre.schale { border-left-color: #7aa7d9; }
+
+.bruecke-fuss {
+    margin: 22px 0 0;
+    font-size: 0.89rem;
+    line-height: 1.65;
+    color: var(--paper-faint);
+    max-width: 74ch;
+}

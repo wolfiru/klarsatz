@@ -221,7 +221,74 @@ Ende.</pre>
         <div class="section-head reveal">
             <span class="eyebrow">04 — Danach</span>
             <h2>Warum du Klarsatz <em>nicht für immer brauchst.</em></h2>
-            <p class="section-sub">Der naheliegendste Einwand gegen eine kleine eigene Sprache lautet: Warum soll ich die lernen? Die Antwort: Sollst du nicht. Klarsatz ist die erste Schreibweise, nicht die letzte.</p>
+            <p class="section-sub"><strong>Klarsatz ersetzt Python nicht.</strong> Es ist eine erste textbasierte Programmiersprache, die Programmierkonzepte ohne die zusätzliche Hürde einer fremden Syntax vermittelt — und anschließend bewusst zu Python weiterführt. Der naheliegendste Einwand lautet deshalb: Warum soll ich eine kleine eigene Sprache lernen? Die Antwort: Sollst du nicht. Klarsatz ist die erste Schreibweise, nicht die letzte.</p>
+        </div>
+
+        <div class="bruecke reveal">
+            <h3>Ein Konzept, zwei Schreibweisen</h3>
+            <p>Nicht die Übersetzung ist der Punkt, sondern das, was in beiden Spalten gleich bleibt:
+               die <strong>Idee</strong> in der ersten Spalte. Wer sie verstanden hat, liest die dritte
+               Spalte als Schreibweise — und nicht als neue Sprache.</p>
+            <div class="tabelle-rahmen">
+                <table class="bruecke-tabelle">
+                    <thead>
+                        <tr><th scope="col">Das Konzept</th><th scope="col">In Klarsatz</th><th scope="col">In Python</th></tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <th scope="row">Einen Wert merken</th>
+                        <td><pre class="klar" data-pruefung="nein">Merke 10 als Punkte.</pre></td>
+                        <td><pre class="schale"><code>Punkte = 10</code></pre></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Etwas anzeigen</th>
+                        <td><pre class="klar" data-pruefung="nein">Zeige &quot;Gewonnen!&quot;.</pre></td>
+                        <td><pre class="schale"><code>print(&#x27;Gewonnen!&#x27;)</code></pre></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Nach etwas fragen</th>
+                        <td><pre class="klar" data-pruefung="nein">Frage &quot;Wie heißt du? &quot; als Text und merke die Antwort als Name.</pre></td>
+                        <td><pre class="schale"><code>Name = input(&#x27;Wie heißt du? &#x27;)</code></pre></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Eine Entscheidung</th>
+                        <td><pre class="klar" data-pruefung="nein">Wenn Punkte mindestens 10 ist:
+    Zeige &quot;Gewonnen!&quot;.
+Sonst:
+    Zeige &quot;Noch nicht.&quot;.
+Ende.</pre></td>
+                        <td><pre class="schale"><code>if (Punkte &gt;= 10):
+    print(&#x27;Gewonnen!&#x27;)
+else:
+    print(&#x27;Noch nicht.&#x27;)</code></pre></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Eine Wiederholung</th>
+                        <td><pre class="klar" data-pruefung="nein">Zähle von 1 bis 5 mit i:
+    Zeige i.
+Ende.</pre></td>
+                        <td><pre class="schale"><code>for i in range(1, 5 + 1):
+    print(i)</code></pre></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Viele Werte</th>
+                        <td><pre class="klar" data-pruefung="nein">Erstelle eine Liste namens Farben mit &quot;rot&quot; und &quot;blau&quot;.</pre></td>
+                        <td><pre class="schale"><code>Farben = [&#x27;rot&#x27;, &#x27;blau&#x27;]</code></pre></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Ein eigener Baustein</th>
+                        <td><pre class="klar" data-pruefung="nein">Definiere Aufgabe Quadrat von x:
+    Gib x mal x zurück.
+Ende.</pre></td>
+                        <td><pre class="schale"><code>def Quadrat(x):
+    return (x * x)</code></pre></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="bruecke-fuss">Die Python-Spalte ist nicht abgetippt: Sie kommt aus demselben
+               Übersetzer, den der Knopf <em>Als Python</em> benutzt — und ein Test rechnet bei jeder
+               Änderung nach, dass hier noch steht, was er heute erzeugt.</p>
         </div>
 
         <div class="funnel reveal">
