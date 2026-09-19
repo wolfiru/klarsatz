@@ -1055,6 +1055,83 @@ td:first-child { color: var(--paper); }
 
 /* ---------- Sicherheits-Abschnitt ---------- */
 
+.beleg {
+    margin-top: 28px;
+    padding: 28px;
+    background: var(--ink-2);
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--gold);
+    border-radius: var(--radius);
+    display: grid;
+    grid-template-columns: 1.6fr 1fr;
+    gap: 32px;
+}
+
+.beleg-text h3 {
+    font-family: var(--sans);
+    font-size: 1.05rem;
+    font-weight: 700;
+    letter-spacing: 0;
+    margin: 0 0 12px;
+}
+
+.beleg-text p {
+    margin: 0 0 12px;
+    font-size: 0.95rem;
+    line-height: 1.65;
+    color: var(--paper-dim);
+}
+
+.beleg-text p:last-child { margin-bottom: 0; }
+.beleg-text strong { color: var(--paper); }
+
+.beleg-zahlen {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+}
+
+.beleg-zahl strong {
+    display: block;
+    font-family: var(--serif);
+    font-size: 2.4rem;
+    line-height: 1;
+    color: var(--gold);
+    font-variant-numeric: tabular-nums;
+}
+
+.beleg-zahl span {
+    display: block;
+    margin-top: 6px;
+    font-size: 0.85rem;
+    line-height: 1.45;
+    color: var(--paper-dim);
+}
+
+.beleg-zahl-gut strong { color: var(--moss); }
+
+.beleg-fuss {
+    grid-column: 1 / -1;
+    margin: 4px 0 0;
+    padding-top: 18px;
+    border-top: 1px solid var(--line);
+    font-size: 0.86rem;
+    line-height: 1.6;
+    color: var(--paper-dim);
+}
+
+@media (max-width: 760px) {
+    .beleg {
+        grid-template-columns: 1fr;
+        gap: 24px;
+        padding: 22px;
+    }
+    .beleg-zahlen { flex-direction: row; flex-wrap: wrap; gap: 24px; }
+    .beleg-zahl { flex: 1 1 110px; }
+    .beleg-zahl strong { font-size: 2rem; }
+}
+
 .sicher-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
@@ -1408,3 +1485,9 @@ kbd {
 @media (max-width: 860px) {
     .download-karte { grid-template-columns: 1fr; }
 }
+
+/* Rasterzellen dürfen von sich aus nicht schmaler werden als ihr breitester Inhalt
+   (min-width: auto). Der lange Befehl im Kasten hat die Seite dadurch auf schmalen
+   Fenstern über den Rand geschoben — der Kasten selbst scrollt ohnehin für sich. */
+.download-inhalt,
+.download-seite { min-width: 0; }

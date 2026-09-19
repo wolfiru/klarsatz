@@ -237,6 +237,37 @@ Zeige den Namen von Waldi.</pre>
                 <p>Klarsatz kennt kein <code>eval</code>, kein Nachladen und keinen Zugriff auf darunterliegende Funktionen. Ein Programm kann nur das, was in dieser Dokumentation steht.</p>
             </article>
         </div>
+        <div class="beleg reveal">
+            <div class="beleg-text">
+                <h3>Und woher wissen wir das?</h3>
+                <p>Weil wir versucht haben, es kaputtzumachen. Ein eigenes Werkzeug nimmt die
+                   Beispielprogramme und zerhackt sie nach dem Zufallsprinzip: Es löscht Zeichen,
+                   vertauscht Wörter, verschiebt Zeilen, verbiegt die Einrückung, entfernt Punkte,
+                   ersetzt Zahlen durch 0, −1 oder eine mit 31 Stellen. Die Trümmer bekommt dann
+                   alles vorgesetzt, was mit Programmtext umgeht — er wird ausgeführt, geprüft,
+                   formatiert und nach Python übersetzt.</p>
+                <p>Erlaubt ist dabei nur <strong>eins</strong>: eine ruhige deutsche Fehlermeldung.
+                   Stürzt etwas ab oder bleibt hängen, zählt das als Treffer.</p>
+            </div>
+            <div class="beleg-zahlen">
+                <div class="beleg-zahl">
+                    <strong>60 000</strong>
+                    <span>verdorbene Programme ausprobiert</span>
+                </div>
+                <div class="beleg-zahl">
+                    <strong>16</strong>
+                    <span>Arten, ein Programm zu zerstören</span>
+                </div>
+                <div class="beleg-zahl beleg-zahl-gut">
+                    <strong>0</strong>
+                    <span>Abstürze, 0 Hänger</span>
+                </div>
+            </div>
+            <p class="beleg-fuss">Jeder dieser Läufe lässt sich einzeln nachstellen — und einmal pro
+               Woche läuft die Prüfung automatisch neu, mit anderen Zufallszahlen. Was das belegt und
+               was nicht, steht in <a href="https://github.com/wolfiru/klarsatz/blob/main/docs/SICHERHEIT.md" rel="noopener">docs/SICHERHEIT.md</a>.</p>
+        </div>
+
         <p class="reveal" style="margin-top:36px">
             <a href="spielplatz.html" class="btn btn-primary">Spielplatz öffnen</a>
         </p>
@@ -294,7 +325,7 @@ python3 -m klarsatz programme/03_taschenrechner.klar</code></pre>
                 <span class="feature-num">Fertig</span>
                 <h3>Was schon trägt</h3>
                 <p>Variablen und Konstanten, Rechnen und Vergleichen, Bedingungen, fünf Arten von Schleifen, Listen und Tabellen, Werkzeuge für Texte, Zeichnen mit Stift und Farben, eigene Aufgaben, Dinge mit Feldern und das Abfangen von Fehlern — dazu ein Prüfmodus, der Fehler findet, ohne das Programm auszuführen.</p>
-                <p>Damit beim Weiterbauen nichts unbemerkt zerbricht, prüft sich die Sprache selbst: 462 kleine Probeläufe kontrollieren nach jeder Änderung, ob noch alles genau das tut, was in dieser Dokumentation steht.</p>
+                <p>Damit beim Weiterbauen nichts unbemerkt zerbricht, prüft sich die Sprache selbst: 477 kleine Probeläufe kontrollieren nach jeder Änderung, ob noch alles genau das tut, was in dieser Dokumentation steht.</p>
             </article>
             <article class="feature">
                 <span class="feature-num">Grenzen</span>
