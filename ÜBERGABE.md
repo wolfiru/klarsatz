@@ -25,9 +25,13 @@ die Weiterarbeit (z. B. mit Claude Code auf dem Raspberry Pi). Arbeitsregeln: `C
   Es gibt **kein** entferntes Gegenstück; das Repository liegt auf derselben Karte wie das Projekt.
 
 ## Offen (in dieser Reihenfolge sinnvoll)
-1. **Fuzz-Test** (noch nicht gemacht): Beispielprogramme zufällig verändern (Tokens löschen, vertauschen, doppeln,
-   Zeichen einfügen) und prüfen, dass immer nur `KlarsatzFehler` entsteht – nie eine Python-Ausnahme, nie ein Hänger
-   (`Grenzen(schritte=…, sekunden=…)` setzen). Das würde die Härtung belegen. Auch `pruefe()` und `formatiere()` fuzzen.
+1. **Fuzz-Test — gebaut am 19.09.2026.** `tests/fuzzer.py` (Maschinerie), `tests/test_fuzz.py` (kurz und
+   deterministisch, läuft immer mit), `tools/fuzze.py` (lange Läufe von Hand). Sechzehn Arten, ein Programm zu
+   verderben; beschossen werden `laufe()`, `pruefe()`, `formatiere()` und `nach_python()`. Erlaubt ist nur ein
+   `KlarsatzFehler`; ein Hänger wird über `signal.setitimer` als Fund gemeldet statt die Suite anzuhalten.
+   Jeder Beschuss hat seine eigene Saat: `python3 tools/fuzze.py --wiederhole SAAT` stellt ihn allein nach.
+   Ergebnis bisher: **keine Panne** (siehe `docs/SICHERHEIT.md`). Rund ein Fünftel der Mutanten dringt bis in
+   den Interpreter vor — ein eigener Test wacht darüber, damit der Fuzzer nicht unbemerkt flach wird.
 2. **Tutorial** (`docs/TUTORIAL.md`, noch nicht gemacht): ~10 kurze Lektionen mit lauffähigen Blöcken. Idee: Blöcke
    ```` ```klar ````, optional ```` ```eingabe ```` und ```` ```ausgabe ````; ein Test führt sie mit festem Seed aus und
    vergleicht – so bleibt das Tutorial korrekt. Lektionen: Hallo, Variablen/Rechnen, Eingabe, Entscheidungen,

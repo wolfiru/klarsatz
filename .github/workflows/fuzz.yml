@@ -1,0 +1,40 @@
+name: Dauerbeschießung
+
+# Der kurze Fuzz-Lauf steckt in der Testsuite und läuft bei jedem Push mit.
+# Hier läuft die lange Fassung: einmal pro Woche, mit jedesmal anderer Saat.
+on:
+  schedule:
+    - cron: "17 3 * * 1"     # montags um 3:17 UTC
+  workflow_dispatch:
+    inputs:
+      laeufe:
+        description: "Anzahl der Beschüsse"
+        default: "200000"
+      saat:
+        description: "feste Saat (leer = zufällig)"
+        default: ""
+
+jobs:
+  fuzz:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Beschießen
+        run: |
+          python3 tools/fuzze.py \
+            --laeufe "${{ github.event.inputs.laeufe || '200000' }}" \
+            ${{ github.event.inputs.saat && format('--saat {0}', github.event.inputs.saat) || '' }} \
+            --ordner pannen
+
+      - name: Gefundene Programme aufheben
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: fuzz-pannen
+          path: pannen/
+          if-no-files-found: ignore

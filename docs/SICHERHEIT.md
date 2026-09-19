@@ -22,7 +22,38 @@ Für fremde Programme: `--streng-grenzen` (bzw. `Grenzen.streng()`), `--ohne-dat
 * Die Zeitgrenze wird nur zwischen Schritten geprüft; eine einzelne, sehr teure Rechnung (z. B. riesige Zahl mal
   riesige Zahl) läuft bis zum Ende – begrenzt durch die Zahlengröße.
 * `--dateien-ueberall` hebt den Ordnerschutz auf.
-* Keine Prüfung durch Dritte, kein Fuzzing über die mitgelieferten Tests hinaus (siehe ÜBERGABE.md, „Offen“).
+* Keine Prüfung durch Dritte. Gefuzzt wird (siehe unten), aber von niemandem außerhalb des Projekts.
+
+## Was der Fuzz-Test zeigt
+
+Die Zusage „ein Programm kann den Interpreter nicht aus der Bahn werfen" war lange nur mit *gültigen*
+Programmen geprüft. Seit 19.09.2026 gibt es einen Fuzz-Test, der sie angreift: Er nimmt die
+mitgelieferten Programme und zerhackt sie zufällig — Zeichen löschen, einfügen, ersetzen; Wörter
+löschen, doppeln, vertauschen; Zeilen löschen und vertauschen; Einrückung verbiegen; Punkte und
+Doppelpunkte entfernen; abschneiden; Zahlen durch Grenzfälle ersetzen (0, −1, sehr groß); Texte
+austauschen. Das Ergebnis geht an alles, was Quelltext entgegennimmt: `laufe()`, `pruefe()`,
+`formatiere()` und `nach_python()`.
+
+**Erlaubt ist genau ein Ausgang: ein `KlarsatzFehler`.** Jede andere Python-Ausnahme gilt als Fund,
+und wer länger als die Zeitgrenze braucht, gilt als Hänger — beides wird gemeldet, nicht verschluckt.
+
+Damit der Test nicht bloß freundlich aussieht, prüft er sich selbst mit: Ein untergeschobener
+Python-Fehler und ein untergeschobener Hänger *müssen* erkannt werden, und ein nennenswerter Teil
+der Mutanten muss wirklich bis in den Interpreter vordringen statt schon am Parser abzuprallen
+(derzeit rund ein Fünftel). Dazu kommen handverlesene Gemeinheiten, die der Zufall selten trifft:
+leerer Quelltext, 5000 ineinandergeschachtelte Klammern, 500 verschachtelte Blöcke, 20 000 Zeilen,
+Zahlen mit 400 Stellen, Nullbytes, Emojis, unvollständige Sätze.
+
+**Stand 19.09.2026:** 60 000 Beschüsse (Saat 4711, 446 Sekunden auf einem Raspberry Pi 4) —
+**keine einzige Panne**. Kein Python-Traceback, kein Hänger, alles endete als Klarsatz-Fehler.
+Wiederholbar mit `python3 tools/fuzze.py --laeufe 60000 --saat 4711`. Einmal pro Woche läuft in
+der CI eine noch längere Fassung mit wechselnder Saat.
+
+Was der Test **nicht** zeigt: dass es keine Lücke gibt. Er zeigt, dass eine große Zahl zufälliger
+Angriffe keine gefunden hat. Das ist ein Beleg, kein Beweis.
+
+    python3 tools/fuzze.py --laeufe 200000      # lange Dauerbeschießung
+    python3 tools/fuzze.py --wiederhole SAAT    # einen einzelnen Fund nachstellen
 
 ## Melden
 Probleme bitte mit einem kleinen Programm, das sie zeigt.

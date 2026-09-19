@@ -100,7 +100,7 @@ Erhöhe das Alter von Rocco um 1.
 </table>
 
 Dazu: Listen und Tabellen, Textwerkzeuge, Zufall, Dateien, Winkelfunktionen, Datum und Uhrzeit,
-Fehlerbehandlung mit `Versuche` … `Falls schiefgeht`, und eine Schildkrötengrafik:
+Fehlerbehandlung mit `Versuche` … `Bei Fehler`, und eine Schildkrötengrafik:
 
 ```klarsatz
 Nimm die Farbe "gold".
@@ -135,8 +135,13 @@ Arbeitsordner (im Browser gar nicht); **kein `eval`, kein `exec`, kein Nachladen
 Klarsatz-Programm erreicht nie ein Python-Objekt. Ein Python-Traceback dringt nie nach außen —
 jeder Fehler endet als deutsche Meldung.
 
-Eine geprüfte Sandbox ist das trotzdem nicht. Was abgesichert ist und was nicht, steht ehrlich in
-**[`docs/SICHERHEIT.md`](docs/SICHERHEIT.md)**.
+Damit das nicht bloß behauptet ist, gibt es einen **Fuzz-Test**: Er zerhackt die Beispielprogramme
+zufällig und verfüttert die Trümmer an Interpreter, Prüfer, Formatierer und Python-Übersetzer.
+Erlaubt ist nur eine freundliche deutsche Fehlermeldung — jede Python-Ausnahme und jeder Hänger gilt
+als Fund. Er prüft auch sich selbst: Untergeschobene Fehler *müssen* auffallen.
+
+Eine geprüfte Sandbox ist das trotzdem nicht, und der Fuzz-Test ist ein Beleg, kein Beweis. Was
+abgesichert ist und was nicht, steht ehrlich in **[`docs/SICHERHEIT.md`](docs/SICHERHEIT.md)**.
 
 ## Projektaufbau
 

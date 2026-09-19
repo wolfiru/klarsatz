@@ -1,5 +1,17 @@
 # Änderungen
 
+## Unveröffentlicht
+- **Fuzz-Test** (`tests/test_fuzz.py`, `tests/fuzzer.py`, `tools/fuzze.py`): Gültige Programme werden
+  zufällig zerhackt — Zeichen, Wörter, Zeilen, Einrückung, Punkte, Zahlen, Texte — und an alles
+  verfüttert, was Quelltext entgegennimmt: Ausführen, Prüfen, Formatieren, Übersetzen nach Python.
+  Erwartet wird ausschließlich ein `KlarsatzFehler`. Jeder Beschuss hat seine eigene Saat und ist
+  damit einzeln wiederholbar (`python3 tools/fuzze.py --wiederhole SAAT`).
+  Der Test enthält **Gegenproben**: Ein untergeschobener Python-Fehler und ein untergeschobener
+  Hänger müssen erkannt werden, und ein Teil der Mutanten muss wirklich bis in den Interpreter
+  vordringen — sonst prüfte der Test nur den Parser.
+- **Richtiggestellt:** Die README nannte die Fehlerbehandlung `Versuche` … `Falls schiefgeht`.
+  Sie heißt `Versuche` … `Bei Fehler`.
+
 ## 0.7.1
 - **Programme nach Komplexität geordnet** (01–20): vorne Eingabe und Rechnen, dann Aufgaben und
   Listen, Texte und Dinge, Zeichnen — und am Ende die großen Programme. Das Grafikadventure steht
@@ -98,7 +110,7 @@
 - Neue Grenze `striche` (Voreinstellung 200 000, streng 20 000).
 - Neue Programme: `12_vielecke.klar`, `13_spirale.klar`, Beispiel `zeichnen.klar`.
 
-## Unveröffentlicht
+## Nachgetragen (zwischen 0.2.0 und 0.3.0)
 - **MIT-Lizenz** (`LICENSE`) — Klarsatz darf benutzt, geändert und weitergegeben werden.
 - **Download-Archiv:** `tools/baue_archiv.py` schnürt ein ZIP zum Ausprobieren am eigenen Rechner
   und hält die Angaben auf der Webseite aktuell.

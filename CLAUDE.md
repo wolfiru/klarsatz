@@ -49,6 +49,7 @@ python3 -m unittest discover -s tests -t .                   # alle Tests
 KLARSATZ_KEIN_BROWSER=1 python3 -m unittest discover -s tests -t .   # ohne Browser-Test
 python3 -m klarsatz --pruefe programme/11_galgenmaennchen.klar
 python3 tools/baue_editor.py && python3 tools/baue_playground.py
+python3 tools/fuzze.py --laeufe 100000        # Dauerbeschießung mit verdorbenen Programmen
 ```
 Optionale Werkzeuge (nicht nötig zum Arbeiten): Node + `cd tools && npm install` (Vergleich mit dem VS-Code-Tokenizer),
 `pip install pygments playwright` + `playwright install chromium` (Hervorhebungs- und Browser-Tests; ohne diese werden
