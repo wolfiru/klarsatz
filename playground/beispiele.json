@@ -52,7 +52,7 @@
   "gruppe": "Erste Schritte",
   "titel": "Dinge (Strukturen)",
   "beschreibung": "",
-  "code": "Ein Hund hat einen Namen und ein Alter.\n\nErschaffe einen Hund mit Name \"Rocco\" und Alter 5 als Waldi.\nZeige den Namen von Waldi.\nZeige Waldi.\n\nSetze das Alter von Waldi auf 6.\nErhöhe das Alter von Waldi um 1.\nZeige \"Waldi ist jetzt \" und Alter von Waldi und \" Jahre alt.\".\n",
+  "code": "Ein Hund hat einen Namen und ein Alter.\n\nErschaffe einen Hund mit Name \"Rocco\" und Alter 5 als Rocco.\nZeige den Namen von Rocco.\nZeige Rocco.\n\nSetze das Alter von Rocco auf 6.\nErhöhe das Alter von Rocco um 1.\nZeige \"Rocco ist jetzt \" und Alter von Rocco und \" Jahre alt.\".\n",
   "fragt": false
  },
  {

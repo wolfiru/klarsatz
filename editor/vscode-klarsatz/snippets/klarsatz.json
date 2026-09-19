@@ -122,7 +122,7 @@
     "prefix": "erschaffe",
     "description": "Ein Ding erschaffen",
     "body": [
-      "Erschaffe ${1:Hund} mit ${2:Name} ${3:\"Rocco\"} und ${4:Alter} ${5:5} als ${0:Waldi}."
+      "Erschaffe ${1:Hund} mit ${2:Name} ${3:\"Rocco\"} und ${4:Alter} ${5:5} als ${0:Rocco}."
     ]
   },
   "Liste": {

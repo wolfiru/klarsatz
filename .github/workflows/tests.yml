@@ -1,0 +1,65 @@
+name: Tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  tests:
+    name: Tests auf Python ${{ matrix.python }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python: ["3.10", "3.11", "3.12", "3.13"]
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+
+      - name: Testsuite
+        # Klarsatz selbst braucht keine Abhängigkeiten. Der Browser-Test wird
+        # übersprungen; Chromium in der CI wäre für ein Hobbyprojekt zu viel.
+        env:
+          KLARSATZ_KEIN_BROWSER: "1"
+        run: python3 -m unittest discover -s tests -t . --verbose
+
+  hervorhebung:
+    name: Hervorhebung gegen Pygments
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install pygments
+      - env:
+          KLARSATZ_KEIN_BROWSER: "1"
+        run: python3 -m unittest tests.test_hervorhebung --verbose
+
+  erzeugtes:
+    name: Erzeugte Dateien sind aktuell
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Generatoren laufen lassen
+        run: |
+          python3 tools/baue_editor.py
+          python3 tools/baue_playground.py
+
+      - name: Nichts darf sich geändert haben
+        # Schlägt das fehl, wurde die Sprache geändert, ohne die Generatoren
+        # laufen zu lassen (siehe CLAUDE.md).
+        run: |
+          git diff --exit-code || {
+            echo "::error::Erzeugte Dateien sind veraltet — bitte tools/baue_editor.py und tools/baue_playground.py ausführen und das Ergebnis mit einchecken."
+            exit 1
+          }

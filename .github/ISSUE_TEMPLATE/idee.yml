@@ -1,0 +1,23 @@
+name: Idee oder Sprachvorschlag
+description: Ein neuer Satz, ein neues Wort, eine neue Möglichkeit
+labels: ["Idee"]
+body:
+  - type: textarea
+    id: idee
+    attributes:
+      label: Worum geht es?
+    validations:
+      required: true
+  - type: textarea
+    id: wie
+    attributes:
+      label: Wie würde das in Klarsatz aussehen?
+      description: |
+        Am besten als vollständiges kleines Programm. Der Prüfstein für jede neue Formulierung:
+        Lies sie jemandem vor, der nicht programmieren kann — stockt es, ist sie noch nicht fertig.
+      render: text
+  - type: textarea
+    id: warum
+    attributes:
+      label: Wofür braucht man das?
+      description: Ein Beispiel aus der Praxis sagt mehr als eine Begründung.

@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Klarsatz im Browser ausprobieren
+    url: https://www.ruthner.at/klarsatz/spielplatz.html
+    about: Ohne Installation — vielleicht klärt sich die Frage beim Ausprobieren.
+  - name: Sprachbeschreibung
+    url: https://www.ruthner.at/klarsatz/doku.html
+    about: Alle Sätze, die Klarsatz versteht, mit Beispielen.

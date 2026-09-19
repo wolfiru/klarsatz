@@ -1,9 +1,9 @@
 Ein Hund hat einen Namen und ein Alter.
 
-Erschaffe einen Hund mit Name "Rocco" und Alter 5 als Waldi.
-Zeige den Namen von Waldi.
-Zeige Waldi.
+Erschaffe einen Hund mit Name "Rocco" und Alter 5 als Rocco.
+Zeige den Namen von Rocco.
+Zeige Rocco.
 
-Setze das Alter von Waldi auf 6.
-Erhöhe das Alter von Waldi um 1.
-Zeige "Waldi ist jetzt " und Alter von Waldi und " Jahre alt.".
+Setze das Alter von Rocco auf 6.
+Erhöhe das Alter von Rocco um 1.
+Zeige "Rocco ist jetzt " und Alter von Rocco und " Jahre alt.".

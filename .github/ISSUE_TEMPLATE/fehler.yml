@@ -1,0 +1,37 @@
+name: Fehler melden
+description: Etwas funktioniert nicht so, wie es sollte
+labels: ["Fehler"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Danke fürs Melden. Am meisten hilft mir das **kleinste Programm**, das den Fehler zeigt.
+  - type: textarea
+    id: programm
+    attributes:
+      label: Das Programm
+      description: So kurz wie möglich — gern direkt aus der Spielwiese kopiert.
+      render: text
+    validations:
+      required: true
+  - type: textarea
+    id: erwartet
+    attributes:
+      label: Was sollte passieren?
+    validations:
+      required: true
+  - type: textarea
+    id: passiert
+    attributes:
+      label: Was passiert stattdessen?
+      description: Die Fehlermeldung bitte vollständig hereinkopieren.
+    validations:
+      required: true
+  - type: input
+    id: umgebung
+    attributes:
+      label: Wo?
+      description: Python-Version und Betriebssystem, oder „Spielwiese im Browser" samt Browser.
+      placeholder: "Python 3.12 auf Debian 12 — oder: Spielwiese in Firefox 130"
+    validations:
+      required: true

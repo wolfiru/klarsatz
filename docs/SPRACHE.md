@@ -161,9 +161,9 @@ sind außen unsichtbar; globale Namen sind lesbar. Maximal 150 ineinander versch
 
 ```
 Ein Hund hat einen Namen und ein Alter.
-Erschaffe einen Hund mit Name "Rocco" und Alter 5 als Waldi.
-Zeige den Namen von Waldi.
-Setze das Alter von Waldi auf 6.
+Erschaffe einen Hund mit Name "Rocco" und Alter 5 als Rocco.
+Zeige den Namen von Rocco.
+Setze das Alter von Rocco auf 6.
 ```
 Beim Erschaffen müssen **alle** Felder angegeben werden, ein Wert ist nie „einfach leer“.
 Feldnamen dürfen leicht gebeugt sein (`Name` = `Namen`, `Zahl` = `Zahlen`).

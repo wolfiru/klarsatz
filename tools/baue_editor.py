@@ -77,7 +77,7 @@ SNIPPETS = {
     "Versuche": snippet("versuche", "Fehler abfangen", "Versuche:", "    ${1:Zeige 1 geteilt durch 0.}", "Bei Fehler:",
                         "    ${0:Zeige \"Problem: \" und Fehlermeldung.}", "Ende."),
     "Ding": snippet("ding", "Ein Ding (Struktur) beschreiben", "${1:Hund} hat ${2:einen Namen} und ${3:ein Alter}."),
-    "Erschaffe": snippet("erschaffe", "Ein Ding erschaffen", "Erschaffe ${1:Hund} mit ${2:Name} ${3:\"Rocco\"} und ${4:Alter} ${5:5} als ${0:Waldi}."),
+    "Erschaffe": snippet("erschaffe", "Ein Ding erschaffen", "Erschaffe ${1:Hund} mit ${2:Name} ${3:\"Rocco\"} und ${4:Alter} ${5:5} als ${0:Rocco}."),
     "Liste": snippet("liste", "Eine Liste anlegen", "Erstelle eine Liste namens ${1:Einkauf} mit ${0:\"Milch\" und \"Brot\"}."),
     "Tabelle": snippet("tabelle", "Eine Tabelle anlegen", "Erstelle eine Tabelle namens ${1:Preise} mit ${0:\"Apfel\" als 3}."),
     "Programmgerüst": snippet("programm", "Kleines Programm mit Frage und Ausgabe", "Anmerkung: ${1:Was macht das Programm?}",
