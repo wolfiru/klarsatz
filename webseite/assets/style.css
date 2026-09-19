@@ -2124,3 +2124,14 @@ kbd {
 }
 
 .these strong { color: var(--paper); }
+
+.funnel-fuss {
+    margin: 26px auto 0;
+    max-width: 560px;
+    text-align: center;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: var(--paper-dim);
+}
+
+@media (min-width: 880px) { .funnel-fuss { max-width: 74ch; } }
