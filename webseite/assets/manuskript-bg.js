@@ -55,7 +55,7 @@
         'Zeige "Hallo Welt".',
         'Merke 3 mal 7 als Ergebnis.',
         'Wiederhole 3 Mal: Zeige "Klarsatz". Ende.',
-        'Wenn Alter mindestens 18 ist, zeige "willkommen".',
+        'Wenn Punkte mindestens 10 sind, zeige "Geschafft!".',
         'Zähle von 1 bis 5 mit i: Zeige i. Ende.',
         'Gib die Wurzel von 144 zurück.'
     ];

@@ -2183,7 +2183,11 @@ kbd {
 
 /* ── Kontakt ─────────────────────────────────────────────────────────────── */
 
-.kontakt { text-align: center; padding: 8px 0; }
+/* Das Hintergrund-Bild (#manuskript) ist ein Canvas mit position: fixed und
+   z-index: 0. Es übermalt damit jeden Textblock, der selbst keine eigene
+   Stapelebene aufmacht. Die übrigen Abschnitte haben eine, dieser hatte keine —
+   und war deshalb unsichtbar, obwohl er im Quelltext stand. */
+.kontakt { text-align: center; padding: 8px 0; position: relative; z-index: 1; }
 
 .kontakt-frage {
     margin: 0 0 10px;

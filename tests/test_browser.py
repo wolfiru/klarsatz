@@ -523,6 +523,43 @@ class WegInDieSpielwiese(unittest.TestCase):
                     self.sichtbare_absaetze(self.s), sofort,
                     f"{datei or 'index.html'}: Inhalt ist nach dem Laden wieder verschwunden.")
 
+    def test_kein_text_verschwindet_hinter_dem_hintergrund(self):
+        """Das Hintergrund-Bild darf keinen Text übermalen.
+
+        #manuskript ist ein Canvas mit position: fixed und z-index: 0. Es liegt damit
+        über jedem Textblock, der keine eigene Stapelebene aufmacht. Der Kontaktblock
+        hatte keine und war unsichtbar, obwohl er im Quelltext stand und jede Messung
+        ihn als sichtbar meldete — auffallen kann das nur, wenn man nachsieht, was an
+        der Stelle tatsächlich obenauf liegt."""
+        sucht = """() => {
+            const verdeckt = [];
+            for (const e of document.querySelectorAll('h1,h2,h3,p,li,td,th,a')) {
+                const r = e.getBoundingClientRect();
+                if (r.width < 5 || r.height < 5) continue;
+                if (r.top < 80 || r.bottom > window.innerHeight) continue;
+                const oben = document.elementFromPoint(
+                    r.left + Math.min(r.width / 2, 40), r.top + r.height / 2);
+                if (oben && oben.tagName === 'CANVAS') {
+                    const s = e.closest('section');
+                    verdeckt.push((s ? '#' + (s.id || s.className) : '?') + ': '
+                                  + e.textContent.trim().slice(0, 40));
+                }
+            }
+            return verdeckt;
+        }"""
+        for datei in ("spielplatz.html", "doku.html", ""):
+            with self.subTest(seite=datei or "index.html"):
+                self.s.goto(self.basis + datei)
+                self.s.wait_for_selector("h1, h2")
+                hoehe = self.s.evaluate("document.body.scrollHeight")
+                verdeckt = []
+                for y in range(0, hoehe, 700):
+                    self.s.evaluate(f"window.scrollTo(0, {y})")
+                    self.s.wait_for_timeout(120)
+                    verdeckt += self.s.evaluate(sucht)
+                self.assertEqual(sorted(set(verdeckt)), [],
+                                 "Diese Stellen liegen hinter dem Hintergrund und sind unsichtbar.")
+
     def test_ohne_javascript_bleibt_die_seite_lesbar(self):
         """Dasselbe, wenn das Skript gar nicht erst ankommt: blockiert, kaputt, abgeschaltet."""
         ctx = self.browser.new_context(java_script_enabled=False)
@@ -540,5 +577,6 @@ class WegInDieSpielwiese(unittest.TestCase):
     def test_leeres_blatt_zum_selbertippen(self):
         """Die Aufgaben im Kurs brauchen eine leere Fläche."""
         self.s.goto(self.basis + "spielplatz.html#beispiel=")
+        self.s.reload()   # ein Ankersprung im selben Dokument lädt die Seite nicht neu
         self.s.wait_for_function("() => !document.querySelector('.kp-lauf').disabled", timeout=180000)
         self.assertEqual(self.s.input_value(".kp-text").strip(), "")
