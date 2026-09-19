@@ -63,7 +63,39 @@
                 });
             }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
         }
-        Array.prototype.forEach.call(elemente, function (el) { beobachter.observe(el); });
+        /* Wer über einen Anker kommt (…/#kontakt), soll das Ziel sofort sehen und nicht
+           warten, bis der Browser gescrollt hat und der Beobachter anschlägt. */
+        if (location.hash.length > 1) {
+            var ziel = document.getElementById(location.hash.slice(1));
+            if (ziel) {
+                if (ziel.classList.contains('reveal')) ziel.classList.add('in');
+                Array.prototype.forEach.call(ziel.querySelectorAll('.reveal'), function (el) {
+                    el.classList.add('in');
+                });
+            }
+        }
+
+        /* Nach dem vollständigen Laden noch einmal nachsehen: Bis dahin ist ein
+           Ankersprung (…/#kontakt) ausgeführt, und was dadurch im Bild steht, soll
+           sofort da sein und nicht erst nach zwei Sekunden auftauchen. */
+        window.addEventListener('load', function () {
+            Array.prototype.forEach.call(elemente, function (el) {
+                var r = el.getBoundingClientRect();
+                if (r.top < window.innerHeight && r.bottom > 0) el.classList.add('in');
+            });
+        });
+
+        Array.prototype.forEach.call(elemente, function (el) {
+            /* Was beim Laden schon zu sehen ist, bleibt zu sehen. Ohne das versteckt die
+               Animation genau die Stelle, auf die jemand gerade schaut — etwa nach einem
+               Neuladen, bei dem der Browser die Scrollposition wiederherstellt, oder nach
+               einem Sprung über einen Anker. Beobachtet wird nur, was noch kommt. */
+            if (el.getBoundingClientRect().top < window.innerHeight) {
+                el.classList.add('in');
+                return;
+            }
+            beobachter.observe(el);
+        });
     }
 
     /* Quelltext sichern und "Im Spielplatz öffnen"-Link anhängen.
