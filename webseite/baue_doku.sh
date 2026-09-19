@@ -105,7 +105,7 @@ for eintrag in "${KAPITEL[@]}"; do
 </nav>
 
 <header class="seitenkopf">
-    <p class="kicker">Dokumentation · Version 0.2 · Kapitel $nr</p>
+    <p class="kicker">Dokumentation · Kapitel $nr</p>
     <h1>$titel</h1>
 </header>
 
@@ -144,8 +144,8 @@ $weiter_html
 
 <footer>
     <div class="foot-inner">
-        <span>© <span id="jahr"></span> ruthner.at · Klarsatz 0.2.0</span>
-        <span><a href="/">ruthner.at</a> &nbsp;·&nbsp; <a href="index.html">Sprache</a> &nbsp;·&nbsp; <a href="doku.html">Dokumentation</a> &nbsp;·&nbsp; <a href="spielplatz.html">Spielplatz</a></span>
+        <span>© <span id="jahr"></span> ruthner.at · Klarsatz <span data-download="version">0.7.1</span></span>
+        <span><a href="/">ruthner.at</a> &nbsp;·&nbsp; <a href="index.html">Sprache</a> &nbsp;·&nbsp; <a href="doku.html">Dokumentation</a> &nbsp;·&nbsp; <a href="spielplatz.html">Spielplatz</a> &nbsp;·&nbsp; <a href="https://github.com/wolfiru/klarsatz" rel="noopener">GitHub</a></span>
     </div>
 </footer>
 
