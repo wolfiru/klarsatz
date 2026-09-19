@@ -1953,3 +1953,46 @@ kbd {
 .tiefer > summary:hover { color: var(--paper); }
 .tiefer-inhalt { padding-top: 26px; }
 .tiefer-inhalt .beleg { margin-top: 28px; }
+
+
+/* ── Grenze zwischen Vorstellung und Nachschlagewerk ─────────────────────── */
+
+.wechsel {
+    /* Dieselbe Breite wie die Abschnitte, damit die Linien mit dem Inhalt fluchten. */
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 76px 0 0;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 28px;
+}
+
+/* Der Abschnitt danach bringt sonst noch eine zweite Linie mit. */
+.wechsel + .section { border-top: none; padding-top: 56px; }
+
+.wechsel-linie { height: 1px; background: var(--line); }
+
+.wechsel-text { text-align: center; max-width: 58ch; }
+
+.wechsel-titel {
+    margin: 0 0 6px;
+    font-family: var(--sans);
+    font-size: 0.78rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gold);
+}
+
+.wechsel-text p:last-child {
+    margin: 0;
+    font-size: 0.93rem;
+    line-height: 1.65;
+    color: var(--paper-faint);
+}
+
+@media (max-width: 860px) {
+    .wechsel { grid-template-columns: 1fr; gap: 16px; }
+    .wechsel-linie:last-child { display: none; }
+    .wechsel-text { text-align: left; }
+}
