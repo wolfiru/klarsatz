@@ -32,8 +32,8 @@
         <a href="#blick">Ansehen</a>
         <a href="#idee">Idee</a>
         <a href="#lernen">Lernen</a>
-        <a href="#fuerwen">Für wen</a>
         <a href="#danach">Danach</a>
+        <a href="#fuerwen">Für wen</a>
         <a href="tutorial.html">Tutorial</a>
         <a href="doku.html">Dokumentation</a>
         <a href="spielplatz.html" class="nav-cta">Spielplatz</a>
@@ -193,82 +193,48 @@ Ende.</pre>
         </p>
     </section>
 
-    <section class="section" id="spielplatz">
+    <section class="section" id="danach">
         <div class="section-head reveal">
-            <span class="eyebrow">04 — Sicherheit</span>
-            <h2>Ausprobieren, <em>ohne etwas zu riskieren.</em></h2>
-            <p class="section-sub">Der Spielplatz führt Klarsatz-Programme direkt im Browser aus — und zeigt Zeichnungen auf einer Leinwand gleich daneben. Nichts davon verlässt das Fenster.</p>
+            <span class="eyebrow">04 — Danach</span>
+            <h2>Warum du Klarsatz <em>nicht für immer brauchst.</em></h2>
+            <p class="section-sub">Der naheliegendste Einwand gegen eine kleine eigene Sprache lautet: Warum soll ich die lernen? Die Antwort: Sollst du nicht. Klarsatz ist die erste Schreibweise, nicht die letzte.</p>
         </div>
 
-        <div class="sicher-zahlen reveal">
-            <div class="beleg-zahlen">
-                <div class="beleg-zahl">
-                    <strong>60 000</strong>
-                    <span>verdorbene Programme ausprobiert</span>
-                </div>
-                <div class="beleg-zahl">
-                    <strong>16</strong>
-                    <span>Arten, ein Programm zu zerstören</span>
-                </div>
-                <div class="beleg-zahl beleg-zahl-gut">
-                    <strong>0</strong>
-                    <span>Abstürze, 0 Hänger</span>
-                </div>
+        <div class="funnel reveal">
+            <div class="fn-stufe">
+                <span class="fn-marke">Klarsatz</span>
+                <p>Denken lernen: Variablen, Bedingungen, Schleifen, eigene Bausteine — in Sätzen, die man vorlesen kann.</p>
             </div>
-            <p>Wir haben versucht, es kaputtzumachen: Ein Werkzeug zerhackt die Beispielprogramme
-               nach dem Zufallsprinzip und verfüttert die Trümmer an den Interpreter. Nichts ist
-               abgestürzt, nichts hängen geblieben — jedes Mal kam eine ruhige deutsche
-               Fehlermeldung.</p>
+            <span class="fn-pfeil" aria-hidden="true"></span>
+            <div class="fn-stufe">
+                <span class="fn-marke">Als Python</span>
+                <p>Ein Knopf übersetzt dein eigenes Programm. Dieselben Zeilen, dieselbe Bedeutung, andere Zeichen.</p>
+            </div>
+            <span class="fn-pfeil" aria-hidden="true"></span>
+            <div class="fn-stufe">
+                <span class="fn-marke">Python</span>
+                <p>Weiterbauen — mit allem, was Klarsatz bewusst nicht hat: Bibliotheken, Ökosystem, Stellenanzeigen.</p>
+            </div>
         </div>
 
-        <p class="reveal" style="margin-top:36px">
-            <a href="spielplatz.html" class="btn btn-primary">Spielplatz öffnen</a>
-        </p>
-
-        <details class="tiefer reveal">
-            <summary>Wie das im Einzelnen abgesichert ist</summary>
-            <div class="tiefer-inhalt">
-                <div class="sicher-grid reveal">
-            <article class="sicher-karte">
-                <h3>Nichts wird geschrieben</h3>
-                <p>Im Spielplatz arbeiten <code>Lies</code> und <code>Schreibe</code> auf einem Dateisystem im Arbeitsspeicher, das mit dem Lauf verschwindet. Es gibt keinen Weg von einem Programm auf eine Festplatte — weder auf deine noch auf den Server.</p>
-            </article>
-            <article class="sicher-karte">
-                <h3>Eigener Arbeitsbereich</h3>
-                <p>Der echte Interpreter läuft als Python im Browser — in einem abgeschotteten Hintergrundprozess ohne Zugriff auf die Seite. Kein Server führt Programme aus, nichts wird gesendet.</p>
-            </article>
-            <article class="sicher-karte">
-                <h3>Endlosschleifen enden</h3>
-                <p>Schritt- und Zeitgrenzen brechen Programme ab, die nicht von allein fertig werden. Hängt ein Lauf, wird der Hintergrundprozess beendet und neu gestartet.</p>
-            </article>
-            <article class="sicher-karte">
-                <h3>Erst prüfen, dann laufen</h3>
-                <p>Neben <em>Ausführen</em> steht ein Knopf <em>Prüfen</em>. Er liest das Programm durch, ohne es zu starten, und zeigt Tippfehler und vergessene Namen an — hilfreich, wenn man noch unsicher ist. Auf der Kommandozeile heißt er <code>--pruefe</code>.</p>
-            </article>
-            <article class="sicher-karte">
-                <h3>Kein fremder Code</h3>
-                <p>Klarsatz kennt kein <code>eval</code>, kein Nachladen und keinen Zugriff auf darunterliegende Funktionen. Ein Programm kann nur das, was in dieser Dokumentation steht.</p>
-            </article>
+        <div class="warum reveal">
+            <h3>Warum dann nicht gleich Python?</h3>
+            <p>Oft ist das die richtige Antwort — und die Seite sagt das auch: Wer Englisch kann und
+               loslegen will, sollte gleich Python nehmen. Klarsatz ist für die anderen gebaut.</p>
+            <p>Um die <strong>Python-Fassung</strong> oben zu lesen, muss man gleichzeitig sechs Dinge
+               wissen, die mit Programmieren nichts zu tun haben: dass <code>range(1, 30 + 1)</code>
+               bei 30 aufhört und das <code>+ 1</code> nur deshalb dasteht, dass <code>%</code> den
+               Rest einer Division meint, dass <code>==</code> etwas anderes ist als <code>=</code>,
+               was <code>elif</code> abkürzt, wofür der Doppelpunkt steht und dass die Einrückung
+               nicht Zierde ist. Wer das erste Mal
+               programmiert, lernt also zwei Dinge auf einmal — und scheitert meist am zweiten,
+               obwohl er das erste verstanden hätte.</p>
+            <p>Klarsatz nimmt diese zweite Hürde für eine Weile weg. Nicht für immer: Am Ende des
+               Tutorials steht dasselbe Programm in Python daneben, Zeile für Zeile, mit derselben
+               Bedeutung. Der Satz, auf den alles hinausläuft, lautet dann
+               <em>„Du hast nicht Klarsatz gelernt — du hast programmieren gelernt."</em></p>
+            <p class="warum-fuss"><a href="tutorial.html" class="btn btn-secondary">Das Tutorial ansehen</a></p>
         </div>
-
-                <div class="beleg">
-                    <div class="beleg-text">
-                <h3>Und woher wissen wir das?</h3>
-                <p>Weil wir versucht haben, es kaputtzumachen. Ein eigenes Werkzeug nimmt die
-                   Beispielprogramme und zerhackt sie nach dem Zufallsprinzip: Es löscht Zeichen,
-                   vertauscht Wörter, verschiebt Zeilen, verbiegt die Einrückung, entfernt Punkte,
-                   ersetzt Zahlen durch 0, −1 oder eine mit 31 Stellen. Die Trümmer bekommt dann
-                   alles vorgesetzt, was mit Programmtext umgeht — er wird ausgeführt, geprüft,
-                   formatiert und nach Python übersetzt.</p>
-                <p>Erlaubt ist dabei nur <strong>eins</strong>: eine ruhige deutsche Fehlermeldung.
-                   Stürzt etwas ab oder bleibt hängen, zählt das als Treffer.</p>
-            </div>
-                    <p class="beleg-fuss">Jeder dieser Läufe lässt sich einzeln nachstellen — und einmal pro
-               Woche läuft die Prüfung automatisch neu, mit anderen Zufallszahlen. Was das belegt und
-               was nicht, steht in <a href="https://github.com/wolfiru/klarsatz/blob/main/docs/SICHERHEIT.md" rel="noopener">docs/SICHERHEIT.md</a>.</p>
-                </div>
-            </div>
-        </details>
     </section>
 
     <section class="section" id="fuerwen">
@@ -346,53 +312,9 @@ Ende.</pre>
         <p class="eig-fazit reveal">Wer mit Klarsatz programmieren gelernt hat, soll weiterziehen. Genau dafür gibt es den Knopf <em>Als Python</em>: Er zeigt dasselbe Programm in einer Sprache, mit der man danach weiterarbeitet.</p>
     </section>
 
-    <section class="section" id="danach">
-        <div class="section-head reveal">
-            <span class="eyebrow">06 — Danach</span>
-            <h2>Warum du Klarsatz <em>nicht für immer brauchst.</em></h2>
-            <p class="section-sub">Der naheliegendste Einwand gegen eine kleine eigene Sprache lautet: Warum soll ich die lernen? Die Antwort: Sollst du nicht. Klarsatz ist die erste Schreibweise, nicht die letzte.</p>
-        </div>
-
-        <div class="funnel reveal">
-            <div class="fn-stufe">
-                <span class="fn-marke">Klarsatz</span>
-                <p>Denken lernen: Variablen, Bedingungen, Schleifen, eigene Bausteine — in Sätzen, die man vorlesen kann.</p>
-            </div>
-            <span class="fn-pfeil" aria-hidden="true"></span>
-            <div class="fn-stufe">
-                <span class="fn-marke">Als Python</span>
-                <p>Ein Knopf übersetzt dein eigenes Programm. Dieselben Zeilen, dieselbe Bedeutung, andere Zeichen.</p>
-            </div>
-            <span class="fn-pfeil" aria-hidden="true"></span>
-            <div class="fn-stufe">
-                <span class="fn-marke">Python</span>
-                <p>Weiterbauen — mit allem, was Klarsatz bewusst nicht hat: Bibliotheken, Ökosystem, Stellenanzeigen.</p>
-            </div>
-        </div>
-
-        <div class="warum reveal">
-            <h3>Warum dann nicht gleich Python?</h3>
-            <p>Oft ist das die richtige Antwort — und die Seite sagt das auch: Wer Englisch kann und
-               loslegen will, sollte gleich Python nehmen. Klarsatz ist für die anderen gebaut.</p>
-            <p>Um die <strong>Python-Fassung</strong> oben zu lesen, muss man gleichzeitig sechs Dinge
-               wissen, die mit Programmieren nichts zu tun haben: dass <code>range(1, 30 + 1)</code>
-               bei 30 aufhört und das <code>+ 1</code> nur deshalb dasteht, dass <code>%</code> den
-               Rest einer Division meint, dass <code>==</code> etwas anderes ist als <code>=</code>,
-               was <code>elif</code> abkürzt, wofür der Doppelpunkt steht und dass die Einrückung
-               nicht Zierde ist. Wer das erste Mal
-               programmiert, lernt also zwei Dinge auf einmal — und scheitert meist am zweiten,
-               obwohl er das erste verstanden hätte.</p>
-            <p>Klarsatz nimmt diese zweite Hürde für eine Weile weg. Nicht für immer: Am Ende des
-               Tutorials steht dasselbe Programm in Python daneben, Zeile für Zeile, mit derselben
-               Bedeutung. Der Satz, auf den alles hinausläuft, lautet dann
-               <em>„Du hast nicht Klarsatz gelernt — du hast programmieren gelernt."</em></p>
-            <p class="warum-fuss"><a href="tutorial.html" class="btn btn-secondary">Das Tutorial ansehen</a></p>
-        </div>
-    </section>
-
     <section class="section" id="bausteine">
         <div class="section-head reveal">
-            <span class="eyebrow">07 — Die Sprache</span>
+            <span class="eyebrow">06 — Die Sprache</span>
             <h2>Alles, was eine Sprache <em>braucht.</em></h2>
             <p class="section-sub">Werte merken, entscheiden, wiederholen, zeichnen, sammeln, gliedern — in Sätzen, die man laut lesen kann.</p>
         </div>
@@ -506,6 +428,84 @@ Zeige den Namen von Waldi.</pre>
                 <p>Klarsatz ist ein Lernprojekt — für alle, die das Programmieren nicht gleichzeitig mit einer Fremdsprache lernen wollen. Die Sprache erklärt sich beim Lesen.</p>
             </article>
         </div>
+    </section>
+
+    <section class="section" id="spielplatz">
+        <div class="section-head reveal">
+            <span class="eyebrow">07 — Sicherheit</span>
+            <h2>Ausprobieren, <em>ohne etwas zu riskieren.</em></h2>
+            <p class="section-sub">Der Spielplatz führt Klarsatz-Programme direkt im Browser aus — und zeigt Zeichnungen auf einer Leinwand gleich daneben. Nichts davon verlässt das Fenster.</p>
+        </div>
+
+        <div class="sicher-zahlen reveal">
+            <div class="beleg-zahlen">
+                <div class="beleg-zahl">
+                    <strong>60 000</strong>
+                    <span>verdorbene Programme ausprobiert</span>
+                </div>
+                <div class="beleg-zahl">
+                    <strong>16</strong>
+                    <span>Arten, ein Programm zu zerstören</span>
+                </div>
+                <div class="beleg-zahl beleg-zahl-gut">
+                    <strong>0</strong>
+                    <span>Abstürze, 0 Hänger</span>
+                </div>
+            </div>
+            <p>Wir haben versucht, es kaputtzumachen: Ein Werkzeug zerhackt die Beispielprogramme
+               nach dem Zufallsprinzip und verfüttert die Trümmer an den Interpreter. Nichts ist
+               abgestürzt, nichts hängen geblieben — jedes Mal kam eine ruhige deutsche
+               Fehlermeldung.</p>
+        </div>
+
+        <p class="reveal" style="margin-top:36px">
+            <a href="spielplatz.html" class="btn btn-primary">Spielplatz öffnen</a>
+        </p>
+
+        <details class="tiefer reveal">
+            <summary>Wie das im Einzelnen abgesichert ist</summary>
+            <div class="tiefer-inhalt">
+                <div class="sicher-grid reveal">
+            <article class="sicher-karte">
+                <h3>Nichts wird geschrieben</h3>
+                <p>Im Spielplatz arbeiten <code>Lies</code> und <code>Schreibe</code> auf einem Dateisystem im Arbeitsspeicher, das mit dem Lauf verschwindet. Es gibt keinen Weg von einem Programm auf eine Festplatte — weder auf deine noch auf den Server.</p>
+            </article>
+            <article class="sicher-karte">
+                <h3>Eigener Arbeitsbereich</h3>
+                <p>Der echte Interpreter läuft als Python im Browser — in einem abgeschotteten Hintergrundprozess ohne Zugriff auf die Seite. Kein Server führt Programme aus, nichts wird gesendet.</p>
+            </article>
+            <article class="sicher-karte">
+                <h3>Endlosschleifen enden</h3>
+                <p>Schritt- und Zeitgrenzen brechen Programme ab, die nicht von allein fertig werden. Hängt ein Lauf, wird der Hintergrundprozess beendet und neu gestartet.</p>
+            </article>
+            <article class="sicher-karte">
+                <h3>Erst prüfen, dann laufen</h3>
+                <p>Neben <em>Ausführen</em> steht ein Knopf <em>Prüfen</em>. Er liest das Programm durch, ohne es zu starten, und zeigt Tippfehler und vergessene Namen an — hilfreich, wenn man noch unsicher ist. Auf der Kommandozeile heißt er <code>--pruefe</code>.</p>
+            </article>
+            <article class="sicher-karte">
+                <h3>Kein fremder Code</h3>
+                <p>Klarsatz kennt kein <code>eval</code>, kein Nachladen und keinen Zugriff auf darunterliegende Funktionen. Ein Programm kann nur das, was in dieser Dokumentation steht.</p>
+            </article>
+        </div>
+
+                <div class="beleg">
+                    <div class="beleg-text">
+                <h3>Und woher wissen wir das?</h3>
+                <p>Weil wir versucht haben, es kaputtzumachen. Ein eigenes Werkzeug nimmt die
+                   Beispielprogramme und zerhackt sie nach dem Zufallsprinzip: Es löscht Zeichen,
+                   vertauscht Wörter, verschiebt Zeilen, verbiegt die Einrückung, entfernt Punkte,
+                   ersetzt Zahlen durch 0, −1 oder eine mit 31 Stellen. Die Trümmer bekommt dann
+                   alles vorgesetzt, was mit Programmtext umgeht — er wird ausgeführt, geprüft,
+                   formatiert und nach Python übersetzt.</p>
+                <p>Erlaubt ist dabei nur <strong>eins</strong>: eine ruhige deutsche Fehlermeldung.
+                   Stürzt etwas ab oder bleibt hängen, zählt das als Treffer.</p>
+            </div>
+                    <p class="beleg-fuss">Jeder dieser Läufe lässt sich einzeln nachstellen — und einmal pro
+               Woche läuft die Prüfung automatisch neu, mit anderen Zufallszahlen. Was das belegt und
+               was nicht, steht in <a href="https://github.com/wolfiru/klarsatz/blob/main/docs/SICHERHEIT.md" rel="noopener">docs/SICHERHEIT.md</a>.</p>
+                </div>
+            </div>
+        </details>
     </section>
 
     <section class="section" id="download">
