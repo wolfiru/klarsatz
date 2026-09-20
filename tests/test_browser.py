@@ -4,6 +4,7 @@ Wird übersprungen, wenn Playwright/Chromium fehlt, kein Netz da ist oder KLARSA
 import functools
 import http.server
 import os
+import re
 import subprocess
 import sys
 import threading
@@ -596,6 +597,28 @@ class WegInDieSpielwiese(unittest.TestCase):
         self.s.wait_for_timeout(300)
         self.assertTrue(self.s.evaluate("e => e.querySelector('pre').checkVisibility()", erster))
         self.assertIn("Hallo", self.s.inner_text(".tut-verdeckt pre"))
+
+    def test_die_ergebniskaesten_sind_undurchsichtig(self):
+        """Die Handschrift im Hintergrund stand mitten in der Ausgabe.
+
+        Die Kästen des Kurses hatten keinen eigenen Grund — anders als pre.klar. Über dem
+        Manuskript-Hintergrund der Seite las sich das Ergebnis dadurch wie ein Palimpsest.
+        Geprüft wird die Deckkraft, nicht die Farbe: Der Farbton darf sich ändern."""
+        self.s.goto(self.basis + "tutorial.html")
+        self.s.wait_for_selector(".tut-ausgabe", timeout=60000)
+        for wahl in (".tut-ausgabe", ".tut-eingabe", ".tut-fehler"):
+            with self.subTest(kasten=wahl):
+                grund = self.s.evaluate(
+                    "w => getComputedStyle(document.querySelector(w)).backgroundColor", wahl)
+                zahlen = [float(x) for x in re.findall(r"[\d.]+", grund)]
+                self.assertEqual(len(zahlen), 4, f"{wahl} hat gar keinen eigenen Grund: {grund}")
+                self.assertGreaterEqual(zahlen[3], 0.7, f"{wahl} ist zu durchsichtig: {grund}")
+
+        # Und die Marke bringt im Zusammenfassungsbalken keine eigene Linie mehr mit,
+        # die quer durch die Zeile lief, statt Kopf und Inhalt zu trennen.
+        linie = self.s.evaluate("""() => getComputedStyle(
+            document.querySelector('.tut-verdeckt > summary .tut-marke')).borderBottomWidth""")
+        self.assertEqual(linie, "0px")
 
     def test_der_weg_in_den_spielplatz_laesst_die_lektion_stehen(self):
         """Ein Sprung auf eine andere Seite hieße: zurück findet man nur über die Zurück-Taste."""

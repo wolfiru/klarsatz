@@ -1,5 +1,13 @@
 # Änderungen
 
+## Unveröffentlicht
+- **Die Kästen im Kurs sind wieder undurchsichtig.** `tut-eingabe`, `tut-ausgabe`, `tut-fehler` und
+  `tut-python` hatten keinen eigenen Grund — über der Handschrift im Seitenhintergrund las sich das
+  Ergebnis wie ein Palimpsest. Sie bekommen jetzt denselben Grund wie `pre.klar`.
+- **Der Zusammenfassungsbalken der verdeckten Ergebnisse** zog die Trennlinie der Marke quer durch
+  die Zeile, statt Kopf und Inhalt zu trennen. Die Linie sitzt jetzt am `summary` selbst und nur im
+  aufgeklappten Zustand. Beides hält `tests/test_browser.py` fest.
+
 ## 0.10.3 — Im Kurs selbst tippen
 - **Unter jeder Aufgabe liegt jetzt eine Fläche zum Lösen.** „Deine Aufgabe: …" stand bisher da,
   ohne dass man ihr nachkommen konnte, ohne die Seite zu verlassen. Ein Klick auf „Leeres Blatt

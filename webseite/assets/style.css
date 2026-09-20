@@ -1595,6 +1595,9 @@ kbd {
 .tut-fehler,
 .tut-python {
     margin: -8px 0 22px;
+    /* Ohne eigenen Grund scheint die Handschrift im Hintergrund mitten durch die
+       Ausgabe — derselbe Grund wie bei pre.klar, damit beides zusammenpasst. */
+    background: rgba(8, 10, 8, 0.72);
     border: 1px solid var(--line);
     border-radius: 10px;
     overflow: hidden;
@@ -3163,8 +3166,18 @@ textarea:focus-visible,
 .tut-verdeckt:not([open]) > summary .tut-zeigen::after { content: " ▾"; }
 .tut-verdeckt > summary:focus-visible { outline: 2px solid var(--gold); outline-offset: -2px; }
 
-/* Die Marke sitzt in der Zusammenfassung, nicht mehr darüber. */
-.tut-verdeckt > summary .tut-marke { padding: 0; }
+/* Die Marke sitzt jetzt *in* der Zusammenfassung. Ihre Kopfzeilen-Ausstattung —
+   eigener Grund und Trennlinie darunter — ergibt dort keinen Sinn mehr: Die Linie lief
+   quer durch die Zeile, statt den Kopf vom Inhalt zu trennen. Das tut jetzt das
+   summary selbst, und nur im aufgeklappten Zustand. */
+.tut-verdeckt > summary .tut-marke {
+    padding: 0;
+    background: none;
+    border-bottom: none;
+}
+
+.tut-verdeckt > summary { background: rgba(243, 239, 230, 0.04); }
+.tut-verdeckt[open] > summary { border-bottom: 1px solid var(--line); }
 
 @media print {
     /* Auf Papier nützt niemandem ein zugeklappter Kasten. */
