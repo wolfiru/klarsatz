@@ -60,6 +60,13 @@
                 a.className = 'probier';
                 a.href = 'spielplatz.html#code=' + kodiere(quelle);
                 a.textContent = 'Im Spielplatz öffnen';
+                /* In einem neuen Tab: Der Spielplatz ist eine eigene Seite, und wer von
+                   einer Lektion aus dorthin springt, findet sonst nicht zurück — die
+                   Lektion war ja weg. Das Pfeilsymbol hinter dem Text (siehe CSS) sagt
+                   schon an, dass es hinausführt. */
+                a.target = '_blank';
+                a.rel = 'noopener';
+                a.title = 'Öffnet den Spielplatz in einem neuen Tab — diese Seite bleibt offen';
                 kopf.appendChild(a);
             }
         });

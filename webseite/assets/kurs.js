@@ -27,8 +27,9 @@ function stil(pfad) {
 const bloecke = [...document.querySelectorAll('pre.klar')]
     .filter((pre) => pre.dataset.probieren !== 'nein'
         && pre.previousElementSibling?.classList.contains('code-kopf'));
+const aufgaben = [...document.querySelectorAll('.aufgabe-flaeche')];
 
-if (bloecke.length) {
+if (bloecke.length || aufgaben.length) {
     let buehne = null;          // der Kasten mit der Spielwiese
     let spielwiese = null;      // die Spielwiese selbst
     let laedt = false;
@@ -46,9 +47,9 @@ if (bloecke.length) {
         return kasten;
     };
 
-    const oeffne = async (pre, knopf) => {
+    const oeffne = async (pre, knopf, code) => {
         if (laedt) return;
-        const code = pre.dataset.quelle ?? pre.textContent.replace(/^\n+|\s+$/g, '');
+        if (code === undefined) code = pre.dataset.quelle ?? pre.textContent.replace(/^\n+|\s+$/g, '');
 
         if (spielwiese) {
             pre.after(buehne);
@@ -89,12 +90,25 @@ if (bloecke.length) {
         }
     };
 
+    /* Die Aufgaben am Ende jeder Lektion: eine Fläche zum Lösen, direkt darunter. Die
+       Angabe steht als Anmerkung schon drin — sonst muss man beim Tippen nach oben
+       scrollen. Aufgaben wie „bau drei Fehler ein" bringen ein lauffähiges Programm mit
+       (data-vorlage); alle anderen fangen mit einem leeren Blatt an. */
+    for (const flaeche of aufgaben) {
+        const knopf = flaeche.querySelector('.aufgabe-start');
+        if (!knopf) continue;
+        const angabe = (flaeche.dataset.aufgabe || '').replace(/\s+/g, ' ').trim();
+        const vorlage = flaeche.dataset.vorlage ? flaeche.dataset.vorlage.trim() + '\n' : '';
+        knopf.addEventListener('click', () => oeffne(flaeche, knopf,
+            'Anmerkung: ' + angabe + '\n\n' + vorlage));
+    }
+
     for (const pre of bloecke) {
         const kopf = pre.previousElementSibling;
         const knopf = document.createElement('button');
         knopf.type = 'button';
         knopf.className = 'hier-aus';
-        knopf.textContent = '▶ Hier ausführen';
+        knopf.textContent = '▶ Hier ausführen/editieren';
         knopf.addEventListener('click', () => oeffne(pre, knopf));
         // Vor den Link „Im Spielplatz öffnen", den app.js angehängt hat.
         const link = kopf.querySelector('.probier');

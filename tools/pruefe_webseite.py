@@ -18,7 +18,7 @@ from klarsatz import web
 from klarsatz.grenzen import Grenzen
 from klarsatz.pruefer import pruefe
 
-BLOCK = re.compile(r'<pre class="klar"([^>]*)>(.*?)</pre>', re.S)
+BLOCK = re.compile(r'<pre class="klar ?[a-z-]*"([^>]*)>(.*?)</pre>', re.S)
 BRAUCHT_EINGABE = re.compile(r'\b(Frage|Lies|Schreibe)\b', re.I)
 
 

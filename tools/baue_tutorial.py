@@ -81,6 +81,14 @@ def tabelle(zeilen):
     return aus
 
 
+# Diese Blöcke sind Antworten auf eine Frage, die der Kurs vorher stellt — sie stehen
+# deshalb hinter einem Knopf. Die Eingaben gehören zur Angabe und bleiben offen, die
+# Python-Übersetzung in Lektion 11 ist der Inhalt der Lektion selbst.
+VERDECKT = {
+    "ausgabe": "Ergebnis zeigen",
+    "fehler": "Meldung zeigen",
+}
+
 BESCHRIFTUNG = {
     "eingabe": "Deine Eingaben",
     "ausgabe": "Das kommt heraus",
@@ -100,6 +108,14 @@ def codeblock(art, inhalt, absichtlich_kaputt=False):
         titel = "Absichtlich falsch" if absichtlich_kaputt else "Zum Ausprobieren"
         return [f'<div class="code-kopf"><span class="code-titel">{titel}</span></div>',
                 f'<pre class="klar"{marke}><code>{roh}</code></pre>']
+    if art in VERDECKT:
+        # Der Kurs bittet vor jedem Beispiel um eine Vorhersage — und zeigte die Antwort
+        # bisher gleich darunter. Jetzt liegt sie unter einem Knopf. <details> statt
+        # JavaScript: Das funktioniert mit der Tastatur, ohne Skript und beim Ausdrucken.
+        return [f'<details class="tut-{art} tut-verdeckt">',
+                f'<summary><span class="tut-marke">{BESCHRIFTUNG.get(art, art)}</span>'
+                f'<span class="tut-zeigen">{VERDECKT[art]}</span></summary>',
+                f"<pre><code>{roh}</code></pre></details>"]
     return [f'<div class="tut-{art}"><span class="tut-marke">{BESCHRIFTUNG.get(art, art)}</span>',
             f"<pre><code>{roh}</code></pre></div>"]
 
@@ -109,6 +125,24 @@ def folgt_fehlerblock(zeilen, i):
     while i < len(zeilen) and not zeilen[i].strip():
         i += 1
     return i < len(zeilen) and zeilen[i].strip() == "```fehler"
+
+
+def lies_vorlage(zeilen, i):
+    """Ein ```vorlage-Block nach der Aufgabe: das lauffähige Programm zum Herumprobieren.
+
+    Manche Aufgaben („bau drei Fehler ein") brauchen etwas, das schon läuft. Der Block
+    gehört in die Aufgabenfläche, nicht daneben — sonst stünden dort zwei Knöpfe, die
+    verschiedene Dinge tun."""
+    j = i
+    while j < len(zeilen) and not zeilen[j].strip():
+        j += 1
+    if j >= len(zeilen) or zeilen[j].strip() != "```vorlage":
+        return "", i
+    inhalt, j = [], j + 1
+    while j < len(zeilen) and not zeilen[j].startswith("```"):
+        inhalt.append(zeilen[j])
+        j += 1
+    return "\n".join(inhalt).strip("\n"), j + 1
 
 
 def nach_html(markdown):
@@ -206,7 +240,23 @@ def nach_html(markdown):
             aus.append(inline(z.strip()))
             i += 1
             continue
-        aus.append(f"<p>{inline(' '.join(absatz))}</p>")
+        text = " ".join(absatz)
+        aus.append(f"<p>{inline(text)}</p>")
+
+        # Nach „Deine Aufgabe: …" folgt eine leere Fläche zum Lösen. Ohne sie steht dort
+        # eine Aufforderung, der man nicht nachkommen kann, ohne die Seite zu verlassen —
+        # und genau das soll der Kurs ja nicht verlangen.
+        if text.startswith("**Deine Aufgabe:**"):
+            angabe = re.sub(r"\s+", " ", re.sub(r"[*`\[\]]|\(https?://[^)]*\)", "", text)).strip()
+            vorlage, i = lies_vorlage(zeilen, i)
+            knopf = "✎ Programm öffnen" if vorlage else "✎ Leeres Blatt öffnen"
+            aus.append(f'<div class="aufgabe-flaeche" data-aufgabe="{html.escape(angabe)}"'
+                       + (f' data-vorlage="{html.escape(vorlage)}"' if vorlage else "")
+                       + f'><span class="aufgabe-marke">Jetzt du</span>'
+                       + (f'<pre class="klar aufgabe-vorlage"><code>{html.escape(vorlage)}</code></pre>'
+                          if vorlage else "")
+                       + f'<button type="button" class="hier-aus aufgabe-start">{knopf}</button>'
+                       + '</div>')
 
     return "\n".join(aus), lektionen
 
@@ -320,8 +370,8 @@ __BLAETTERN__
 
 <footer>
     <div class="foot-inner">
-        <span>© <span id="jahr"></span> ruthner.at · Klarsatz <span data-download="version">0.10.2</span></span>
-        <span class="fuss-stand">Stand: <time datetime="2026-09-20">20.09.2026</time> · Version <span data-download="version">0.10.2</span> · MIT-Lizenz · von <a href="/impressum.html">Ing. Wolfgang Ruthner</a></span>
+        <span>© <span id="jahr"></span> ruthner.at · Klarsatz <span data-download="version">0.10.3</span></span>
+        <span class="fuss-stand">Stand: <time datetime="2026-09-20">20.09.2026</time> · Version <span data-download="version">0.10.3</span> · MIT-Lizenz · von <a href="/impressum.html">Ing. Wolfgang Ruthner</a></span>
         <span><a href="/">ruthner.at</a> &nbsp;·&nbsp; <a href="index.html">Sprache</a> &nbsp;·&nbsp; <a href="doku.html">Dokumentation</a> &nbsp;·&nbsp; <a href="spielplatz.html">Spielplatz</a> &nbsp;·&nbsp; <a href="https://github.com/wolfiru/klarsatz" rel="noopener">GitHub</a> &nbsp;·&nbsp; <a href="mailto:wolfgang@ruthner.at">wolfgang@ruthner.at</a> &nbsp;·&nbsp; <a href="/impressum.html">Impressum</a> &nbsp;·&nbsp; <a href="/datenschutz.html">Datenschutz</a> &nbsp;·&nbsp; <a href="https://github.com/wolfiru/klarsatz/blob/main/LICENSE" rel="noopener">MIT-Lizenz</a></span>
     </div>
 </footer>

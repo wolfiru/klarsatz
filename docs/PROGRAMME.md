@@ -15,7 +15,7 @@ Für Zufallszahlen lässt sich mit `--seed 42` immer derselbe Ablauf erzeugen.
 | Nr. | Datei | Was es macht | Zeigt vor allem |
 |---|---|---|---|
 | 01 | `01_zahlenraten_du_raetst.klar` | Der Computer denkt sich eine Zahl aus (1–10, 1–100 oder 1–1000), du rätst. | `Zufallszahl von … bis …`, Hinweise „zu klein/zu groß“ |
-| 02 | `02_kopfrechnen.klar` | Zehn Kopfrechenaufgaben (plus, minus, mal), am Ende Punkte und Note. | `Zufallszahl`, `Verbinde`, `Zähle` |
+| 02 | `02_kopfrechnen.klar` | Zehn Kopfrechenaufgaben (plus, minus, mal), am Ende Punkte und eine Rückmeldung. | `Zufallszahl`, `Verbinde`, `Zähle` |
 | 03 | `03_taschenrechner.klar` | Zwei Zahlen und eine Rechenart eingeben (`+ - * / ^ %`), Ergebnis sehen. Division durch 0 wird abgefangen. | `Frage`, `Wenn … Sonst wenn`, `Versuche`, „keine Zahl“-Test |
 | 04 | `04_umrechner.klar` | °C/°F, km/Meilen, Euro/Fremdwährung mit selbst eingegebenem Kurs. | Rechnen, `Formatiert von … auf 2 Stellen`, Eingabeprüfung |
 | 05 | `05_primzahlen.klar` | Primzahltest, alle Primzahlen bis zu einer Grenze, alle Teiler einer Zahl. | Aufgaben mit `Gib … zurück`, Schleifen, `teilbar`, Listen |

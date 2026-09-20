@@ -11,8 +11,8 @@ wähle oben **Leeres Blatt** und tippe mit.
 >
 > * Über jedem Beispiel steht **„Hier ausführen“**. Ein Klick, und die Spielwiese erscheint
 >   gleich darunter, mit dem Programm darin. Du bleibst dabei in der Lektion.
-> * Daneben steht **„Im Spielplatz öffnen“** — dasselbe Programm, aber auf einer eigenen
->   Seite mit mehr Platz.
+> * Daneben steht **„Im Spielplatz öffnen“** — dasselbe Programm auf einer eigenen Seite
+>   mit mehr Platz. Das öffnet sich in einem neuen Tab, diese Lektion bleibt also stehen.
 > * Für die Aufgaben („Deine Aufgabe: …“) brauchst du ein **[leeres Blatt](https://www.ruthner.at/klarsatz/spielplatz.html#beispiel=)**.
 >   Dort tippst du selbst.
 
@@ -21,7 +21,7 @@ Dann kommt immer dieselbe Schleife:
 
 > **Vorhersagen** → **Ausprobieren** → **Verändern**
 
-Lies das Programm und sag dir *vorher*, was herauskommt. Dann lass es laufen. Dann ändere etwas und
+Lies das Programm und sag dir *vorher*, was herauskommt. Deshalb steht die Ausgabe hinter einem Knopf — **Ergebnis zeigen** deckt sie auf, wenn du deine Vorhersage hast. Dann lass es laufen. Dann ändere etwas und
 sieh nach, ob du recht behältst. Wer nur liest, lernt Vokabeln. Wer vorhersagt, lernt Programmieren.
 
 **Die Stufenwahl.** In der Spielwiese steht oben ein Feld *Stufe*. Stell es auf die Stufe der
@@ -317,22 +317,22 @@ Freut mich, Ben.
 Mehr als zwei Wege gehen mit `Sonst wenn`:
 
 ```klar
-Merke 7 als Note.
+Merke 2 als Note.
 
-Wenn Note mindestens 9 ist:
+Wenn Note höchstens 1 ist:
     Zeige "Sehr gut".
-Sonst wenn Note mindestens 7 ist:
-    Zeige "Gut".
+Sonst wenn Note höchstens 3 ist:
+    Zeige "Passt".
 Sonst:
-    Zeige "Geht besser".
+    Zeige "Da geht noch was".
 Ende.
 ```
 ```ausgabe
-Gut
+Passt
 ```
 
-**Vorhersagen:** Was passiert bei `Note` gleich 9? Bei 8? Bei 2? Warum wird bei 9 **nicht** auch
-noch „Gut“ ausgegeben?
+**Vorhersagen:** Was passiert bei `Note` gleich 1? Bei 3? Bei 5? Warum wird bei 1 **nicht** auch
+noch „Passt“ ausgegeben?
 
 **Deine Aufgabe:** Frage nach einer Zahl und sage, ob sie negativ, null oder positiv ist.
 
@@ -415,8 +415,25 @@ ist der Grund für die Meldung — und übrigens die Antwort auf die Vertausch-A
 Lies immer drei Dinge: **welche Zeile**, **welche Stelle**, **was Klarsatz erwartet hätte**. In
 neunzehn von zwanzig Fällen steht die Lösung schon in der Meldung.
 
-**Deine Aufgabe:** Bau in ein funktionierendes Programm absichtlich drei verschiedene Fehler ein —
-einen pro Durchgang — und lies jedes Mal die Meldung, bevor du sie reparierst.
+**Deine Aufgabe:** Hier ist ein Programm, das läuft. Bau absichtlich drei verschiedene Fehler ein —
+einen pro Durchgang — und lies jedes Mal die Meldung, bevor du sie reparierst. Vorschläge: den
+Punkt am Zeilenende weglassen, `Merke` durch `Setze` ersetzen, einen Namen verschreiben, `Ende`
+löschen.
+
+```vorlage
+Merke "Klarsatz" als Sprache.
+Merke 3 als Anzahl.
+
+Zeige "Ich lerne " und Sprache und ".".
+
+Wenn Anzahl mindestens 3 ist:
+    Zeige "Jetzt baue ich " und Anzahl und " Fehler ein.".
+Sonst:
+    Zeige "Einer reicht auch.".
+Ende.
+
+Zeige "Fertig.".
+```
 
 ---
 

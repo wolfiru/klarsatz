@@ -449,7 +449,9 @@ class WegInDieSpielwiese(unittest.TestCase):
             with self.subTest(seite=seite):
                 self.s.goto(self.basis + seite)
                 self.s.wait_for_selector("a.probier", timeout=30000)
-                bloecke = self.s.locator("pre.klar").count()
+                # Die Vorlage in einer Aufgabenfläche hat ihren eigenen Knopf daneben —
+                # ein zweiter Weg in den Spielplatz wäre dort nur verwirrend.
+                bloecke = self.s.locator("pre.klar:not(.aufgabe-vorlage)").count()
                 links = self.s.locator("a.probier").count()
                 self.assertEqual(links, bloecke,
                                  f"{seite}: {bloecke} Beispiele, aber nur {links} zum Öffnen.")
@@ -574,6 +576,37 @@ class WegInDieSpielwiese(unittest.TestCase):
         finally:
             ctx.close()
 
+    def test_das_ergebnis_steht_hinter_einem_knopf(self):
+        """Der Kurs bittet um eine Vorhersage — dann darf die Antwort nicht danebenstehen.
+
+        Geprüft wird, dass die Ausgabe wirklich verborgen ist (nicht nur optisch klein)
+        und dass ein Klick auf „Ergebnis zeigen" sie aufdeckt. Ohne JavaScript geht das
+        ebenfalls: Es ist ein <details>-Element, kein Skript."""
+        self.s.goto(self.basis + "tutorial.html")
+        self.s.wait_for_selector(".tut-verdeckt", timeout=60000)
+        verdeckt = self.s.query_selector_all(".tut-verdeckt")
+        self.assertGreater(len(verdeckt), 20, "Kaum ein Ergebnis ist verdeckt.")
+
+        erster = verdeckt[0]
+        self.assertFalse(self.s.evaluate("e => e.hasAttribute('open')", erster))
+        self.assertFalse(self.s.evaluate("e => e.querySelector('pre').checkVisibility()", erster),
+                         "Die Ausgabe ist zu sehen, bevor jemand darum gebeten hat.")
+
+        self.s.click(".tut-verdeckt summary")
+        self.s.wait_for_timeout(300)
+        self.assertTrue(self.s.evaluate("e => e.querySelector('pre').checkVisibility()", erster))
+        self.assertIn("Hallo", self.s.inner_text(".tut-verdeckt pre"))
+
+    def test_der_weg_in_den_spielplatz_laesst_die_lektion_stehen(self):
+        """Ein Sprung auf eine andere Seite hieße: zurück findet man nur über die Zurück-Taste."""
+        self.s.goto(self.basis + "tutorial.html")
+        self.s.wait_for_selector(".probier", timeout=60000)
+        link = self.s.query_selector(".probier")
+        self.assertEqual(self.s.evaluate("e => e.target", link), "_blank")
+        self.assertEqual(self.s.evaluate("e => e.rel", link), "noopener")
+        self.assertTrue(self.s.evaluate("e => e.title.length > 10", link),
+                        "Ohne Titel weiß niemand, dass sich ein neuer Tab öffnet.")
+
     def test_im_kurs_laeuft_die_spielwiese_in_der_lektion(self):
         """Der Link in den Spielplatz führt aus der Lektion heraus — der Knopf nicht.
 
@@ -582,8 +615,10 @@ class WegInDieSpielwiese(unittest.TestCase):
         neu laden, und das sind 14 MB."""
         self.s.goto(self.basis + "tutorial.html")
         self.s.wait_for_selector(".hier-aus", timeout=60000)
-        knoepfe = self.s.query_selector_all(".hier-aus")
+        knoepfe = self.s.query_selector_all(".code-kopf .hier-aus")
         self.assertGreater(len(knoepfe), 20, "Kaum ein Codeblock lässt sich in der Lektion starten.")
+        self.assertIn("editieren", self.s.evaluate("e => e.textContent", knoepfe[0]),
+                      "Der Knopf verrät nicht, dass man den Text auch ändern kann.")
 
         knoepfe[0].click()
         self.s.wait_for_function(
@@ -597,12 +632,62 @@ class WegInDieSpielwiese(unittest.TestCase):
         self.assertEqual(len(self.s.query_selector_all(".kurs-buehne")), 1)
         self.assertTrue(self.s.evaluate("""() => {
             const b = document.querySelector('.kurs-buehne');
-            const pre = document.querySelectorAll('.hier-aus')[1].closest('.code-kopf').nextElementSibling;
+            const pre = document.querySelectorAll('.code-kopf .hier-aus')[1].closest('.code-kopf').nextElementSibling;
             return b.previousElementSibling === pre;
         }"""), "Die Spielwiese steht nicht bei dem Block, auf den geklickt wurde.")
 
         # Und der Weg in den Spielplatz bleibt für die, die mehr Platz wollen.
         self.assertTrue(self.s.query_selector(".code-kopf .probier"))
+
+    def test_unter_jeder_aufgabe_liegt_ein_leeres_blatt(self):
+        """„Deine Aufgabe: …" ohne Platz zum Tippen ist eine Sackgasse.
+
+        Unter jeder Aufforderung im Kurs steht darum ein Knopf, der dieselbe Spielwiese
+        hierher holt — leer, aber mit der Angabe als Anmerkung, damit beim Tippen nicht
+        nach oben gescrollt werden muss."""
+        self.s.goto(self.basis + "tutorial.html")
+        self.s.wait_for_selector(".aufgabe-flaeche", timeout=60000)
+        flaechen = self.s.query_selector_all(".aufgabe-flaeche")
+        self.assertGreaterEqual(len(flaechen), 9, "Nicht jede Aufgabe hat eine Fläche zum Lösen.")
+
+        # Jede Fläche folgt unmittelbar auf ihre Angabe.
+        self.assertTrue(self.s.evaluate("""() => [...document.querySelectorAll('.aufgabe-flaeche')].every(
+            f => f.previousElementSibling?.textContent.trim().startsWith('Deine Aufgabe:'))"""),
+            "Eine Aufgabenfläche steht nicht bei ihrer Aufgabe.")
+
+        flaechen[0].scroll_into_view_if_needed()
+        self.s.click(".aufgabe-start")
+        self.s.wait_for_selector(".kurs-buehne .kp-text", timeout=240000)
+        self.s.wait_for_function("() => !document.querySelector('.kurs-buehne .kp-lauf').disabled",
+                                 timeout=240000)
+        text = self.s.input_value(".kurs-buehne .kp-text")
+        self.assertTrue(text.startswith("Anmerkung:"),
+                        "Das Blatt nennt die Aufgabe nicht, die darauf zu lösen ist.")
+        self.assertIn("Biografie", text)
+        self.assertEqual(len([z for z in text.splitlines() if z.strip()]), 1,
+                         "Das Blatt ist nicht leer — es soll selbst getippt werden.")
+        self.assertTrue(self.s.evaluate("""() => document.querySelector('.kurs-buehne')
+            .previousElementSibling.classList.contains('aufgabe-flaeche')"""),
+            "Die Spielwiese steht nicht bei der Aufgabe.")
+
+        # Und das leere Blatt läuft auch wirklich.
+        self.s.fill(".kurs-buehne .kp-text", text + 'Zeige "Ich bin Wolfgang".')
+        self.s.click(".kurs-buehne .kp-lauf")
+        self.s.wait_for_function(
+            "() => document.querySelector('.kurs-buehne .kp-ausgabe')?.textContent.includes('Wolfgang')",
+            timeout=120000)
+
+        # „Bau drei Fehler ein" braucht kein leeres Blatt, sondern etwas, das schon läuft.
+        mit_vorlage = self.s.query_selector(".aufgabe-flaeche[data-vorlage]")
+        self.assertIsNotNone(mit_vorlage, "Keine Aufgabe bringt ein Programm zum Herumprobieren mit.")
+        self.assertIn("Programm öffnen",
+                      self.s.inner_text(".aufgabe-flaeche[data-vorlage] .aufgabe-start"))
+        mit_vorlage.scroll_into_view_if_needed()
+        self.s.click(".aufgabe-flaeche[data-vorlage] .aufgabe-start")
+        self.s.wait_for_function(
+            "() => document.querySelector('.kurs-buehne .kp-ausgabe')?.textContent.includes('Fertig')",
+            timeout=180000)
+        self.assertIn("Merke", self.s.input_value(".kurs-buehne .kp-text"))
 
     def test_eine_uebungsaufgabe_laesst_sich_abgeben(self):
         """Der ganze Weg: Aufgabe wählen, Lösung eintippen, abgeben, Rückmeldung lesen.

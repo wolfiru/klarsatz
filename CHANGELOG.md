@@ -1,5 +1,19 @@
 # Änderungen
 
+## 0.10.3 — Im Kurs selbst tippen
+- **Unter jeder Aufgabe liegt jetzt eine Fläche zum Lösen.** „Deine Aufgabe: …" stand bisher da,
+  ohne dass man ihr nachkommen konnte, ohne die Seite zu verlassen. Ein Klick auf „Leeres Blatt
+  öffnen" holt dieselbe Spielwiese hierher, die auch die Beispiele ausführt — mit der Angabe als
+  `Anmerkung` schon im Editor, damit beim Tippen niemand nach oben scrollen muss.
+- **Aufgaben können ein lauffähiges Programm mitbringen.** „Bau absichtlich drei Fehler ein" ergibt
+  auf einem leeren Blatt keinen Sinn. Ein `vorlage`-Block in `docs/TUTORIAL.md` steht jetzt in der
+  Aufgabenfläche und landet beim Klick mit im Editor; `tests/test_tutorial.py` führt ihn wie jedes
+  andere Beispiel aus, `tools/pruefe_webseite.py` prüft ihn auf der fertigen Seite mit.
+- **Der Knopf am Codeblock heißt „Hier ausführen/editieren".** Dass man den Text im Kasten auch
+  ändern kann, stand nirgends.
+- **Schulnoten in Lektion 3 korrigiert:** Dort galt „Note 7 ist gut" — eine Skala, die es hier nicht
+  gibt. Jetzt 1 bis 5, wie in Österreich, und damit `höchstens` statt `mindestens`.
+
 ## 0.10.2 — WebAnalyzer-Durchgang
 - **Eigene Datenschutzseite** (`/datenschutz.html`) statt eines Ankers im Impressum, im Stil der
   Hauptseite. Sie sagt, was der Klarsatz-Bereich im Browser speichert (Aufgaben-Fortschritt in

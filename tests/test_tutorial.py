@@ -43,7 +43,7 @@ def lies_bloecke(text):
         zeile = zeilen[i]
         if zeile.startswith("## "):
             lektion = zeile[3:].strip()
-        treffer = re.match(r"^(\s*)```(klar|eingabe|ausgabe|fehler|python|zeichnung)\s*$", zeile)
+        treffer = re.match(r"^(\s*)```(klar|vorlage|eingabe|ausgabe|fehler|python|zeichnung)\s*$", zeile)
         if not treffer:
             i += 1
             continue
@@ -55,7 +55,7 @@ def lies_bloecke(text):
             inhalt.append(zeilen[i][len(einzug):] if zeilen[i].startswith(einzug) else zeilen[i])
             i += 1
         i += 1                       # schließende ``` überspringen
-        if art == "klar":
+        if art in ("klar", "vorlage"):
             bloecke.append(Block(start + 1, lektion, "\n".join(inhalt) + "\n"))
         elif bloecke:
             if art == "eingabe":
@@ -200,6 +200,27 @@ class Seitenbau(unittest.TestCase):
     def test_heile_beispiele_bleiben_in_der_webpruefung(self):
         html, _ = self.baue('```klar\nZeige "Hallo".\n```\n```ausgabe\nHallo\n```')
         self.assertNotIn('data-pruefung="nein"', html)
+
+    def test_die_aufgabe_bekommt_eine_flaeche_zum_loesen(self):
+        html, _ = self.baue("**Deine Aufgabe:** Zeig deinen Namen.")
+        self.assertIn('class="aufgabe-flaeche"', html)
+        self.assertIn("Zeig deinen Namen.", html)
+        self.assertIn("Leeres Blatt", html)
+
+    def test_eine_vorlage_landet_in_der_aufgabenflaeche(self):
+        """Aufgaben wie „bau drei Fehler ein" brauchen etwas, das schon läuft."""
+        html, _ = self.baue('**Deine Aufgabe:** Bau Fehler ein.\n\n```vorlage\nZeige "Hallo".\n```')
+        self.assertIn('data-vorlage="Zeige &quot;Hallo&quot;."', html)
+        self.assertIn("aufgabe-vorlage", html)
+        self.assertIn("Programm öffnen", html)
+        self.assertNotIn("Leeres Blatt", html)
+        self.assertEqual(html.count("aufgabe-flaeche"), 1,
+                         "Die Vorlage steht neben der Fläche statt darin.")
+
+    def test_eine_vorlage_ohne_aufgabe_bleibt_ein_normaler_block(self):
+        html, _ = self.baue('```vorlage\nZeige "Hallo".\n```')
+        self.assertNotIn("aufgabe-flaeche", html)
+        self.assertIn("Hallo", html)
 
 
 if __name__ == "__main__":

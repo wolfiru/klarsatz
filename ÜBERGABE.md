@@ -1,4 +1,4 @@
-# Übergabe – Stand 20.09.2026, Version 0.10.2
+# Übergabe – Stand 20.09.2026, Version 0.10.3
 
 > **Umbenannt:** Das Projekt hieß bis 18.09.2026 *Klartext*; der Name war schon vergeben.
 > Alles heißt jetzt **Klarsatz** — nur die Dateiendung der Programme bleibt `.klar`.
@@ -28,7 +28,7 @@ die Weiterarbeit. Sprache: `docs/SPRACHE.md`.
   SVG-Ausgabe der Kommandozeile und Python-Übersetzung.
 - **Versionsverwaltung:** seit 19.09.2026 ein Git-Repository in `/home/pi/klarsatz` (Zweig `main`).
   Erzeugte Dateien liegen bewusst mit im Repository, damit ein ausgecheckter Stand sofort läuft.
-  Versionssprünge sind als `vX.Y.Z` markiert, zuletzt `v0.10.2`.
+  Versionssprünge sind als `vX.Y.Z` markiert, zuletzt `v0.10.3`.
 - **GitHub:** seit 19.09.2026 öffentlich unter **https://github.com/wolfiru/klarsatz** mit
   README, Lizenz, CI (Tests + wöchentlicher Fuzz-Lauf). `git push origin main` schiebt hin;
   Marken brauchen ein eigenes `git push origin vX.Y.Z`.
@@ -113,6 +113,20 @@ sich überspringt, wo die nicht liegt.
 
 `tools/baue_tutorial.py` baut jetzt mehrere Kurse aus einer Liste `KURSE`; ein weiterer Kurs ist
 ein Markdown-Datei plus ein Eintrag.
+
+**Seit 0.10.3 kommt die Spielwiese in die Lektion** (`assets/kurs.js`): Der Knopf „Hier
+ausführen/editieren" an jedem Codeblock lädt sie einmal je Seite und verschiebt sie danach nur noch
+— mehr als eine hieße Pyodide (14 MB) je Block neu laden. Der Link in den Spielplatz bleibt für
+die, die mehr Platz wollen, öffnet aber einen neuen Tab.
+
+**Und unter jeder Aufgabe liegt eine Fläche zum Lösen.** „Deine Aufgabe: …" war bis dahin eine
+Aufforderung, der man nicht nachkommen konnte, ohne die Seite zu verlassen. `baue_tutorial.py`
+hängt an jeden solchen Absatz ein `<div class="aufgabe-flaeche">`; der Knopf holt dieselbe
+Spielwiese dorthin, mit der Angabe als `Anmerkung` im Editor. Aufgaben, die etwas Lauffähiges
+brauchen („bau drei Fehler ein"), bekommen einen **```vorlage-Block** direkt unter der Angabe: Er
+steht in der Fläche, landet mit im Editor, wird von `tests/test_tutorial.py` wie jedes andere
+Beispiel ausgeführt und von `tools/pruefe_webseite.py` auf der fertigen Seite nachgeprüft. Achtung:
+`tests/test_stufen.py` gilt auch für ihn — eine Vorlage in Lektion 4 darf keine Schleife enthalten.
 
 ## Webseite (Stand 20.09.2026)
 
@@ -258,7 +272,7 @@ Kleinschreibung nicht (Python schon → Namensspeicher), und Feldnamen dürfen g
   Stellen, an denen es abweicht.
 </details>
 
-### 4. Übungsaufgaben mit Selbstprüfung — **gebaut am 20.09.2026 (0.10.2)**
+### 4. Übungsaufgaben mit Selbstprüfung — **gebaut am 20.09.2026 (0.10.3)**
 * **Ansatz:** `web.laufe(quelltext, antworten, seed)` ist bereits deterministisch — eine Aufgabe ist damit
   ein Datensatz aus Angabe, vorgegebenen Antworten und Prüfregel. Dazu ein Test, der alle Musterlösungen
   durchspielt (wie `tools/pruefe_webseite.py` es für die Doku-Beispiele tut), und eine Übungsseite.

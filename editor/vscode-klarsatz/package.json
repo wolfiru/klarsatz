@@ -1,7 +1,7 @@
 {
   "name": "klarsatz",
   "displayName": "Klarsatz",
-  "version": "0.10.2",
+  "version": "0.10.3",
   "publisher": "klarsatz",
   "description": "Syntax-Hervorhebung, Einrückung und Snippets für Klarsatz – die Programmiersprache, die wie Deutsch klingt.",
   "engines": {

@@ -4,6 +4,6 @@ from .interpreter import Interpreter
 from .lexer import lexer, norm
 from .parser import Parser
 
-__version__ = "0.10.2"
+__version__ = "0.10.3"
 __all__ = ["Interpreter", "KlarsatzFehler", "LaufzeitFehler", "LimitFehler", "SyntaxFehler",
            "Parser", "lexer", "norm", "__version__"]

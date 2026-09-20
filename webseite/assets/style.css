@@ -3126,3 +3126,90 @@ textarea:focus-visible,
     line-height: 1.55;
     color: var(--paper-dim);
 }
+
+/* ── Verdeckte Ergebnisse im Kurs ────────────────────────────────────────── */
+
+/* „Vorhersagen" hat nur einen Sinn, solange die Antwort nicht schon dasteht.
+   Kein Skript, sondern <details>: mit Tastatur bedienbar, ohne JavaScript nutzbar
+   und beim Ausdrucken (siehe @media print) automatisch offen. */
+.tut-verdeckt > summary {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    list-style: none;
+    cursor: pointer;
+    padding: 7px 14px;
+}
+
+.tut-verdeckt > summary::-webkit-details-marker { display: none; }
+
+.tut-zeigen {
+    margin-left: auto;
+    padding: 3px 12px;
+    border: 1px solid rgba(217, 180, 90, 0.35);
+    border-radius: 999px;
+    background: rgba(217, 180, 90, 0.10);
+    font-family: var(--sans);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: var(--gold);
+    white-space: nowrap;
+    transition: background 0.2s var(--ease), color 0.2s var(--ease);
+}
+
+.tut-verdeckt > summary:hover .tut-zeigen { background: var(--gold); color: var(--ink); }
+.tut-verdeckt[open] > summary .tut-zeigen::after { content: " ▴"; }
+.tut-verdeckt:not([open]) > summary .tut-zeigen::after { content: " ▾"; }
+.tut-verdeckt > summary:focus-visible { outline: 2px solid var(--gold); outline-offset: -2px; }
+
+/* Die Marke sitzt in der Zusammenfassung, nicht mehr darüber. */
+.tut-verdeckt > summary .tut-marke { padding: 0; }
+
+@media print {
+    /* Auf Papier nützt niemandem ein zugeklappter Kasten. */
+    .tut-verdeckt > *:not(summary) { display: block !important; }
+    .tut-zeigen { display: none !important; }
+}
+
+/* ── „Jetzt du": das leere Blatt unter jeder Aufgabe ─────────────────────── */
+
+/* Eine Aufforderung ohne Fläche zum Lösen ist eine Sackgasse. Der Knopf holt
+   dieselbe Spielwiese hierher, die auch die Beispiele ausführt — mit der Angabe
+   als Anmerkung schon im Editor. */
+.aufgabe-flaeche {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin: -8px 0 26px;
+    padding: 12px 16px;
+    background: var(--ink-2);
+    border: 1px solid var(--line);
+    border-left: 2px solid var(--gold);
+    border-radius: 10px;
+}
+
+.aufgabe-marke {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gold);
+}
+
+.aufgabe-flaeche .hier-aus { margin-left: auto; }
+
+@media (max-width: 620px) {
+    .aufgabe-flaeche .hier-aus { margin-left: 0; }
+}
+
+/* Aufgaben wie „bau drei Fehler ein" bringen ein lauffähiges Programm mit. Es steht in
+   der Fläche, nicht daneben — sonst stünden dort zwei Knöpfe mit verschiedener Wirkung. */
+.aufgabe-vorlage {
+    flex: 1 1 100%;
+    order: 2;
+    margin: 0;
+}
+
+.aufgabe-flaeche .hier-aus { order: 3; }
