@@ -107,7 +107,7 @@ STUFEN = {
     7: {"versuche", "fehler", "stelle", "sicher", "dass",
         "hat", "erschaffe",
         "lies", "schreibe",
-        "gehe", "drehe", "hebe", "senke", "nimm", "loesche", "warte",
+        "gehe", "drehe", "hebe", "senke", "nimm", "loesche", "warte", "beschrifte",
         "schritte", "grad", "strichstaerke", "leinwand",
         "aktuelle", "aktueller", "aktuelles", "aktuellen", "sekunde", "sekunden",
         "sinus", "kosinus", "cosinus", "tangens",

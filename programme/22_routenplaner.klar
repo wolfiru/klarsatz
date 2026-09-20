@@ -1,0 +1,250 @@
+Anmerkung: Ein Routenplaner für Niederösterreich und Wien.
+Anmerkung: Zwölf Orte, neunzehn Straßen und der Algorithmus von Edsger Dijkstra (1959).
+Anmerkung: Die Kilometer sind gerundete Straßenkilometer, keine Luftlinien.
+
+Anmerkung: --- Wo die Orte liegen -------------------------------------------------
+Anmerkung: Schritte auf der Zeichenfläche, ungefähr nach der Landkarte.
+Erstelle eine Tabelle namens Ostwert
+    mit "Amstetten" als -212
+    und "Melk" als -97
+    und "Zwettl" als -137
+    und "St. Pölten" als -22
+    und "Krems" als -27
+    und "Horn" als -15
+    und "Tulln" als 85
+    und "Hollabrunn" als 90
+    und "Wien" als 162
+    und "Mistelbach" als 212
+    und "Baden" als 127
+    und "Wiener Neustadt" als 132.
+
+Erstelle eine Tabelle namens Nordwert
+    mit "Amstetten" als -44
+    und "Melk" als -2
+    und "Zwettl" als 142
+    und "St. Pölten" als -13
+    und "Krems" als 66
+    und "Horn" als 161
+    und "Tulln" als 36
+    und "Hollabrunn" als 123
+    und "Wien" als -10
+    und "Mistelbach" als 127
+    und "Baden" als -85
+    und "Wiener Neustadt" als -161.
+
+Anmerkung: --- Welche Straßen es gibt ---------------------------------------------
+Anmerkung: Der Schlüssel nennt beide Enden, der Wert die Kilometer. Befahren wird
+Anmerkung: jede Straße in beide Richtungen -- eine Eintragung genügt also.
+Erstelle eine Tabelle namens Strecken
+    mit "Amstetten|Melk" als 40
+    und "Melk|St. Pölten" als 30
+    und "Melk|Krems" als 38
+    und "Melk|Zwettl" als 60
+    und "Zwettl|Krems" als 55
+    und "Zwettl|Horn" als 45
+    und "St. Pölten|Krems" als 25
+    und "St. Pölten|Tulln" als 35
+    und "St. Pölten|Wien" als 65
+    und "Krems|Horn" als 40
+    und "Krems|Tulln" als 34
+    und "Horn|Hollabrunn" als 40
+    und "Tulln|Hollabrunn" als 33
+    und "Tulln|Wien" als 33
+    und "Hollabrunn|Mistelbach" als 38
+    und "Mistelbach|Wien" als 50
+    und "Wien|Baden" als 26
+    und "Baden|Wiener Neustadt" als 25
+    und "Wiener Neustadt|Wien" als 50.
+
+Anmerkung: --- Wohin soll es gehen? -----------------------------------------------
+Erstelle eine Liste namens Orte.
+Für jedes Ort in Ostwert:
+    Füge Ort zur Orte hinzu.
+Ende.
+
+Anmerkung: Zwei Orte auswürfeln -- aber keine Nachbarn. Zwischen Nachbarn gibt es
+Anmerkung: nichts zu planen, und genau das soll dieses Programm ja vorführen.
+Merke "" als Start.
+Merke "" als Ziel.
+Merke wahr als NochEinmal.
+Wiederhole solange NochEinmal ist:
+    Setze Start auf ein zufälliges Element von Orte.
+    Setze Ziel auf ein zufälliges Element von Orte.
+    Verbinde Start und "|" und Ziel zu Hin.
+    Verbinde Ziel und "|" und Start zu Her.
+    Setze NochEinmal auf falsch.
+    Wenn Start gleich Ziel ist, setze NochEinmal auf wahr.
+    Wenn Strecken enthält Hin, setze NochEinmal auf wahr.
+    Wenn Strecken enthält Her, setze NochEinmal auf wahr.
+Ende.
+
+Anmerkung: --- Dijkstra ----------------------------------------------------------
+Anmerkung: Zu jedem Ort wird gemerkt, wie weit er vom Start entfernt ist und über
+Anmerkung: welchen Nachbarn man am billigsten hinkommt. Am Anfang weiß man nichts,
+Anmerkung: also steht überall eine Zahl, die größer ist als jeder mögliche Weg.
+Erstelle eine Tabelle namens Weite.
+Erstelle eine Tabelle namens Vorher.
+Erstelle eine Tabelle namens Fertig.
+
+Für jedes Ort in Orte:
+    Trage Ort mit 99999 in Weite ein.
+Ende.
+Trage Start mit 0 in Weite ein.
+
+Wiederhole solange wahr ist:
+    Anmerkung: Der nächste Ort ist immer der nächstgelegene, der noch offen ist.
+    Anmerkung: Genau das ist Dijkstras Einfall: Für den ist der Weg dann endgültig.
+    Merke "" als Hier.
+    Merke 99999 als Kuerzeste.
+    Für jedes Ort in Orte:
+        Wenn nicht Fertig enthält Ort und Wert für Ort in Weite kleiner als Kuerzeste ist:
+            Setze Kuerzeste auf Wert für Ort in Weite.
+            Setze Hier auf Ort.
+        Ende.
+    Ende.
+
+    Wenn Hier gleich "" ist, höre auf.
+    Trage Hier mit 1 in Fertig ein.
+    Wenn Hier gleich Ziel ist, höre auf.
+
+    Anmerkung: Von hier aus jeden Nachbarn ansehen: Ist der Weg über diesen Ort
+    Anmerkung: kürzer als der bisher beste, wird er gemerkt.
+    Für jedes Strecke in Strecken:
+        Teile Strecke bei "|" zu Enden.
+        Merke das erste Element von Enden als A.
+        Merke das letzte Element von Enden als B.
+
+        Merke "" als Nachbar.
+        Wenn A gleich Hier ist, setze Nachbar auf B.
+        Sonst wenn B gleich Hier ist, setze Nachbar auf A.
+
+        Wenn nicht Nachbar gleich "" ist:
+            Merke Kuerzeste plus Wert für Strecke in Strecken als Ueber.
+            Wenn Ueber kleiner als Wert für Nachbar in Weite ist:
+                Trage Nachbar mit Ueber in Weite ein.
+                Trage Nachbar mit Hier in Vorher ein.
+            Ende.
+        Ende.
+    Ende.
+Ende.
+
+Anmerkung: --- Den Weg rückwärts einsammeln ---------------------------------------
+Anmerkung: Gemerkt wurde immer nur der Vorgänger. Vom Ziel aus hangelt man sich
+Anmerkung: daran bis zum Start zurück -- und dreht die Liste am Ende um.
+Erstelle eine Liste namens Rueckwaerts.
+Merke Ziel als Stelle.
+Wiederhole solange wahr ist:
+    Füge Stelle zur Rueckwaerts hinzu.
+    Wenn Stelle gleich Start ist, höre auf.
+    Wenn nicht Vorher enthält Stelle, höre auf.
+    Setze Stelle auf Wert für Stelle in Vorher.
+Ende.
+
+Erstelle eine Liste namens Weg.
+Zähle von die Länge von Rueckwaerts bis 1 rückwärts mit i:
+    Füge Element i von Rueckwaerts zur Weg hinzu.
+Ende.
+
+Anmerkung: --- Die Ansage ---------------------------------------------------------
+Zeige "Von " und Start und " nach " und Ziel.
+Zeige "".
+
+Merke 0 als Gefahren.
+Merke das erste Element von Weg als Letzter.
+Für jedes Ort in Weg:
+    Wenn nicht Ort gleich Letzter ist:
+        Verbinde Letzter und "|" und Ort zu Hin.
+        Verbinde Ort und "|" und Letzter zu Her.
+        Wenn Strecken enthält Hin, erhöhe Gefahren um Wert für Hin in Strecken.
+        Sonst erhöhe Gefahren um Wert für Her in Strecken.
+        Zeige "  " und Letzter und " → " und Ort und "   (" und Gefahren und " km)".
+        Setze Letzter auf Ort.
+    Ende.
+Ende.
+
+Zeige "".
+Zeige "Kürzester Weg: " und Gefahren und " km über " und die Länge von Weg und " Orte".
+
+Anmerkung: --- Die Karte ----------------------------------------------------------
+Nimm die Leinwand 560 mal 420.
+
+Definiere Aufgabe StellDichAuf mit AX und AY:
+    Hebe den Stift.
+    Gehe zur Mitte.
+    Drehe dich um 90 Grad nach rechts.
+    Gehe AX Schritte vor.
+    Drehe dich um 90 Grad nach links.
+    Gehe AY Schritte vor.
+Ende.
+
+Anmerkung: Eine Linie von Punkt zu Punkt. Richtung und Länge rechnet sie selbst aus.
+Anmerkung: Der Arkustangens allein reicht nicht: Er kann nicht unterscheiden, ob es
+Anmerkung: nach rechts oder nach links geht. Deshalb die Drehung um 180 Grad.
+Definiere Aufgabe LinieZu mit X1 und Y1 und X2 und Y2:
+    Merke X2 minus X1 als Rechts.
+    Merke Y2 minus Y1 als Hinauf.
+    Merke die Wurzel von (Rechts mal Rechts plus Hinauf mal Hinauf) als Strecke.
+
+    Wenn Rechts gleich 0 ist:
+        Merke 0 als Richtung.
+        Wenn Hinauf kleiner als 0 ist, setze Richtung auf 180.
+    Sonst:
+        Merke 90 minus den Arkustangens von (Hinauf geteilt durch Rechts) als Richtung.
+        Wenn Rechts kleiner als 0 ist, erhöhe Richtung um 180.
+    Ende.
+
+    Führe StellDichAuf mit X1 und Y1 aus.
+    Senke den Stift.
+    Drehe dich um Richtung Grad nach rechts.
+    Gehe Strecke Schritte vor.
+    Hebe den Stift.
+Ende.
+
+Definiere Aufgabe Punkt mit AX und AY und Groesse:
+    Nimm die Strichstärke Groesse.
+    Führe StellDichAuf mit AX und AY aus.
+    Senke den Stift.
+    Gehe 1 Schritt vor.
+    Hebe den Stift.
+Ende.
+
+Anmerkung: Zuerst alle Straßen, grau und dünn.
+Nimm die Farbe "grau".
+Nimm die Strichstärke 2.
+Für jedes Strecke in Strecken:
+    Teile Strecke bei "|" zu Enden.
+    Merke das erste Element von Enden als A.
+    Merke das letzte Element von Enden als B.
+    Führe LinieZu mit Wert für A in Ostwert und Wert für A in Nordwert
+        und Wert für B in Ostwert und Wert für B in Nordwert aus.
+Ende.
+
+Anmerkung: Darüber der gefundene Weg, golden und dick.
+Nimm die Farbe "gold".
+Nimm die Strichstärke 5.
+Merke das erste Element von Weg als Letzter.
+Für jedes Ort in Weg:
+    Wenn nicht Ort gleich Letzter ist:
+        Führe LinieZu mit Wert für Letzter in Ostwert und Wert für Letzter in Nordwert
+            und Wert für Ort in Ostwert und Wert für Ort in Nordwert aus.
+        Setze Letzter auf Ort.
+    Ende.
+Ende.
+
+Anmerkung: Zum Schluss die Orte: alle klein, Start und Ziel groß.
+Nimm die Farbe "weiß".
+Für jedes Ort in Orte:
+    Führe Punkt mit Wert für Ort in Ostwert und Wert für Ort in Nordwert und 8 aus.
+Ende.
+
+Nimm die Farbe "gold".
+Führe Punkt mit Wert für Start in Ostwert und Wert für Start in Nordwert und 18 aus.
+Nimm die Farbe "orange".
+Führe Punkt mit Wert für Ziel in Ostwert und Wert für Ziel in Nordwert und 18 aus.
+
+Anmerkung: Und die Namen dazu -- 14 Schritte über dem Punkt, damit sie ihn nicht verdecken.
+Nimm die Farbe "weiß".
+Für jedes Ort in Orte:
+    Führe StellDichAuf mit Wert für Ort in Ostwert und (Wert für Ort in Nordwert plus 14) aus.
+    Beschrifte Ort.
+Ende.

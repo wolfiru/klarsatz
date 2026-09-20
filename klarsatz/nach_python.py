@@ -322,6 +322,11 @@ class NachPython:
         self._turtle()
         return ["stift.clear()"]
 
+    def s_beschrifte(self, k):
+        self._turtle()
+        groesse = 14 if k[3] is None else self._a(k[3])
+        return [f"stift.write({self._a(k[2])}, align='center', font=('Arial', {groesse}, 'normal'))"]
+
     def s_leinwand(self, k):
         """Klarsatz legt die Fläche fest, turtle kennt dafür die Fenstergröße."""
         self._turtle()

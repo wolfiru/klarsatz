@@ -1,4 +1,4 @@
-# Übergabe – Stand 19.09.2026, Version 0.7.1
+# Übergabe – Stand 20.09.2026, Version 0.8.0
 
 > **Umbenannt:** Das Projekt hieß bis 18.09.2026 *Klartext*; der Name war schon vergeben.
 > Alles heißt jetzt **Klarsatz** — nur die Dateiendung der Programme bleibt `.klar`.
@@ -120,7 +120,8 @@ SVG-Symbolbild (`assets/klarsatz-symbolbild.svg`).
 | Was | Wo |
 |---|---|
 | Hauptseite, Doku (6 Kapitel), Spielplatz | `index.html`, `doku*.html`, `spielplatz.html` |
-| Elf Abschnitte der Startseite, durchnummeriert (01–11) | `webseite/seiten/index.html`, Reihenfolge wird von `tests/test_einordnung.py` geprüft |
+| Zwölf Abschnitte der Startseite, durchnummeriert (01–12) | `webseite/seiten/index.html`, Reihenfolge wird von `tests/test_einordnung.py` geprüft |
+| Werkstücke (komplexe Programme) im Abschnitt 09 | `programme/21_*`, `programme/22_*`; `tests/test_werkstuecke.py` hält Seite und Programm zusammen |
 | Design, Hintergrund-Animation, Hervorhebung | `assets/` |
 | Vorlage der Doku-Kapitel (im Projekt) | `webseite/kapitel/` + `webseite/baue_doku.sh` |
 | Spielwiese (unverändert aus `playground/`) | `spielwiese/` |

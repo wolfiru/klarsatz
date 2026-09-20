@@ -12,7 +12,8 @@ WURZEL = Path(__file__).resolve().parent.parent
 SEITE = WURZEL / "webseite" / "seiten" / "index.html"
 HEIM = Path("/var/www/html/index.html")
 
-WORT = {9: "neun", 20: "zwanzig", 21: "einundzwanzig", 29: "neunundzwanzig", 30: "dreißig"}
+WORT = {9: "neun", 20: "zwanzig", 21: "einundzwanzig", 22: "zweiundzwanzig",
+        29: "neunundzwanzig", 30: "dreißig", 31: "einunddreißig"}
 
 
 def ist_ruthner_at():

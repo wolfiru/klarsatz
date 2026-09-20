@@ -613,6 +613,26 @@ class Interpreter:
         winkel = self._zeichenzahl(self.auswerten(k[2], b), "den Winkel", k[1])
         self.stift["winkel"] = (self.stift["winkel"] + (winkel if k[3] else -winkel)) % 360
 
+    def _a_beschrifte(self, k, b):
+        """Schreibt Text an die Stelle, an der der Stift gerade steht.
+
+        Eine Karte ohne Ortsnamen ist eine halbe Karte. Gemeldet wird -- wie bei den
+        Linien auch -- nur, was geschrieben werden soll; wie daraus Buchstaben werden,
+        entscheidet die Oberfläche."""
+        from .werte import als_text
+        text = als_text(self.auswerten(k[2], b))
+        groesse = 14 if k[3] is None else self._zeichenzahl(self.auswerten(k[3], b), "die Schriftgröße", k[1])
+        if not 4 <= groesse <= 400:
+            raise LaufzeitFehler(
+                f"Die Schriftgröße geht von 4 bis 400, bekommen habe ich {groesse:g}.", k[1])
+        if len(text) > 200:
+            raise LaufzeitFehler("Eine Beschriftung darf höchstens 200 Zeichen lang sein.", k[1])
+        self.striche += 1
+        if self.striche > self.grenzen.striche:
+            raise LimitFehler(f"Die Zeichnung hat mehr als {self.grenzen.striche} Striche.", k[1])
+        s = self.stift
+        self.zeichne(("text", round(s["x"], 3), round(s["y"], 3), text, s["farbe"], groesse))
+
     def _a_stift(self, k, b):
         self.stift["unten"] = k[2]
 

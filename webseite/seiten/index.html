@@ -43,7 +43,7 @@
 
 <header class="hero" id="top">
     <div class="hero-inner">
-        <p class="kicker">Ein Sprachexperiment · Version <span data-download="version">0.7.1</span></p>
+        <p class="kicker">Ein Sprachexperiment · Version <span data-download="version">0.8.0</span></p>
         <h1>Programmieren lernen,<br>ohne vorher eine<br><em>Fremdsprache zu übersetzen.</em></h1>
         <p class="lede">Klarsatz schreibt Programme in klaren deutschen Sätzen. Du lernst Variablen, Bedingungen und Schleifen — und führst dein erstes Programm später als Python weiter. Dahinter steckt die Frage, wie nah eine formale Sprache an deutsche Sätze heranrücken kann, ohne ihre Eindeutigkeit zu verlieren.</p>
         <div class="hero-actions">
@@ -110,7 +110,7 @@ Zeige "Fünf plus drei ist " und Zahl und ".".</pre>
 
             <p class="mini-hinweis" hidden><strong>Das ist die Spielwiese — sie läuft jetzt hier, in dieser Seite.</strong>
                Du bist nirgendwo hingewechselt. Ändere den Text im Editor und drück wieder auf <em>Ausführen</em>.
-               Über dem Editor kannst du unter <strong>30 Beispielen</strong> wählen — vom Zahlenraten bis zum grafischen Adventure. <a href="spielplatz.html">Mit mehr Platz weitermachen →</a></p>
+               Über dem Editor kannst du unter <strong>31 Beispielen</strong> wählen — vom Zahlenraten bis zum grafischen Adventure. <a href="spielplatz.html">Mit mehr Platz weitermachen →</a></p>
 
             <div class="mini-buehne" hidden></div>
         </div>
@@ -774,7 +774,7 @@ Zeige den Namen von Waldi.</pre>
         <div class="section-head">
             <span class="eyebrow">09 — Was damit geht</span>
             <h2>Die Sprache ist einfach.<br><em>Die Programme müssen es nicht sein.</em></h2>
-            <p class="section-sub">Einfach zu lernen heißt nicht, dass man damit nur einfache Programme schreiben kann. Die Sätze bleiben dieselben wie in Lektion 1 — was daraus entsteht, muss nicht klein bleiben.</p>
+            <p class="section-sub">Einfach zu lernen heißt nicht, dass man damit nur einfache Programme schreiben kann. Die Sätze bleiben dieselben wie in Lektion 1 — was daraus entsteht, muss nicht klein bleiben. Zwei Programme, die das zeigen: eines, das sich selbst überlässt, und eines, das rechnet.</p>
         </div>
 
         <article class="werk">
@@ -817,6 +817,50 @@ Sonst füge 0 zur Neu hinzu.</pre>
 
             <p class="werk-fuss">Im Spielplatz unter <em>21 Spiel des Lebens</em>, im Archiv als
                <code>programme/21_spiel_des_lebens.klar</code>.</p>
+        </article>
+
+        <article class="werk">
+            <p class="werk-nr">Werkstück 02</p>
+            <h3 class="werk-titel">Der Routenplaner</h3>
+            <p class="werk-was">Zwölf Orte in Niederösterreich und Wien, neunzehn Straßen mit
+               gerundeten Kilometern. Zwei Orte werden ausgewürfelt, und der Algorithmus von
+               Edsger Dijkstra sucht die kürzeste Verbindung — dieselbe Rechnung, die im
+               Navigationsgerät steckt.</p>
+
+            <div class="code-kopf"><span class="code-titel">Der Kern: Lohnt der Umweg über diesen Ort?</span></div>
+<pre class="klar" data-pruefung="nein" data-probieren="nein">Merke Kuerzeste plus Wert für Strecke in Strecken als Ueber.
+Wenn Ueber kleiner als Wert für Nachbar in Weite ist:
+    Trage Nachbar mit Ueber in Weite ein.
+    Trage Nachbar mit Hier in Vorher ein.
+Ende.</pre>
+
+            <p class="werk-text">Dijkstras Einfall von 1959 steht in einem Satz: Nimm immer den
+               nächstgelegenen Ort, der noch offen ist — für den kann kein Umweg mehr kürzer sein.
+               Was das Programm dabei mitschreibt, ist nicht der Weg, sondern zu jedem Ort nur der
+               <em>Vorgänger</em>. Der fertige Weg entsteht erst am Schluss, rückwärts vom Ziel.</p>
+
+            <div class="werk-zutaten">
+                <p><span>Tabelle als Straßennetz</span> Der Schlüssel <code>"Krems|Tulln"</code> nennt beide Enden, der Wert die Kilometer. Befahren wird jede Straße in beide Richtungen.</p>
+                <p><span>Drei Tabellen als Gedächtnis</span> Entfernung, Vorgänger, erledigt — mehr braucht der Algorithmus nicht.</p>
+                <p><span>Karte aus Koordinaten</span> Jeder Ort hat einen Ost- und einen Nordwert; eine Aufgabe zieht daraus Linien, Richtung und Länge rechnet sie mit Wurzel und Arkustangens selbst aus.</p>
+                <p><span>Beschriftete Karte</span> <code>Beschrifte "Wien".</code> schreibt den Namen an die Stelle, an der der Stift steht — auch das kann die Sprache jetzt.</p>
+            </div>
+
+            <div class="mini" data-beispiel="22_routenplaner">
+                <p class="mini-fuss"><button type="button" class="btn btn-primary mini-start">▶ Route berechnen</button></p>
+
+                <p class="mini-hinweis" hidden><strong>Jeder Start würfelt zwei andere Orte aus.</strong>
+                   Golden ist der gefundene Weg, grau sind die übrigen Straßen. Im Editor steht das
+                   ganze Programm — trag eine Straße nach oder ändere eine Kilometerzahl und sieh zu,
+                   wie die Route woanders langgeht.
+                   <a href="spielplatz.html#beispiel=22_routenplaner">Mit mehr Platz weitermachen →</a></p>
+
+                <div class="mini-buehne" hidden></div>
+            </div>
+
+            <p class="werk-fuss">Im Spielplatz unter <em>22 Routenplaner</em>, im Archiv als
+               <code>programme/22_routenplaner.klar</code>. Die Kilometer sind gerundete
+               Straßenkilometer — für die Urlaubsplanung bitte trotzdem eine echte Karte.</p>
         </article>
     </section>
 
@@ -910,18 +954,18 @@ Sonst füge 0 zur Neu hinzu.</pre>
                 <p>Im Archiv steckt alles, was zum Ausprobieren nötig ist — und der gesamte Quelltext dazu, denn Klarsatz ist zum Nachlesen gebaut.</p>
                 <ul class="download-liste">
                     <li>der Interpreter mit Prüfmodus, Formatierer und interaktiver Konsole</li>
-                    <li>einundzwanzig Beispielprogramme, vom Zahlenraten bis zum Spiel des Lebens — dazu neun kleine Sprachbeispiele, je eines pro Thema. Zusammen sind das die 30, die auch in der Spielwiese zur Auswahl stehen</li>
+                    <li>zweiundzwanzig Beispielprogramme, vom Zahlenraten bis zum Routenplaner — dazu neun kleine Sprachbeispiele, je eines pro Thema. Zusammen sind das die 31, die auch in der Spielwiese zur Auswahl stehen</li>
                     <li>die vollständige Sprachdokumentation zum Nachschlagen</li>
                     <li>eine Erweiterung für VS&nbsp;Code, die Klarsatz einfärbt</li>
                     <li>die Spielwiese dieser Seite, auch ohne Internet startbar</li>
                 </ul>
-<pre class="schale"><code>unzip klarsatz-<span data-download="version">0.7.1</span>.zip
-cd klarsatz-<span data-download="version">0.7.1</span>
+<pre class="schale"><code>unzip klarsatz-<span data-download="version">0.8.0</span>.zip
+cd klarsatz-<span data-download="version">0.8.0</span>
 python3 -m klarsatz programme/03_taschenrechner.klar</code></pre>
             </div>
 
             <div class="download-seite">
-                <a class="btn btn-primary" data-download="datei" href="downloads/klarsatz-0.7.1.zip" download>Klarsatz <span data-download="version">0.7.1</span> laden</a>
+                <a class="btn btn-primary" data-download="datei" href="downloads/klarsatz-0.8.0.zip" download>Klarsatz <span data-download="version">0.8.0</span> laden</a>
                 <dl class="download-angaben">
                     <dt>Größe</dt><dd><span data-download="groesse">239</span> kB als ZIP</dd>
                     <dt>Voraussetzung</dt><dd>Python 3.10 oder neuer</dd>
@@ -929,7 +973,7 @@ python3 -m klarsatz programme/03_taschenrechner.klar</code></pre>
                     <dt>Lizenz</dt><dd>MIT — benutzen und weitergeben erwünscht</dd>
                 </dl>
                 <p class="download-pruefsumme">SHA256 <code data-download="sha256">6b3b6a90</code>…<br>
-                   vollständig in <a href="downloads/klarsatz-0.7.1.zip.sha256" data-download="sha256datei">der Prüfsummendatei</a></p>
+                   vollständig in <a href="downloads/klarsatz-0.8.0.zip.sha256" data-download="sha256datei">der Prüfsummendatei</a></p>
 
                 <p class="download-quelle">Lieber den Quelltext? Klarsatz liegt offen auf GitHub —
                    mitlesen, abzweigen, Fehler melden, Sätze vorschlagen.</p>
@@ -942,7 +986,7 @@ python3 -m klarsatz programme/03_taschenrechner.klar</code></pre>
         <div class="section-head">
             <span class="eyebrow">12 — Stand</span>
             <h2>Wo Klarsatz gerade <em>steht.</em></h2>
-            <p class="section-sub">Version <span data-download="version">0.7.1</span>. Ein <strong>bewusst begrenztes</strong> Experiment — „begrenzt“ ist dabei keine Entschuldigung, sondern eine Entscheidung: Was dem pädagogischen Ziel nicht dient, kommt nicht hinein. Was daraus geworden ist, steht hier — samt dem, was fehlt.</p>
+            <p class="section-sub">Version <span data-download="version">0.8.0</span>. Ein <strong>bewusst begrenztes</strong> Experiment — „begrenzt“ ist dabei keine Entschuldigung, sondern eine Entscheidung: Was dem pädagogischen Ziel nicht dient, kommt nicht hinein. Was daraus geworden ist, steht hier — samt dem, was fehlt.</p>
         </div>
 
         <div class="feature-grid">
@@ -987,7 +1031,7 @@ python3 -m klarsatz programme/03_taschenrechner.klar</code></pre>
 
 <footer>
     <div class="foot-inner">
-        <span>© <span id="jahr"></span> ruthner.at · Klarsatz <span data-download="version">0.7.1</span></span>
+        <span>© <span id="jahr"></span> ruthner.at · Klarsatz <span data-download="version">0.8.0</span></span>
         <span><a href="/">ruthner.at</a> &nbsp;·&nbsp; <a href="index.html">Sprache</a> &nbsp;·&nbsp; <a href="tutorial.html">Tutorial</a> &nbsp;·&nbsp; <a href="doku.html">Dokumentation</a> &nbsp;·&nbsp; <a href="spielplatz.html">Spielplatz</a> &nbsp;·&nbsp; <a href="https://github.com/wolfiru/klarsatz" rel="noopener">GitHub</a> &nbsp;·&nbsp; <a href="mailto:wolfgang@ruthner.at">wolfgang@ruthner.at</a></span>
     </div>
 </footer>

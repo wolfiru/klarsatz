@@ -101,7 +101,7 @@
       "name": "keyword.control.klarsatz"
     },
     {
-      "match": "\\b(?i:verringere|erschaffe|verdopple|entferne|erstelle|halbiere|schreibe|sortiere|verbinde|erh(?:ö|oe)he|ersetze|kopiere|l(?:ö|oe)sche|f(?:ü|ue)hre|drehe|frage|f(?:ü|ue)ge|merke|senke|setze|teile|trage|warte|zeige|gehe|hebe|lies|nimm)\\b",
+      "match": "\\b(?i:beschrifte|verringere|erschaffe|verdopple|entferne|erstelle|halbiere|schreibe|sortiere|verbinde|erh(?:ö|oe)he|ersetze|kopiere|l(?:ö|oe)sche|f(?:ü|ue)hre|drehe|frage|f(?:ü|ue)ge|merke|senke|setze|teile|trage|warte|zeige|gehe|hebe|lies|nimm)\\b",
       "name": "keyword.other.statement.klarsatz"
     },
     {

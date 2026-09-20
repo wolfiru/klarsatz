@@ -318,6 +318,7 @@ Nimm die Farbe "gold".               Anmerkung: rot blau grün gelb gold orange 
 Nimm die Strichstärke 3.             Anmerkung: 1 bis 50
 Gehe zur Mitte.                      Anmerkung: zurück zum Start, wieder nach oben schauend
 Nimm die Leinwand 600 mal 400.       Anmerkung: feste Fläche statt automatischem Ausschnitt, 20 bis 4000
+Beschrifte "Wien".                   Anmerkung: schreibt an die Stelle des Stifts; auch: mit 20 (Größe)
 ```
 `Gehe 1 Schritt vor.` ist erlaubt — ein Schritt ist einer.
 

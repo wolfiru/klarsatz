@@ -48,6 +48,7 @@ PROGRAMM_TITEL = {
     "19": "Textadventure",
     "20": "Grafikadventure",
     "21": "Spiel des Lebens",
+    "22": "Routenplaner",
 }
 
 

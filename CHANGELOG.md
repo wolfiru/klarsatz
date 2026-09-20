@@ -1,6 +1,17 @@
 # Änderungen
 
-## Unveröffentlicht
+## 0.8.0
+- **`Beschrifte "Wien".`** — Text an der Stelle des Stifts, in seiner Farbe; `mit 20` setzt die
+  Größe (4 bis 400). Eine Karte ohne Ortsnamen ist eine halbe Karte. Im SVG wird daraus ein
+  `<text>`, im Browser `fillText`, in Python `stift.write(…)`; eine Beschriftung zählt wie ein
+  Strich gegen die Grenze.
+- **`programme/22_routenplaner.klar`** — zwölf Orte in Niederösterreich und Wien, neunzehn Straßen,
+  der Algorithmus von Dijkstra. Zwei Orte werden ausgewürfelt (nie zwei benachbarte, sonst gäbe es
+  nichts zu planen), die kürzeste Verbindung wird gesucht, aufgezählt und in die beschriftete Karte
+  gezeichnet. Das Straßennetz liegt als Tabelle vor (`"Krems|Tulln"` → 34), das Gedächtnis des
+  Algorithmus in drei weiteren. `tests/test_programme.py` liest das Netz aus der Programmdatei,
+  rechnet in Python ein zweites Dijkstra und vergleicht — die kürzeste Strecke ist eine Behauptung,
+  die man prüfen kann.
 - **`Nimm die Leinwand 600 mal 400.`** — eine feste Zeichenfläche. Ohne sie sucht sich die
   Oberfläche den Ausschnitt selbst und passt ihn an das an, was gerade gezeichnet ist; für ein
   Standbild ist das bequem, für ein bewegtes Bild springt dadurch alles, sobald in einem Durchlauf

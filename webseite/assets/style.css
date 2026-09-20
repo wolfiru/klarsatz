@@ -2547,6 +2547,8 @@ kbd {
 }
 
 
+.werk + .werk { margin-top: 26px; }
+
 @media (max-width: 760px) {
     .werk { padding: 24px 18px 26px; }
     .werk-zutaten { grid-template-columns: 1fr; }

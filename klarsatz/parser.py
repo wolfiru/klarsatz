@@ -35,6 +35,7 @@ STARTER = {
     "gehe": ("s_gehe", "Gehe"), "drehe": ("s_drehe", "Drehe"),
     "warte": ("s_warte", "Warte"), "loesche": ("s_loesche", "Lösche"),
     "hebe": ("s_stift", "Hebe"), "senke": ("s_stift", "Senke"), "nimm": ("s_nimm", "Nimm"),
+    "beschrifte": ("s_beschrifte", "Beschrifte"),
 }
 
 # Wörter, die nach einer geschlossenen Klammer zeigen: "(a plus b) größer als 3" ist eine Rechenklammer
@@ -678,6 +679,17 @@ class Parser:
         self.erwarte_wort("stift", "Stift")
         self.punkt()
         return ("stift", tok.zeile, tok.norm == "senke")
+
+    def s_beschrifte(self):
+        """Beschrifte "Wien". · Beschrifte "Wien" mit 20."""
+        z = self.nimm().zeile
+        text = self.summe()
+        groesse = None
+        if self.ist_wort("mit"):
+            self.nimm()
+            groesse = self.summe()
+        self.punkt()
+        return ("beschrifte", z, text, groesse)
 
     def s_nimm(self):
         """Nimm die Farbe "rot". · Nimm die Strichstärke 3. · Nimm die Leinwand 600 mal 400."""

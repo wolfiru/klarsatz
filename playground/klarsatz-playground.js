@@ -237,9 +237,11 @@ export async function erstelle(wurzel, opt = {}) {
   // Malt die Striche eines Laufs. Der Interpreter liefert sie in einem
   // Koordinatensystem mit Ursprung in der Mitte und y nach oben; hier wird
   // gespiegelt und so skaliert, dass die ganze Zeichnung hineinpasst.
-  function maleBild(striche, gewuenscht) {
+  function maleBild(alles, gewuenscht) {
+    const striche = alles.filter((e) => e[0] === "linie");
+    const texte = alles.filter((e) => e[0] === "text");
     const rahmen = wurzel.querySelector(".kp");
-    if (!striche.length && !gewuenscht) {
+    if (!alles.length && !gewuenscht) {
       leinwand.hidden = true;
       rahmen.classList.remove("kp-mit-bild");
       return;
@@ -268,6 +270,11 @@ export async function erstelle(wurzel, opt = {}) {
       minY = Math.min(minY, y1, y2); maxY = Math.max(maxY, y1, y2);
       dickste = Math.max(dickste, dicke);
     }
+    for (const [, x, y, , , groesse] of texte) {
+      minX = Math.min(minX, x); maxX = Math.max(maxX, x);
+      minY = Math.min(minY, y); maxY = Math.max(maxY, y);
+      dickste = Math.max(dickste, groesse);
+    }
 
     let faktor, versatzX, versatzY;
     if (gewuenscht) {
@@ -294,6 +301,15 @@ export async function erstelle(wurzel, opt = {}) {
       ctx.moveTo(x1 * faktor + versatzX, versatzY - y1 * faktor);
       ctx.lineTo(x2 * faktor + versatzX, versatzY - y2 * faktor);
       ctx.stroke();
+    }
+
+    // Beschriftungen zuletzt, damit keine Linie quer durch einen Namen läuft.
+    ctx.textAlign = "center";
+    ctx.textBaseline = "alphabetic";
+    for (const [, x, y, text, farbe, groesse] of texte) {
+      ctx.fillStyle = farbe;
+      ctx.font = `${Math.max(groesse * faktor, 7)}px Manrope, Segoe UI, sans-serif`;
+      ctx.fillText(text, x * faktor + versatzX, versatzY - y * faktor);
     }
   }
 
@@ -335,7 +351,7 @@ export async function erstelle(wurzel, opt = {}) {
       // die jüngsten Zeilen und werfen die ältesten weg.
       while (ausgabe.childElementCount > 4000) ausgabe.firstElementChild.remove();
       ausgabe.scrollTop = ausgabe.scrollHeight;
-    } else if (art === "linie") {
+    } else if (art === "linie" || art === "text") {
       letzteStriche.push(eintrag);
       planeMalen();
     } else if (art === "loeschen") {
@@ -357,7 +373,7 @@ export async function erstelle(wurzel, opt = {}) {
     letzteStriche = [];
     letzteLeinwand = null;
     for (const eintrag of erg.verlauf) {
-      if (eintrag[0] === "linie") letzteStriche.push(eintrag);
+      if (eintrag[0] === "linie" || eintrag[0] === "text") letzteStriche.push(eintrag);
       else if (eintrag[0] === "loeschen") letzteStriche = [];
       else if (eintrag[0] === "leinwand") letzteLeinwand = eintrag;
     }

@@ -558,6 +558,130 @@ Ende.
         self.assertEqual(lauf(), lauf())
 
 
+class Routenplaner(unittest.TestCase):
+    """22_routenplaner.klar — nachgerechnet, nicht nachgelesen.
+
+    Die kürzeste Strecke ist eine Behauptung, die man prüfen kann. Hier wird das
+    Straßennetz aus der Programmdatei gelesen, in Python noch einmal durchgerechnet
+    und mit dem verglichen, was das Programm ausgibt. Stimmt eine Kilometerzahl im
+    Netz nicht mehr mit der Zeichnung überein oder verrutscht eine Regel im
+    Algorithmus, fällt es hier auf und nicht erst jemandem auf der Landstraße.
+    """
+
+    @classmethod
+    def setUpClass(cls):
+        cls.quelle = (PROGRAMME / "22_routenplaner.klar").read_text(encoding="utf-8")
+        cls.orte = cls._tabelle(cls.quelle, "Ostwert")
+        cls.nord = cls._tabelle(cls.quelle, "Nordwert")
+        cls.strecken = {tuple(k.split("|")): v
+                        for k, v in cls._tabelle(cls.quelle, "Strecken").items()}
+
+    @staticmethod
+    def _tabelle(quelle, name):
+        """Liest 'Erstelle eine Tabelle namens X mit "a" als 1 und "b" als 2.' aus."""
+        anfang = quelle.index(f"Erstelle eine Tabelle namens {name}")
+        block = quelle[anfang:quelle.index(".\n", anfang)]
+        return {s: int(w) for s, w in re.findall(r'"([^"]+)" als (-?\d+)', block)}
+
+    def kuerzester(self, start, ziel):
+        """Dijkstra in Python — die zweite Meinung."""
+        offen = {ort: (0 if ort == start else float("inf")) for ort in self.orte}
+        fertig = {}
+        while offen:
+            hier = min(offen, key=offen.get)
+            weite = offen.pop(hier)
+            if weite == float("inf"):
+                break
+            fertig[hier] = weite
+            if hier == ziel:
+                return weite
+            for (a, b), km in self.strecken.items():
+                nachbar = b if a == hier else a if b == hier else None
+                if nachbar in offen and weite + km < offen[nachbar]:
+                    offen[nachbar] = weite + km
+        return fertig.get(ziel, float("inf"))
+
+    def plane(self, start, ziel):
+        """Führt das Programm mit festem Start und Ziel aus."""
+        alt = self.quelle[self.quelle.index("Merke \"\" als Start."):
+                          self.quelle.index("Anmerkung: --- Dijkstra")]
+        quelle = self.quelle.replace(alt, f'Merke "{start}" als Start.\nMerke "{ziel}" als Ziel.\n\n')
+        ausgabe = []
+        i = Interpreter(ausgabe=ausgabe.append)
+        i.lauf(quelle)
+        km = int(re.search(r"Kürzester Weg: (\d+) km", "\n".join(ausgabe)).group(1))
+        weg = [z.split(" → ")[0].strip() for z in ausgabe if " → " in z]
+        weg.append(ziel)
+        return km, weg, i
+
+    def test_das_netz_ist_vollstaendig_beschrieben(self):
+        """Jeder Ort einer Straße muss auch eine Lage auf der Karte haben."""
+        for a, b in self.strecken:
+            for ort in (a, b):
+                with self.subTest(ort=ort):
+                    self.assertIn(ort, self.orte, "Dieser Ort wird befahren, liegt aber nirgends.")
+                    self.assertIn(ort, self.nord)
+        self.assertEqual(sorted(self.orte), sorted(self.nord))
+
+    def test_jeder_ort_ist_erreichbar(self):
+        """Ein abgehängter Ort würde das Programm eine Route suchen lassen, die es nicht gibt."""
+        erster = next(iter(self.orte))
+        for ort in self.orte:
+            with self.subTest(ort=ort):
+                self.assertLess(self.kuerzester(erster, ort), float("inf"))
+
+    def test_die_route_ist_wirklich_die_kuerzeste(self):
+        paare = [("Amstetten", "Mistelbach"), ("Zwettl", "Wiener Neustadt"),
+                 ("Horn", "Baden"), ("Melk", "Wien"), ("Mistelbach", "Krems"),
+                 ("Wiener Neustadt", "Zwettl"), ("Tulln", "Amstetten")]
+        for start, ziel in paare:
+            with self.subTest(von=start, nach=ziel):
+                km, weg, _ = self.plane(start, ziel)
+                self.assertEqual(km, self.kuerzester(start, ziel))
+                self.assertEqual(weg[0], start)
+                self.assertEqual(weg[-1], ziel)
+
+    def test_der_weg_benutzt_nur_echte_strassen(self):
+        _km, weg, _ = self.plane("Amstetten", "Mistelbach")
+        for a, b in zip(weg, weg[1:]):
+            with self.subTest(strecke=f"{a} → {b}"):
+                self.assertTrue((a, b) in self.strecken or (b, a) in self.strecken,
+                                "Zwischen diesen Orten gibt es gar keine Straße.")
+
+    def test_die_summe_stimmt_mit_den_einzelnen_strecken(self):
+        km, weg, _ = self.plane("Zwettl", "Wiener Neustadt")
+        einzeln = sum(self.strecken.get((a, b), self.strecken.get((b, a), 0))
+                      for a, b in zip(weg, weg[1:]))
+        self.assertEqual(km, einzeln)
+
+    def test_die_karte_zeigt_jede_strasse_und_den_ganzen_weg(self):
+        from klarsatz.interpreter import FARBEN
+        _km, weg, i = self.plane("Amstetten", "Mistelbach")
+        self.assertEqual(i.leinwand, (560, 420))
+        nach_farbe = {}
+        for strich in i.zeichnung:
+            if strich[0] == "linie":
+                nach_farbe.setdefault(strich[5], []).append(strich)
+        self.assertEqual(len(nach_farbe[FARBEN["grau"]]), len(self.strecken),
+                         "Es werden nicht alle Straßen gezeichnet.")
+        gold = nach_farbe[FARBEN["gold"]]
+        # Die Wegstücke, dazu ein Punkt für den Start (eine Linie der Länge 1).
+        self.assertEqual(len(gold), len(weg) - 1 + 1)
+
+    def test_alles_bleibt_auf_der_leinwand(self):
+        """Nicht nur der Punkt muss hineinpassen, sondern auch sein Name.
+
+        Der steht mittig über dem Ort; bei „Wiener Neustadt" ragt er nach beiden Seiten
+        weit hinaus. Gerechnet wird mit reichlich 7 Schritten je Zeichen."""
+        breite, hoehe = 560, 420
+        for ort, x in self.orte.items():
+            with self.subTest(ort=ort):
+                halb = len(ort) * 7 / 2
+                self.assertLess(abs(x) + halb, breite / 2,
+                                "Der Name dieses Ortes ragt über den Rand hinaus.")
+                self.assertLess(abs(self.nord[ort]) + 14, hoehe / 2)
+
+
 class AlleProgramme(unittest.TestCase):
     def test_jedes_programm_endet_sauber_ohne_eingabe(self):
         """Ohne Eingabe darf kein Programm mit einem Syntaxfehler oder Absturz enden –

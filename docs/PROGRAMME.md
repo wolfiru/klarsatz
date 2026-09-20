@@ -35,6 +35,7 @@ Für Zufallszahlen lässt sich mit `--seed 42` immer derselbe Ablauf erzeugen.
 | 19 | `19_textadventure.klar` | Ein verlassenes Haus mit fünf Räumen, Gegenständen und Inventar. | Tabellen als Weltmodell, `Teile`, Befehle auswerten |
 | 20 | `20_grafisches_adventure.klar` | Dasselbe Haus, aber gezeichnet: Raum, Türen (gold = offen, rot = verschlossen) und Gegenstände. Finde das Marmeladenglas, öffne es, schließe die Küchentür auf. | Zeichnen + Spiellogik, `Lösche die Zeichnung`, Tabellen |
 | 21 | `21_spiel_des_lebens.klar` | Conways Spiel des Lebens: 22 mal 16 Zellen, zufälliger Start, dreißig Generationen als bewegtes Bild. | `Nimm die Leinwand`, Liste als Gitter, toter Rand statt Kantenabfragen, Aufgabe gibt eine Liste zurück |
+| 22 | `22_routenplaner.klar` | Zwölf Orte in Niederösterreich und Wien, neunzehn Straßen: Dijkstra sucht die kürzeste Verbindung zwischen zwei ausgewürfelten Orten und zeichnet sie in die Karte. | Tabellen als Graph, `Trage … ein`, `Beschrifte`, Arkustangens für die Linienrichtung |
 
 Die Zeichenprogramme brauchen eine Zeichenfläche: im Browser die
 [Spielwiese](../playground/), auf der Kommandozeile `--bild bild.svg`.

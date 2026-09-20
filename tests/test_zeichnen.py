@@ -363,6 +363,51 @@ class Leinwand(unittest.TestCase):
         self.assertIn('viewBox="0 0 400.0 300.0"', als_svg(zeichne("Nimm die Leinwand 400 mal 300.")))
 
 
+class Beschriften(unittest.TestCase):
+    """`Beschrifte "Wien".` — eine Karte ohne Ortsnamen ist eine halbe Karte."""
+
+    def test_der_text_landet_an_der_stelle_des_stifts(self):
+        striche = zeichne('Gehe 30 Schritte vor.\nBeschrifte "Wien".')
+        self.assertEqual(striche[-1], ("text", 0.0, 30.0, "Wien", "#d9b45a", 14))
+
+    def test_die_groesse_laesst_sich_angeben(self):
+        self.assertEqual(zeichne('Beschrifte "groß" mit 30.')[0][5], 30)
+
+    def test_die_farbe_ist_die_des_stifts(self):
+        striche = zeichne('Nimm die Farbe "grau".\nBeschrifte "leise".')
+        self.assertEqual(striche[0][4], zeichne('Nimm die Farbe "grau".\nGehe 1 Schritt vor.')[0][5])
+
+    def test_auch_zahlen_und_namen_lassen_sich_beschriften(self):
+        striche = zeichne('Merke 42 als Zahl.\nBeschrifte Zahl.')
+        self.assertEqual(striche[0][3], "42")
+
+    def test_unsinnige_groessen_werden_abgelehnt(self):
+        with self.assertRaisesRegex(LaufzeitFehler, "von 4 bis 400"):
+            zeichne('Beschrifte "zu klein" mit 1.')
+
+    def test_ein_roman_ist_keine_beschriftung(self):
+        with self.assertRaisesRegex(LaufzeitFehler, "200 Zeichen"):
+            zeichne('Beschrifte "' + "x" * 201 + '".')
+
+    def test_beschriftungen_zaehlen_wie_striche(self):
+        with self.assertRaisesRegex(LimitFehler, "mehr als 3 Striche"):
+            zeichne('Wiederhole 5 Mal:\n    Beschrifte "viel".\nEnde.', grenzen=Grenzen(striche=3))
+
+    def test_das_svg_schreibt_den_text_hin(self):
+        from klarsatz.zeichnung import als_svg
+        bild = als_svg(zeichne('Beschrifte "Krems & Co".'))
+        self.assertIn(">Krems &amp; Co</text>", bild)
+        self.assertIn('text-anchor="middle"', bild)
+
+    def test_der_ausschnitt_nimmt_die_beschriftung_mit(self):
+        """Ohne Leinwand richtet sich der Ausschnitt nach dem Gezeichneten — Text gehört dazu."""
+        from klarsatz.zeichnung import als_svg
+        self.assertIn("viewBox", als_svg(zeichne('Beschrifte "allein".')))
+
+    def test_loeschen_nimmt_auch_die_beschriftung_weg(self):
+        self.assertEqual(zeichne('Beschrifte "weg".\nLösche die Zeichnung.'), [])
+
+
 class EinSchritt(unittest.TestCase):
     def test_singular_ist_erlaubt(self):
         self.assertEqual(punkte(zeichne("Gehe 1 Schritt vor.")), [(0, 0, 0, 1)])

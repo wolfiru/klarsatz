@@ -1,9 +1,10 @@
 """Der Abschnitt „Was damit geht" darf nicht von den Programmen abweichen.
 
-Auf der Startseite steht ein Ausschnitt aus einem echten Programm, dazu Zahlen
-(Gitter, Generationen, Leinwand) und ein Knopf, der genau dieses Programm lädt.
-Alle vier Angaben stammen aus derselben Datei — dieser Test rechnet nach, dass sie
-es auch bleiben. Sonst zeigt die Seite irgendwann etwas, das es nicht mehr gibt.
+Auf der Startseite steht zu jedem Werkstück ein Ausschnitt aus einem echten Programm,
+dazu Zahlen (Gitter, Generationen, Orte, Straßen) und ein Knopf, der genau dieses
+Programm lädt. Alle diese Angaben stammen aus einer Datei im Ordner programme/ —
+dieser Test rechnet nach, dass sie es auch bleiben. Sonst zeigt die Seite irgendwann
+einen Ausschnitt, den es so nicht mehr gibt.
 """
 import json
 import re
@@ -12,7 +13,6 @@ from pathlib import Path
 
 WURZEL = Path(__file__).resolve().parent.parent
 SEITE = WURZEL / "webseite" / "seiten" / "index.html"
-PROGRAMM = WURZEL / "programme" / "21_spiel_des_lebens.klar"
 
 
 def abschnitt():
@@ -21,75 +21,91 @@ def abschnitt():
     return t[anfang:t.index("</section>", anfang)]
 
 
-def entschluesselt(html):
+def werkstuecke():
+    """Jedes Werkstück mit seinem Programm: [(Kennung, HTML, Quelltext), …]"""
+    stuecke = re.findall(r'<article class="werk">(.*?)</article>', abschnitt(), re.S)
+    ergebnis = []
+    for html in stuecke:
+        kennung = re.search(r'data-beispiel="([^"]+)"', html).group(1)
+        quelle = (WURZEL / "programme" / f"{kennung}.klar").read_text(encoding="utf-8")
+        ergebnis.append((kennung, html, quelle))
+    return ergebnis
+
+
+def ohne_entities(html):
     return (html.replace("&quot;", '"').replace("&lt;", "<").replace("&gt;", ">")
                 .replace("&amp;", "&").replace("&#8209;", "-"))
 
 
-class DerAusschnittStammtAusDemProgramm(unittest.TestCase):
+class JedesWerkstueck(unittest.TestCase):
     def setUp(self):
-        self.a = abschnitt()
-        self.quelle = PROGRAMM.read_text(encoding="utf-8")
+        self.werke = werkstuecke()
+
+    def test_es_gibt_welche(self):
+        self.assertGreaterEqual(len(self.werke), 2)
 
     def test_jede_gezeigte_zeile_steht_so_im_programm(self):
-        block = re.search(r'<pre class="klar"[^>]*>(.*?)</pre>', self.a, re.S).group(1)
-        zeilen = [z.strip() for z in entschluesselt(block).strip().split("\n")]
-        self.assertEqual(len(zeilen), 3, "Der gezeigte Ausschnitt hat sich geändert.")
-        for zeile in zeilen:
-            with self.subTest(zeile=zeile):
-                self.assertIn(zeile, self.quelle,
-                              "Diese Zeile steht so nicht mehr im Programm.")
+        for kennung, html, quelle in self.werke:
+            block = re.search(r'<pre class="klar"[^>]*>(.*?)</pre>', html, re.S).group(1)
+            for zeile in ohne_entities(block).strip().split("\n"):
+                with self.subTest(werk=kennung, zeile=zeile.strip()):
+                    self.assertIn(zeile.strip(), quelle,
+                                  "Diese Zeile steht so nicht mehr im Programm.")
 
     def test_der_ausschnitt_wird_nicht_ausgefuehrt_und_nicht_verlinkt(self):
-        """Drei Zeilen aus der Mitte laufen für sich allein nicht — beides muss abgeschaltet sein."""
-        pre = re.search(r'<pre class="klar"([^>]*)>', self.a).group(1)
-        self.assertIn('data-pruefung="nein"', pre)
-        self.assertIn('data-probieren="nein"', pre)
+        """Ein paar Zeilen aus der Mitte laufen für sich allein nicht."""
+        for kennung, html, _quelle in self.werke:
+            with self.subTest(werk=kennung):
+                pre = re.search(r'<pre class="klar"([^>]*)>', html).group(1)
+                self.assertIn('data-pruefung="nein"', pre)
+                self.assertIn('data-probieren="nein"', pre)
+
+    def test_das_beispiel_gibt_es_wirklich(self):
+        ids = {e["id"] for e in json.loads(
+            (WURZEL / "playground" / "beispiele.json").read_text(encoding="utf-8"))}
+        for kennung, html, _quelle in self.werke:
+            with self.subTest(werk=kennung):
+                self.assertIn(kennung, ids)
+                self.assertIn(f'spielplatz.html#beispiel={kennung}', html)
+
+    def test_die_demo_hat_alles_was_das_skript_braucht(self):
+        for kennung, html, _quelle in self.werke:
+            for teil in ("mini-start", "mini-buehne", "mini-hinweis"):
+                with self.subTest(werk=kennung, teil=teil):
+                    self.assertIn(teil, html)
 
 
 class DieZahlenStimmen(unittest.TestCase):
-    def setUp(self):
-        self.a = abschnitt()
-        quelle = PROGRAMM.read_text(encoding="utf-8")
-        self.wert = {name: int(wert) for wert, name in
-                     re.findall(r"^Merke (\d+) als (\w+)\.", quelle, re.M)}
+    """Was die Seite über ein Programm behauptet, muss im Programm nachzählbar sein."""
 
-    def test_das_gitter(self):
-        b, h = self.wert["Breite"], self.wert["Hoehe"]
-        self.assertIn(f"{b} mal {h} Zellen", self.a)
-        self.assertIn(f"{b * h} Zellen,", self.a)
+    def werk(self, kennung):
+        return next(w for w in werkstuecke() if w[0] == kennung)
 
-    def test_die_generationen(self):
-        self.assertEqual(self.wert["Generationen"], 30,
-                         "Steht hier eine andere Zahl, muss auch 'dreißig' auf der Seite weichen.")
-        self.assertIn("dreißig Generationen", self.a)
+    def test_spiel_des_lebens(self):
+        _k, html, quelle = self.werk("21_spiel_des_lebens")
+        wert = {name: int(w) for w, name in re.findall(r"^Merke (\d+) als (\w+)\.", quelle, re.M)}
+        self.assertIn(f"{wert['Breite']} mal {wert['Hoehe']} Zellen", html)
+        self.assertIn(f"{wert['Breite'] * wert['Hoehe']} Zellen,", html)
+        self.assertEqual(wert["Generationen"], 30)
+        self.assertIn("dreißig Generationen", html)
+        self.assertIn(f"Nimm die Leinwand {wert['Breite'] * wert['Zelle']} "
+                      f"mal {wert['Hoehe'] * wert['Zelle']}.", ohne_entities(html))
 
-    def test_die_leinwand(self):
-        b = self.wert["Breite"] * self.wert["Zelle"]
-        h = self.wert["Hoehe"] * self.wert["Zelle"]
-        self.assertIn(f"Nimm die Leinwand {b} mal {h}.", entschluesselt(self.a))
+    def test_routenplaner(self):
+        _k, html, quelle = self.werk("22_routenplaner")
+        orte = re.findall(r'"([^"]+)" als (-?\d+)',
+                          quelle[quelle.index("namens Ostwert"):quelle.index("namens Nordwert")])
+        strassen = re.findall(r'"([^"|]+\|[^"]+)" als \d+',
+                              quelle[quelle.index("namens Strecken"):])
+        self.assertEqual(len(orte), 12, "Die Seite sagt „Zwölf Orte“.")
+        self.assertEqual(len(strassen), 19, "Die Seite sagt „neunzehn Straßen“.")
+        self.assertIn("Zwölf Orte", html)
+        self.assertIn("neunzehn Straßen", html)
 
-
-class DerKnopfLaedtEinEchtesBeispiel(unittest.TestCase):
-    def test_jedes_genannte_beispiel_gibt_es(self):
-        ids = {e["id"] for e in json.loads(
-            (WURZEL / "playground" / "beispiele.json").read_text(encoding="utf-8"))}
-        genannt = re.findall(r'data-beispiel="([^"]+)"', SEITE.read_text(encoding="utf-8"))
-        self.assertTrue(genannt, "Kein Werkstück lädt mehr ein Beispiel.")
-        for name in genannt:
-            with self.subTest(beispiel=name):
-                self.assertIn(name, ids)
-
-    def test_der_weiterfuehrende_link_zeigt_auf_dasselbe_programm(self):
-        a = abschnitt()
-        beispiel = re.search(r'data-beispiel="([^"]+)"', a).group(1)
-        self.assertIn(f'spielplatz.html#beispiel={beispiel}', a)
-
-    def test_die_demo_hat_alles_was_das_skript_braucht(self):
-        a = abschnitt()
-        for teil in ("mini-start", "mini-buehne", "mini-hinweis"):
-            with self.subTest(teil=teil):
-                self.assertIn(teil, a)
+    def test_die_karte_wird_nicht_fuer_mehr_ausgegeben_als_sie_ist(self):
+        """Erfundene Kilometer wären die unangenehmste Art, falsch zu liegen."""
+        _k, html, _q = self.werk("22_routenplaner")
+        self.assertIn("gerundete", html)
 
 
 if __name__ == "__main__":

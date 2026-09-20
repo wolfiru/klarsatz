@@ -94,7 +94,7 @@
       "bereiche": "steuerung"
     },
     {
-      "regex": "(?:verringere|erschaffe|verdopple|entferne|erstelle|halbiere|schreibe|sortiere|verbinde|erh(?:ö|oe)he|ersetze|kopiere|l(?:ö|oe)sche|f(?:ü|ue)hre|drehe|frage|f(?:ü|ue)ge|merke|senke|setze|teile|trage|warte|zeige|gehe|hebe|lies|nimm)(?![\\p{L}\\p{N}_])",
+      "regex": "(?:beschrifte|verringere|erschaffe|verdopple|entferne|erstelle|halbiere|schreibe|sortiere|verbinde|erh(?:ö|oe)he|ersetze|kopiere|l(?:ö|oe)sche|f(?:ü|ue)hre|drehe|frage|f(?:ü|ue)ge|merke|senke|setze|teile|trage|warte|zeige|gehe|hebe|lies|nimm)(?![\\p{L}\\p{N}_])",
       "bereiche": "anweisung"
     },
     {
