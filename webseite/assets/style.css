@@ -138,6 +138,7 @@ em { font-style: italic; font-weight: 400; }
 
 .nav-links a {
     padding: 8px 12px;
+    white-space: nowrap;      /* sonst bricht „Für wen" mitten im Wort um */
     text-decoration: none;
     color: var(--paper-dim);
     font-size: 0.78rem;
@@ -169,9 +170,14 @@ em { font-style: italic; font-weight: 400; }
 /* Neun Menüpunkte passen auf breiten Schirmen bequem nebeneinander, dazwischen
    aber nicht mehr. Statt Punkte wegzulassen, rückt die Leiste enger zusammen —
    erst unter 760 Pixeln bleibt nur noch der Knopf stehen. */
-@media (max-width: 1080px) {
-    .nav-links a { padding: 8px 7px; font-size: 0.74rem; letter-spacing: 0.08em; }
-    .nav-links .nav-cta { padding: 9px 13px; margin-left: 5px; }
+@media (max-width: 1380px) {
+    .nav-links a { padding: 8px 8px; font-size: 0.75rem; letter-spacing: 0.08em; }
+    .nav-links .nav-cta { padding: 9px 14px; margin-left: 6px; }
+}
+
+@media (max-width: 1120px) {
+    .nav-links a { padding: 8px 5px; font-size: 0.7rem; letter-spacing: 0.05em; }
+    .nav-links .nav-cta { padding: 9px 11px; margin-left: 4px; }
 }
 
 @media (max-width: 760px) {
@@ -2595,4 +2601,86 @@ kbd {
     .ein-rahmen { padding: 4px 16px; }
 
     .ein-liste { padding: 4px 16px; }
+}
+
+
+/* ── Harte Fragen und Mitmachen ──────────────────────────────────────────── */
+
+.faq {
+    display: grid;
+    gap: 2px;
+    max-width: 860px;
+    background: var(--line);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    overflow: hidden;
+}
+
+/* Die Fragen stehen offen da, nicht zusammengeklappt: Wer sie sucht, soll sie
+   lesen können, ohne siebenmal zu klicken — und wer die Seite überfliegt, soll
+   sehen, dass die Einwände überhaupt dastehen. */
+.faq article {
+    padding: 22px 26px;
+    background: var(--ink-2);
+}
+
+.faq h3 {
+    margin: 0 0 8px;
+    font-family: var(--sans);
+    font-size: 1.02rem;
+    font-weight: 600;
+    color: var(--paper);
+}
+
+.faq p {
+    margin: 0;
+    color: var(--paper-dim);
+    line-height: 1.7;
+    font-size: 0.95rem;
+}
+
+.faq a { color: var(--gold); }
+
+.mitmachen {
+    margin: 44px 0 0;
+    padding-top: 30px;
+    border-top: 1px solid var(--line);
+}
+
+.mitmachen-titel {
+    margin: 0 0 20px;
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+}
+
+.mitmachen-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 22px;
+}
+
+.mitmachen-grid article { min-width: 0; }
+
+.mitmachen-grid h3 {
+    margin: 0 0 8px;
+    font-family: var(--sans);
+    font-size: 1rem;
+    color: var(--paper);
+}
+
+.mitmachen-grid p {
+    margin: 0 0 12px;
+    font-size: 0.93rem;
+    line-height: 1.65;
+    color: var(--paper-dim);
+}
+
+.mitmachen-grid p:last-child { margin: 0; }
+
+@media (max-width: 860px) {
+    .mitmachen-grid { grid-template-columns: 1fr; }
+    .faq article { padding: 20px 18px; }
 }

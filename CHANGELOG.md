@@ -1,6 +1,17 @@
 # Änderungen
 
 ## 0.9.0
+- **Abschnitt „Harte Fragen"** auf der Startseite (`#fragen`): acht Einwände, die gegen ein Projekt
+  wie dieses auf der Hand liegen — neue Programmiersprache? für wen? warum nicht gleich Python?
+  warum nicht Scratch? ist Deutsch nicht ein Nachteil? und wenn jemand dabei bleibt? didaktisch
+  erprobt? im Unterricht erlaubt? — jeweils mit der ehrlichsten Antwort, nicht der günstigsten.
+  Auf die Frage nach der Erprobung steht „Nein" als erstes Wort, und `tests/test_fragen.py` sorgt
+  dafür, dass das so bleibt: Es prüft, dass die unbequemen Fragen gestellt werden, dass die
+  Antworten die Grenzen benennen („Bewiesen ist sie nicht", „keine Studie", „Hobbyprojekt") und
+  dass kein anderer Ansatz abgewertet wird.
+- **Mitmachen sichtbar gemacht:** drei Wege (im Unterricht ausprobieren, Fehler melden, Quelltext
+  lesen oder forken) mit Links dorthin, „Fehlerberichte und Pull Requests sind willkommen", dazu
+  ein Verweis auf das Repository schon im Seitenkopf.
 - **Stellen in Listen und Tabellen lassen sich jetzt beschreiben.** Gelesen wurden sie immer schon,
   geschrieben nicht — wer ein Spielfeld, eine Rangliste oder einen Spielstand führen wollte, musste
   die Liste jedes Mal neu aufbauen. Und der Versuch endete in einer Meldung, die nicht einmal sagte,
