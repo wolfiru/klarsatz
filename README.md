@@ -1,4 +1,10 @@
-# Klarsatz
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="webseite/assets/klarsatz-wortmarke.svg">
+    <img src="webseite/assets/klarsatz-wortmarke-auf-hell.svg" alt="Klarsatz" height="74">
+  </picture>
+</p>
+
 
 **Eine Programmiersprache, die wie Deutsch klingt.**
 

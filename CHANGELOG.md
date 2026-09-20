@@ -1,6 +1,16 @@
 # Änderungen
 
 ## 0.10.0
+- **Ein Logo** — und zwar keines, das neu erfunden wurde: Der goldene Punkt stand schon im
+  Seitenkopf, und das alte Favicon zeigte Textzeilen, deren letzte mit einem Punkt endet. Der
+  **Punkt am Satzende** ist ja die eine Regel, über die bei Klarsatz jeder stolpert.
+  `tools/baue_logo.py` erzeugt daraus das **Signet** (drei Zeilen, goldener Punkt; dazu eine
+  vereinfachte Fassung für 16 Pixel, eine ohne Kachel und eine für hellen Grund) und die
+  **Wortmarke** „Klarsatz" in Fraunces — deren Buchstaben werden zu Pfaden umgerechnet, damit sie
+  auch dort stimmt, wo die Schrift fehlt. Dazu Avatar (512), Touch-Symbol (180) und ein
+  Vorschaubild (1200×630) für geteilte Links.
+- **Überschriften kleiner:** Die Kopfzeile der Startseite war bei 1280 Pixeln 102 Pixel hoch; jetzt
+  sind es 78. Abschnittsüberschriften und die Kopfzeilen der übrigen Seiten ziehen mit.
 - **Übungsaufgaben, die sich selbst prüfen** — der letzte offene Punkt der Ausbaustufen.
   `docs/AUFGABEN.md` enthält zwölf Aufgaben von Stufe 1 bis 7, jede mit der Lektion, nach der sie
   zu schaffen ist. Geprüft wird **nicht auf wortgleiche Ausgabe** — das würde jede Lösung ablehnen,

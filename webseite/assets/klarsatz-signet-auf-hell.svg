@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Klarsatz">
+<title>Klarsatz</title>
+<desc>Textzeilen; die letzte endet in einem goldenen Punkt — dem Punkt, mit dem in Klarsatz jeder Satz schließt.</desc>
+<rect x="13" y="19" width="28" height="3.4" rx="1.7" fill="#0c0e0b" opacity="0.55"/>
+<rect x="13" y="29" width="37" height="3.4" rx="1.7" fill="#0c0e0b" opacity="0.55"/>
+<rect x="13" y="39" width="19" height="3.4" rx="1.7" fill="#0c0e0b" opacity="0.55"/>
+<circle cx="39" cy="40.7" r="4" fill="#b38b28"/>
+</svg>

@@ -212,7 +212,7 @@ header.hero {
 .kicker::before { content: ""; width: 34px; height: 1px; background: var(--gold); }
 
 header.hero h1 {
-    font-size: clamp(3rem, 8.2vw, 6.4rem);
+    font-size: clamp(2.5rem, 6.2vw, 4.9rem);
     line-height: 0.98;
     letter-spacing: -0.025em;
     margin: 0 0 26px;
@@ -271,7 +271,7 @@ header.seitenkopf {
 }
 
 header.seitenkopf h1 {
-    font-size: clamp(2.3rem, 5.4vw, 4rem);
+    font-size: clamp(2.1rem, 4.4vw, 3.3rem);
     margin: 0 0 20px;
     max-width: 16ch;
 }
@@ -364,7 +364,7 @@ main.mit-verlauf { background: linear-gradient(180deg, transparent 0, var(--ink)
 }
 
 .section-head h2 {
-    font-size: clamp(1.9rem, 3.6vw, 2.8rem);
+    font-size: clamp(1.7rem, 3vw, 2.4rem);
     max-width: 640px;
 }
 
@@ -759,7 +759,7 @@ td:first-child { color: var(--paper); }
 }
 
 .sp-kopf h1 {
-    font-size: clamp(1.9rem, 4vw, 2.9rem);
+    font-size: clamp(1.8rem, 3.4vw, 2.5rem);
     margin: 8px 0 0;
 }
 
