@@ -1,5 +1,30 @@
 # Änderungen
 
+## 0.10.2 — WebAnalyzer-Durchgang
+- **Eigene Datenschutzseite** (`/datenschutz.html`) statt eines Ankers im Impressum, im Stil der
+  Hauptseite. Sie sagt, was der Klarsatz-Bereich im Browser speichert (Aufgaben-Fortschritt in
+  `localStorage`), dass Cloudflare ein technisches Cookie zur Bot-Abwehr setzen kann, und dass die
+  Schriften von diesem Server kommen. Der alte Anker `/impressum.html#datenschutz` funktioniert
+  weiter und verweist dorthin.
+- **Inhaltsrichtlinie durchgesetzt:** Die CSP lief als Report-Only über alle Seiten samt Spielplatz
+  und Aufgaben, ohne einen einzigen Verstoß — jetzt ist sie scharf, und zwar ohne `'unsafe-inline'`
+  bei Skripten (es gibt kein einziges Inline-Skript). Danach nochmals mit leerem Zwischenspeicher
+  geprüft: Spielplatz läuft, zwölf von zwölf Aufgaben bestanden.
+- **`/.well-known/security.txt`** und **`/llms.txt`** angelegt, eine gestaltete **404-Seite auch im
+  Wurzelverzeichnis** (vorher nur unter `/klarsatz/`).
+- **Metadaten:** Beschreibung der Startseite von 227 auf 145 Zeichen, Titel um Suchbegriffe
+  ergänzt, vollständige Twitter-Angaben und `og:site_name`/`og:locale`/`og:image:*` auf allen
+  Seiten, **JSON-LD** (WebSite, SoftwareSourceCode mit Version und Repository, FAQPage aus den
+  echten acht Fragen) und Brotkrumen auf den Unterseiten.
+- **Sichtbarer Stand** in jeder Fußzeile: Datum als `<time>`, Version, Lizenz und Autor.
+- **Ein Zahlenblock** auf der Startseite mit Werten, die im Repository nachzählbar sind — ein Test
+  zählt sie nach.
+- **Performance:** Das Kopfbild lädt nicht mehr `lazy`, sondern mit `fetchpriority="high"`; alle
+  eigenen Skripte mit `defer`; Web-App-Manifest samt Symbolen (192/512); `color-scheme`; das
+  92-kB-Favicon der Hauptseite auf 7 kB.
+- `tests/test_metadaten.py` hält all das fest — inklusive der Prüfung, dass die FAQ-Daten Wort für
+  Wort von der Seite stammen und nichts erfunden ist.
+
 ## 0.10.1 — QA-Durchgang vom 20.09.2026
 Aus einer externen Prüfung, vollständig abgearbeitet.
 - **Weiterleitung ohne Schrägstrich** (kritisch): `/klarsatz` endete in einer Kette, weil Apaches

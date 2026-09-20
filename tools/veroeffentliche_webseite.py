@@ -53,6 +53,13 @@ def main() -> int:
 
     print(f"{kopiert} Dateien nach {ziel} kopiert")
 
+    # Einzelne Dateien, die direkt im Seitenordner liegen (llms.txt für Antwortmaschinen).
+    for name in ("llms.txt",):
+        quelle_datei = QUELLE / name
+        if quelle_datei.exists():
+            shutil.copy2(quelle_datei, ziel / name)
+            kopiert += 1
+
     # Die Kapitel der Dokumentation entstehen aus webseite/kapitel/ und werden
     # dabei ebenfalls neu geschrieben — sonst passten Seiten und Kapitel nach
     # einer Änderung am gemeinsamen Kopf oder Fuß nicht mehr zusammen.

@@ -1,0 +1,35 @@
+{
+  "name": "Klarsatz — Programmieren in deutschen Sätzen",
+  "short_name": "Klarsatz",
+  "description": "Eine Programmiersprache, deren Befehle deutsche Sätze sind. Läuft im Browser, führt weiter zu Python.",
+  "lang": "de",
+  "dir": "ltr",
+  "start_url": "../",
+  "scope": "../",
+  "display": "standalone",
+  "theme_color": "#0c0e0b",
+  "background_color": "#0c0e0b",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "klarsatz-signet.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

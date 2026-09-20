@@ -169,7 +169,10 @@ def _bilder():
 
     for datei, groesse, quelle in (("klarsatz-avatar-512.png", 512, "klarsatz-signet.svg"),
                                    ("apple-touch-icon.png", 180, "klarsatz-signet-klein.svg"),
-                                   ("editor-icon-128.png", 128, "klarsatz-signet-klein.svg")):
+                                   ("editor-icon-128.png", 128, "klarsatz-signet-klein.svg"),
+                                   # Für das Web-App-Manifest — ein Symbol auf dem Startbildschirm.
+                                   ("icon-192.png", 192, "klarsatz-signet.svg"),
+                                   ("icon-512.png", 512, "klarsatz-signet.svg")):
         _rastere(quadrat.replace("SVG", eingehaengt(quelle, f"width:{groesse}px;height:{groesse}px")),
                  groesse, groesse, ZIEL / datei)
         yield datei

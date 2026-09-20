@@ -5,11 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Diese Seite gibt es nicht — hier geht es zurück zu Klarsatz.">
 <meta name="theme-color" content="#0c0e0b">
+<meta name="color-scheme" content="dark">
 <title>Seite nicht gefunden — Klarsatz</title>
 
 <link rel="icon" href="assets/klarsatz-signet-klein.svg" type="image/svg+xml">
 <link rel="icon" href="assets/favicon.ico" sizes="48x48">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="manifest" href="assets/klarsatz.webmanifest">
 <link rel="stylesheet" href="assets/style.css">
 <meta name="robots" content="noindex">
 </head>
@@ -23,7 +25,7 @@
 <nav class="nav" aria-label="Hauptnavigation">
     <div class="nav-start">
         <a class="heim" href="/" aria-label="Zur Startseite von ruthner.at">
-            <img src="assets/monogram.png" alt="" width="51" height="64" decoding="async" loading="lazy">
+            <img src="assets/monogram.png" alt="" width="51" height="64" decoding="async" fetchpriority="high">
             <span>ruthner<em>.at</em></span>
         </a>
         <span class="nav-teiler" aria-hidden="true"></span>
@@ -86,13 +88,14 @@
 
 <footer>
     <div class="foot-inner">
-        <span>© <span id="jahr"></span> ruthner.at · Klarsatz <span data-download="version">0.10.1</span></span>
-        <span><a href="/">ruthner.at</a> &nbsp;·&nbsp; <a href="index.html">Sprache</a> &nbsp;·&nbsp; <a href="tutorial.html">Tutorial</a> &nbsp;·&nbsp; <a href="doku.html">Dokumentation</a> &nbsp;·&nbsp; <a href="spielplatz.html">Spielplatz</a> &nbsp;·&nbsp; <a href="https://github.com/wolfiru/klarsatz" rel="noopener">GitHub</a> &nbsp;·&nbsp; <a href="mailto:wolfgang@ruthner.at">wolfgang@ruthner.at</a> &nbsp;·&nbsp; <a href="/impressum.html">Impressum</a> &nbsp;·&nbsp; <a href="/impressum.html#datenschutz">Datenschutz</a> &nbsp;·&nbsp; <a href="https://github.com/wolfiru/klarsatz/blob/main/LICENSE" rel="noopener">MIT-Lizenz</a></span>
+        <span>© <span id="jahr"></span> ruthner.at · Klarsatz <span data-download="version">0.10.2</span></span>
+        <span class="fuss-stand">Stand: <time datetime="2026-09-20">20.09.2026</time> · Version <span data-download="version">0.10.2</span> · MIT-Lizenz · von <a href="/impressum.html">Ing. Wolfgang Ruthner</a></span>
+        <span><a href="/">ruthner.at</a> &nbsp;·&nbsp; <a href="index.html">Sprache</a> &nbsp;·&nbsp; <a href="tutorial.html">Tutorial</a> &nbsp;·&nbsp; <a href="doku.html">Dokumentation</a> &nbsp;·&nbsp; <a href="spielplatz.html">Spielplatz</a> &nbsp;·&nbsp; <a href="https://github.com/wolfiru/klarsatz" rel="noopener">GitHub</a> &nbsp;·&nbsp; <a href="mailto:wolfgang@ruthner.at">wolfgang@ruthner.at</a> &nbsp;·&nbsp; <a href="/impressum.html">Impressum</a> &nbsp;·&nbsp; <a href="/datenschutz.html">Datenschutz</a> &nbsp;·&nbsp; <a href="https://github.com/wolfiru/klarsatz/blob/main/LICENSE" rel="noopener">MIT-Lizenz</a></span>
     </div>
 </footer>
 
-<script src="assets/manuskript-bg.js"></script>
-<script src="assets/app.js"></script>
+<script defer src="assets/manuskript-bg.js"></script>
+<script defer src="assets/app.js"></script>
 <script type="module" src="assets/code-hervorhebung.js"></script>
 </body>
 </html>

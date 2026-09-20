@@ -3090,3 +3090,39 @@ textarea:focus-visible,
     h1, h2, h3 { break-after: avoid; color: #111 !important; }
     h2 { margin-top: 24px; }
 }
+
+/* Der Stand in der Fußzeile: für Menschen lesbar, für Maschinen im time-Element. */
+.fuss-stand { color: var(--paper-faint); font-size: 0.82rem; }
+.fuss-stand a { color: var(--paper-dim); }
+
+/* ── Zahlen zum Zitieren ─────────────────────────────────────────────────── */
+
+/* Wer wissen will, wie groß dieses Projekt ist, soll es nicht zusammensuchen
+   müssen. Jede Zahl hier ist im Repository nachzählbar. */
+.zahlen {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+    gap: 2px;
+    margin: 0 0 30px;
+    background: var(--line);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    overflow: hidden;
+}
+
+.zahlen > div { padding: 18px 20px; background: var(--ink-2); }
+
+.zahlen dt {
+    font-family: var(--serif);
+    font-size: 1.9rem;
+    line-height: 1;
+    color: var(--gold);
+    margin-bottom: 6px;
+}
+
+.zahlen dd {
+    margin: 0;
+    font-size: 0.88rem;
+    line-height: 1.55;
+    color: var(--paper-dim);
+}

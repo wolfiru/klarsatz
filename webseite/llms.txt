@@ -1,0 +1,29 @@
+# Klarsatz
+
+> Eine deutschsprachige Programmiersprache zum Programmieren lernen: Die Befehle sind ganze
+> deutsche Sätze („Merke 5 als Zahl.", „Wiederhole 3 Mal:"). Sie läuft ohne Installation im
+> Browser und führt bewusst weiter zu Python — ein Knopf übersetzt jedes eigene Programm.
+> Hobby- und Lernprojekt von Ing. Wolfgang Ruthner, MIT-Lizenz, Quelltext offen.
+
+Klarsatz ist als didaktische Notation gedacht, nicht als Zielsprache: Der Kurs endet in Python.
+Der Ansatz zieht zwei Lernprobleme zeitlich auseinander — erst das Denken in Schritten, dann die
+fremde Schreibweise. Ob das didaktisch trägt, ist eine offene, nicht belegte Frage; die Seite
+sagt das selbst.
+
+## Seiten
+- [Startseite](https://www.ruthner.at/klarsatz/): Was die Sprache ist, Vergleich mit Python, Einordnung neben Logo, Niki, Robot Karol und Scratch, harte Fragen
+- [Kurs](https://www.ruthner.at/klarsatz/tutorial.html): elf Lektionen vom ersten Satz bis zum eigenen Programm, letzte Lektion übersetzt nach Python
+- [Zeichenkurs](https://www.ruthner.at/klarsatz/tutorial-zeichnen.html): acht Lektionen vom ersten Strich zum bewegten Bild
+- [Übungsaufgaben](https://www.ruthner.at/klarsatz/aufgaben.html): zwölf Aufgaben, die sich im Browser selbst prüfen
+- [Dokumentation](https://www.ruthner.at/klarsatz/doku.html) und [Referenz](https://www.ruthner.at/klarsatz/doku-referenz.html): alle Satzmuster
+- [Spielplatz](https://www.ruthner.at/klarsatz/spielplatz.html): Editor im Browser, 31 Beispielprogramme, Knopf „Als Python"
+
+## Quelltext
+- [GitHub](https://github.com/wolfiru/klarsatz): Interpreter (reines Python 3, keine Fremdpakete), Tests, Webseite, Spielwiese
+- [Sprachdefinition](https://github.com/wolfiru/klarsatz/blob/main/docs/SPRACHE.md)
+- [Sicherheitsdokumentation](https://github.com/wolfiru/klarsatz/blob/main/docs/SICHERHEIT.md)
+
+## Zahlen (Stand 0.10.1)
+- 22 Beispielprogramme und 9 kleine Sprachbeispiele, zusammen 31 in der Spielwiese
+- 19 Lektionen in zwei Kursen, 7 Lernstufen, 12 Übungsaufgaben mit Selbstprüfung
+- Der Interpreter läuft im Browser über Pyodide; kein Server führt Programme aus

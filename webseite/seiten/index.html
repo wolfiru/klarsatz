@@ -3,20 +3,157 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Klarsatz ist ein bewusst begrenztes Sprachdesign-Experiment mit pädagogischem Ziel: algorithmisches Denken lernen, ohne gleichzeitig eine fremdsprachliche Syntax zu entschlüsseln. Kurse, Dokumentation und Spielplatz im Browser.">
+<meta name="description" content="Klarsatz ist eine deutschsprachige Programmiersprache zum Programmieren lernen: Befehle sind ganze deutsche Sätze. Jetzt im Browser ausprobieren.">>
 <meta name="theme-color" content="#0c0e0b">
-<title>Klarsatz — Programmieren in deutschen Sätzen</title>
+<meta name="color-scheme" content="dark">
+<title>Klarsatz — Programmieren lernen auf Deutsch (Programmiersprache im Browser)</title>
 <link rel="canonical" href="https://www.ruthner.at/klarsatz/">
 <link rel="icon" href="assets/klarsatz-signet-klein.svg" type="image/svg+xml">
 <link rel="icon" href="assets/favicon.ico" sizes="48x48">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="manifest" href="assets/klarsatz.webmanifest">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Klarsatz — Programmieren lernen, ohne vorher eine Fremdsprache zu übersetzen">
 <meta property="og:description" content="Eine Programmiersprache, deren Befehle deutsche Sätze sind. Läuft im Browser, führt weiter zu Python.">
 <meta property="og:url" content="https://www.ruthner.at/klarsatz/">
 <meta property="og:image" content="https://www.ruthner.at/klarsatz/assets/klarsatz-vorschau.png">
+<meta property="og:site_name" content="Klarsatz">
+<meta property="og:locale" content="de_AT">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Klarsatz — Programmieren lernen, ohne vorher eine Fremdsprache zu übersetzen">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Klarsatz — Programmieren lernen, ohne vorher eine Fremdsprache zu übersetzen">
+<meta name="twitter:description" content="Eine Programmiersprache, deren Befehle deutsche Sätze sind. Läuft im Browser, führt weiter zu Python.">
+<meta name="twitter:image" content="https://www.ruthner.at/klarsatz/assets/klarsatz-vorschau.png">
 <link rel="stylesheet" href="assets/style.css">
+<script type="application/ld+json">
+[
+ {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": "https://www.ruthner.at/klarsatz/#website",
+  "name": "Klarsatz",
+  "url": "https://www.ruthner.at/klarsatz/",
+  "inLanguage": "de-AT",
+  "description": "Eine deutschsprachige Programmiersprache zum Programmieren lernen: Befehle sind ganze deutsche Sätze.",
+  "author": {
+   "@type": "Person",
+   "name": "Wolfgang Ruthner",
+   "honorificPrefix": "Ing.",
+   "url": "https://www.ruthner.at/impressum.html"
+  },
+  "publisher": {
+   "@type": "Person",
+   "name": "Wolfgang Ruthner",
+   "honorificPrefix": "Ing.",
+   "url": "https://www.ruthner.at/impressum.html"
+  }
+ },
+ {
+  "@context": "https://schema.org",
+  "@type": "SoftwareSourceCode",
+  "@id": "https://www.ruthner.at/klarsatz/#software",
+  "name": "Klarsatz",
+  "description": "Interpreter, Kurse, Dokumentation und Spielwiese für die Programmiersprache Klarsatz.",
+  "url": "https://www.ruthner.at/klarsatz/",
+  "codeRepository": "https://github.com/wolfiru/klarsatz",
+  "programmingLanguage": [
+   {
+    "@type": "ComputerLanguage",
+    "name": "Klarsatz"
+   },
+   {
+    "@type": "ComputerLanguage",
+    "name": "Python"
+   }
+  ],
+  "runtimePlatform": "Python 3.10+, Browser (Pyodide)",
+  "license": "https://opensource.org/licenses/MIT",
+  "version": "0.10.2",
+  "inLanguage": "de",
+  "author": {
+   "@type": "Person",
+   "name": "Wolfgang Ruthner",
+   "honorificPrefix": "Ing.",
+   "url": "https://www.ruthner.at/impressum.html"
+  },
+  "datePublished": "2026-09-18",
+  "dateModified": "2026-09-20"
+ },
+ {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "@id": "https://www.ruthner.at/klarsatz/#fragen",
+  "mainEntity": [
+   {
+    "@type": "Question",
+    "name": "Ist das eine neue Programmiersprache?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Technisch ja: eigener Lexer, eigener Parser, eigener Interpreter, eine Sprachdefinition. Als Ziel nein. Klarsatz ist als didaktische Notation gedacht — ein Gerüst, das man wieder abbaut. Deshalb endet der Kurs nicht in Klarsatz, sondern in Python."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Für wen ist das gedacht?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Für den ersten Berührungspunkt mit dem Programmieren: Schule, Kurs oder Selbstlernen, ohne Vorkenntnisse, deutschsprachig, ungefähr ab zehn Jahren. Für alle, die schon programmieren, ist es nichts — und wer nur ein Werkzeug für die Arbeit sucht, ist bei Python besser aufgehoben. Ausführlich, mit meiner Einschätzung von 1 bis 10: Für wen Klarsatz taugt."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Warum nicht gleich Python?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Für viele ist genau das der richtige Weg, und dieser Seite liegt nichts daran, davon abzuraten. Klarsatz setzt bei denen an, die zwei Dinge gleichzeitig lernen müssten: wie man ein Problem in Schritte zerlegt und eine fremde Schreibweise samt englischer Fachbegriffe. Die Annahme ist, dass sich das trennen lässt. Bewiesen ist sie nicht."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Warum nicht Scratch?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Scratch nimmt die Syntax weg — ein anderer Weg, und ein bewährter. Mit ihr fällt aber auch weg, was später den Alltag ausmacht: tippen, Zeile für Zeile lesen, mit Fehlermeldungen umgehen, Quelltext als Text behandeln. Klarsatz behält das und senkt stattdessen die sprachliche Hürde. Welcher Weg besser trägt, hängt vom Lernenden ab — die Einordnung zeigt beide nebeneinander."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Ist Deutsch nicht ein Nachteil? Programmiert wird auf Englisch.",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Das ist die Spannung, auf der das ganze Projekt steht. Wer bei Klarsatz bliebe, hätte am Ende eine Sprache gelernt, die niemand sonst spricht. Genau deshalb ist der Ausgang kein Zusatz, sondern eingebaut: Ein Knopf übersetzt jedes eigene Programm nach Python, und die letzte Lektion des Kurses handelt davon, wie die englischen Wörter heißen, die man bis dahin auf Deutsch benutzt hat."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Und wenn jemand dabei bleibt?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Dann wäre das Projekt gescheitert, nicht gelungen. Dagegen steht die bewusste Begrenzung: keine Pakete, kein Ökosystem, kein Netzwerk, keine großen Programme. Klarsatz ist so gebaut, dass man es verlassen will, sobald man es nicht mehr braucht."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Ist das didaktisch erprobt?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Nein. Es gibt keine Studie, keinen Unterrichtsversuch, keine Zahlen zum Lerntransfer — das ist ein Hobbyprojekt, kein Forschungsvorhaben. Geprüft ist die Technik: Jedes Beispielprogramm und jedes Codebeispiel dieser Seite wird bei jeder Änderung ausgeführt und mit der erwarteten Ausgabe verglichen. Ob der Ansatz beim Lernen trägt, ist davon unberührt und bleibt offen."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Darf ich das im Unterricht einsetzen?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Ja, ohne zu fragen. MIT-Lizenz, der Quelltext liegt offen, die Spielwiese läuft im Browser ohne Konto und ohne Installation — und das heruntergeladene Archiv läuft auch ohne Internet. Wenn du es tust, schreib mir bitte, was passiert ist: Das ist die einzige Art von Antwort, die diese Seite nicht selbst geben kann."
+    }
+   }
+  ]
+ }
+]
+</script>
 </head>
 <body>
 <a class="zum-inhalt" href="#inhalt">Zum Inhalt springen</a>
@@ -28,7 +165,7 @@
 <nav class="nav" aria-label="Hauptnavigation">
     <div class="nav-start">
         <a class="heim" href="/" aria-label="Zur Startseite von ruthner.at">
-            <img src="assets/monogram.png" alt="" width="51" height="64" decoding="async" loading="lazy">
+            <img src="assets/monogram.png" alt="" width="51" height="64" decoding="async" fetchpriority="high">
             <span>ruthner<em>.at</em></span>
         </a>
         <span class="nav-teiler" aria-hidden="true"></span>
@@ -51,9 +188,9 @@
 
 <header class="hero" id="top">
     <div class="hero-inner">
-        <p class="kicker">Ein Sprachexperiment · Version <span data-download="version">0.10.1</span></p>
+        <p class="kicker">Ein Sprachexperiment · Version <span data-download="version">0.10.2</span></p>
         <h1>Programmieren lernen,<br>ohne vorher eine<br><em>Fremdsprache zu übersetzen.</em></h1>
-        <p class="lede">Klarsatz schreibt Programme in klaren deutschen Sätzen. Du lernst Variablen, Bedingungen und Schleifen — und führst dein erstes Programm später als Python weiter. Dahinter steckt die Frage, wie nah eine formale Sprache an deutsche Sätze heranrücken kann, ohne ihre Eindeutigkeit zu verlieren.</p>
+        <p class="lede"><strong>Klarsatz ist eine deutschsprachige Programmiersprache zum Programmieren lernen:</strong> Die Befehle sind ganze deutsche Sätze. Sie läuft ohne Installation im Browser. Du lernst Variablen, Bedingungen und Schleifen — und führst dein erstes Programm später als Python weiter. Dahinter steckt die Frage, wie nah eine formale Sprache an deutsche Sätze heranrücken kann, ohne ihre Eindeutigkeit zu verlieren.</p>
         <div class="hero-actions">
             <a href="#mini" class="btn btn-primary">▶ Jetzt programmieren</a>
             <a href="tutorial.html" class="btn btn-link">Den Kurs ansehen</a>
@@ -975,13 +1112,13 @@ Ende.</pre>
                     <li>eine Erweiterung für VS&nbsp;Code, die Klarsatz einfärbt</li>
                     <li>die Spielwiese dieser Seite, auch ohne Internet startbar</li>
                 </ul>
-<pre class="schale"><code>unzip klarsatz-<span data-download="version">0.10.1</span>.zip
-cd klarsatz-<span data-download="version">0.10.1</span>
+<pre class="schale"><code>unzip klarsatz-<span data-download="version">0.10.2</span>.zip
+cd klarsatz-<span data-download="version">0.10.2</span>
 python3 -m klarsatz programme/03_taschenrechner.klar</code></pre>
             </div>
 
             <div class="download-seite">
-                <a class="btn btn-primary" data-download="datei" href="downloads/klarsatz-0.10.1.zip" download>Klarsatz <span data-download="version">0.10.1</span> laden</a>
+                <a class="btn btn-primary" data-download="datei" href="downloads/klarsatz-0.10.2.zip" download>Klarsatz <span data-download="version">0.10.2</span> laden</a>
                 <dl class="download-angaben">
                     <dt>Größe</dt><dd><span data-download="groesse">239</span> kB als ZIP</dd>
                     <dt>Voraussetzung</dt><dd>Python 3.10 oder neuer</dd>
@@ -989,7 +1126,7 @@ python3 -m klarsatz programme/03_taschenrechner.klar</code></pre>
                     <dt>Lizenz</dt><dd>MIT — benutzen und weitergeben erwünscht</dd>
                 </dl>
                 <p class="download-pruefsumme">SHA256 <code data-download="sha256">6b3b6a90</code>…<br>
-                   vollständig in <a href="downloads/klarsatz-0.10.1.zip.sha256" data-download="sha256datei">der Prüfsummendatei</a></p>
+                   vollständig in <a href="downloads/klarsatz-0.10.2.zip.sha256" data-download="sha256datei">der Prüfsummendatei</a></p>
 
                 <p class="download-quelle">Lieber den Quelltext? Klarsatz liegt offen auf GitHub —
                    mitlesen, abzweigen, Fehler melden, Sätze vorschlagen.</p>
@@ -1002,8 +1139,17 @@ python3 -m klarsatz programme/03_taschenrechner.klar</code></pre>
         <div class="section-head">
             <span class="eyebrow">12 — Stand</span>
             <h2>Wo Klarsatz gerade <em>steht.</em></h2>
-            <p class="section-sub">Version <span data-download="version">0.10.1</span>. Ein <strong>bewusst begrenztes</strong> Experiment — „begrenzt“ ist dabei keine Entschuldigung, sondern eine Entscheidung: Was dem pädagogischen Ziel nicht dient, kommt nicht hinein. Was daraus geworden ist, steht hier — samt dem, was fehlt.</p>
+            <p class="section-sub">Version <span data-download="version">0.10.2</span>. Ein <strong>bewusst begrenztes</strong> Experiment — „begrenzt“ ist dabei keine Entschuldigung, sondern eine Entscheidung: Was dem pädagogischen Ziel nicht dient, kommt nicht hinein. Was daraus geworden ist, steht hier — samt dem, was fehlt.</p>
         </div>
+
+        <dl class="zahlen">
+            <div><dt>31</dt><dd>Beispielprogramme in der Spielwiese (22 große, 9 kleine)</dd></div>
+            <div><dt>19</dt><dd>Lektionen in zwei Kursen</dd></div>
+            <div><dt>12</dt><dd>Übungsaufgaben, die sich selbst prüfen</dd></div>
+            <div><dt>7</dt><dd>Lernstufen, die die Sprache schrittweise öffnen</dd></div>
+            <div><dt>0</dt><dd>Fremdpakete im Interpreter — reines Python 3</dd></div>
+            <div><dt>MIT</dt><dd>Lizenz, Quelltext vollständig offen</dd></div>
+        </dl>
 
         <div class="feature-grid">
             <article class="feature">
@@ -1111,13 +1257,14 @@ python3 -m klarsatz programme/03_taschenrechner.klar</code></pre>
 
 <footer>
     <div class="foot-inner">
-        <span>© <span id="jahr"></span> ruthner.at · Klarsatz <span data-download="version">0.10.1</span></span>
-        <span><a href="/">ruthner.at</a> &nbsp;·&nbsp; <a href="index.html">Sprache</a> &nbsp;·&nbsp; <a href="tutorial.html">Tutorial</a> &nbsp;·&nbsp; <a href="doku.html">Dokumentation</a> &nbsp;·&nbsp; <a href="spielplatz.html">Spielplatz</a> &nbsp;·&nbsp; <a href="aufgaben.html">Aufgaben</a> &nbsp;·&nbsp; <a href="https://github.com/wolfiru/klarsatz" rel="noopener">GitHub</a> &nbsp;·&nbsp; <a href="mailto:wolfgang@ruthner.at">wolfgang@ruthner.at</a> &nbsp;·&nbsp; <a href="/impressum.html">Impressum</a> &nbsp;·&nbsp; <a href="/impressum.html#datenschutz">Datenschutz</a> &nbsp;·&nbsp; <a href="https://github.com/wolfiru/klarsatz/blob/main/LICENSE" rel="noopener">MIT-Lizenz</a></span>
+        <span>© <span id="jahr"></span> ruthner.at · Klarsatz <span data-download="version">0.10.2</span></span>
+        <span class="fuss-stand">Stand: <time datetime="2026-09-20">20.09.2026</time> · Version <span data-download="version">0.10.2</span> · MIT-Lizenz · von <a href="/impressum.html">Ing. Wolfgang Ruthner</a></span>
+        <span><a href="/">ruthner.at</a> &nbsp;·&nbsp; <a href="index.html">Sprache</a> &nbsp;·&nbsp; <a href="tutorial.html">Tutorial</a> &nbsp;·&nbsp; <a href="doku.html">Dokumentation</a> &nbsp;·&nbsp; <a href="spielplatz.html">Spielplatz</a> &nbsp;·&nbsp; <a href="aufgaben.html">Aufgaben</a> &nbsp;·&nbsp; <a href="https://github.com/wolfiru/klarsatz" rel="noopener">GitHub</a> &nbsp;·&nbsp; <a href="mailto:wolfgang@ruthner.at">wolfgang@ruthner.at</a> &nbsp;·&nbsp; <a href="/impressum.html">Impressum</a> &nbsp;·&nbsp; <a href="/datenschutz.html">Datenschutz</a> &nbsp;·&nbsp; <a href="https://github.com/wolfiru/klarsatz/blob/main/LICENSE" rel="noopener">MIT-Lizenz</a></span>
     </div>
 </footer>
 
-<script src="assets/manuskript-bg.js"></script>
-<script src="assets/app.js"></script>
+<script defer src="assets/manuskript-bg.js"></script>
+<script defer src="assets/app.js"></script>
 <script type="module" src="assets/mini.js"></script>
 <script type="module" src="assets/code-hervorhebung.js"></script>
 </body>
