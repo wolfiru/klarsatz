@@ -2356,7 +2356,9 @@ kbd {
 
 .ein-karte { display: block; width: 100%; height: auto; }
 
-.d-rahmen { fill: none; stroke: var(--line); stroke-width: 1; }
+/* Das Feld liegt jetzt auf einer eigenen Fläche — der innere Rahmen darf deshalb
+   zurücktreten, sonst stehen zwei Rahmen ineinander. */
+.d-rahmen { fill: none; stroke: var(--line-soft); stroke-width: 1; }
 .d-achse { stroke: var(--line); stroke-width: 1; }
 .d-spitze { fill: none; stroke: var(--line); stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
 
@@ -2552,4 +2554,45 @@ kbd {
 @media (max-width: 760px) {
     .werk { padding: 24px 18px 26px; }
     .werk-zutaten { grid-template-columns: 1fr; }
+}
+
+
+/* ── Flächen für Tabellen und Bilder ─────────────────────────────────────────
+   Tabellen und Diagramme standen unmittelbar auf dem Seitenhintergrund und
+   liefen dadurch optisch mit dem Fließtext zusammen. Eine Spur heller und ein
+   feiner Rand genügen, damit man sie als das liest, was sie sind: ein Block für
+   sich, den man am Stück anschaut und nicht Zeile für Zeile. */
+.tab-huelle,
+.tabelle-rahmen,
+.eig-rahmen,
+.ein-rahmen {
+    background: var(--ink-2);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 6px 22px;
+}
+
+/* Die unterste Zeile braucht keinen Trennstrich mehr — darunter kommt der Rand. */
+.tab-huelle tbody tr:last-child th,
+.tab-huelle tbody tr:last-child td,
+.tabelle-rahmen tbody tr:last-child th,
+.tabelle-rahmen tbody tr:last-child td { border-bottom: none; }
+
+/* Die Karte der Lernsprachen und ihre Textfassung bekommen dieselbe Fläche. */
+.ein-karte,
+.ein-liste {
+    background: var(--ink-2);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+}
+
+.ein-karte { padding: 16px 18px; }
+
+@media (max-width: 760px) {
+    .tab-huelle,
+    .tabelle-rahmen,
+    .eig-rahmen,
+    .ein-rahmen { padding: 4px 16px; }
+
+    .ein-liste { padding: 4px 16px; }
 }
