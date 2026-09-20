@@ -1,6 +1,15 @@
 # Änderungen
 
 ## Unveröffentlicht
+- **Abschnitt „Wo Klarsatz steht"** auf der Startseite (`#einordnung`): eine Vergleichstabelle mit
+  Logo, Niki, Robot Karol, Scratch, Guido van Robot, Python und Klarsatz, danach vier Karten zu der
+  Frage, **welche Einstiegshürde ein Ansatz jeweils wegnimmt** — Blöcke statt Syntax, kleine Welt,
+  vollständige Sprache, vertraute Sprachform. Dazu eine schematische Karte als Inline-SVG
+  (waagrecht visuell ↔ textbasiert, senkrecht geführte Lernwelt ↔ allgemeine Programmierwelt), auf
+  schmalen Bildschirmen durch eine Liste ersetzt, damit keine Beschriftung unlesbar klein wird.
+  Der Abschnitt wertet nicht: Klarsatz wird als Ansatz gezeigt, die Annahme dahinter ausdrücklich
+  als Annahme benannt, und die Angaben zu den anderen Projekten sind belegt und verlinkt.
+  `tests/test_einordnung.py` prüft das mit — samt einer Liste von Sätzen, die dort nicht stehen dürfen.
 - **Einordnung geschärft** — an den Stellen, an denen die Erwartung entsteht (Seitenkopf, README,
   Sprachreferenz, Lektion 1):
   * *Klarsatz ist keine natürliche Sprache*, sondern eine Programmiersprache, deren Syntax sich an

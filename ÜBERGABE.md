@@ -120,6 +120,7 @@ SVG-Symbolbild (`assets/klarsatz-symbolbild.svg`).
 | Was | Wo |
 |---|---|
 | Hauptseite, Doku (6 Kapitel), Spielplatz | `index.html`, `doku*.html`, `spielplatz.html` |
+| Elf Abschnitte der Startseite, durchnummeriert (01–11) | `webseite/seiten/index.html`, Reihenfolge wird von `tests/test_einordnung.py` geprüft |
 | Design, Hintergrund-Animation, Hervorhebung | `assets/` |
 | Vorlage der Doku-Kapitel (im Projekt) | `webseite/kapitel/` + `webseite/baue_doku.sh` |
 | Spielwiese (unverändert aus `playground/`) | `spielwiese/` |

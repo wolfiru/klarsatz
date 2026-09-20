@@ -166,6 +166,14 @@ em { font-style: italic; font-weight: 400; }
 .nav-links .nav-cta:hover,
 .nav-links .nav-cta.aktiv { background: var(--gold-2); }
 
+/* Neun Menüpunkte passen auf breiten Schirmen bequem nebeneinander, dazwischen
+   aber nicht mehr. Statt Punkte wegzulassen, rückt die Leiste enger zusammen —
+   erst unter 760 Pixeln bleibt nur noch der Knopf stehen. */
+@media (max-width: 1080px) {
+    .nav-links a { padding: 8px 7px; font-size: 0.74rem; letter-spacing: 0.08em; }
+    .nav-links .nav-cta { padding: 9px 13px; margin-left: 5px; }
+}
+
 @media (max-width: 760px) {
     .nav-links a:not(.nav-cta) { display: none; }
 }
@@ -2228,3 +2236,230 @@ kbd {
 }
 
 .kontakt-fuss a { color: var(--paper-dim); }
+
+
+/* ── Einordnung: Vergleich und Karte der Lernsprachen ────────────────────── */
+
+.ein-intro {
+    max-width: 72ch;
+    margin: 0 0 26px;
+    color: var(--paper-dim);
+    line-height: 1.75;
+}
+
+.ein-titel {
+    margin: 52px 0 14px;
+    font-family: var(--serif);
+    font-size: clamp(1.3rem, 2.4vw, 1.7rem);
+    color: var(--paper);
+}
+
+.ein-rahmen { overflow-x: auto; margin-bottom: 8px; }
+
+.einordnung { width: 100%; border-collapse: collapse; font-size: 0.93rem; min-width: 720px; }
+
+.einordnung th[scope="col"] {
+    font-family: var(--sans);
+    font-size: 0.74rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--paper-faint);
+    font-weight: 600;
+    padding-bottom: 12px;
+    text-align: left;
+}
+
+.einordnung th[scope="row"] {
+    font-family: var(--sans);
+    font-weight: 600;
+    color: var(--paper);
+    width: 34%;
+    text-transform: none;
+    letter-spacing: 0;
+    font-size: 0.98rem;
+}
+
+.einordnung th, .einordnung td { padding: 16px 18px 16px 0; border-bottom: 1px solid var(--line); vertical-align: top; }
+.einordnung td { color: var(--paper-dim); line-height: 1.55; }
+.einordnung tbody tr:last-child th, .einordnung tbody tr:last-child td { border-bottom: none; }
+
+/* Die Kurzbeschreibung steht unter dem Namen, nicht in einer eigenen Spalte —
+   sonst wird die Tabelle so breit, dass sie niemand mehr überblickt. */
+.ein-was {
+    display: block;
+    margin-top: 6px;
+    padding-right: 12px;
+    font-weight: 400;
+    font-size: 0.87rem;
+    line-height: 1.6;
+    color: var(--paper-faint);
+}
+
+/* Klarsatz ist die Zeile, auf der man gerade steht. Erkennbar ist das an drei
+   Dingen: an der Beschriftung, am Rand und an der Farbe — nicht an der Farbe
+   allein, sonst geht es bei Farbenblindheit und im Ausdruck verloren. */
+.einordnung .ist-klarsatz th[scope="row"] { color: var(--gold); box-shadow: inset 2px 0 0 var(--gold); padding-left: 14px; }
+.einordnung .ist-klarsatz td { background: rgba(217, 180, 90, 0.045); }
+.einordnung .ist-klarsatz th[scope="row"] { background: rgba(217, 180, 90, 0.045); }
+
+.ein-hier {
+    display: inline-block;
+    margin-left: 8px;
+    padding: 2px 8px;
+    border: 1px solid rgba(217, 180, 90, 0.4);
+    border-radius: 999px;
+    font-family: var(--mono);
+    font-size: 0.64rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold);
+    vertical-align: 2px;
+}
+
+/* Welche Hürde jeweils kleiner wird */
+.ein-huerden {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+    margin: 4px 0 34px;
+}
+
+.ein-huerde {
+    min-width: 0;
+    padding: 20px 22px;
+    background: var(--ink-2);
+    border: 1px solid var(--line);
+    border-left: 2px solid var(--line);
+    border-radius: 10px;
+}
+
+.ein-huerde.ist-klarsatz { border-left-color: var(--gold); }
+
+.ein-huerde-wer {
+    margin: 0 0 8px;
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--paper-faint);
+}
+
+.ein-huerde.ist-klarsatz .ein-huerde-wer { color: var(--gold); }
+
+.ein-huerde-was { margin: 0; color: var(--paper-dim); font-size: 0.95rem; line-height: 1.65; }
+
+/* Die Karte */
+.ein-diagramm {
+    margin: 44px 0 0;
+    padding: 0;
+}
+
+.ein-karte { display: block; width: 100%; height: auto; }
+
+.d-rahmen { fill: none; stroke: var(--line); stroke-width: 1; }
+.d-achse { stroke: var(--line); stroke-width: 1; }
+.d-spitze { fill: none; stroke: var(--line); stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
+
+.d-achstext {
+    font-family: var(--mono);
+    font-size: 11.5px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    fill: var(--paper-faint);
+}
+
+.d-punkt { fill: var(--paper-dim); stroke: var(--ink); stroke-width: 3; }
+.d-name { font-family: var(--sans); font-size: 16px; font-weight: 600; fill: var(--paper); }
+.d-sub { font-family: var(--sans); font-size: 12.5px; fill: var(--paper-faint); }
+
+.d-eintrag.ist-klarsatz .d-punkt { fill: var(--gold); }
+.d-eintrag.ist-klarsatz .d-name { fill: var(--gold); font-weight: 700; }
+.d-ring { fill: none; stroke: var(--gold); stroke-width: 1; opacity: 0.45; }
+
+.ein-liste { display: none; }
+
+.ein-bildtext {
+    margin: 18px 0 0;
+    max-width: 68ch;
+    font-size: 0.87rem;
+    line-height: 1.7;
+    color: var(--paper-faint);
+}
+
+.ein-quellen {
+    margin: 34px 0 0;
+    font-size: 0.87rem;
+    line-height: 2;
+    color: var(--paper-faint);
+}
+
+.ein-quellen a { color: var(--paper-dim); }
+
+@media (max-width: 900px) {
+    .ein-huerden { grid-template-columns: 1fr; }
+}
+
+/* Unter 760 Pixeln wird aus der Tabelle ein Stapel Karten und aus der Karte eine
+   Liste. Beides hat denselben Grund: Beschriftungen, die man nicht mehr lesen
+   kann, sind schlimmer als eine andere Darstellung. */
+@media (max-width: 760px) {
+    .ein-rahmen { overflow-x: visible; }
+    .einordnung, .einordnung tbody, .einordnung tr, .einordnung th, .einordnung td { display: block; width: auto; }
+    .einordnung { min-width: 0; }
+    .einordnung thead { display: none; }
+
+    .einordnung tbody tr { padding: 18px 0; border-bottom: 1px solid var(--line); }
+    .einordnung tbody tr:last-child { border-bottom: none; }
+
+    .einordnung th[scope="row"] {
+        width: auto;
+        padding: 0 0 10px;
+        border-bottom: none;
+        font-size: 1.05rem;
+    }
+
+    .einordnung td {
+        padding: 3px 0 0;
+        border-bottom: none;
+        font-size: 0.9rem;
+    }
+
+    /* Ohne Kopfzeile müsste man raten, was „deutsch“ bedeutet — also steht es davor. */
+    .einordnung td::before {
+        content: attr(data-spalte) ": ";
+        color: var(--paper-faint);
+    }
+
+    .einordnung .ist-klarsatz td,
+    .einordnung .ist-klarsatz th[scope="row"] { background: none; }
+    .einordnung .ist-klarsatz { padding-left: 14px; box-shadow: inset 2px 0 0 var(--gold); }
+    .einordnung .ist-klarsatz th[scope="row"] { box-shadow: none; padding-left: 0; }
+
+    .ein-karte { display: none; }
+
+    .ein-liste { display: block; list-style: none; margin: 0; padding: 0; }
+
+    .ein-liste li {
+        padding: 14px 0;
+        border-bottom: 1px solid var(--line);
+        color: var(--paper-dim);
+        font-size: 0.93rem;
+        line-height: 1.6;
+    }
+
+    .ein-liste li:last-child { border-bottom: none; }
+    .ein-liste .ist-klarsatz { padding-left: 14px; box-shadow: inset 2px 0 0 var(--gold); }
+
+    .ein-liste-wer { display: block; font-weight: 600; color: var(--paper); }
+    .ein-liste .ist-klarsatz .ein-liste-wer { color: var(--gold); }
+
+    .ein-liste-ort {
+        display: block;
+        margin: 5px 0 3px;
+        font-family: var(--mono);
+        font-size: 0.7rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--paper-faint);
+    }
+}
