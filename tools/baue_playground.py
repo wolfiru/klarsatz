@@ -47,6 +47,7 @@ PROGRAMM_TITEL = {
     "18": "To-do-Liste",
     "19": "Textadventure",
     "20": "Grafikadventure",
+    "21": "Spiel des Lebens",
 }
 
 

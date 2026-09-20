@@ -474,6 +474,90 @@ class Kopfrechnen(unittest.TestCase):
         self.assertIn("Gut gemacht", s)
 
 
+class SpielDesLebens(unittest.TestCase):
+    """21_spiel_des_lebens.klar — die Regeln werden am echten Programm nachgerechnet.
+
+    Geprüft wird nicht eine Kopie der Logik, sondern die Datei selbst: Der Teil bis
+    „Der Anfang" (Maße, Aufgaben) wird übernommen, der zufällige Start durch ein
+    bekanntes Muster ersetzt. Ein Blinker muss kippen, ein Block muss stehen bleiben,
+    ein Gleiter muss wandern — wenn eine der vier Regeln verrutscht, fällt genau das auf.
+    """
+
+    @classmethod
+    def setUpClass(cls):
+        quelle = (PROGRAMME / "21_spiel_des_lebens.klar").read_text(encoding="utf-8")
+        cls.kopf = quelle.split("Anmerkung: --- Der Anfang")[0]
+        # Zeilenbreite steht im Programm; für die erwarteten Nummern wird sie hier gebraucht.
+        cls.zeilenbreite = int(re.search(r"Merke (\d+) als Breite", quelle).group(1)) + 2
+
+    def i(self, x, y):
+        """Nummer der Zelle (x, y) in der flachen Liste — gezählt wie im Programm."""
+        return y * self.zeilenbreite + x + 1
+
+    def generationen(self, lebendig, schritte=1):
+        """Setzt das Feld auf die genannten Zellen und gibt zurück, was nach n Schritten lebt."""
+        zellen = " und ".join(str(self.i(x, y)) for x, y in lebendig)
+        quelle = self.kopf + f"""
+Erstelle eine Liste namens Lebend mit {zellen}.
+Erstelle eine Liste namens Feld.
+Zähle von 1 bis Zellen mit i:
+    Wenn Lebend enthält i, füge 1 zur Feld hinzu.
+    Sonst füge 0 zur Feld hinzu.
+Ende.
+Wiederhole {schritte} Mal:
+    Setze Feld auf Naechste mit Feld.
+Ende.
+Zähle von 1 bis Zellen mit i:
+    Wenn Element i von Feld gleich 1 ist, zeige i.
+Ende.
+"""
+        ausgabe = []
+        Interpreter(ausgabe=ausgabe.append).lauf(quelle)
+        return {((int(z) - 1) % self.zeilenbreite, (int(z) - 1) // self.zeilenbreite)
+                for z in ausgabe}
+
+    def test_der_blinker_kippt_und_kippt_zurueck(self):
+        waagrecht = {(4, 3), (5, 3), (6, 3)}
+        senkrecht = {(5, 2), (5, 3), (5, 4)}
+        self.assertEqual(self.generationen(waagrecht), senkrecht)
+        self.assertEqual(self.generationen(waagrecht, 2), waagrecht)
+
+    def test_der_block_bleibt_liegen(self):
+        block = {(4, 4), (5, 4), (4, 5), (5, 5)}
+        self.assertEqual(self.generationen(block, 3), block)
+
+    def test_der_gleiter_wandert(self):
+        """Nach vier Generationen steht dieselbe Form eine Zelle weiter rechts und tiefer."""
+        gleiter = {(2, 1), (3, 2), (1, 3), (2, 3), (3, 3)}
+        erwartet = {(x + 1, y + 1) for x, y in gleiter}
+        self.assertEqual(self.generationen(gleiter, 4), erwartet)
+
+    def test_eine_einzelne_zelle_stirbt(self):
+        self.assertEqual(self.generationen({(5, 5)}), set())
+
+    def test_das_programm_laeuft_ganz_durch_und_malt(self):
+        from klarsatz.grenzen import Grenzen
+        quelle = (PROGRAMME / "21_spiel_des_lebens.klar").read_text(encoding="utf-8")
+        ausgabe = []
+        i = Interpreter(ausgabe=ausgabe.append, zufall=random.Random(3), grenzen=Grenzen(warte=0))
+        i.lauf(quelle)
+        self.assertIn("Das Spiel des Lebens: 22 mal 16 Zellen", ausgabe[0])
+        self.assertEqual(i.leinwand, (440, 320), "Die Leinwand passt nicht zum Gitter.")
+        gemalt = [s for s in i.zeichnung if s[0] == "linie"]
+        self.assertGreater(len(gemalt), 5, "Am Ende ist gar nichts mehr zu sehen.")
+
+    def test_derselbe_zufall_ergibt_dasselbe_bild(self):
+        from klarsatz.grenzen import Grenzen
+        quelle = (PROGRAMME / "21_spiel_des_lebens.klar").read_text(encoding="utf-8")
+
+        def lauf():
+            i = Interpreter(ausgabe=lambda _z: None, zufall=random.Random(5), grenzen=Grenzen(warte=0))
+            i.lauf(quelle)
+            return i.zeichnung
+
+        self.assertEqual(lauf(), lauf())
+
+
 class AlleProgramme(unittest.TestCase):
     def test_jedes_programm_endet_sauber_ohne_eingabe(self):
         """Ohne Eingabe darf kein Programm mit einem Syntaxfehler oder Absturz enden –

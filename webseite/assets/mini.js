@@ -22,19 +22,32 @@ function stil(pfad) {
     });
 }
 
-const wurzel = document.getElementById('mini');
+/* Der Quelltext steht entweder im Block selbst oder — bei langen Programmen, von denen
+   die Seite nur einen Ausschnitt zeigt — in der Beispielliste der Spielwiese. Dann wird er
+   von dort geholt, und die Seite kann gar nicht erst eine veraltete Fassung zeigen. */
+async function hole(wurzel) {
+    const beispiel = wurzel.dataset.beispiel;
+    if (!beispiel) {
+        const pre = wurzel.querySelector('pre.klar');
+        return pre?.dataset.quelle ?? pre?.textContent.replace(/^\n+|\s+$/g, '') ?? '';
+    }
+    const antwort = await fetch(new URL('spielwiese/beispiele.json', document.baseURI));
+    if (!antwort.ok) throw new Error('Beispiel ' + beispiel + ' nicht gefunden');
+    const treffer = (await antwort.json()).find((e) => e.id === beispiel);
+    if (!treffer) throw new Error('Beispiel ' + beispiel + ' steht nicht in der Liste');
+    return treffer.code;
+}
 
-if (wurzel) {
+for (const wurzel of document.querySelectorAll('.mini')) {
     const knopf = wurzel.querySelector('.mini-start');
     const buehne = wurzel.querySelector('.mini-buehne');
-    const quelle = wurzel.querySelector('pre.klar');
 
     knopf?.addEventListener('click', async () => {
-        const code = quelle?.dataset.quelle ?? quelle?.textContent.replace(/^\n+|\s+$/g, '') ?? '';
         knopf.disabled = true;
         knopf.textContent = 'Klarsatz wird geladen …';
 
         try {
+            const code = await hole(wurzel);
             // Die Spielwiese bringt ihr eigenes Aussehen mit. Ohne diese beiden
             // Stylesheets erscheint sie roh — mit Systemknöpfen und ohne Raster.
             // Auch sie werden erst jetzt geholt, nicht beim Laden der Seite.

@@ -28,7 +28,7 @@ KONSTANTEN = {"wahr", "falsch"}
 _EXTRA = {"immer", "namens", "schritten", "stellen", "rueckwaerts", "abwaerts", "absteigend", "keine", "enthaelt",
           # Zeichnen: eindeutige Musterwörter. "Farbe", "Stift" und "Mitte" fehlen bewusst –
           # das sind beliebte Variablennamen.
-          "schritte", "grad", "strichstaerke",
+          "schritte", "grad", "strichstaerke", "leinwand",
           # Zeit: nur "aktuelle" – Stunde, Minute, Tag … sind beliebte Variablennamen.
           "aktuelle", "aktueller", "aktuelles", "aktuellen",
           "sekunde", "sekunden"}
@@ -108,7 +108,7 @@ STUFEN = {
         "hat", "erschaffe",
         "lies", "schreibe",
         "gehe", "drehe", "hebe", "senke", "nimm", "loesche", "warte",
-        "schritte", "grad", "strichstaerke",
+        "schritte", "grad", "strichstaerke", "leinwand",
         "aktuelle", "aktueller", "aktuelles", "aktuellen", "sekunde", "sekunden",
         "sinus", "kosinus", "cosinus", "tangens",
         "arkussinus", "arkuskosinus", "arkuscosinus", "arkustangens"},

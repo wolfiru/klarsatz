@@ -237,9 +237,9 @@ export async function erstelle(wurzel, opt = {}) {
   // Malt die Striche eines Laufs. Der Interpreter liefert sie in einem
   // Koordinatensystem mit Ursprung in der Mitte und y nach oben; hier wird
   // gespiegelt und so skaliert, dass die ganze Zeichnung hineinpasst.
-  function maleBild(striche) {
+  function maleBild(striche, gewuenscht) {
     const rahmen = wurzel.querySelector(".kp");
-    if (!striche.length) {
+    if (!striche.length && !gewuenscht) {
       leinwand.hidden = true;
       rahmen.classList.remove("kp-mit-bild");
       return;
@@ -249,7 +249,11 @@ export async function erstelle(wurzel, opt = {}) {
 
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
     const breite = leinwand.clientWidth || 400;
-    const hoehe = Math.round(Math.min(260, Math.max(180, breite * 0.55)));
+    // Ohne Angabe bleibt es beim flachen Streifen von früher. Wer "Nimm die Leinwand
+    // 600 mal 400." sagt, bekommt das Seitenverhältnis und darf deutlich höher werden.
+    const hoehe = gewuenscht
+      ? Math.round(Math.min(620, Math.max(180, breite * (gewuenscht[2] / gewuenscht[1]))))
+      : Math.round(Math.min(260, Math.max(180, breite * 0.55)));
     leinwand.width = Math.round(breite * dpr);
     leinwand.height = Math.round(hoehe * dpr);
     leinwand.style.height = hoehe + "px";
@@ -264,11 +268,22 @@ export async function erstelle(wurzel, opt = {}) {
       minY = Math.min(minY, y1, y2); maxY = Math.max(maxY, y1, y2);
       dickste = Math.max(dickste, dicke);
     }
-    const rand = 12 + dickste;
-    const faktor = Math.min((breite - 2 * rand) / Math.max(maxX - minX, 1),
-                            (hoehe - 2 * rand) / Math.max(maxY - minY, 1), 4);
-    const versatzX = (breite - (maxX - minX) * faktor) / 2 - minX * faktor;
-    const versatzY = (hoehe - (maxY - minY) * faktor) / 2 + maxY * faktor;
+
+    let faktor, versatzX, versatzY;
+    if (gewuenscht) {
+      // Fester Rahmen: -Breite/2 bis +Breite/2. Entscheidend für bewegte Bilder — der
+      // automatische Ausschnitt richtet sich nach dem, was gerade da ist, und lässt
+      // alles springen, sobald in einem Durchlauf etwas fehlt.
+      faktor = Math.min(breite / gewuenscht[1], hoehe / gewuenscht[2]);
+      versatzX = breite / 2;
+      versatzY = hoehe / 2;
+    } else {
+      const rand = 12 + dickste;
+      faktor = Math.min((breite - 2 * rand) / Math.max(maxX - minX, 1),
+                        (hoehe - 2 * rand) / Math.max(maxY - minY, 1), 4);
+      versatzX = (breite - (maxX - minX) * faktor) / 2 - minX * faktor;
+      versatzY = (hoehe - (maxY - minY) * faktor) / 2 + maxY * faktor;
+    }
 
     ctx.lineCap = "round";
     ctx.lineJoin = "round";
@@ -296,6 +311,7 @@ export async function erstelle(wurzel, opt = {}) {
   }
 
   let letzteStriche = [];
+  let letzteLeinwand = null;       // ("leinwand", Breite, Höhe), falls das Programm eine will
   let laeuft = false;              // ein Programm ist gerade im Worker unterwegs
   let malGeplant = false;
 
@@ -304,7 +320,7 @@ export async function erstelle(wurzel, opt = {}) {
     malGeplant = true;
     requestAnimationFrame(() => {
       malGeplant = false;
-      maleBild(letzteStriche);
+      maleBild(letzteStriche, letzteLeinwand);
     });
   }
 
@@ -325,22 +341,27 @@ export async function erstelle(wurzel, opt = {}) {
     } else if (art === "loeschen") {
       letzteStriche = [];
       planeMalen();
+    } else if (art === "leinwand") {
+      letzteLeinwand = eintrag;
+      planeMalen();
     }
   };
   python.beiTeil = beiTeil;
 
   addEventListener("resize", () => {
-    if (letzteStriche.length) maleBild(letzteStriche);
+    if (letzteStriche.length || letzteLeinwand) maleBild(letzteStriche, letzteLeinwand);
   });
 
   function zeigeErgebnis(erg) {
     ausgabe.replaceChildren();
     letzteStriche = [];
+    letzteLeinwand = null;
     for (const eintrag of erg.verlauf) {
       if (eintrag[0] === "linie") letzteStriche.push(eintrag);
       else if (eintrag[0] === "loeschen") letzteStriche = [];
+      else if (eintrag[0] === "leinwand") letzteLeinwand = eintrag;
     }
-    maleBild(letzteStriche);
+    maleBild(letzteStriche, letzteLeinwand);
     let frageZeile = null;
     for (const [art, text] of erg.verlauf) {
       if (art === "aus") {

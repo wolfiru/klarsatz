@@ -304,6 +304,77 @@ class WarteUndLoeschen(unittest.TestCase):
             Ende.""")
 
 
+class Leinwand(unittest.TestCase):
+    """`Nimm die Leinwand 600 mal 400.` — fester Rahmen statt mitwanderndem Ausschnitt."""
+
+    def test_die_groesse_wird_gemeldet(self):
+        self.assertEqual(zeichne("Nimm die Leinwand 600 mal 400.")[0], ("leinwand", 600, 400))
+
+    def test_der_interpreter_merkt_sie_sich(self):
+        i = Interpreter(ausgabe=lambda _z: None)
+        i.lauf("Nimm die Leinwand 300 mal 300.")
+        self.assertEqual(i.leinwand, (300, 300))
+
+    def test_ohne_angabe_gibt_es_keine(self):
+        i = Interpreter(ausgabe=lambda _z: None)
+        i.lauf("Gehe 10 Schritte vor.")
+        self.assertIsNone(i.leinwand)
+
+    def test_mal_bleibt_hier_kein_rechenzeichen(self):
+        """Ohne Vorkehrung würde '600 mal 400' als Produkt gelesen — 240000 statt 600 und 400."""
+        self.assertEqual(zeichne("Nimm die Leinwand 600 mal 400.")[0][1:], (600, 400))
+
+    def test_rechnungen_sind_erlaubt(self):
+        striche = zeichne("Merke 20 als Zelle.\nNimm die Leinwand (Zelle mal 4) mal (Zelle mal 3).")
+        self.assertEqual(striche[0], ("leinwand", 80, 60))
+
+    def test_die_leinwand_ueberlebt_das_loeschen(self):
+        """Sonst springt ein bewegtes Bild nach dem ersten Löschen in den alten Ausschnitt."""
+        striche = zeichne("Nimm die Leinwand 200 mal 100.\nGehe 10 Schritte vor.\n"
+                          "Lösche die Zeichnung.\nGehe 10 Schritte vor.")
+        self.assertEqual(striche[0], ("leinwand", 200, 100))
+        self.assertEqual(len([s for s in striche if s[0] == "linie"]), 1)
+
+    def test_unsinnige_masse_werden_abgelehnt(self):
+        for masse in ("5 mal 100", "100 mal 5", "9000 mal 100"):
+            with self.subTest(masse=masse):
+                with self.assertRaisesRegex(LaufzeitFehler, "von 20 bis 4000"):
+                    zeichne(f"Nimm die Leinwand {masse}.")
+
+    def test_die_meldung_sagt_welches_mass_fehlt(self):
+        with self.assertRaisesRegex(LaufzeitFehler, "Höhe der Leinwand"):
+            zeichne("Nimm die Leinwand 100 mal 3.")
+        with self.assertRaisesRegex(SyntaxFehler, "mal"):
+            zeichne("Nimm die Leinwand 100.")
+
+    def test_das_svg_bekommt_den_festen_ausschnitt(self):
+        from klarsatz.zeichnung import als_svg
+        bild = als_svg(zeichne("Nimm die Leinwand 600 mal 400.\nGehe 10 Schritte vor."))
+        self.assertIn('viewBox="0 0 600.0 400.0"', bild)
+
+    def test_ohne_leinwand_bleibt_das_svg_wie_bisher(self):
+        from klarsatz.zeichnung import als_svg
+        bild = als_svg(zeichne("Gehe 10 Schritte vor."))
+        self.assertNotIn('viewBox="0 0 600.0 400.0"', bild)
+        self.assertIn("viewBox=", bild)
+
+    def test_eine_leere_leinwand_ergibt_trotzdem_ein_bild(self):
+        from klarsatz.zeichnung import als_svg
+        self.assertIn('viewBox="0 0 400.0 300.0"', als_svg(zeichne("Nimm die Leinwand 400 mal 300.")))
+
+
+class EinSchritt(unittest.TestCase):
+    def test_singular_ist_erlaubt(self):
+        self.assertEqual(punkte(zeichne("Gehe 1 Schritt vor.")), [(0, 0, 0, 1)])
+
+    def test_plural_natuerlich_auch(self):
+        self.assertEqual(punkte(zeichne("Gehe 2 Schritte vor.")), [(0, 0, 0, 2)])
+
+    def test_ohne_beides_kommt_eine_freundliche_meldung(self):
+        with self.assertRaisesRegex(SyntaxFehler, "Schritte"):
+            zeichne("Gehe 5 vor.")
+
+
 class Mitlesen(unittest.TestCase):
     """Die Web-Schnittstelle meldet jeden Eintrag sofort — sonst bliebe eine
     Endlosschleife stumm, egal wie viel sie ausgibt."""

@@ -322,6 +322,11 @@ class NachPython:
         self._turtle()
         return ["stift.clear()"]
 
+    def s_leinwand(self, k):
+        """Klarsatz legt die Fläche fest, turtle kennt dafür die Fenstergröße."""
+        self._turtle()
+        return [f"turtle.setup({self._a(k[2])}, {self._a(k[3])})"]
+
     def s_wiederholung(self, k):
         self.hinweise.append("'Wiederhole dieses Programm …' hat keine Entsprechung – in Python schreibt man "
                              "dafür eine Schleife mit time.sleep.")

@@ -317,7 +317,9 @@ Senke den Stift.
 Nimm die Farbe "gold".               Anmerkung: rot blau grün gelb gold orange lila rosa türkis braun grau schwarz weiß
 Nimm die Strichstärke 3.             Anmerkung: 1 bis 50
 Gehe zur Mitte.                      Anmerkung: zurück zum Start, wieder nach oben schauend
+Nimm die Leinwand 600 mal 400.       Anmerkung: feste Fläche statt automatischem Ausschnitt, 20 bis 4000
 ```
+`Gehe 1 Schritt vor.` ist erlaubt — ein Schritt ist einer.
 
 Ein Quadrat ist damit vier Sätze lang:
 ```
@@ -329,7 +331,7 @@ Ende.
 
 **Bewegung:**
 ```
-Lösche die Zeichnung.                  Anmerkung: Fläche leeren, Stift bleibt stehen
+Lösche die Zeichnung.                  Anmerkung: Fläche leeren, Stift und Leinwand bleiben
 Warte 1 Sekunde.                       Anmerkung: 0 bis 60 s; zählt nicht als Rechenzeit
 Wiederhole dieses Programm jede Sekunde.   Anmerkung: Kurzform: ganzes Programm im Takt neu
 ```

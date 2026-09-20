@@ -34,6 +34,7 @@ Für Zufallszahlen lässt sich mit `--seed 42` immer derselbe Ablauf erzeugen.
 | 18 | `18_todo_liste.klar` | Aufgaben anlegen, abhaken, löschen; wird in `todo.txt` gespeichert und beim Start wieder geladen. | Dateien, `Teile`, Dinge, Menü-Schleife |
 | 19 | `19_textadventure.klar` | Ein verlassenes Haus mit fünf Räumen, Gegenständen und Inventar. | Tabellen als Weltmodell, `Teile`, Befehle auswerten |
 | 20 | `20_grafisches_adventure.klar` | Dasselbe Haus, aber gezeichnet: Raum, Türen (gold = offen, rot = verschlossen) und Gegenstände. Finde das Marmeladenglas, öffne es, schließe die Küchentür auf. | Zeichnen + Spiellogik, `Lösche die Zeichnung`, Tabellen |
+| 21 | `21_spiel_des_lebens.klar` | Conways Spiel des Lebens: 22 mal 16 Zellen, zufälliger Start, dreißig Generationen als bewegtes Bild. | `Nimm die Leinwand`, Liste als Gitter, toter Rand statt Kantenabfragen, Aufgabe gibt eine Liste zurück |
 
 Die Zeichenprogramme brauchen eine Zeichenfläche: im Browser die
 [Spielwiese](../playground/), auf der Kommandozeile `--bild bild.svg`.

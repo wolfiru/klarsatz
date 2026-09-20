@@ -110,7 +110,7 @@ Zeige "Fünf plus drei ist " und Zahl und ".".</pre>
 
             <p class="mini-hinweis" hidden><strong>Das ist die Spielwiese — sie läuft jetzt hier, in dieser Seite.</strong>
                Du bist nirgendwo hingewechselt. Ändere den Text im Editor und drück wieder auf <em>Ausführen</em>.
-               Über dem Editor kannst du unter <strong>29 Beispielen</strong> wählen — vom Zahlenraten bis zum grafischen Adventure. <a href="spielplatz.html">Mit mehr Platz weitermachen →</a></p>
+               Über dem Editor kannst du unter <strong>30 Beispielen</strong> wählen — vom Zahlenraten bis zum grafischen Adventure. <a href="spielplatz.html">Mit mehr Platz weitermachen →</a></p>
 
             <div class="mini-buehne" hidden></div>
         </div>
@@ -134,8 +134,8 @@ Zeige mir bitte "Hallo".</pre>
             <div class="v-spalte">
                 <p class="v-titel">Kontrolle</p>
                 <div class="code-kopf"><span class="code-titel">Das Muster ist Pflicht</span></div>
-<pre class="klar" data-pruefung="nein">Wenn Alter mindestens 18 ist:
-    Zeige "Erwachsen".
+<pre class="klar" data-pruefung="nein">Wenn Punkte mindestens 10 sind:
+    Zeige "Geschafft!".
 Ende.</pre>
                 <p class="v-text">Jeder Satz muss auf ein festes Muster passen. Der Punkt am Ende ist Pflicht, <code>gleich</code> ist Pflicht, jeder Block braucht sein <code>Ende.</code> — und <code>Sag Hallo.</code> versteht Klarsatz nicht, so klar der Satz für uns auch ist.</p>
             </div>
@@ -770,9 +770,59 @@ Zeige den Namen von Waldi.</pre>
         </div>
     </section>
 
+    <section class="section" id="komplex">
+        <div class="section-head">
+            <span class="eyebrow">09 — Was damit geht</span>
+            <h2>Die Sprache ist einfach.<br><em>Die Programme müssen es nicht sein.</em></h2>
+            <p class="section-sub">Einfach zu lernen heißt nicht, dass man damit nur einfache Programme schreiben kann. Die Sätze bleiben dieselben wie in Lektion 1 — was daraus entsteht, muss nicht klein bleiben.</p>
+        </div>
+
+        <article class="werk">
+            <p class="werk-nr">Werkstück 01</p>
+            <h3 class="werk-titel">Das Spiel des Lebens</h3>
+            <p class="werk-was">John Conway, 1970. Ein Gitter aus Zellen, vier Regeln, kein Spieler —
+               und trotzdem entstehen Formen, die wandern, blinken, sich gegenseitig auffressen und
+               manchmal für immer stehen bleiben. 352 Zellen, dreißig Generationen, jede aus der
+               vorherigen gerechnet.</p>
+
+            <div class="code-kopf"><span class="code-titel">Die Regeln, wie sie im Programm stehen</span></div>
+<pre class="klar" data-pruefung="nein" data-probieren="nein">Wenn Nachbarn gleich 3 ist, füge 1 zur Neu hinzu.
+Sonst wenn Nachbarn gleich 2 und Element i von Feld gleich 1 ist, füge 1 zur Neu hinzu.
+Sonst füge 0 zur Neu hinzu.</pre>
+
+            <p class="werk-text">Das ist das ganze Spiel. Darüber steht ein einziger Satz, der die acht
+               Nachbarn zusammenzählt, darunter kein weiterer. Der Rest des Programms — gut hundert
+               Zeilen — beantwortet die Fragen, die jedes ernsthafte Programm stellt: Wie bringt man
+               ein Gitter in einer Liste unter? Wie zählt man Nachbarn, ohne an jeder Kante zu
+               fragen, ob es dort noch weitergeht? Und wie wird aus Zahlen ein Bild, das stillsteht,
+               während sich darin alles bewegt?</p>
+
+            <div class="werk-zutaten">
+                <p><span>Liste als Gitter</span> 22 mal 16 Zellen, flach in einer einzigen Liste, Nummer statt Koordinaten.</p>
+                <p><span>Toter Rand</span> Eine Reihe nie lebender Zellen ringsum — dadurch braucht das Nachbarzählen keine einzige Kantenabfrage.</p>
+                <p><span>Feste Leinwand</span> <code>Nimm die Leinwand 440 mal 320.</code> hält den Maßstab still. Ohne diesen Satz springt das Gitter bei jeder Generation.</p>
+                <p><span>Aufgabe gibt eine Liste zurück</span> Jede Generation entsteht als neue Liste — nichts wird an Ort und Stelle verändert, deshalb rechnet keine Zelle mit halb aktualisierten Nachbarn.</p>
+            </div>
+
+            <div class="mini" data-beispiel="21_spiel_des_lebens">
+                <p class="mini-fuss"><button type="button" class="btn btn-primary mini-start">▶ Hier laufen lassen</button></p>
+
+                <p class="mini-hinweis" hidden><strong>Das läuft jetzt hier, in dieser Seite.</strong>
+                   Jeder Start würfelt ein neues Feld aus. Im Editor steht das vollständige Programm —
+                   ändere <em>Breite</em>, <em>Hoehe</em> oder <em>Generationen</em> und drück wieder auf
+                   <em>Ausführen</em>. <a href="spielplatz.html#beispiel=21_spiel_des_lebens">Mit mehr Platz weitermachen →</a></p>
+
+                <div class="mini-buehne" hidden></div>
+            </div>
+
+            <p class="werk-fuss">Im Spielplatz unter <em>21 Spiel des Lebens</em>, im Archiv als
+               <code>programme/21_spiel_des_lebens.klar</code>.</p>
+        </article>
+    </section>
+
     <section class="section" id="spielplatz">
         <div class="section-head">
-            <span class="eyebrow">09 — Sicherheit</span>
+            <span class="eyebrow">10 — Sicherheit</span>
             <h2>Ausprobieren, <em>ohne etwas zu riskieren.</em></h2>
             <p class="section-sub">Der Spielplatz führt Klarsatz-Programme direkt im Browser aus — und zeigt Zeichnungen auf einer Leinwand gleich daneben. Nichts davon verlässt das Fenster.</p>
         </div>
@@ -850,7 +900,7 @@ Zeige den Namen von Waldi.</pre>
 
     <section class="section" id="download">
         <div class="section-head">
-            <span class="eyebrow">10 — Zum Mitnehmen</span>
+            <span class="eyebrow">11 — Zum Mitnehmen</span>
             <h2>Klarsatz auf dem <em>eigenen Rechner.</em></h2>
             <p class="section-sub">Reines Python 3, keine Fremdpakete, keine Installation: herunterladen, entpacken, loslegen.</p>
         </div>
@@ -860,7 +910,7 @@ Zeige den Namen von Waldi.</pre>
                 <p>Im Archiv steckt alles, was zum Ausprobieren nötig ist — und der gesamte Quelltext dazu, denn Klarsatz ist zum Nachlesen gebaut.</p>
                 <ul class="download-liste">
                     <li>der Interpreter mit Prüfmodus, Formatierer und interaktiver Konsole</li>
-                    <li>zwanzig Beispielprogramme, vom Zahlenraten bis zum grafischen Adventure — dazu neun kleine Sprachbeispiele, je eines pro Thema. Zusammen sind das die 29, die auch in der Spielwiese zur Auswahl stehen</li>
+                    <li>einundzwanzig Beispielprogramme, vom Zahlenraten bis zum Spiel des Lebens — dazu neun kleine Sprachbeispiele, je eines pro Thema. Zusammen sind das die 30, die auch in der Spielwiese zur Auswahl stehen</li>
                     <li>die vollständige Sprachdokumentation zum Nachschlagen</li>
                     <li>eine Erweiterung für VS&nbsp;Code, die Klarsatz einfärbt</li>
                     <li>die Spielwiese dieser Seite, auch ohne Internet startbar</li>
@@ -890,7 +940,7 @@ python3 -m klarsatz programme/03_taschenrechner.klar</code></pre>
 
     <section class="section" id="stand">
         <div class="section-head">
-            <span class="eyebrow">11 — Stand</span>
+            <span class="eyebrow">12 — Stand</span>
             <h2>Wo Klarsatz gerade <em>steht.</em></h2>
             <p class="section-sub">Version <span data-download="version">0.7.1</span>. Ein <strong>bewusst begrenztes</strong> Experiment — „begrenzt“ ist dabei keine Entschuldigung, sondern eine Entscheidung: Was dem pädagogischen Ziel nicht dient, kommt nicht hinein. Was daraus geworden ist, steht hier — samt dem, was fehlt.</p>
         </div>

@@ -70,6 +70,7 @@ class Interpreter:
         self.start = time.monotonic()
         self.tiefe = 0
         self.zeichnung = []
+        self.leinwand = None                  # feste Zeichenfläche, siehe _a_leinwand
         self._eigener_kanal = zeichne is not None
         self.zeichne = zeichne or self.zeichnung.append
         self.uhr = uhr or time.localtime
@@ -570,6 +571,28 @@ class Interpreter:
         self.striche = 0                      # leere Fläche, also zählt auch nichts mehr
         if self._eigener_kanal:
             self.zeichne(("loeschen",))       # die Oberfläche soll die Fläche leeren
+        if self.leinwand:
+            # Die Größe der Fläche ist keine Zeichnung, sie überlebt das Löschen. Ohne
+            # diese Zeile springt ein laufendes Bild nach dem ersten Löschen zurück in
+            # den automatischen Ausschnitt.
+            self.zeichne(("leinwand",) + self.leinwand)
+
+    def _a_leinwand(self, k, b):
+        """Legt Größe und Ausschnitt der Zeichenfläche fest.
+
+        Ohne diesen Satz sucht die Oberfläche den Ausschnitt selbst und passt ihn an das
+        an, was gerade gezeichnet ist. Für ein einzelnes Bild ist das bequem, für ein
+        bewegtes ist es fatal: Sobald in einem Durchlauf etwas fehlt, ändert sich der
+        Maßstab, und alles springt. Wer die Leinwand angibt, bekommt einen festen Rahmen
+        von -Breite/2 bis +Breite/2 und -Höhe/2 bis +Höhe/2."""
+        breite = self._zeichenzahl(self.auswerten(k[2], b), "die Breite der Leinwand", k[1])
+        hoehe = self._zeichenzahl(self.auswerten(k[3], b), "die Höhe der Leinwand", k[1])
+        for mass, was in ((breite, "Breite"), (hoehe, "Höhe")):
+            if not 20 <= mass <= 4000:
+                raise LaufzeitFehler(
+                    f"Die {was} der Leinwand geht von 20 bis 4000, bekommen habe ich {mass:g}.", k[1])
+        self.leinwand = (round(breite, 3), round(hoehe, 3))
+        self.zeichne(("leinwand",) + self.leinwand)
 
     def _a_gehe(self, k, b):
         weite = self._zeichenzahl(self.auswerten(k[2], b), "die Schritte", k[1])

@@ -65,6 +65,11 @@ class Grundformen(unittest.TestCase):
         self.assertIn("stift.forward(100)", erzeugt)
         self.assertIn("stift.right(90)", erzeugt)
 
+    def test_die_leinwand_wird_die_fenstergroesse(self):
+        erzeugt = py("Nimm die Leinwand 600 mal 400.\nGehe 1 Schritt vor.")
+        self.assertIn("turtle.setup(600, 400)", erzeugt)
+        self.assertIn("stift.forward(1)", erzeugt)
+
     def test_grossschreibung_bleibt_einheitlich(self):
         """Klarsatz unterscheidet Groß/klein nicht, Python schon."""
         erzeugt = py("merke 9 als DRITTE.\nZeige die dritte.")

@@ -1,6 +1,21 @@
 # Änderungen
 
 ## Unveröffentlicht
+- **`Nimm die Leinwand 600 mal 400.`** — eine feste Zeichenfläche. Ohne sie sucht sich die
+  Oberfläche den Ausschnitt selbst und passt ihn an das an, was gerade gezeichnet ist; für ein
+  Standbild ist das bequem, für ein bewegtes Bild springt dadurch alles, sobald in einem Durchlauf
+  etwas fehlt. Mit ihr liegt der Rahmen fest (−Breite/2 bis +Breite/2), die Fläche behält das
+  angegebene Seitenverhältnis und darf deutlich höher werden als der flache Streifen von früher.
+  Sie überlebt `Lösche die Zeichnung.` — sie ist keine Zeichnung, sondern der Rahmen. Maße von 20
+  bis 4000, in `--bild bild.svg` wird daraus der viewBox, in Python `turtle.setup(…)`.
+- **`Gehe 1 Schritt vor.`** — der Singular ist erlaubt. Nur an dieser einen Stelle: „Schritt" bleibt
+  ein gewöhnlicher Name, in `14_wellen.klar` heißt eine Variable so.
+- **`programme/21_spiel_des_lebens.klar`** — Conways Spiel des Lebens, 22 mal 16 Zellen, dreißig
+  Generationen als bewegtes Bild. Das Gitter liegt flach in einer Liste, ringsum ein toter Rand,
+  damit das Nachbarzählen ohne Kantenabfragen auskommt; jede Generation entsteht als neue Liste.
+  Auf der Startseite gibt es dafür einen eigenen Abschnitt („Die Sprache ist einfach. Die Programme
+  müssen es nicht sein.") samt Demo, die hier in der Seite läuft. `tests/test_programme.py` rechnet
+  die Regeln am echten Programm nach: Blinker kippt, Block bleibt, Gleiter wandert.
 - **Abschnitt „Wo Klarsatz steht"** auf der Startseite (`#einordnung`): eine Vergleichstabelle mit
   Logo, Niki, Robot Karol, Scratch, Guido van Robot, Python und Klarsatz, danach vier Karten zu der
   Frage, **welche Einstiegshürde ein Ansatz jeweils wegnimmt** — Blöcke statt Syntax, kleine Welt,

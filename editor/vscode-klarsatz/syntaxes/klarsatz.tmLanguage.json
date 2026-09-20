@@ -105,7 +105,7 @@
       "name": "keyword.other.statement.klarsatz"
     },
     {
-      "match": "\\b(?i:strichst(?:ä|ae)rke|r(?:ü|ue)ckw(?:ä|ae)rts|absteigend|h(?:ö|oe)chstens|mindestens|akt(?:ü|ue)llen|akt(?:ü|ue)ller|akt(?:ü|ue)lles|schritten|abw(?:ä|ae)rts|akt(?:ü|ue)lle|enth(?:ä|ae)lt|gr(?:ö|oe)(?:ß|ss)er|schritte|sekunden|geteilt|kleiner|sekunde|stellen|teilbar|gleich|namens|durch|hinzu|immer|keine|minus|nicht|grad|hoch|oder|plus|sind|als|auf|aus|bis|hat|ist|mal|mit|und|von|in|um|zu)\\b",
+      "match": "\\b(?i:strichst(?:ä|ae)rke|r(?:ü|ue)ckw(?:ä|ae)rts|absteigend|h(?:ö|oe)chstens|mindestens|akt(?:ü|ue)llen|akt(?:ü|ue)ller|akt(?:ü|ue)lles|schritten|abw(?:ä|ae)rts|akt(?:ü|ue)lle|enth(?:ä|ae)lt|gr(?:ö|oe)(?:ß|ss)er|leinwand|schritte|sekunden|geteilt|kleiner|sekunde|stellen|teilbar|gleich|namens|durch|hinzu|immer|keine|minus|nicht|grad|hoch|oder|plus|sind|als|auf|aus|bis|hat|ist|mal|mit|und|von|in|um|zu)\\b",
       "name": "keyword.operator.word.klarsatz"
     },
     {

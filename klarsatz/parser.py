@@ -635,7 +635,13 @@ class Parser:
             self.punkt()
             return ("mitte", z)
         weite = self.summe()
-        self.erwarte_wort("schritte", "Schritte")
+        # 'Gehe 1 Schritt vor.' soll gehen, ohne dass "Schritt" ein reserviertes Wort wird:
+        # In 14_wellen.klar heißt eine Variable so. Hier wird das Wort nur an dieser einen
+        # Stelle erkannt, überall sonst ist es ein gewöhnlicher Name.
+        if self.ist_wort("schritt"):
+            self.nimm()
+        else:
+            self.erwarte_wort("schritte", "Schritte")
         if self.ist_wort("zurueck"):
             self.nimm()
             rueck = True
@@ -674,13 +680,22 @@ class Parser:
         return ("stift", tok.zeile, tok.norm == "senke")
 
     def s_nimm(self):
-        """Nimm die Farbe "rot". · Nimm die Strichstärke 3."""
+        """Nimm die Farbe "rot". · Nimm die Strichstärke 3. · Nimm die Leinwand 600 mal 400."""
         z = self.nimm().zeile
         if self.ist_wort("strichstaerke"):
             self.nimm()
             breite = self.summe()
             self.punkt()
             return ("strichstaerke", z, breite)
+        if self.ist_wort("leinwand"):
+            self.nimm()
+            # Beide Maße werden eine Ebene unterhalb des Produkts gelesen: Sonst verschluckt
+            # 'mal' als Rechenzeichen die Angabe, und aus 600 mal 400 würde 240000.
+            breite = self.potenz()
+            self.erwarte_wort("mal", "mal (Nimm die Leinwand 600 mal 400.)")
+            hoehe = self.potenz()
+            self.punkt()
+            return ("leinwand", z, breite, hoehe)
         self.erwarte_wort("farbe", "Farbe")
         farbe = self.summe()
         self.punkt()

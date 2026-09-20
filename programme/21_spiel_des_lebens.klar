@@ -1,0 +1,119 @@
+Anmerkung: Das Spiel des Lebens, John Conway, 1970.
+Anmerkung: Vier Regeln, ein Gitter, kein Spieler. Und trotzdem entstehen Formen,
+Anmerkung: die wandern, blinken, sich auffressen und manchmal ewig stehen bleiben.
+
+Anmerkung: --- Die Welt ---------------------------------------------------------
+Merke 22 als Breite.
+Merke 16 als Hoehe.
+Merke 20 als Zelle.
+Merke 30 als Generationen.
+
+Anmerkung: Rundherum liegt ein toter Rand. Er wird nie lebendig und nie gezeigt --
+Anmerkung: aber weil es ihn gibt, muss beim Nachbarzaehlen nie jemand fragen, ob er
+Anmerkung: gerade ueber die Kante schaut. Eine Zeile Vorsorge spart acht Abfragen.
+Merke Breite plus 2 als Zeilenbreite.
+Merke Zeilenbreite mal (Hoehe plus 2) als Zellen.
+
+Nimm die Leinwand (Breite mal Zelle) mal (Hoehe mal Zelle).
+Merke (Hoehe minus 1) mal Zelle geteilt durch 2 als NachOben.
+Merke (Breite minus 1) mal Zelle geteilt durch 2 als NachLinks.
+
+Anmerkung: --- Eine Generation weiter --------------------------------------------
+Definiere Aufgabe Naechste mit Feld:
+    Erstelle eine Liste namens Neu.
+
+    Anmerkung: obere Randzeile
+    Zähle von 1 bis Zeilenbreite mit r:
+        Füge 0 zur Neu hinzu.
+    Ende.
+
+    Zähle von 1 bis Hoehe mit y:
+        Füge 0 zur Neu hinzu.
+        Anmerkung: i wandert mit -- einmal ausrechnen und dann weiterzaehlen ist billiger,
+        Anmerkung: als fuer jede Zelle wieder y mal Zeilenbreite plus x auszurechnen.
+        Merke y mal Zeilenbreite plus 1 als i.
+        Zähle von 1 bis Breite mit x:
+            Erhöhe i um 1.
+            Merke i minus Zeilenbreite als Oben.
+            Merke i plus Zeilenbreite als Unten.
+            Merke Element (Oben minus 1) von Feld plus Element Oben von Feld plus Element (Oben plus 1) von Feld plus Element (i minus 1) von Feld plus Element (i plus 1) von Feld plus Element (Unten minus 1) von Feld plus Element Unten von Feld plus Element (Unten plus 1) von Feld als Nachbarn.
+
+            Anmerkung: Die ganzen Regeln. Mehr ist es nicht.
+            Wenn Nachbarn gleich 3 ist, füge 1 zur Neu hinzu.
+            Sonst wenn Nachbarn gleich 2 und Element i von Feld gleich 1 ist, füge 1 zur Neu hinzu.
+            Sonst füge 0 zur Neu hinzu.
+        Ende.
+        Füge 0 zur Neu hinzu.
+    Ende.
+
+    Anmerkung: untere Randzeile
+    Zähle von 1 bis Zeilenbreite mit r:
+        Füge 0 zur Neu hinzu.
+    Ende.
+
+    Gib Neu zurück.
+Ende.
+
+Anmerkung: --- Das Bild ---------------------------------------------------------
+Definiere Aufgabe Male mit Feld:
+    Lösche die Zeichnung.
+    Nimm die Strichstärke Zelle minus 4.
+    Zähle von 1 bis Hoehe mit y:
+        Anmerkung: Von der Mitte in die linke obere Ecke und dann nach unten in die Zeile.
+        Hebe den Stift.
+        Gehe zur Mitte.
+        Gehe NachOben Schritte vor.
+        Drehe dich um 90 Grad nach links.
+        Gehe NachLinks Schritte vor.
+        Drehe dich um 90 Grad nach links.
+        Gehe (y minus 1) mal Zelle Schritte vor.
+        Drehe dich um 90 Grad nach links.
+
+        Merke y mal Zeilenbreite plus 1 als i.
+        Zähle von 1 bis Breite mit x:
+            Erhöhe i um 1.
+            Wenn Element i von Feld gleich 1 ist:
+                Senke den Stift.
+                Gehe 1 Schritt vor.
+                Hebe den Stift.
+                Gehe Zelle minus 1 Schritte vor.
+            Sonst:
+                Gehe Zelle Schritte vor.
+            Ende.
+        Ende.
+    Ende.
+Ende.
+
+Anmerkung: --- Der Anfang -------------------------------------------------------
+Anmerkung: Zufaellige Suppe: ungefaehr jede dritte Zelle lebt. Jeder Start ist neu.
+Erstelle eine Liste namens Feld.
+Zähle von 1 bis Zellen mit i:
+    Füge 0 zur Feld hinzu.
+Ende.
+
+Erstelle eine Liste namens Start.
+Zähle von 1 bis Zeilenbreite mit r:
+    Füge 0 zur Start hinzu.
+Ende.
+Zähle von 1 bis Hoehe mit y:
+    Füge 0 zur Start hinzu.
+    Zähle von 1 bis Breite mit x:
+        Wenn die Zufallszahl von 1 bis 100 höchstens 32 ist, füge 1 zur Start hinzu.
+        Sonst füge 0 zur Start hinzu.
+    Ende.
+    Füge 0 zur Start hinzu.
+Ende.
+Zähle von 1 bis Zeilenbreite mit r:
+    Füge 0 zur Start hinzu.
+Ende.
+Setze Feld auf Start.
+
+Anmerkung: --- Und laufen lassen -------------------------------------------------
+Zeige "Das Spiel des Lebens: " und Breite und " mal " und Hoehe und " Zellen, " und Generationen und " Generationen".
+Zähle von 1 bis Generationen mit g:
+    Führe Male mit Feld aus.
+    Warte 0.25 Sekunden.
+    Setze Feld auf Naechste mit Feld.
+Ende.
+Führe Male mit Feld aus.
+Zeige "Fertig. Was übrig bleibt, ist entweder tot, starr oder ein Blinker".
