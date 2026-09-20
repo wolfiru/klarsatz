@@ -1,5 +1,15 @@
 # Änderungen
 
+## 0.8.1
+- **Der Versionsstempel erreicht jetzt jede nachgeladene Datei.** Die Demos auf der Startseite
+  holen die Spielwiese über `await import('./../spielwiese/klarsatz-playground.js')` — und genau
+  diese Form kannte `tools/stempel_webseite.py` nicht; es stempelte nur feste Einbindungen
+  (`import … from`). Ohne Stempel nahm der Browser den Interpreter aus dem Zwischenspeicher: eine
+  alte Fassung, die `Beschrifte` noch nicht kannte, während die Seite schon ein Programm damit
+  anbot („Ich verstehe den Satz nicht: er beginnt mit 'Beschrifte'."). Gestempelt werden jetzt
+  auch nachgeladene Module und schlichte Pfade in Zeichenketten; die Spielwiese reicht ihren
+  Stempel an ihre eigene Hervorhebung weiter. `tests/test_stempel.py` prüft alle Formen einzeln.
+
 ## 0.8.0
 - **`Beschrifte "Wien".`** — Text an der Stelle des Stifts, in seiner Farbe; `mit 20` setzt die
   Größe (4 bis 400). Eine Karte ohne Ortsnamen ist eine halbe Karte. Im SVG wird daraus ein

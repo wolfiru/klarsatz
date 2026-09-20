@@ -16,8 +16,13 @@ from pathlib import Path
 VORGABE = Path("/var/www/html/klarsatz")
 # Nur eigene Dateien stempeln — nicht Pyodide (unveränderlich, groß, gut cachebar).
 VERWEIS = re.compile(r'((?:href|src)=")((?:assets|spielwiese)/[^"?]+\.(?:css|js))(?:\?v=[^"]*)?(")')
-# Auch Modul-Einbindungen in eigenen Skripten: import … from '../spielwiese/datei.js'
-IMPORT = re.compile(r"""(from\s+['"])(\.\./spielwiese/[^'"?]+\.js)(?:\?v=[^'"]*)?(['"])""")
+# Auch alles, was die eigenen Skripte selbst nachladen. Nicht nur statische Einbindungen
+# (import … from '../spielwiese/datei.js'), sondern ebenso nachgeladene Module
+# (await import('./../spielwiese/datei.js')) und schlichte Pfade in Zeichenketten
+# ('spielwiese/beispiele.json'). Genau daran hat es gefehlt: Die Startseite lud die
+# Spielwiese ohne Stempel nach und bekam so einen alten Interpreter aus dem
+# Zwischenspeicher, der die neuen Sätze der Sprache noch nicht kannte.
+IN_JS = re.compile(r"""(['"])((?:\.{1,2}/)*(?:spielwiese|assets)/[^'"?]+\.(?:js|css|json))(?:\?v=[^'"]*)?\1""")
 
 
 def stempel(datei: Path) -> str:
@@ -46,18 +51,22 @@ def main() -> int:
 
     fehlend, geaendert = set(), 0
 
-    # Modul-Einbindungen in den eigenen Skripten
+    # Was die eigenen Skripte nachladen
     for skript in sorted((ordner / "assets").glob("*.js")):
         text = skript.read_text(encoding="utf-8")
 
         def ersetze_import(treffer: re.Match) -> str:
-            ziel = (ordner / "assets" / treffer.group(2)).resolve()
-            if not ziel.exists():
-                fehlend.add(treffer.group(2))
-                return treffer.group(0)
-            return f"{treffer.group(1)}{treffer.group(2)}?v={stempel(ziel)}{treffer.group(3)}"
+            # Ein Skript löst seine Pfade entweder gegen den eigenen Ordner auf
+            # (import '../spielwiese/…') oder gegen die Seite (new URL('spielwiese/…',
+            # document.baseURI)). Beides kommt vor, also werden beide Wege probiert.
+            pfad = treffer.group(2)
+            for ziel in ((ordner / "assets" / pfad).resolve(), (ordner / pfad).resolve()):
+                if ziel.exists():
+                    return f"{treffer.group(1)}{pfad}?v={stempel(ziel)}{treffer.group(1)}"
+            fehlend.add(pfad)
+            return treffer.group(0)
 
-        neu = IMPORT.sub(ersetze_import, text)
+        neu = IN_JS.sub(ersetze_import, text)
         if neu != text:
             skript.write_text(neu, encoding="utf-8")
             geaendert += 1

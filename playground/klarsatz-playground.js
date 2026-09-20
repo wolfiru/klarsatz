@@ -10,7 +10,6 @@
 // Optionen: beispiel (Kennung des Startprogramms), code (eigener Startcode), basis (Ordner mit den Dateien),
 //           zeitlimitMs (nach so vielen Millisekunden wird ein hängender Lauf abgebrochen),
 //           pyodideUrl (Ordner mit der Pyodide-Laufzeit; ohne Angabe wird das CDN jsdelivr benutzt).
-import { alsHtml, inZeilen, kompiliere, tokenisiere } from "./klarsatz-hervorhebung.js";
 
 class ZeitFehler extends Error {}
 
@@ -134,6 +133,11 @@ export async function erstelle(wurzel, opt = {}) {
   // So holt ein Browser nach einer Änderung auch beispiele.json und klarsatz-py.zip neu,
   // statt eine alte Fassung aus dem Zwischenspeicher zu nehmen.
   const stempel = new URL(import.meta.url).search;
+  // Auch die Hervorhebung bekommt den Stempel mit. Als feste Einbindung am Dateikopf
+  // bliebe sie ungestempelt — und damit womöglich in einer alten Fassung im
+  // Zwischenspeicher, während alles andere schon neu ist.
+  const { alsHtml, inZeilen, kompiliere, tokenisiere } =
+    await import("./klarsatz-hervorhebung.js" + stempel);
   wurzel.innerHTML = HTML;
   const q = (s) => wurzel.querySelector(s);
   const [auswahl, ta, hervor, nummern, ausgabe, befundeListe, status] =
