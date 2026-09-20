@@ -574,6 +574,35 @@ class WegInDieSpielwiese(unittest.TestCase):
         finally:
             ctx.close()
 
+    def test_eine_uebungsaufgabe_laesst_sich_abgeben(self):
+        """Der ganze Weg: Aufgabe wählen, Lösung eintippen, abgeben, Rückmeldung lesen.
+
+        Geprüft wird im selben Worker, in dem das Programm läuft — hier zeigt sich, ob
+        die Kette vom Regeltext in docs/AUFGABEN.md bis zum Haken auf der Seite hält."""
+        self.s.goto(self.basis + "aufgaben.html")
+        self.s.wait_for_selector(".auf-eintrag", timeout=60000)
+        self.assertGreaterEqual(len(self.s.query_selector_all(".auf-eintrag")), 12)
+        self.s.wait_for_function("() => !document.querySelector('.kp-lauf')?.disabled", timeout=240000)
+
+        # Aufgabe 1 ist gewählt; erst eine Lösung, die noch nicht reicht.
+        self.s.fill(".kp-text", 'Zeige "Hallo".')
+        self.s.click("#auf-abgeben")
+        self.s.wait_for_selector(".auf-befund:not([hidden])", timeout=120000)
+        self.s.wait_for_function("() => document.querySelector('.auf-befund').classList.contains('ist-offen')",
+                                 timeout=120000)
+        self.assertIn("Noch nicht", self.s.inner_text(".auf-befund-kopf"))
+        self.assertTrue(self.s.query_selector_all(".auf-befund li.ist-offen"))
+
+        # Dann die Musterlösung — sie muss durchkommen.
+        self.s.click("#auf-loesung")
+        self.s.click("#auf-abgeben")
+        self.s.wait_for_function("() => document.querySelector('.auf-befund').classList.contains('ist-gut')",
+                                 timeout=120000)
+        self.assertIn("Geschafft", self.s.inner_text(".auf-befund-kopf"))
+        self.assertIn("geschafft", self.s.inner_text("#auf-fortschritt").lower())
+        self.assertTrue(self.s.query_selector(".auf-eintrag.ist-fertig"),
+                        "Die geschaffte Aufgabe wird in der Liste nicht abgehakt.")
+
     def test_leeres_blatt_zum_selbertippen(self):
         """Die Aufgaben im Kurs brauchen eine leere Fläche."""
         self.s.goto(self.basis + "spielplatz.html#beispiel=")

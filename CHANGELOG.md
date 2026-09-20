@@ -1,5 +1,22 @@
 # Änderungen
 
+## 0.10.0
+- **Übungsaufgaben, die sich selbst prüfen** — der letzte offene Punkt der Ausbaustufen.
+  `docs/AUFGABEN.md` enthält zwölf Aufgaben von Stufe 1 bis 7, jede mit der Lektion, nach der sie
+  zu schaffen ist. Geprüft wird **nicht auf wortgleiche Ausgabe** — das würde jede Lösung ablehnen,
+  die dasselbe tut und es anders sagt. Stattdessen läuft das Programm mit festen Antworten, und
+  dann zählen Regeln: `enthält`, `enthält nicht`, `letzte Zeile`, `zeilen`, `fragt`, `striche`,
+  `benutzt`, `benutzt nicht`. *„Die Fläche ist 12"* und *„12 Quadratmeter"* sind beide richtig.
+- **Drei Wege hin:** die Seite [Übungsaufgaben](https://www.ruthner.at/klarsatz/aufgaben.html) mit
+  Angabe, Editor und Abgeben-Knopf; `klarsatz --aufgabe 3 meine_loesung.klar` auf der
+  Kommandozeile; und `web.pruefe_aufgabe_json` für alles andere. Geprüft wird überall von
+  `klarsatz/aufgaben.py` — es gibt keine zweite Wahrheit darüber, ob eine Lösung reicht.
+- **Jede Aufgabe bringt eine Gegenprobe mit:** eine absichtlich unzureichende Lösung, die
+  durchfallen *muss*. Ohne sie merkt niemand, wenn eine Regel zu lasch ist. Ein Test verlangt
+  zusätzlich, dass die Gegenprobe an einer Regel scheitert und nicht an einem Syntaxfehler — sonst
+  prüft man den Parser statt der Regeln. Und ein weiterer führt jede Musterlösung mit der Lernstufe
+  ihrer Aufgabe aus: Die Stufe ist ein Versprechen, dass nichts vorkommt, was noch nicht dran war.
+
 ## 0.9.0
 - **Abschnitt „Harte Fragen"** auf der Startseite (`#fragen`): acht Einwände, die gegen ein Projekt
   wie dieses auf der Hand liegen — neue Programmiersprache? für wen? warum nicht gleich Python?

@@ -1,0 +1,572 @@
+[
+ {
+  "nummer": "1",
+  "titel": "Begrüßung",
+  "stufe": 1,
+  "lektion": "nach Lektion 2",
+  "angabe": "Frage nach dem Namen und begrüße die Person damit. Der Name muss in der Antwort vorkommen.",
+  "loesung": "Frage \"Wie heißt du?\" und merke die Antwort als Name.\nZeige \"Hallo, \" und Name und \"!\".\n",
+  "proben": [
+   {
+    "eingaben": [
+     "Wolfgang"
+    ],
+    "regeln": [
+     [
+      "fragt",
+      "1"
+     ],
+     [
+      "zeilen",
+      "1"
+     ],
+     [
+      "enthält",
+      "Wolfgang"
+     ]
+    ],
+    "texte": [
+     "Das Programm fragt einmal.",
+     "Die Ausgabe hat 1 Zeile.",
+     "Die Ausgabe enthält „Wolfgang\"."
+    ]
+   },
+   {
+    "eingaben": [
+     "Mia"
+    ],
+    "regeln": [
+     [
+      "enthält",
+      "Mia"
+     ]
+    ],
+    "texte": [
+     "Die Ausgabe enthält „Mia\"."
+    ]
+   }
+  ]
+ },
+ {
+  "nummer": "2",
+  "titel": "Rechteck",
+  "stufe": 2,
+  "lektion": "nach Lektion 2",
+  "angabe": "Frage nach Länge und Breite eines Rechtecks und zeige die Fläche. Rechne sie aus — schreib sie nicht hin.",
+  "loesung": "Frage \"Wie lang?\" und merke die Antwort als Laenge.\nFrage \"Wie breit?\" und merke die Antwort als Breite.\nZeige \"Die Fläche ist \" und Laenge mal Breite und \" Quadratmeter\".\n",
+  "proben": [
+   {
+    "eingaben": [
+     "4",
+     "3"
+    ],
+    "regeln": [
+     [
+      "fragt",
+      "2"
+     ],
+     [
+      "enthält",
+      "12"
+     ]
+    ],
+    "texte": [
+     "Das Programm fragt 2 Mal.",
+     "Die Ausgabe enthält „12\"."
+    ]
+   },
+   {
+    "eingaben": [
+     "7",
+     "5"
+    ],
+    "regeln": [
+     [
+      "enthält",
+      "35"
+     ],
+     [
+      "benutzt nicht",
+      "35"
+     ]
+    ],
+    "texte": [
+     "Die Ausgabe enthält „35\".",
+     "Im Programm kommt „35\" nicht vor."
+    ]
+   }
+  ]
+ },
+ {
+  "nummer": "3",
+  "titel": "Gerade oder ungerade",
+  "stufe": 3,
+  "lektion": "nach Lektion 3",
+  "angabe": "Frage nach einer ganzen Zahl und sage, ob sie gerade oder ungerade ist.",
+  "loesung": "Frage \"Welche Zahl?\" und merke die Antwort als Zahl.\nWenn Zahl durch 2 teilbar ist, zeige \"Die Zahl ist gerade\".\nSonst zeige \"Die Zahl ist ungerade\".\n",
+  "proben": [
+   {
+    "eingaben": [
+     "4"
+    ],
+    "regeln": [
+     [
+      "enthält",
+      "gerade"
+     ],
+     [
+      "enthält nicht",
+      "ungerade"
+     ]
+    ],
+    "texte": [
+     "Die Ausgabe enthält „gerade\".",
+     "Die Ausgabe enthält „ungerade\" nicht."
+    ]
+   },
+   {
+    "eingaben": [
+     "7"
+    ],
+    "regeln": [
+     [
+      "enthält",
+      "ungerade"
+     ]
+    ],
+    "texte": [
+     "Die Ausgabe enthält „ungerade\"."
+    ]
+   },
+   {
+    "eingaben": [
+     "0"
+    ],
+    "regeln": [
+     [
+      "enthält",
+      "gerade"
+     ],
+     [
+      "enthält nicht",
+      "ungerade"
+     ]
+    ],
+    "texte": [
+     "Die Ausgabe enthält „gerade\".",
+     "Die Ausgabe enthält „ungerade\" nicht."
+    ]
+   }
+  ]
+ },
+ {
+  "nummer": "4",
+  "titel": "Die größere Zahl",
+  "stufe": 3,
+  "lektion": "nach Lektion 3",
+  "angabe": "Frage nach zwei Zahlen und zeige die größere. Sind sie gleich groß, sag das.",
+  "loesung": "Frage \"Erste Zahl?\" und merke die Antwort als Erste.\nFrage \"Zweite Zahl?\" und merke die Antwort als Zweite.\nWenn Erste gleich Zweite ist:\n    Zeige \"Beide sind gleich groß\".\nSonst wenn Erste größer als Zweite ist:\n    Zeige Erste.\nSonst:\n    Zeige Zweite.\nEnde.\n",
+  "proben": [
+   {
+    "eingaben": [
+     "3",
+     "9"
+    ],
+    "regeln": [
+     [
+      "letzte zeile",
+      "9"
+     ]
+    ],
+    "texte": [
+     "Die letzte Zeile ist „9\"."
+    ]
+   },
+   {
+    "eingaben": [
+     "12",
+     "4"
+    ],
+    "regeln": [
+     [
+      "letzte zeile",
+      "12"
+     ]
+    ],
+    "texte": [
+     "Die letzte Zeile ist „12\"."
+    ]
+   },
+   {
+    "eingaben": [
+     "5",
+     "5"
+    ],
+    "regeln": [
+     [
+      "enthält",
+      "gleich"
+     ]
+    ],
+    "texte": [
+     "Die Ausgabe enthält „gleich\"."
+    ]
+   }
+  ]
+ },
+ {
+  "nummer": "5",
+  "titel": "Countdown",
+  "stufe": 4,
+  "lektion": "nach Lektion 5",
+  "angabe": "Frage nach einer Zahl und zähle von ihr rückwärts bis 1. Zum Schluss: „Los!\"",
+  "loesung": "Frage \"Von welcher Zahl?\" und merke die Antwort als Start.\nZähle von Start bis 1 rückwärts mit i:\n    Zeige i.\nEnde.\nZeige \"Los!\".\n",
+  "proben": [
+   {
+    "eingaben": [
+     "3"
+    ],
+    "regeln": [
+     [
+      "zeilen",
+      "4"
+     ],
+     [
+      "letzte zeile",
+      "Los!"
+     ],
+     [
+      "enthält",
+      "3"
+     ],
+     [
+      "enthält",
+      "1"
+     ]
+    ],
+    "texte": [
+     "Die Ausgabe hat 4 Zeilen.",
+     "Die letzte Zeile ist „Los!\".",
+     "Die Ausgabe enthält „3\".",
+     "Die Ausgabe enthält „1\"."
+    ]
+   },
+   {
+    "eingaben": [
+     "5"
+    ],
+    "regeln": [
+     [
+      "zeilen",
+      "6"
+     ],
+     [
+      "benutzt",
+      "Zähle"
+     ]
+    ],
+    "texte": [
+     "Die Ausgabe hat 6 Zeilen.",
+     "Im Programm kommt „Zähle\" vor."
+    ]
+   }
+  ]
+ },
+ {
+  "nummer": "6",
+  "titel": "Summe bis n",
+  "stufe": 4,
+  "lektion": "nach Lektion 5",
+  "angabe": "Frage nach einer Zahl und zeige die Summe aller Zahlen von 1 bis dorthin. Bei 10 sind das 55. Rechne — die Formel darfst du benutzen, das Ergebnis nicht hinschreiben.",
+  "loesung": "Frage \"Bis wohin?\" und merke die Antwort als Ziel.\nMerke 0 als Summe.\nZähle von 1 bis Ziel mit i:\n    Erhöhe Summe um i.\nEnde.\nZeige Summe.\n",
+  "proben": [
+   {
+    "eingaben": [
+     "10"
+    ],
+    "regeln": [
+     [
+      "letzte zeile",
+      "55"
+     ],
+     [
+      "benutzt nicht",
+      "55"
+     ]
+    ],
+    "texte": [
+     "Die letzte Zeile ist „55\".",
+     "Im Programm kommt „55\" nicht vor."
+    ]
+   },
+   {
+    "eingaben": [
+     "4"
+    ],
+    "regeln": [
+     [
+      "letzte zeile",
+      "10"
+     ]
+    ],
+    "texte": [
+     "Die letzte Zeile ist „10\"."
+    ]
+   },
+   {
+    "eingaben": [
+     "1"
+    ],
+    "regeln": [
+     [
+      "letzte zeile",
+      "1"
+     ]
+    ],
+    "texte": [
+     "Die letzte Zeile ist „1\"."
+    ]
+   }
+  ]
+ },
+ {
+  "nummer": "7",
+  "titel": "Das Einmaleins",
+  "stufe": 4,
+  "lektion": "nach Lektion 5",
+  "angabe": "Frage nach einer Zahl und zeige ihre Einmaleins-Reihe von 1 bis 10 — eine Zeile je Schritt.",
+  "loesung": "Frage \"Welche Reihe?\" und merke die Antwort als Reihe.\nZähle von 1 bis 10 mit i:\n    Zeige Reihe und \" mal \" und i und \" ist \" und Reihe mal i.\nEnde.\n",
+  "proben": [
+   {
+    "eingaben": [
+     "7"
+    ],
+    "regeln": [
+     [
+      "zeilen",
+      "10"
+     ],
+     [
+      "enthält",
+      "70"
+     ],
+     [
+      "benutzt",
+      "Zähle"
+     ]
+    ],
+    "texte": [
+     "Die Ausgabe hat 10 Zeilen.",
+     "Die Ausgabe enthält „70\".",
+     "Im Programm kommt „Zähle\" vor."
+    ]
+   },
+   {
+    "eingaben": [
+     "3"
+    ],
+    "regeln": [
+     [
+      "zeilen",
+      "10"
+     ],
+     [
+      "letzte zeile",
+      "3 mal 10 ist 30"
+     ]
+    ],
+    "texte": [
+     "Die Ausgabe hat 10 Zeilen.",
+     "Die letzte Zeile ist „3 mal 10 ist 30\"."
+    ]
+   }
+  ]
+ },
+ {
+  "nummer": "8",
+  "titel": "Eine eigene Aufgabe",
+  "stufe": 5,
+  "lektion": "nach Lektion 7",
+  "angabe": "Schreibe eine Aufgabe namens `Doppelt`, die eine Zahl verdoppelt zurückgibt, und benutze sie dreimal: für 4, für 10 und für eine erfragte Zahl.",
+  "loesung": "Definiere Aufgabe Doppelt von x:\n    Gib x mal 2 zurück.\nEnde.\n\nZeige Doppelt von 4.\nZeige Doppelt von 10.\nFrage \"Welche Zahl?\" und merke die Antwort als Zahl.\nZeige Doppelt von Zahl.\n",
+  "proben": [
+   {
+    "eingaben": [
+     "7"
+    ],
+    "regeln": [
+     [
+      "zeilen",
+      "3"
+     ],
+     [
+      "enthält",
+      "8"
+     ],
+     [
+      "enthält",
+      "20"
+     ],
+     [
+      "letzte zeile",
+      "14"
+     ],
+     [
+      "benutzt",
+      "Definiere Aufgabe"
+     ]
+    ],
+    "texte": [
+     "Die Ausgabe hat 3 Zeilen.",
+     "Die Ausgabe enthält „8\".",
+     "Die Ausgabe enthält „20\".",
+     "Die letzte Zeile ist „14\".",
+     "Im Programm kommt „Definiere Aufgabe\" vor."
+    ]
+   }
+  ]
+ },
+ {
+  "nummer": "9",
+  "titel": "Die längste Eingabe",
+  "stufe": 6,
+  "lektion": "nach Lektion 8",
+  "angabe": "Frage dreimal nach einem Wort, sammle die Wörter in einer Liste und zeige am Ende das längste.",
+  "loesung": "Erstelle eine Liste namens Woerter.\nWiederhole 3 Mal:\n    Frage \"Ein Wort?\" und merke die Antwort als Wort.\n    Füge Wort zur Woerter hinzu.\nEnde.\n\nMerke das erste Element von Woerter als Laengstes.\nFür jedes Wort in Woerter:\n    Wenn die Länge von Wort größer als die Länge von Laengstes ist:\n        Setze Laengstes auf Wort.\n    Ende.\nEnde.\nZeige Laengstes.\n",
+  "proben": [
+   {
+    "eingaben": [
+     "Hund",
+     "Nashorn",
+     "Igel"
+    ],
+    "regeln": [
+     [
+      "fragt",
+      "3"
+     ],
+     [
+      "letzte zeile",
+      "Nashorn"
+     ],
+     [
+      "benutzt",
+      "Liste"
+     ]
+    ],
+    "texte": [
+     "Das Programm fragt 3 Mal.",
+     "Die letzte Zeile ist „Nashorn\".",
+     "Im Programm kommt „Liste\" vor."
+    ]
+   },
+   {
+    "eingaben": [
+     "aa",
+     "b",
+     "c"
+    ],
+    "regeln": [
+     [
+      "letzte zeile",
+      "aa"
+     ]
+    ],
+    "texte": [
+     "Die letzte Zeile ist „aa\"."
+    ]
+   }
+  ]
+ },
+ {
+  "nummer": "10",
+  "titel": "Der Kassenzettel",
+  "stufe": 7,
+  "lektion": "nach Lektion 9",
+  "angabe": "Lege eine Tabelle mit mindestens drei Waren und ihren Preisen an, zeige jede Zeile einzeln und darunter die Summe.",
+  "loesung": "Erstelle eine Tabelle namens Preise mit \"Brot\" als 3 und \"Milch\" als 1 und \"Käse\" als 6.\n\nMerke 0 als Summe.\nFür jede Ware in Preise:\n    Zeige Ware und \": \" und Wert für Ware in Preise.\n    Erhöhe Summe um Wert für Ware in Preise.\nEnde.\nZeige \"Summe: \" und Summe.\n",
+  "proben": [
+   {
+    "eingaben": [],
+    "regeln": [
+     [
+      "zeilen",
+      "4"
+     ],
+     [
+      "enthält",
+      "Summe"
+     ],
+     [
+      "benutzt",
+      "Tabelle"
+     ],
+     [
+      "fragt",
+      "0"
+     ]
+    ],
+    "texte": [
+     "Die Ausgabe hat 4 Zeilen.",
+     "Die Ausgabe enthält „Summe\".",
+     "Im Programm kommt „Tabelle\" vor.",
+     "Das Programm fragt 0 Mal."
+    ]
+   }
+  ]
+ },
+ {
+  "nummer": "11",
+  "titel": "Ein Quadrat",
+  "stufe": 7,
+  "lektion": "nach Lektion 2 des Zeichenkurses",
+  "angabe": "Zeichne ein Quadrat mit vier gleich langen Seiten — mit einer Schleife, nicht mit vier Sätzen.",
+  "loesung": "Wiederhole 4 Mal:\n    Gehe 80 Schritte vor.\n    Drehe dich um 90 Grad nach rechts.\nEnde.\n",
+  "proben": [
+   {
+    "eingaben": [],
+    "regeln": [
+     [
+      "striche",
+      "4"
+     ],
+     [
+      "benutzt",
+      "Wiederhole"
+     ]
+    ],
+    "texte": [
+     "Die Zeichnung hat 4 Striche.",
+     "Im Programm kommt „Wiederhole\" vor."
+    ]
+   }
+  ]
+ },
+ {
+  "nummer": "12",
+  "titel": "Eine Treppe",
+  "stufe": 7,
+  "lektion": "nach Lektion 5 des Zeichenkurses",
+  "angabe": "Zeichne eine Treppe mit fünf Stufen: immer ein Stück nach rechts, dann ein Stück nach oben. Das sind zehn Striche.",
+  "loesung": "Drehe dich um 90 Grad nach rechts.\nWiederhole 5 Mal:\n    Gehe 30 Schritte vor.\n    Drehe dich um 90 Grad nach links.\n    Gehe 30 Schritte vor.\n    Drehe dich um 90 Grad nach rechts.\nEnde.\n",
+  "proben": [
+   {
+    "eingaben": [],
+    "regeln": [
+     [
+      "striche",
+      "10"
+     ],
+     [
+      "benutzt",
+      "Wiederhole"
+     ]
+    ],
+    "texte": [
+     "Die Zeichnung hat 10 Striche.",
+     "Im Programm kommt „Wiederhole\" vor."
+    ]
+   }
+  ]
+ }
+]

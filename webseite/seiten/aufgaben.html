@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Zwölf Übungsaufgaben zu Klarsatz, die sich selbst prüfen: Angabe lesen, Programm schreiben, abgeben — die Rückmeldung sagt, welche Regel noch offen ist.">
+<meta name="theme-color" content="#0c0e0b">
+<title>Übungsaufgaben — Klarsatz</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230c0e0b'/%3E%3Crect x='14' y='20' width='28' height='3' rx='1.5' fill='%23d9b45a'/%3E%3Crect x='14' y='30' width='36' height='3' rx='1.5' fill='%23f3efe6' opacity='.6'/%3E%3Crect x='14' y='40' width='20' height='3' rx='1.5' fill='%23f3efe6' opacity='.6'/%3E%3Crect x='38' y='40' width='4' height='3' rx='1.5' fill='%23d9b45a'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="assets/style.css">
+<link rel="stylesheet" href="spielwiese/klarsatz-playground.css">
+<link rel="stylesheet" href="assets/spielwiese-design.css">
+</head>
+<body>
+
+<canvas id="manuskript"></canvas>
+<div class="bg-overlay"></div>
+<div class="grain"></div>
+
+<nav class="nav">
+    <div class="nav-start">
+        <a class="heim" href="/" aria-label="Zur Startseite von ruthner.at">
+            <img src="/monogram.png" alt="" width="414" height="516" decoding="async">
+            <span>ruthner<em>.at</em></span>
+        </a>
+        <span class="nav-teiler" aria-hidden="true"></span>
+        <a class="brand" href="index.html"><span class="brand-mark"></span><span>Klar<em>satz</em></span></a>
+    </div>
+    <div class="nav-links">
+        <a href="index.html">Sprache</a>
+        <a href="tutorial.html">Tutorial</a>
+        <a href="doku.html">Dokumentation</a>
+        <a href="doku-referenz.html">Referenz</a>
+        <a href="aufgaben.html" class="aktiv">Aufgaben</a>
+        <a href="spielplatz.html" class="nav-cta">Spielplatz</a>
+    </div>
+</nav>
+
+<main class="sp-main">
+<div class="sp-huelle">
+
+    <div class="sp-kopf">
+        <div>
+            <p class="kicker" style="margin-bottom:0">Übungsaufgaben</p>
+            <h1>Zwölf Aufgaben, die sich <em>selbst prüfen.</em></h1>
+        </div>
+    </div>
+
+    <p class="sp-einleitung">
+        Such dir eine Aufgabe aus, schreib dein Programm und drück <em>Abgeben</em>. Geprüft wird nicht,
+        ob du dieselben Wörter benutzt wie ich — dein Programm wird mit festen Antworten ausgeführt, und
+        dann wird nachgesehen, ob das Wesentliche stimmt. Was noch fehlt, steht danach hier; wie es geht,
+        nicht. Jede Aufgabe nennt ihre Lernstufe: Du brauchst nie etwas, das im
+        <a href="tutorial.html">Kurs</a> noch nicht dran war.
+    </p>
+
+    <div class="auf-layout">
+        <nav class="auf-liste" id="auf-liste" aria-label="Aufgaben"></nav>
+
+        <div class="auf-haupt">
+            <div class="auf-angabe">
+                <p class="auf-nummer" id="auf-nummer">Aufgabe</p>
+                <h2 id="auf-titel">…</h2>
+                <p id="auf-text"></p>
+                <details class="auf-regeln">
+                    <summary>Geprüft wird</summary>
+                    <div id="auf-regeln"></div>
+                </details>
+            </div>
+
+            <div id="spielwiese"></div>
+
+            <div class="auf-aktionen">
+                <button type="button" class="btn btn-primary" id="auf-abgeben">Abgeben</button>
+                <button type="button" class="btn btn-link" id="auf-loesung">Musterlösung zeigen</button>
+                <span class="auf-fortschritt" id="auf-fortschritt"></span>
+            </div>
+
+            <div class="auf-befund" id="auf-befund" hidden></div>
+        </div>
+    </div>
+
+</div>
+</main>
+
+<footer>
+    <div class="foot-inner">
+        <span>© <span id="jahr"></span> ruthner.at · Klarsatz <span data-download="version">0.10.0</span></span>
+        <span><a href="/">ruthner.at</a> &nbsp;·&nbsp; <a href="index.html">Sprache</a> &nbsp;·&nbsp; <a href="tutorial.html">Tutorial</a> &nbsp;·&nbsp; <a href="doku.html">Dokumentation</a> &nbsp;·&nbsp; <a href="spielplatz.html">Spielplatz</a> &nbsp;·&nbsp; <a href="aufgaben.html">Aufgaben</a> &nbsp;·&nbsp; <a href="https://github.com/wolfiru/klarsatz" rel="noopener">GitHub</a> &nbsp;·&nbsp; <a href="mailto:wolfgang@ruthner.at">wolfgang@ruthner.at</a></span>
+    </div>
+</footer>
+
+<script src="assets/manuskript-bg.js"></script>
+<script src="assets/app.js"></script>
+<script type="module" src="assets/aufgaben.js"></script>
+</body>
+</html>

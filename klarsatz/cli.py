@@ -5,6 +5,7 @@ import random
 import sys
 import time
 from dataclasses import replace
+from pathlib import Path
 
 from . import __version__
 from .dateisystem import KeinDateisystem, OrdnerDateisystem
@@ -32,6 +33,9 @@ def baue_parser():
     was.add_argument("--nach-python", action="store_true", dest="nach_python",
                      help="das Programm in lesbares Python übersetzen und ausgeben")
     was.add_argument("--stufen", action="store_true", help="die Lernstufen mit ihren Wörtern anzeigen")
+    was.add_argument("--aufgabe", metavar="NR",
+                     help="die Lösung gegen die Übungsaufgabe NR prüfen (ohne Datei: die Angabe zeigen)")
+    was.add_argument("--aufgaben", action="store_true", help="alle Übungsaufgaben auflisten")
     was.add_argument("--tokens", action="store_true", help="die vom Lexer gelesenen Wörter anzeigen")
     was.add_argument("--ast", action="store_true", help="den Syntaxbaum anzeigen")
 
@@ -86,12 +90,82 @@ def _lies_datei(pfad):
     return None
 
 
+def _aufgabenliste():
+    """Die Übungsaufgaben aus docs/AUFGABEN.md — sie liegen im Archiv neben dem Interpreter."""
+    from . import aufgaben as modul
+    for ort in (Path(__file__).resolve().parent.parent / "docs" / "AUFGABEN.md",
+                Path.cwd() / "docs" / "AUFGABEN.md", Path.cwd() / "AUFGABEN.md"):
+        if ort.exists():
+            return modul.lies(ort.read_text(encoding="utf-8"))
+    return None
+
+
+def _uebungsaufgabe(args):
+    """--aufgaben listet auf, --aufgabe NR zeigt die Angabe oder prüft eine Lösung."""
+    from . import web
+    from .aufgaben import pruefe
+
+    liste = _aufgabenliste()
+    if liste is None:
+        print("Ich finde docs/AUFGABEN.md nicht. Im entpackten Archiv liegt die Datei daneben.",
+              file=sys.stderr)
+        return 2
+
+    if args.aufgaben:
+        print("Übungsaufgaben — lösen mit: klarsatz --aufgabe NR meine_loesung.klar\n")
+        for a in liste:
+            print(f"  {a.nummer:>2}  {a.titel:<24} Stufe {a.stufe} · {a.lektion}")
+        return 0
+
+    treffer = [a for a in liste if a.nummer == str(args.aufgabe).lstrip("Aa")]
+    if not treffer:
+        print(f"Aufgabe {args.aufgabe} gibt es nicht. '--aufgaben' zeigt alle.", file=sys.stderr)
+        return 2
+    a = treffer[0]
+
+    if args.datei is None:
+        print(f"Aufgabe {a.nummer} — {a.titel}   (Stufe {a.stufe} · {a.lektion})\n")
+        print(a.angabe + "\n")
+        print("Geprüft wird:")
+        for probe in a.proben:
+            wenn = (" (Eingaben: " + ", ".join(probe.eingaben) + ")") if probe.eingaben else ""
+            print(f"  Durchlauf{wenn}")
+            for regel in probe.regeln:
+                print(f"    · {regel.text}")
+        print(f"\nLösen: klarsatz --aufgabe {a.nummer} meine_loesung.klar")
+        return 0
+
+    quelle = _lies_datei(args.datei)
+    if quelle is None:
+        return 2
+
+    befund = pruefe(a, quelle, lambda q, antworten: web.laufe(q, antworten=antworten, seed=0))
+    print(f"Aufgabe {a.nummer} — {a.titel}\n")
+    for nr, (bestanden, regeln, fehler) in enumerate(befund.proben, 1):
+        eingaben = a.proben[nr - 1].eingaben
+        wenn = (" mit " + ", ".join(eingaben)) if eingaben else ""
+        print(f"Durchlauf {nr}{wenn}: {'bestanden' if bestanden else 'noch nicht'}")
+        if fehler:
+            print("  " + fehler.replace("\n", "\n  "))
+        for erfuellt, text in regeln:
+            print(f"  {'✓' if erfuellt else '✗'} {text}")
+    print()
+    if befund.bestanden:
+        print("Geschafft.")
+        return 0
+    print("Noch nicht. Was fehlt, steht oben mit ✗ — die Musterlösung steht in docs/AUFGABEN.md.")
+    return 1
+
+
 def main(argv=None):
     args = baue_parser().parse_args(argv)
 
     if args.stufen:
         print(stufen.uebersicht())
         return 0
+
+    if args.aufgaben or args.aufgabe:
+        return _uebungsaufgabe(args)
 
     if args.stufe is not None and not 1 <= args.stufe <= HOECHSTE_STUFE:
         print(f"Die Stufe muss zwischen 1 und {HOECHSTE_STUFE} liegen. "

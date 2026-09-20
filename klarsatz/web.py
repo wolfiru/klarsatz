@@ -142,6 +142,33 @@ def laufe_json(quelltext, antworten_json="[]", seed=0, melde=None, stufe=None):
     return json.dumps(ergebnis.als_dict(), ensure_ascii=False)
 
 
+def pruefe_aufgabe_json(quelltext, aufgabe_json, seed=0):
+    """Prüft eine Lösung gegen die Regeln einer Übungsaufgabe — für die Aufgabenseite.
+
+    `aufgabe_json` enthält nur, was zum Prüfen nötig ist:
+    {"proben": [{"eingaben": ["4", "3"], "regeln": [["enthält", "12"], …]}]}
+    Zurück kommt, welche Regel erfüllt ist und welche nicht — nie die Lösung."""
+    from .aufgaben import Aufgabe, Probe, Regel, pruefe as _pruefe
+
+    daten = json.loads(aufgabe_json)
+    aufgabe = Aufgabe(nummer=str(daten.get("nummer", "")), titel=daten.get("titel", ""),
+                      stufe=int(daten.get("stufe", 0)), lektion="", angabe="")
+    for p in daten.get("proben", []):
+        aufgabe.proben.append(Probe(eingaben=[str(e) for e in p.get("eingaben", [])],
+                                    regeln=[Regel(art, str(wert)) for art, wert in p.get("regeln", [])]))
+
+    befund = _pruefe(aufgabe, quelltext,
+                     lambda q, a: laufe(q, antworten=a, seed=int(seed)))
+    return json.dumps({
+        "bestanden": befund.bestanden,
+        "offen": befund.offen,
+        "proben": [{"bestanden": b,
+                    "regeln": [{"erfuellt": e, "text": txt} for e, txt in regeln],
+                    "fehler": fehler}
+                   for b, regeln, fehler in befund.proben],
+    }, ensure_ascii=False)
+
+
 def pruefe_json(quelltext):
     return json.dumps([{"schwere": b.schwere, "zeile": b.zeile, "spalte": b.spalte, "laenge": b.laenge,
                         "meldung": b.meldung, "code": b.code} for b in _pruefe(quelltext)], ensure_ascii=False)

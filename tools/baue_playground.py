@@ -83,8 +83,21 @@ def main():
         beispiele.append({"id": datei.stem, "gruppe": "Programme zum Ausprobieren", "titel": f"{nr} {PROGRAMM_TITEL[nr]}",
                           "beschreibung": beschreibung(code), "code": code, "fragt": "Frage " in code})
     (ziel / "beispiele.json").write_text(json.dumps(beispiele, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+
+    # Die Übungsaufgaben für die Aufgabenseite. Quelle ist docs/AUFGABEN.md — damit es
+    # die Aufgaben nur einmal gibt und die Seite nicht von der Musterlösung abweichen kann.
+    from klarsatz.aufgaben import lies as lies_aufgaben
+    aufgaben = [{"nummer": a.nummer, "titel": a.titel, "stufe": a.stufe, "lektion": a.lektion,
+                 "angabe": a.angabe, "loesung": a.loesung,
+                 "proben": [{"eingaben": pr.eingaben,
+                             "regeln": [[r.art, r.wert] for r in pr.regeln],
+                             "texte": [r.text for r in pr.regeln]} for pr in a.proben]}
+                for a in lies_aufgaben((WURZEL / "docs" / "AUFGABEN.md").read_text(encoding="utf-8"))]
+    (ziel / "aufgaben.json").write_text(json.dumps(aufgaben, ensure_ascii=False, indent=1) + "\n",
+                                        encoding="utf-8")
     shutil.copy(WURZEL / "editor" / "hervorhebung.json", ziel / "hervorhebung.json")
-    print(f"playground/: klarsatz-py.zip, beispiele.json ({len(beispiele)} Programme), hervorhebung.json")
+    print(f"playground/: klarsatz-py.zip, beispiele.json ({len(beispiele)} Programme), "
+          f"aufgaben.json ({len(aufgaben)} Aufgaben), hervorhebung.json")
 
 
 if __name__ == "__main__":

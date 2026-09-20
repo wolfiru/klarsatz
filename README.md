@@ -57,6 +57,12 @@ Danach gibt es einen zweiten Kurs: **[Zeichnen](docs/TUTORIAL-ZEICHNEN.md)** in 
 vom ersten Strich bis zum bewegten Bild ([auch als
 Webseite](https://www.ruthner.at/klarsatz/tutorial-zeichnen.html)).
 
+Dazu **[zwölf Übungsaufgaben](docs/AUFGABEN.md)**, die sich selbst prüfen. Geprüft wird nicht auf
+wortgleiche Ausgabe, sondern auf das Wesentliche: Dein Programm wird mit festen Antworten
+ausgeführt, und dann wird nachgesehen, ob die Zahl vorkommt, ob überhaupt gefragt wird, ob eine
+Schleife benutzt wurde. Im Browser auf der [Aufgabenseite](https://www.ruthner.at/klarsatz/aufgaben.html),
+auf der Kommandozeile mit `klarsatz --aufgabe 3 meine_loesung.klar`.
+
 Nichts darin ist abgetippt. Ein Test führt jedes Beispiel aus und vergleicht Ausgaben,
 Fehlermeldungen und die Python-Übersetzung mit dem, was im Text steht — beim Grafikkurs sogar die
 Bilder selbst: Anzahl der Striche, Farben, und ob eine Figur geschlossen ist.

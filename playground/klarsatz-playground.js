@@ -594,6 +594,20 @@ export async function erstelle(wurzel, opt = {}) {
     holeCode: () => ta.value,
     setzeCode,
     starte,
+    /* Für die Aufgabenseite: das Geschriebene gegen die Regeln einer Übungsaufgabe
+       laufen lassen. Geprüft wird im selben Worker, mit demselben Interpreter —
+       es gibt also keine zweite Wahrheit darüber, was das Programm tut. */
+    async pruefeAufgabe(aufgabe) {
+      setzeStatus("Wird geprüft …");
+      try {
+        const befund = await python.aufruf("pruefe_aufgabe", { quelltext: ta.value, aufgabe });
+        setzeStatus(befund.bestanden ? "Bestanden." : "Noch nicht.", befund.bestanden ? "" : "fehler");
+        return befund;
+      } catch (fehler) {
+        setzeStatus("Die Prüfung hat nicht geklappt.", "fehler");
+        throw fehler;
+      }
+    },
     zerstoere() { laufNummer++; taktStoppen(); python.beenden(); wurzel.replaceChildren(); },
   };
 }

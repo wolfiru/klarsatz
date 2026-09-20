@@ -1,4 +1,4 @@
-# Übergabe – Stand 20.09.2026, Version 0.9.0
+# Übergabe – Stand 20.09.2026, Version 0.10.0
 
 > **Umbenannt:** Das Projekt hieß bis 18.09.2026 *Klartext*; der Name war schon vergeben.
 > Alles heißt jetzt **Klarsatz** — nur die Dateiendung der Programme bleibt `.klar`.
@@ -28,7 +28,7 @@ die Weiterarbeit (z. B. mit Claude Code auf dem Raspberry Pi). Arbeitsregeln: `C
   SVG-Ausgabe der Kommandozeile und Python-Übersetzung.
 - **Versionsverwaltung:** seit 19.09.2026 ein Git-Repository in `/home/pi/klarsatz` (Zweig `main`).
   Erzeugte Dateien liegen bewusst mit im Repository, damit ein ausgecheckter Stand sofort läuft.
-  Versionssprünge sind als `vX.Y.Z` markiert, zuletzt `v0.9.0`.
+  Versionssprünge sind als `vX.Y.Z` markiert, zuletzt `v0.10.0`.
 - **GitHub:** seit 19.09.2026 öffentlich unter **https://github.com/wolfiru/klarsatz** mit
   README, Lizenz, CI (Tests + wöchentlicher Fuzz-Lauf). `git push origin main` schiebt hin;
   Marken brauchen ein eigenes `git push origin vX.Y.Z`.
@@ -258,7 +258,7 @@ Kleinschreibung nicht (Python schon → Namensspeicher), und Feldnamen dürfen g
   Stellen, an denen es abweicht.
 </details>
 
-### 4. Übungsaufgaben mit Selbstprüfung
+### 4. Übungsaufgaben mit Selbstprüfung — **gebaut am 20.09.2026 (0.10.0)**
 * **Ansatz:** `web.laufe(quelltext, antworten, seed)` ist bereits deterministisch — eine Aufgabe ist damit
   ein Datensatz aus Angabe, vorgegebenen Antworten und Prüfregel. Dazu ein Test, der alle Musterlösungen
   durchspielt (wie `tools/pruefe_webseite.py` es für die Doku-Beispiele tut), und eine Übungsseite.
@@ -266,6 +266,20 @@ Kleinschreibung nicht (Python schon → Namensspeicher), und Feldnamen dürfen g
   „letzte Zeile ist 42").
 * Überschneidet sich stark mit dem noch offenen **Tutorial** (Punkt 2 der Liste oben): beides sind Lektionen
   mit lauffähigem Code. Sinnvollerweise zusammen planen, sonst entstehen zwei Systeme für dasselbe.
+
+**So ist es geworden.** Genau wie geplant, ohne zweites System: Die Aufgaben stehen als Markdown in
+`docs/AUFGABEN.md` — dieselbe Form wie die Kurse, und jede Aufgabe nennt die Lektion, nach der sie zu
+schaffen ist. Geprüft wird über Regeln statt über wortgleiche Ausgabe (`enthält`, `letzte Zeile`,
+`zeilen`, `fragt`, `striche`, `benutzt`, `benutzt nicht`), sodass eigene Formulierungen erlaubt
+bleiben. `klarsatz/aufgaben.py` liest und prüft; `web.pruefe_aufgabe_json` macht dasselbe im Browser,
+`--aufgabe NR datei.klar` auf der Kommandozeile, `aufgaben.html` als Seite mit Editor und Abgeben.
+
+Zwei Dinge haben sich als wichtig herausgestellt:
+* **Jede Aufgabe bringt eine Gegenprobe mit** — eine absichtlich unzureichende Lösung, die durchfallen
+  *muss*. Ohne sie merkt niemand, wenn eine Regel zu lasch ist. Ein Test verlangt außerdem, dass die
+  Gegenprobe an einer Regel scheitert und nicht an einem Syntaxfehler: Sonst prüft man den Parser.
+* **Die Lernstufe ist ein Versprechen.** Ein Test führt jede Musterlösung mit `stufe=` der Aufgabe aus —
+  verlangt eine Aufgabe mehr Sprache, als sie ankündigt, schlägt er an.
 
 **Vorgeschlagene Reihenfolge:** 1 → 2 → 4 (mit Tutorial) → 3. Die Stufen geben Doku und Übungen ihre Ordnung,
 die Grafik macht den Spielplatz attraktiv, die Python-Brücke ist eigenständig und jederzeit nachrüstbar.

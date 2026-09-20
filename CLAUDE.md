@@ -29,6 +29,11 @@ python3 tools/veroeffentliche_webseite.py     # Seiten + Bausteine, baut die Kap
 python3 tools/veroeffentliche_spielwiese.py   # playground/ -> spielwiese/
 python3 tools/baue_archiv.py                  # ZIP + Prüfsumme + Versionsangaben in den Seiten
 ```
+Die **Übungsaufgaben** stehen in `docs/AUFGABEN.md` (Angabe, Proben mit Regeln, Musterlösung und
+Gegenprobe). `tools/baue_playground.py` macht daraus `playground/aufgaben.json` für die Seite
+`aufgaben.html`; geprüft wird mit `klarsatz/aufgaben.py` — im Browser über `web.pruefe_aufgabe_json`,
+auf der Kommandozeile mit `--aufgabe`. Neue Aufgabe: immer mit Gegenprobe, sonst schlägt der Test an.
+
 Die **Kurse** sind die Ausnahme: `docs/TUTORIAL.md` und `docs/TUTORIAL-ZEICHNEN.md` werden als
 Markdown geschrieben (dort prüfen `tests/test_tutorial.py` und `tests/test_tutorial_zeichnen.py`
 jeden Block nach) und von `tools/baue_tutorial.py` zu `tutorial.html` bzw. `tutorial-zeichnen.html`

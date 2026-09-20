@@ -34,6 +34,8 @@ self.onmessage = async (e) => {
                             args.stufe ?? null);
     }
     else if (art === "pruefe") text = web.pruefe_json(args.quelltext);
+    else if (art === "pruefe_aufgabe")
+      text = web.pruefe_aufgabe_json(args.quelltext, JSON.stringify(args.aufgabe), args.seed ?? 0);
     else if (art === "formatiere") text = web.formatiere_json(args.quelltext);
     else if (art === "nach_python") text = web.nach_python_json(args.quelltext);
     else throw new Error("Unbekannter Auftrag: " + art);

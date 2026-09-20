@@ -243,6 +243,7 @@ GERUEST = """<!DOCTYPE html>
         <a href="index.html">Sprache</a>
         <a href="tutorial.html">Tutorial</a>
         <a href="doku.html">Dokumentation</a>
+        <a href="aufgaben.html">Aufgaben</a>
         <a href="spielplatz.html" class="nav-cta">Spielplatz</a>
     </div>
 </nav>
@@ -274,7 +275,7 @@ __BLAETTERN__
 
 <footer>
     <div class="foot-inner">
-        <span>© <span id="jahr"></span> ruthner.at · Klarsatz <span data-download="version">0.9.0</span></span>
+        <span>© <span id="jahr"></span> ruthner.at · Klarsatz <span data-download="version">0.10.0</span></span>
         <span><a href="/">ruthner.at</a> &nbsp;·&nbsp; <a href="index.html">Sprache</a> &nbsp;·&nbsp; <a href="doku.html">Dokumentation</a> &nbsp;·&nbsp; <a href="spielplatz.html">Spielplatz</a> &nbsp;·&nbsp; <a href="https://github.com/wolfiru/klarsatz" rel="noopener">GitHub</a> &nbsp;·&nbsp; <a href="mailto:wolfgang@ruthner.at">wolfgang@ruthner.at</a></span>
     </div>
 </footer>
