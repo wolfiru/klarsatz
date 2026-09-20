@@ -24,7 +24,10 @@
 .kp *, .kp *::before, .kp *::after { box-sizing: border-box; }
 
 .kp-leiste { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; padding: .6rem .75rem; background: var(--kp-bg2); border-bottom: 1px solid var(--kp-rand); }
-.kp-beispiel, .kp-stufe { display: flex; align-items: center; gap: .4rem; color: var(--kp-dezent); }
+.kp-beispiel, .kp-stufe { display: flex; align-items: center; gap: .4rem; color: var(--kp-dezent); min-width: 0; max-width: 100%; }
+/* Ein langer Beispielname ("21 Spiel des Lebens") machte das Auswahlfeld auf schmalen
+   Bildschirmen breiter als die Seite — es darf schrumpfen und kürzen. */
+.kp-auswahl, .kp-stufenwahl { max-width: 100%; min-width: 0; }
 .kp-stufenwahl { font: inherit; color: var(--kp-text); background: var(--kp-bg); border: 1px solid var(--kp-rand); border-radius: 6px; padding: .3rem .6rem; }
 .kp-auswahl, .kp-knopf { font: inherit; color: var(--kp-text); background: var(--kp-bg); border: 1px solid var(--kp-rand); border-radius: 6px; padding: .3rem .6rem; }
 .kp-knopf { cursor: pointer; }

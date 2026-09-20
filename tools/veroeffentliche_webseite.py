@@ -42,9 +42,13 @@ def main() -> int:
         kopiert += 1
 
     (ziel / "assets").mkdir(exist_ok=True)
-    for datei in sorted((QUELLE / "assets").iterdir()):
+    for datei in sorted((QUELLE / "assets").rglob("*")):
         if datei.is_file():
-            shutil.copy2(datei, ziel / "assets" / datei.name)
+            # Auch Unterordner (assets/fonts/) — die Schriften liegen seit 0.10.1
+            # im Projekt, statt bei jedem Seitenaufruf von Google geholt zu werden.
+            unterhalb = datei.relative_to(QUELLE / "assets")
+            (ziel / "assets" / unterhalb).parent.mkdir(parents=True, exist_ok=True)
+            shutil.copy2(datei, ziel / "assets" / unterhalb)
             kopiert += 1
 
     print(f"{kopiert} Dateien nach {ziel} kopiert")

@@ -1,0 +1,9 @@
+Die Schriften in diesem Ordner stammen von Google Fonts und stehen unter der
+SIL Open Font License 1.1:
+
+  Fraunces        © Undercase Type          https://github.com/undercasetype/Fraunces
+  Manrope         © Mikhail Sharanda        https://github.com/sharanda/manrope
+  JetBrains Mono  © JetBrains               https://github.com/JetBrains/JetBrainsMono
+
+Der vollständige Lizenztext steht in den jeweiligen Projekten. Die OFL erlaubt das
+Mitliefern und Bereitstellen der Dateien; die Schriften selbst wurden nicht verändert.

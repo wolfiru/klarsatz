@@ -103,8 +103,10 @@ class UeberallEingesetzt(unittest.TestCase):
     def test_jede_seite_nennt_ihre_eigene_adresse(self):
         """Ohne canonical zählt eine geteilte Adresse mit Anhängsel als eigene Seite."""
         for seite in sorted((WURZEL / "webseite" / "seiten").glob("*.html")):
+            text = seite.read_text(encoding="utf-8")
+            if 'name="robots" content="noindex"' in text:
+                continue          # die Fehlerseite soll gar nicht erst im Index landen
             with self.subTest(seite=seite.name):
-                text = seite.read_text(encoding="utf-8")
                 treffer = re.search(r'rel="canonical" href="([^"]+)"', text)
                 self.assertIsNotNone(treffer, "Keine canonical-Angabe.")
                 erwartet = "" if seite.name == "index.html" else seite.name

@@ -6,25 +6,31 @@
 <meta name="description" content="Zwölf Übungsaufgaben zu Klarsatz, die sich selbst prüfen: Angabe lesen, Programm schreiben, abgeben — die Rückmeldung sagt, welche Regel noch offen ist.">
 <meta name="theme-color" content="#0c0e0b">
 <title>Übungsaufgaben — Klarsatz</title>
+<meta property="og:type" content="website">
+<meta property="og:title" content="Übungsaufgaben — Klarsatz">
+<meta property="og:description" content="Zwölf Aufgaben, die sich selbst prüfen: Angabe lesen, Programm schreiben, abgeben.">
+<meta property="og:url" content="https://www.ruthner.at/klarsatz/aufgaben.html">
+<meta property="og:image" content="https://www.ruthner.at/klarsatz/assets/klarsatz-vorschau.png">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="canonical" href="https://www.ruthner.at/klarsatz/aufgaben.html">
 <link rel="icon" href="assets/klarsatz-signet-klein.svg" type="image/svg+xml">
+<link rel="icon" href="assets/favicon.ico" sizes="48x48">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="assets/style.css">
 <link rel="stylesheet" href="spielwiese/klarsatz-playground.css">
 <link rel="stylesheet" href="assets/spielwiese-design.css">
 </head>
 <body>
+<a class="zum-inhalt" href="#inhalt">Zum Inhalt springen</a>
 
-<canvas id="manuskript"></canvas>
-<div class="bg-overlay"></div>
-<div class="grain"></div>
+<canvas id="manuskript" aria-hidden="true"></canvas>
+<div class="bg-overlay" aria-hidden="true"></div>
+<div class="grain" aria-hidden="true"></div>
 
-<nav class="nav">
+<nav class="nav" aria-label="Hauptnavigation">
     <div class="nav-start">
         <a class="heim" href="/" aria-label="Zur Startseite von ruthner.at">
-            <img src="/monogram.png" alt="" width="414" height="516" decoding="async">
+            <img src="assets/monogram.png" alt="" width="51" height="64" decoding="async" loading="lazy">
             <span>ruthner<em>.at</em></span>
         </a>
         <span class="nav-teiler" aria-hidden="true"></span>
@@ -40,7 +46,7 @@
     </div>
 </nav>
 
-<main class="sp-main">
+<main id="inhalt" class="sp-main">
 <div class="sp-huelle">
 
     <div class="sp-kopf">
@@ -57,6 +63,25 @@
         nicht. Jede Aufgabe nennt ihre Lernstufe: Du brauchst nie etwas, das im
         <a href="tutorial.html">Kurs</a> noch nicht dran war.
     </p>
+
+    <p class="sp-einleitung sp-klein">
+        <strong>Was gespeichert wird:</strong> Welche Aufgaben du geschafft hast, merkt sich dein
+        eigener Browser (<code>localStorage</code>) — damit die Haken beim nächsten Besuch noch da
+        sind. Das bleibt auf deinem Gerät: Es wird nichts gesendet, nichts ausgewertet und nichts
+        mit einer Person verknüpft. Löschst du die Websitedaten, ist auch der Fortschritt weg.
+        Dein Programm selbst wird nirgends gespeichert (siehe
+        <a href="/impressum.html#datenschutz">Datenschutz</a>).
+    </p>
+
+    <noscript>
+        <div class="notiz warnung" style="margin:20px 0">
+            <span class="notiz-titel">JavaScript ist abgeschaltet</span>
+            <p>Die Aufgaben werden im Browser selbst geprüft und brauchen dafür JavaScript.
+               Ohne es lassen sich die Angaben in
+               <a href="https://github.com/wolfiru/klarsatz/blob/main/docs/AUFGABEN.md" rel="noopener">docs/AUFGABEN.md</a>
+               nachlesen, und auf der Kommandozeile prüft <code>klarsatz --aufgabe NR datei.klar</code>.</p>
+        </div>
+    </noscript>
 
     <div class="auf-layout">
         <nav class="auf-liste" id="auf-liste" aria-label="Aufgaben"></nav>
@@ -90,7 +115,7 @@
 <footer>
     <div class="foot-inner">
         <span>© <span id="jahr"></span> ruthner.at · Klarsatz <span data-download="version">0.10.0</span></span>
-        <span><a href="/">ruthner.at</a> &nbsp;·&nbsp; <a href="index.html">Sprache</a> &nbsp;·&nbsp; <a href="tutorial.html">Tutorial</a> &nbsp;·&nbsp; <a href="doku.html">Dokumentation</a> &nbsp;·&nbsp; <a href="spielplatz.html">Spielplatz</a> &nbsp;·&nbsp; <a href="aufgaben.html">Aufgaben</a> &nbsp;·&nbsp; <a href="https://github.com/wolfiru/klarsatz" rel="noopener">GitHub</a> &nbsp;·&nbsp; <a href="mailto:wolfgang@ruthner.at">wolfgang@ruthner.at</a></span>
+        <span><a href="/">ruthner.at</a> &nbsp;·&nbsp; <a href="index.html">Sprache</a> &nbsp;·&nbsp; <a href="tutorial.html">Tutorial</a> &nbsp;·&nbsp; <a href="doku.html">Dokumentation</a> &nbsp;·&nbsp; <a href="spielplatz.html">Spielplatz</a> &nbsp;·&nbsp; <a href="aufgaben.html">Aufgaben</a> &nbsp;·&nbsp; <a href="https://github.com/wolfiru/klarsatz" rel="noopener">GitHub</a> &nbsp;·&nbsp; <a href="mailto:wolfgang@ruthner.at">wolfgang@ruthner.at</a> &nbsp;·&nbsp; <a href="/impressum.html">Impressum</a> &nbsp;·&nbsp; <a href="/impressum.html#datenschutz">Datenschutz</a> &nbsp;·&nbsp; <a href="https://github.com/wolfiru/klarsatz/blob/main/LICENSE" rel="noopener">MIT-Lizenz</a></span>
     </div>
 </footer>
 

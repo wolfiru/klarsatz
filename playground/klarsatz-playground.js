@@ -104,7 +104,7 @@ const HTML = `
       <option value="5">5 · Eigene Bausteine</option>
       <option value="6">6 · Listen und Tabellen</option>
     </select></label>
-    <button type="button" class="kp-knopf kp-lauf" disabled title="Strg+Enter">▶ Ausführen</button>
+    <button type="button" class="kp-knopf kp-lauf" disabled title="Klarsatz wird noch geladen …">⏳ Klarsatz lädt …</button>
     <button type="button" class="kp-knopf kp-pruefen" disabled>Prüfen</button>
     <button type="button" class="kp-knopf kp-format" disabled>Formatieren</button>
     <button type="button" class="kp-knopf kp-python" disabled title="Dasselbe Programm in Python">Als Python</button>
@@ -115,7 +115,7 @@ const HTML = `
       <pre class="kp-nummern" aria-hidden="true"></pre>
       <div class="kp-eingabebereich">
         <pre class="kp-hervor" aria-hidden="true"></pre>
-        <textarea class="kp-text" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off"
+        <textarea class="kp-text" spellcheck="false" aria-label="Programmtext — Tab rückt ein, Escape springt heraus, Strg+Enter führt aus" autocapitalize="off" autocomplete="off" autocorrect="off"
                   wrap="off" aria-label="Klarsatz-Programm"></textarea>
       </div>
     </div>
@@ -211,6 +211,12 @@ export async function erstelle(wurzel, opt = {}) {
     } else if (e.key === "Tab" && !e.shiftKey) {
       e.preventDefault();
       fuegeEin("    ");
+    } else if (e.key === "Escape") {
+      /* Tab rückt ein, statt weiterzuspringen — sonst käme man beim Programmieren
+         nicht voran. Damit das keine Tastaturfalle wird, führt Escape wieder
+         heraus: auf den Ausführen-Knopf. (Shift+Tab geht ebenfalls zurück.) */
+      e.preventDefault();
+      knopfLauf.focus();
     } else if (e.key === "Enter" && !e.shiftKey && !e.altKey) {
       e.preventDefault();
       const davor = ta.value.slice(0, ta.selectionStart);
@@ -561,9 +567,11 @@ export async function erstelle(wurzel, opt = {}) {
     python.beiTeil = beiTeil;
     ausgabe.append(el("div", "kp-ende", "— abgebrochen —"));
     for (const k of [knopfLauf, knopfPruefen, knopfFormat, knopfPython]) k.disabled = true;
+    knopfLauf.textContent = "⏳ Klarsatz lädt …";
     setzeStatus("Abgebrochen – Klarsatz wird neu geladen …");
     python.bereit.then(() => {
       for (const k of [knopfLauf, knopfPruefen, knopfFormat, knopfPython]) k.disabled = false;
+      knopfLauf.textContent = "▶ Ausführen";
       setzeStatus("Bereit.");
     }).catch(() => setzeStatus("Neustart fehlgeschlagen.", "fehler"));
   }
@@ -586,14 +594,22 @@ export async function erstelle(wurzel, opt = {}) {
 
   python.bereit.then(() => {
     for (const k of [knopfLauf, knopfPruefen, knopfFormat, knopfPython]) k.disabled = false;
+    knopfLauf.textContent = "▶ Ausführen";
+    knopfLauf.title = "Strg+Enter";
     setzeStatus("Bereit. Drücke Strg+Enter zum Ausführen.");
     wurzel.dataset.bereit = "ja";
-  }).catch((e) => setzeStatus("Klarsatz konnte nicht geladen werden: " + e.message, "fehler"));
+  }).catch((e) => {
+    knopfLauf.textContent = "▶ Ausführen";
+    setzeStatus("Klarsatz konnte nicht geladen werden: " + e.message, "fehler");
+  });
 
   return {
     holeCode: () => ta.value,
     setzeCode,
     starte,
+    /* Wird erfüllt, sobald Python geladen ist — die Aufgabenseite hält damit ihren
+       Abgeben-Knopf zurück, statt ihn ins Leere klicken zu lassen. */
+    bereit: python.bereit,
     /* Für die Aufgabenseite: das Geschriebene gegen die Regeln einer Übungsaufgabe
        laufen lassen. Geprüft wird im selben Worker, mit demselben Interpreter —
        es gibt also keine zweite Wahrheit darüber, was das Programm tut. */

@@ -167,6 +167,13 @@ el('auf-loesung').addEventListener('click', () => {
     }
 });
 
+const abgeben = el('auf-abgeben');
+const loesungKnopf = el('auf-loesung');
+abgeben.disabled = true;
+loesungKnopf.disabled = true;
+const wartetext = abgeben.textContent;
+abgeben.textContent = 'Klarsatz lädt …';
+
 try {
     spielwiese = await erstelle(el('spielwiese'), {
         basis: new URL('spielwiese/', document.baseURI).href,
@@ -184,3 +191,13 @@ try {
 
 const gewuenscht = aufgaben.find((a) => a.nummer === location.hash.slice(1));
 waehle(gewuenscht || aufgaben[0]);
+
+/* Erst wenn Python im Hintergrund steht, lässt sich etwas abgeben. Vorher wäre der
+   Klick wirkungslos — und nichts ist ärgerlicher als ein Knopf, der nichts tut. */
+spielwiese?.bereit.then(() => {
+    abgeben.disabled = false;
+    loesungKnopf.disabled = false;
+    abgeben.textContent = wartetext;
+}).catch(() => {
+    abgeben.textContent = 'Prüfen geht gerade nicht';
+});

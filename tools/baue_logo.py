@@ -179,6 +179,18 @@ def _bilder():
     _rastere(html, 1200, 630, ZIEL / "klarsatz-vorschau.png")
     yield "klarsatz-vorschau.png"
 
+    # favicon.ico: Ältere Browser und manche Lesezeichenlisten fragen sie noch ab,
+    # und ohne sie steht im Serverprotokoll eine endlose Reihe von 404ern.
+    try:
+        from PIL import Image
+    except ImportError:
+        print("Pillow fehlt — favicon.ico bleibt, wie es ist.", file=sys.stderr)
+    else:
+        gross = Image.open(ZIEL / "apple-touch-icon.png").convert("RGBA")
+        gross.save(ZIEL / "favicon.ico", format="ICO",
+                   sizes=[(16, 16), (32, 32), (48, 48)])
+        yield "favicon.ico"
+
     # Die VS-Code-Erweiterung braucht ihr Symbol im eigenen Ordner.
     ext = WURZEL / "editor" / "vscode-klarsatz"
     if ext.exists():

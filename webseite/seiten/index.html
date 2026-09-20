@@ -5,14 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Klarsatz ist ein bewusst begrenztes Sprachdesign-Experiment mit pädagogischem Ziel: algorithmisches Denken lernen, ohne gleichzeitig eine fremdsprachliche Syntax zu entschlüsseln. Kurse, Dokumentation und Spielplatz im Browser.">
 <meta name="theme-color" content="#0c0e0b">
-<meta property="og:title" content="Klarsatz — die Programmiersprache in deutschen Sätzen">
-<meta property="og:description" content="Programme, die sich lesen wie Anweisungen. Mit Dokumentation und Spielplatz zum Ausprobieren.">
 <title>Klarsatz — Programmieren in deutschen Sätzen</title>
 <link rel="canonical" href="https://www.ruthner.at/klarsatz/">
 <link rel="icon" href="assets/klarsatz-signet-klein.svg" type="image/svg+xml">
+<link rel="icon" href="assets/favicon.ico" sizes="48x48">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <meta property="og:type" content="website">
 <meta property="og:title" content="Klarsatz — Programmieren lernen, ohne vorher eine Fremdsprache zu übersetzen">
 <meta property="og:description" content="Eine Programmiersprache, deren Befehle deutsche Sätze sind. Läuft im Browser, führt weiter zu Python.">
@@ -22,15 +19,16 @@
 <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
+<a class="zum-inhalt" href="#inhalt">Zum Inhalt springen</a>
 
-<canvas id="manuskript"></canvas>
-<div class="bg-overlay"></div>
-<div class="grain"></div>
+<canvas id="manuskript" aria-hidden="true"></canvas>
+<div class="bg-overlay" aria-hidden="true"></div>
+<div class="grain" aria-hidden="true"></div>
 
-<nav class="nav">
+<nav class="nav" aria-label="Hauptnavigation">
     <div class="nav-start">
         <a class="heim" href="/" aria-label="Zur Startseite von ruthner.at">
-            <img src="/monogram.png" alt="" width="414" height="516" decoding="async">
+            <img src="assets/monogram.png" alt="" width="51" height="64" decoding="async" loading="lazy">
             <span>ruthner<em>.at</em></span>
         </a>
         <span class="nav-teiler" aria-hidden="true"></span>
@@ -69,7 +67,7 @@
     </div>
 </header>
 
-<main class="mit-verlauf">
+<main id="inhalt" class="mit-verlauf">
 
     <section class="section" id="blick">
         <div class="section-head">
@@ -1114,7 +1112,7 @@ python3 -m klarsatz programme/03_taschenrechner.klar</code></pre>
 <footer>
     <div class="foot-inner">
         <span>© <span id="jahr"></span> ruthner.at · Klarsatz <span data-download="version">0.10.0</span></span>
-        <span><a href="/">ruthner.at</a> &nbsp;·&nbsp; <a href="index.html">Sprache</a> &nbsp;·&nbsp; <a href="tutorial.html">Tutorial</a> &nbsp;·&nbsp; <a href="doku.html">Dokumentation</a> &nbsp;·&nbsp; <a href="spielplatz.html">Spielplatz</a> &nbsp;·&nbsp; <a href="aufgaben.html">Aufgaben</a> &nbsp;·&nbsp; <a href="https://github.com/wolfiru/klarsatz" rel="noopener">GitHub</a> &nbsp;·&nbsp; <a href="mailto:wolfgang@ruthner.at">wolfgang@ruthner.at</a></span>
+        <span><a href="/">ruthner.at</a> &nbsp;·&nbsp; <a href="index.html">Sprache</a> &nbsp;·&nbsp; <a href="tutorial.html">Tutorial</a> &nbsp;·&nbsp; <a href="doku.html">Dokumentation</a> &nbsp;·&nbsp; <a href="spielplatz.html">Spielplatz</a> &nbsp;·&nbsp; <a href="aufgaben.html">Aufgaben</a> &nbsp;·&nbsp; <a href="https://github.com/wolfiru/klarsatz" rel="noopener">GitHub</a> &nbsp;·&nbsp; <a href="mailto:wolfgang@ruthner.at">wolfgang@ruthner.at</a> &nbsp;·&nbsp; <a href="/impressum.html">Impressum</a> &nbsp;·&nbsp; <a href="/impressum.html#datenschutz">Datenschutz</a> &nbsp;·&nbsp; <a href="https://github.com/wolfiru/klarsatz/blob/main/LICENSE" rel="noopener">MIT-Lizenz</a></span>
     </div>
 </footer>
 

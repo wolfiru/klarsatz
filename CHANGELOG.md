@@ -1,5 +1,35 @@
 # Änderungen
 
+## Unveröffentlicht — QA-Durchgang vom 20.09.2026
+Aus einer externen Prüfung; die Punkte 1 bis 10 sind abgearbeitet, der Abschluss läuft noch.
+- **Weiterleitung ohne Schrägstrich** (kritisch): `/klarsatz` endete in einer Kette, weil Apaches
+  DirectorySlash die Adresse aus dem Serverport bildete — und Cloudflare den Ursprung über http
+  anfragt. Jetzt beantwortet eine `RedirectMatch` den Fall selbst: genau ein 301 nach
+  `https://www.ruthner.at/klarsatz/`.
+- **Impressum und Datenschutz** stehen jetzt in der Fußzeile aller elf Seiten, dazu die MIT-Lizenz;
+  das Impressum hat einen Anker `#datenschutz` bekommen.
+- **Schriften kommen von hier** statt von Google: `tools/hole_schriften.py` lädt Fraunces, Manrope
+  und JetBrains Mono (alle OFL) nach `assets/fonts/` und schreibt die `@font-face`-Regeln in
+  `style.css`. Als Gewichtsbereich statt Einzelschnitten — sonst liefert Google die ganze variable
+  Datei pro Gewicht (480 statt 200 kB). Keine Anfrage verlässt mehr die Seite.
+- **Kein Seitwärtsscrollen mehr** bei 320, 375 und 414 Pixeln (zwölf Seiten geprüft). Ursachen
+  waren Inline-Code mit `white-space: nowrap`, der Kopf über Codeblöcken und die Beispielauswahl.
+- **Metadaten:** doppelte og-Angaben auf der Startseite entfernt, vollständige og/twitter-Angaben
+  auf allen Seiten und in beiden Seitenbauern, Kurse und Aufgaben in der Sitemap, `robots.txt`
+  angelegt, `favicon.ico` erzeugt und verlinkt, `canonical` überall.
+- **Ladezustand:** Der Ausführen-Knopf heißt jetzt „⏳ Klarsatz lädt …", bis Python bereit ist; die
+  Aufgabenseite hält Abgeben und Musterlösung so lange zurück.
+- **Monogramm:** 322 kB für ein Bild, das 21 Pixel breit erscheint — jetzt 4,9 kB in doppelter
+  Auflösung, und die Klarsatz-Seiten benutzen ihre eigene Fassung.
+- **Sicherheitskopfzeilen** (X-Content-Type-Options, Referrer-Policy, X-Frame-Options,
+  Permissions-Policy, CSP zunächst als Report-Only mit `wasm-unsafe-eval`), Haltbarkeit für
+  gestempelte Dateien (ein Jahr, immutable) und für Schriften (30 Tage).
+- **Barrierefreiheit:** „Zum Inhalt springen", sichtbarer Tastaturfokus über `:focus-visible`,
+  `aria-hidden` für die Hintergrundgrafik, `aria-label` für die Navigation, und im Editor führt
+  Escape wieder heraus (Tab rückt dort ein, sonst käme man beim Programmieren nicht voran).
+- **Eigene 404-Seite** mit Wegweisern, **Druckansicht** für Kurs und Doku (heller Grund, ohne
+  Navigation, Linkziele ausgeschrieben), **noscript-Hinweise** auf Aufgaben-, Kurs- und Doku-Seiten.
+
 ## 0.10.0
 - **Nach einem kritischen Review nachgeschärft:** Die Punkte in der Eignungstabelle heißen jetzt
   **„Meine Einschätzung"**, und darüber steht, dass sie vom Autor stammen und kein Messergebnis

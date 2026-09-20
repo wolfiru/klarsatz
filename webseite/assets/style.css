@@ -1,4 +1,78 @@
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400;1,9..144,600&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap');
+/* ── Schriften (selbst bereitgestellt, siehe tools/hole_schriften.py) ── */
+@font-face {
+  /* latin-ext */
+  font-family: 'Fraunces';
+  font-style: italic;
+  font-weight: 400 600;
+  font-display: swap;
+  src: url(fonts/Fraunces-400bis600-italic-latin-ext.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  /* latin */
+  font-family: 'Fraunces';
+  font-style: italic;
+  font-weight: 400 600;
+  font-display: swap;
+  src: url(fonts/Fraunces-400bis600-italic-latin.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  /* latin-ext */
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 400 600;
+  font-display: swap;
+  src: url(fonts/Fraunces-400bis600-normal-latin-ext.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  /* latin */
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 400 600;
+  font-display: swap;
+  src: url(fonts/Fraunces-400bis600-normal-latin.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  /* latin-ext */
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url(fonts/Manrope-400bis700-normal-latin-ext.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  /* latin */
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url(fonts/Manrope-400bis700-normal-latin.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  /* latin-ext */
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url(fonts/JetBrainsMono-400bis700-normal-latin-ext.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  /* latin */
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url(fonts/JetBrainsMono-400bis700-normal-latin.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* ── Ende der Schriften ── */
+
 
 :root {
     --ink: #0c0e0b;
@@ -484,7 +558,11 @@ code {
     background: rgba(217, 180, 90, 0.1);
     border: 1px solid rgba(217, 180, 90, 0.25);
     color: var(--gold-2);
-    white-space: nowrap;
+    /* Kurze Befehle sollen nicht mitten im Wort umbrechen — ein ganzer Satz im
+       Fließtext (`Wenn Tipp kleiner als Gesucht ist, zeige "Höher!".`) muss es aber
+       dürfen, sonst schiebt er auf dem Handy die ganze Seite breiter. */
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
 }
 
 pre.klar, pre.schale {
@@ -523,9 +601,14 @@ pre.schale { border-left-color: var(--moss); color: var(--paper-dim); }
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 12px;
+    /* Bei 375 Pixeln stehen Titel, „Hier ausführen" und „Im Spielplatz öffnen" nicht
+       mehr nebeneinander — dann bricht die Zeile um, statt die Seite breiter zu machen. */
+    flex-wrap: wrap;
+    gap: 8px 12px;
     margin: 26px 0 -14px;
 }
+
+.code-titel, .probier, .hier-aus { max-width: 100%; }
 
 .code-titel {
     font-family: var(--mono);
@@ -923,7 +1006,7 @@ td:first-child { color: var(--paper); }
     padding: 16px 18px 16px 6px;
     background: transparent;
     border: 0;
-    outline: none;
+    outline: none;                 /* der sichtbare Fokus sitzt am Rahmen, siehe :focus-within */
     resize: none;
     color: var(--paper);
     font-family: var(--mono);
@@ -961,7 +1044,7 @@ td:first-child { color: var(--paper); }
     padding: 0 16px 14px;
     background: transparent;
     border: 0;
-    outline: none;
+    outline: none;                 /* wie oben */
     resize: vertical;
     color: var(--paper-dim);
     font-family: var(--mono);
@@ -2927,3 +3010,83 @@ kbd {
 }
 
 .eig-hinweis strong { color: var(--paper-dim); }
+
+
+/* Der Datenschutzhinweis auf der Aufgabenseite: leiser als die Einleitung. */
+.sp-klein { font-size: 0.88rem !important; color: var(--paper-faint) !important; }
+.sp-klein strong { color: var(--paper-dim); }
+
+
+/* ── Tastaturbedienung ───────────────────────────────────────────────────── */
+
+/* Wer mit der Maus klickt, soll keinen Rahmen sehen; wer mit der Tastatur
+   navigiert, muss sehen, wo er ist. Genau das trennt :focus-visible. */
+a:focus-visible,
+button:focus-visible,
+select:focus-visible,
+summary:focus-visible,
+textarea:focus-visible,
+[tabindex]:focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 3px;
+    border-radius: 3px;
+}
+
+/* Die beiden Eingabefelder haben absichtlich keinen eigenen Rahmen — dann trägt
+   ihn der Kasten drumherum. */
+.sp-feld:focus-within,
+.kp-eingabebereich:focus-within {
+    outline: 2px solid var(--gold);
+    outline-offset: -2px;
+}
+
+/* „Zum Inhalt springen": bis zum ersten Tabulator unsichtbar, dann deutlich da. */
+.zum-inhalt {
+    position: absolute;
+    left: 12px;
+    top: -60px;
+    z-index: 100;
+    padding: 10px 18px;
+    background: var(--gold);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 0 0 8px 8px;
+    transition: top 0.15s var(--ease);
+}
+
+.zum-inhalt:focus { top: 0; }
+
+
+/* ── Druck ───────────────────────────────────────────────────────────────── */
+
+/* Kurs und Dokumentation werden ausgedruckt — dafür taugt ein fast schwarzes
+   Blatt nicht. Auf Papier also heller Grund, dunkle Schrift, und alles weg, was
+   nur am Bildschirm einen Zweck hat. */
+@media print {
+    :root { --paper: #111; --paper-dim: #333; --paper-faint: #555; --gold: #7a5c12;
+            --line: #ccc; --line-soft: #e5e5e5; --ink: #fff; --ink-2: #f7f7f5; --ink-3: #eee; }
+
+    html, body { background: #fff !important; color: #111 !important; }
+
+    #manuskript, .bg-overlay, .grain, .nav, .zum-inhalt, footer,
+    .hier-aus, .probier, .kurs-buehne, .doku-seitenleiste, .blaettern,
+    .mini, .auf-liste, .auf-aktionen, #spielwiese { display: none !important; }
+
+    main, .doku-layout, .doku-inhalt, .sp-huelle { display: block !important; max-width: none; }
+
+    a { color: #111 !important; text-decoration: underline; }
+    /* Wohin ein Link führt, sieht man auf Papier sonst nicht. */
+    .doku-inhalt a[href^="http"]::after { content: " (" attr(href) ")"; font-size: 0.85em; color: #555; }
+
+    pre, .notiz, .tab-huelle table, .faq, .werk { break-inside: avoid; }
+    pre { border: 1px solid #ccc !important; background: #f7f7f5 !important; color: #111 !important; }
+    pre .kp-t-kommentar, pre .kp-t-text, pre .kp-t-zahl, pre .kp-t-steuerung,
+    pre .kp-t-anweisung, pre .kp-t-funktion, pre .kp-t-konstante, pre .kp-t-operator,
+    pre .kp-t-funktionsname, pre .kp-t-typname, pre .kp-t-zeichen { color: #111 !important; }
+    pre .kp-t-kommentar { color: #666 !important; }
+
+    h1, h2, h3 { break-after: avoid; color: #111 !important; }
+    h2 { margin-top: 24px; }
+}

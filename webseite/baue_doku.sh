@@ -78,23 +78,29 @@ for eintrag in "${KAPITEL[@]}"; do
 <meta name="description" content="$beschr">
 <meta name="theme-color" content="#0c0e0b">
 <title>$titel — Klarsatz-Dokumentation</title>
+<meta property="og:type" content="article">
+<meta property="og:title" content="$titel — Klarsatz">
+<meta property="og:description" content="$beschr">
+<meta property="og:url" content="https://www.ruthner.at/klarsatz/$datei">
+<meta property="og:image" content="https://www.ruthner.at/klarsatz/assets/klarsatz-vorschau.png">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="canonical" href="https://www.ruthner.at/klarsatz/$datei">
 <link rel="icon" href="assets/klarsatz-signet-klein.svg" type="image/svg+xml">
+<link rel="icon" href="assets/favicon.ico" sizes="48x48">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="assets/style.css?v=2">
 </head>
 <body>
+<a class="zum-inhalt" href="#inhalt">Zum Inhalt springen</a>
 
-<canvas id="manuskript"></canvas>
-<div class="bg-overlay"></div>
-<div class="grain"></div>
+<canvas id="manuskript" aria-hidden="true"></canvas>
+<div class="bg-overlay" aria-hidden="true"></div>
+<div class="grain" aria-hidden="true"></div>
 
-<nav class="nav">
+<nav class="nav" aria-label="Hauptnavigation">
     <div class="nav-start">
         <a class="heim" href="/" aria-label="Zur Startseite von ruthner.at">
-            <img src="/monogram.png" alt="" width="414" height="516" decoding="async">
+            <img src="assets/monogram.png" alt="" width="51" height="64" decoding="async" loading="lazy">
             <span>ruthner<em>.at</em></span>
         </a>
         <span class="nav-teiler" aria-hidden="true"></span>
@@ -114,7 +120,14 @@ for eintrag in "${KAPITEL[@]}"; do
     <h1>$titel</h1>
 </header>
 
-<main>
+<main id="inhalt">
+<noscript>
+<div class="notiz warnung" style="margin:20px auto;max-width:760px">
+<span class="notiz-titel">JavaScript ist abgeschaltet</span>
+<p>Die Dokumentation lässt sich vollständig lesen. Nur <em>Hier ausführen</em> und die Einfärbung
+der Beispiele brauchen JavaScript.</p>
+</div>
+</noscript>
 <div class="doku-layout">
 
     <aside class="doku-seitenleiste">
@@ -150,7 +163,7 @@ $weiter_html
 <footer>
     <div class="foot-inner">
         <span>© <span id="jahr"></span> ruthner.at · Klarsatz <span data-download="version">0.10.0</span></span>
-        <span><a href="/">ruthner.at</a> &nbsp;·&nbsp; <a href="index.html">Sprache</a> &nbsp;·&nbsp; <a href="tutorial.html">Tutorial</a> &nbsp;·&nbsp; <a href="doku.html">Dokumentation</a> &nbsp;·&nbsp; <a href="spielplatz.html">Spielplatz</a> &nbsp;·&nbsp; <a href="https://github.com/wolfiru/klarsatz" rel="noopener">GitHub</a> &nbsp;·&nbsp; <a href="mailto:wolfgang@ruthner.at">wolfgang@ruthner.at</a></span>
+        <span><a href="/">ruthner.at</a> &nbsp;·&nbsp; <a href="index.html">Sprache</a> &nbsp;·&nbsp; <a href="tutorial.html">Tutorial</a> &nbsp;·&nbsp; <a href="doku.html">Dokumentation</a> &nbsp;·&nbsp; <a href="spielplatz.html">Spielplatz</a> &nbsp;·&nbsp; <a href="https://github.com/wolfiru/klarsatz" rel="noopener">GitHub</a> &nbsp;·&nbsp; <a href="mailto:wolfgang@ruthner.at">wolfgang@ruthner.at</a> &nbsp;·&nbsp; <a href="/impressum.html">Impressum</a> &nbsp;·&nbsp; <a href="/impressum.html#datenschutz">Datenschutz</a> &nbsp;·&nbsp; <a href="https://github.com/wolfiru/klarsatz/blob/main/LICENSE" rel="noopener">MIT-Lizenz</a></span>
     </div>
 </footer>
 
