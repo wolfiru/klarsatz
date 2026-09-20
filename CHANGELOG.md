@@ -1,5 +1,27 @@
 # Änderungen
 
+## 0.8.3
+Eine Aufräumversion: Die Doku sagt jetzt überall dasselbe wie der Code.
+- **Drei falsche Aussagen berichtigt.** `docs/SPRACHE.md` behauptete unter „Bekannte Grenzen", dass
+  sich Bedingungen nicht klammern lassen (sie lassen sich), dass es keine Möglichkeit gebe, eine
+  Liste zu einem Text zusammenzufügen (`Verkettet von Liste mit ", "` gibt es seit Langem) und dass
+  es kein Dezimalkomma in Zahleneingaben gebe (in **Antworten** ist es erlaubt, nur im Quelltext
+  trennt das Komma Satzteile). `tests/test_doku_konsistenz.py` führt diese Sätze jetzt aus, statt
+  sie zu glauben.
+- **Gliederung der Sprachdefinition:** Die angehängten Kapitel hießen „Neu ab Version 0.2",
+  „Zeichnen (neu)" und „Uhrzeit und Datum (neu)" — Zeitmarken aus einer Zeit, in der das neu war.
+  Jetzt sind es die Kapitel 14 bis 16, „Bekannte Grenzen" steht als 17 am Ende, und die Kopfzeile
+  nennt nicht mehr „Prototyp 0.1".
+- **Konsistenz wird geprüft, nicht gehofft:** Version (sieben Dateien), Programmzahlen (vier
+  Stellen), Vollständigkeit der Befehlstabellen und die Kapitelnummerierung.
+- Nachgezogen: `Nimm die Leinwand` und `Beschrifte` im Referenzkapitel und in der Kapitelübersicht,
+  Beschriftungen mit eigenem Beispiel im Zeichenkapitel, aktuelle Zahlen in `ÜBERGABE.md`
+  (Tests, Programme, GitHub) und das Versionsrezept in `CLAUDE.md`.
+- **Tabellen und Diagramme stehen auf einer eigenen Fläche.** Sie lagen unmittelbar auf dem
+  Seitenhintergrund und liefen dadurch optisch mit dem Fließtext zusammen; jetzt tragen sie
+  dieselbe hellere Fläche wie Hinweiskästen und Werkstücke. Der innere Rahmen der Lernsprachen-Karte
+  tritt dafür zurück — zwei gleich kräftige Rahmen ineinander sahen aus wie ein Versehen.
+
 ## 0.8.2
 - **`Für jeden Ort`, `Für jede Strecke`, `Für jedes Element`** — der Parser ließ alle drei Formen
   schon immer zu, die Programme und die Doku schrieben aber überall „jedes". „Für jedes Ort" ist

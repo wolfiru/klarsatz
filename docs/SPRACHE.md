@@ -1,4 +1,4 @@
-# Klarsatz – Sprachdefinition (Prototyp 0.1)
+# Klarsatz – Sprachdefinition (Stand: Version 0.8.3)
 
 Klarsatz ist **keine natürliche Sprache**, sondern eine Programmiersprache, deren Syntax sich an
 deutscher Alltagssprache orientiert — fachlich: eine *kontrollierte natürliche Sprache*. Der
@@ -37,7 +37,7 @@ python3 -m unittest discover -s tests -t .
 | **Namen werden nicht gebeugt** (Ausnahme: Feldnamen, siehe 10). | `Zahl`, nicht „der Zahl“ |
 | Zeilenumbrüche und Einrückung sind bedeutungslos (Einrückung dient nur dem Lesen). | |
 | Kommentar: `Anmerkung:` bis zum Zeilenende. | `Anmerkung: erklärt etwas.` |
-| Texte: `"…"` oder `„…“`. Zahlen: `42`, `3.14` (Punkt, keine Dezimalkomma-Eingabe). | |
+| Texte: `"…"` oder `„…“`. Zahlen: `42`, `3.14` — im Quelltext mit **Punkt**, weil das Komma dort Satzteile trennt. | |
 | Ausgabe von Kommazahlen erfolgt deutsch: `3.5` wird als `3,5` angezeigt. | |
 
 Wahrheitswerte: `wahr`, `falsch`. Klammern `( )` gibt es nur für Rechnungen und Argumente.
@@ -221,18 +221,7 @@ ende solange dass hat bei gleich größer kleiner mindestens höchstens teilbar 
 
 Das ist ein **Lernprojekt**: Der Interpreter ist keine Sandbox für fremden, nicht vertrauenswürdigen Code.
 
-## 14. Bekannte Grenzen und nächste Schritte
-
-* Kein Dezimalkomma in Zahlen*eingaben* (Komma trennt Satzteile). Ausgabe ist deutsch.
-* Die Kurzform von `Wenn … , …` führt genau **einen** Satz aus; für mehrere Befehle die Blockform nehmen.
-* Bedingungen lassen sich nicht klammern; `und` bindet vor `oder`.
-* Beim Anzeigen eines Dings steht der Feldname so, wie er in der Definition stand (`Namen: Rocco`).
-* Es gibt (noch) keine Möglichkeit, eine Liste zu einem Text zusammenzufügen; das geht mit `Für jedes` und `Verbinde`.
-* Noch offen aus dem Entwurf: `Falls vorhanden:` (Optionalwerte), `Diese Aufgabe darf nur lesen`
-  (Fähigkeiten), ein Bytecode-Compiler.
-
-
-## Neu ab Version 0.2
+## 14. Tabellen, Textwerkzeuge und Zahlenformate
 
 **Negative Zahlen:** `Zeige -5 plus 2.` (nur direkt vor einer Zahl; sonst `minus`).
 
@@ -306,7 +295,7 @@ Konsole ohne Datei. Grenzen und Dateien: siehe SICHERHEIT.md.
 
 **Namen:** Eine Variable darf nicht wie eine Aufgabe heißen. `hoch`, `mal`, `plus` … sind reserviert.
 
-## Zeichnen (neu)
+## 15. Zeichnen
 
 Ein Stift steht in der **Mitte** und schaut **nach oben**. Er zieht eine Linie, wenn er unten ist.
 
@@ -344,7 +333,7 @@ Ausgaben und Striche, sobald sie entstehen — ein Programm muss also nicht ende
 Spielwiese sie auf eine Leinwand, auf der Kommandozeile schreibt `--bild bild.svg` sie in eine SVG-Datei.
 Ein Programm ohne Zeichenfläche läuft trotzdem, es entsteht dann eben kein Bild.
 
-## Uhrzeit und Datum (neu)
+## 16. Uhrzeit und Datum
 
 ```
 Merke die aktuelle Stunde als h.     Anmerkung: 0 bis 23
@@ -363,3 +352,15 @@ Gehe zur Mitte.
 Drehe dich um Minute mal 6 Grad nach rechts.   Anmerkung: 360 Grad / 60 Minuten = 6
 Gehe 100 Schritte vor.
 ```
+
+
+## 17. Bekannte Grenzen und nächste Schritte
+
+* Kommazahlen stehen im *Quelltext* mit Punkt (`3.14`), weil das Komma dort Satzteile trennt.
+  In **Antworten** auf `Frage` ist das Komma erlaubt: `3,5` wird zur Zahl 3,5. Ausgegeben wird deutsch.
+* Die Kurzform von `Wenn … , …` führt genau **einen** Satz aus; für mehrere Befehle die Blockform nehmen.
+* `und` bindet vor `oder`; zum Umstellen darf man klammern: `(a gleich 1 oder a gleich 2) und b gleich 3`.
+* Beim Anzeigen eines Dings steht der Feldname so, wie er in der Definition stand (`Namen: Rocco`).
+* Eine Liste wird mit `Verkettet von Liste mit ", "` zu einem Text — siehe „Listen und Texte“.
+* Noch offen aus dem Entwurf: `Falls vorhanden:` (Optionalwerte), `Diese Aufgabe darf nur lesen`
+  (Fähigkeiten), ein Bytecode-Compiler.

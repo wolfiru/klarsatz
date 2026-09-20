@@ -1,4 +1,4 @@
-# Übergabe – Stand 20.09.2026, Version 0.8.0
+# Übergabe – Stand 20.09.2026, Version 0.8.3
 
 > **Umbenannt:** Das Projekt hieß bis 18.09.2026 *Klartext*; der Name war schon vergeben.
 > Alles heißt jetzt **Klarsatz** — nur die Dateiendung der Programme bleibt `.klar`.
@@ -6,7 +6,7 @@
 Klarsatz ist eine deutsche Programmiersprache mit Python-Interpreter (Lernprojekt von Wolfgang). Diese Datei ist für
 die Weiterarbeit (z. B. mit Claude Code auf dem Raspberry Pi). Arbeitsregeln: `CLAUDE.md`. Sprache: `docs/SPRACHE.md`.
 
-## Was fertig ist (462 Tests, alle grün)
+## Was fertig ist (Stand 20.09.2026: 636 Tests, alle grün)
 - **Interpreter** mit Aufgaben, Dingen, Listen, Tabellen, Textwerkzeugen, Zufall, Dateien, Fehlerbehandlung.
 - **Härtung:** Grenzen (`grenzen.py`), Dateisystem-Abstraktion mit Ordnerschutz (`dateisystem.py`), Absturzschutz.
 - **Fehlermeldungen:** Spalte + Markierung, Aufrufkette, deutsche Texte, „Meintest du …?“.
@@ -17,12 +17,21 @@ die Weiterarbeit (z. B. mit Claude Code auf dem Raspberry Pi). Arbeitsregeln: `C
   in einem Web-Worker. Ende-zu-Ende-getestet in Chromium (`tests/test_browser.py`).
 - **Editor-Unterstützung:** VS-Code-Erweiterung, TextMate-Grammatik, Pygments-Lexer, JS-Regeln – alle aus **einer**
   Regelliste (`hervorhebung.py`/`sprachdaten.py`); Tests vergleichen Pygments, VS-Code-Tokenizer und JS Token für Token.
-- **Programme:** zwanzig Beispielprogramme (`programme/`), nach Schwierigkeit geordnet,
-  jedes mit simuliertem Spieler getestet.
-- **Versionsverwaltung:** seit 19.09.2026 ein Git-Repository in `/home/pi/klarsatz` (Zweig `main`,
-  erster Commit als `v0.7.1` markiert). Erzeugte Dateien liegen bewusst mit im Repository, damit ein
-  ausgecheckter Stand sofort läuft — geprüft: ein frischer Klon besteht alle 462 Tests.
-  Es gibt **kein** entferntes Gegenstück; das Repository liegt auf derselben Karte wie das Projekt.
+- **Programme:** zweiundzwanzig Beispielprogramme (`programme/`), nach Schwierigkeit geordnet,
+  jedes mit simuliertem Spieler getestet. Die beiden letzten sind die **Werkstücke** der Startseite:
+  `21_spiel_des_lebens.klar` (Conway) und `22_routenplaner.klar` (Dijkstra auf zwölf Orten). Bei
+  beiden prüfen die Tests nicht nur, dass sie laufen, sondern **was sie ausrechnen** — der Blinker
+  kippt, der Gleiter wandert, und die kürzeste Strecke wird in Python noch einmal nachgerechnet.
+- **Zeichnen:** Stift, Farben, Strichstärke — dazu seit 0.8 eine **feste Leinwand**
+  (`Nimm die Leinwand 600 mal 400.`, sonst wandert der Ausschnitt mit dem Bild mit) und
+  **Beschriftungen** (`Beschrifte "Wien" mit 20.`). Beides geht durch die ganze Kette: Spielwiese,
+  SVG-Ausgabe der Kommandozeile und Python-Übersetzung.
+- **Versionsverwaltung:** seit 19.09.2026 ein Git-Repository in `/home/pi/klarsatz` (Zweig `main`).
+  Erzeugte Dateien liegen bewusst mit im Repository, damit ein ausgecheckter Stand sofort läuft.
+  Versionssprünge sind als `vX.Y.Z` markiert, zuletzt `v0.8.3`.
+- **GitHub:** seit 19.09.2026 öffentlich unter **https://github.com/wolfiru/klarsatz** mit
+  README, Lizenz, CI (Tests + wöchentlicher Fuzz-Lauf). `git push origin main` schiebt hin;
+  Marken brauchen ein eigenes `git push origin vX.Y.Z`.
 
 ## Offen (in dieser Reihenfolge sinnvoll)
 1. **Fuzz-Test — gebaut am 19.09.2026.** `tests/fuzzer.py` (Maschinerie), `tests/test_fuzz.py` (kurz und
@@ -39,7 +48,7 @@ die Weiterarbeit (z. B. mit Claude Code auf dem Raspberry Pi). Arbeitsregeln: `C
    scheitern, mit Lektion und Zeilennummer.
    Auf der Webseite steht es unter `tutorial.html`, erzeugt von `tools/baue_tutorial.py` aus derselben
    Markdown-Datei — eine Quelle, zwei Ausgaben. Die Codeblöcke dort werden zusätzlich von
-   `tools/pruefe_webseite.py` geprüft (97 Blöcke insgesamt, 0 beanstandet).
+   `tools/pruefe_webseite.py` geprüft (112 Blöcke insgesamt, 0 beanstandet).
 3. **Webseite** – ~~offen~~ **gebaut am 18.09.2026**, siehe Abschnitt „Webseite" weiter unten.
    Die Tutorial-Seite kam am 19.09.2026 dazu (siehe Punkt 2).
 4. **Browser-Testfehler — geklärt und erledigt (19.09.2026).** Deine Vermutung stimmte: An der Spielwiese lag
@@ -105,7 +114,7 @@ sich überspringt, wo die nicht liegt.
 `tools/baue_tutorial.py` baut jetzt mehrere Kurse aus einer Liste `KURSE`; ein weiterer Kurs ist
 ein Markdown-Datei plus ein Eintrag.
 
-## Webseite (Stand 19.09.2026)
+## Webseite (Stand 20.09.2026)
 
 **Die Webseite liegt seit 19.09.2026 mit im Repository** (`webseite/`) und wird dort bearbeitet, nicht im
 Webordner: `seiten/` (index, doku, spielplatz) und `assets/` von Hand, `kapitel/` als Quelle der Doku-Kapitel.
@@ -121,7 +130,9 @@ SVG-Symbolbild (`assets/klarsatz-symbolbild.svg`).
 |---|---|
 | Hauptseite, Doku (6 Kapitel), Spielplatz | `index.html`, `doku*.html`, `spielplatz.html` |
 | Zwölf Abschnitte der Startseite, durchnummeriert (01–12) | `webseite/seiten/index.html`, Reihenfolge wird von `tests/test_einordnung.py` geprüft |
-| Werkstücke (komplexe Programme) im Abschnitt 09 | `programme/21_*`, `programme/22_*`; `tests/test_werkstuecke.py` hält Seite und Programm zusammen |
+| Abschnitt 07 „Wo Klarsatz steht" (Vergleich mit Logo, Niki, Karol, Scratch, Python) | ebenda; `tests/test_einordnung.py` prüft auch, dass dort nicht gewertet wird |
+| Abschnitt 09 „Was damit geht" mit den beiden Werkstücken | `programme/21_*`, `programme/22_*`; `tests/test_werkstuecke.py` hält Seite und Programm zusammen |
+| Demos, die in der Startseite laufen | `webseite/assets/mini.js`; holt den Quelltext aus `spielwiese/beispiele.json`, damit die Seite keine veraltete Fassung zeigen kann |
 | Design, Hintergrund-Animation, Hervorhebung | `assets/` |
 | Vorlage der Doku-Kapitel (im Projekt) | `webseite/kapitel/` + `webseite/baue_doku.sh` |
 | Spielwiese (unverändert aus `playground/`) | `spielwiese/` |
@@ -237,7 +248,7 @@ Kleinschreibung nicht (Python schon → Namensspeicher), und Feldnamen dürfen g
 (`Name`/`Namen` → `werte.passt`).
 
 <details><summary>ursprüngliche Planung</summary>
-* **Ansatz:** neues Modul `nach_python.py`, ein Besucher über die 29 Satzformen
+* **Ansatz:** neues Modul `nach_python.py`, ein Besucher über alle Satzformen
   (`('merke', zeile, wert, norm, name, konstante)` usw.), `--nach-python` in der CLI, in der Spielwiese ein
   vierter Knopf neben Prüfen und Formatieren.
 * **Knackpunkt — entschieden: lesbar.** *lesbar* oder *exakt*. Klarsatz teilt ganzzahlig, wenn es aufgeht,
