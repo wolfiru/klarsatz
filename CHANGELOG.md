@@ -1,6 +1,11 @@
 # Änderungen
 
 ## 0.10.0
+- **„Hier ausführen" in Kurs und Dokumentation.** Bisher führte jeder Codeblock nur über einen Link
+  in den Spielplatz — also aus der Lektion heraus, mit dem Text daneben verloren. Jetzt kommt die
+  Spielwiese zum Block: Sie erscheint direkt darunter, lädt beim ersten Klick und **wandert**
+  danach nur noch, statt sich zu vermehren. Es gibt sie genau einmal pro Seite, denn Pyodide sind
+  14 MB. Der Link in den Spielplatz bleibt für alle, die mit mehr Platz weitermachen wollen.
 - **Ein Logo** — und zwar keines, das neu erfunden wurde: Der goldene Punkt stand schon im
   Seitenkopf, und das alte Favicon zeigte Textzeilen, deren letzte mit einem Punkt endet. Der
   **Punkt am Satzende** ist ja die eine Regel, über die bei Klarsatz jeder stolpert.

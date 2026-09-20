@@ -44,6 +44,8 @@ zurück.
 | 10 | [Dein Abschlussprojekt](#lektion-10--dein-abschlussprojekt) | 7 |
 | 11 | [Dasselbe in Python](#lektion-11--dasselbe-in-python) | — |
 
+Über jedem Programm stehen zwei Knöpfe: **Hier ausführen** holt die Spielwiese in die Lektion, direkt unter den Block — du bleibst also, wo du bist. **Im Spielplatz öffnen** ist für die, die mit mehr Platz weitermachen wollen.
+
 Alle Beispiele hier laufen wirklich. Die Ausgaben, die Fehlermeldungen und sogar der Python-Code in
 Lektion 11 sind nicht abgetippt, sondern werden bei jedem Testlauf neu ausgerechnet und verglichen.
 

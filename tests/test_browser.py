@@ -574,6 +574,36 @@ class WegInDieSpielwiese(unittest.TestCase):
         finally:
             ctx.close()
 
+    def test_im_kurs_laeuft_die_spielwiese_in_der_lektion(self):
+        """Der Link in den Spielplatz führt aus der Lektion heraus — der Knopf nicht.
+
+        Geprüft wird beides, was daran wichtig ist: dass das Programm wirklich läuft, und
+        dass es die Spielwiese **einmal** gibt. Eine je Codeblock hieße Pyodide je Block
+        neu laden, und das sind 14 MB."""
+        self.s.goto(self.basis + "tutorial.html")
+        self.s.wait_for_selector(".hier-aus", timeout=60000)
+        knoepfe = self.s.query_selector_all(".hier-aus")
+        self.assertGreater(len(knoepfe), 20, "Kaum ein Codeblock lässt sich in der Lektion starten.")
+
+        knoepfe[0].click()
+        self.s.wait_for_function(
+            "() => document.querySelector('.kurs-buehne .kp-ausgabe')?.textContent.includes('Hallo')",
+            timeout=240000)
+        self.assertIn("Hallo", self.s.inner_text(".kurs-buehne .kp-ausgabe"))
+
+        # Die Bühne wandert zum nächsten Block, statt sich zu vermehren.
+        knoepfe[1].click()
+        self.s.wait_for_timeout(2500)
+        self.assertEqual(len(self.s.query_selector_all(".kurs-buehne")), 1)
+        self.assertTrue(self.s.evaluate("""() => {
+            const b = document.querySelector('.kurs-buehne');
+            const pre = document.querySelectorAll('.hier-aus')[1].closest('.code-kopf').nextElementSibling;
+            return b.previousElementSibling === pre;
+        }"""), "Die Spielwiese steht nicht bei dem Block, auf den geklickt wurde.")
+
+        # Und der Weg in den Spielplatz bleibt für die, die mehr Platz wollen.
+        self.assertTrue(self.s.query_selector(".code-kopf .probier"))
+
     def test_eine_uebungsaufgabe_laesst_sich_abgeben(self):
         """Der ganze Weg: Aufgabe wählen, Lösung eintippen, abgeben, Rückmeldung lesen.
 

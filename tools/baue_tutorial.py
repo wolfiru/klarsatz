@@ -283,6 +283,7 @@ __BLAETTERN__
 
 <script src="assets/manuskript-bg.js"></script>
 <script src="assets/app.js"></script>
+<script type="module" src="assets/kurs.js"></script>
 <script type="module" src="assets/code-hervorhebung.js"></script>
 </body>
 </html>

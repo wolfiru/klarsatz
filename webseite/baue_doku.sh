@@ -156,6 +156,7 @@ $weiter_html
 <script src="assets/manuskript-bg.js?v=2"></script>
 <script src="assets/app.js?v=2"></script>
 <script type="module" src="assets/code-hervorhebung.js?v=2"></script>
+<script type="module" src="assets/kurs.js?v=2"></script>
 </body>
 </html>
 FUSS

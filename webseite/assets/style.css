@@ -2837,3 +2837,78 @@ kbd {
     .auf-layout { grid-template-columns: 1fr; }
     .auf-liste { position: static; }
 }
+
+
+/* ── „Hier ausführen" in Kurs und Dokumentation ──────────────────────────── */
+
+.hier-aus {
+    margin-left: auto;
+    padding: 4px 12px;
+    background: rgba(217, 180, 90, 0.12);
+    border: 1px solid rgba(217, 180, 90, 0.35);
+    border-radius: 999px;
+    font-family: var(--sans);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: var(--gold);
+    cursor: pointer;
+    transition: background 0.2s var(--ease), color 0.2s var(--ease);
+}
+
+.hier-aus:hover:not(:disabled) { background: var(--gold); color: var(--ink); }
+.hier-aus:disabled { opacity: 0.6; cursor: default; }
+
+/* Steht der Knopf da, rückt der Link „Im Spielplatz öffnen" an seine Seite
+   statt ans Ende der Zeile. */
+.code-kopf .hier-aus + .probier { margin-left: 14px; }
+
+.kurs-buehne {
+    margin: -8px 0 26px;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    overflow: hidden;
+    background: var(--ink-2);
+}
+
+.kurs-buehne-kopf {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 10px 16px;
+    border-bottom: 1px solid var(--line);
+}
+
+.kurs-buehne-titel {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--paper-faint);
+}
+
+.kurs-buehne-zu {
+    margin-left: auto;
+    padding: 3px 12px;
+    background: none;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    font-family: var(--sans);
+    font-size: 0.72rem;
+    color: var(--paper-dim);
+    cursor: pointer;
+}
+
+.kurs-buehne-zu:hover { border-color: var(--gold); color: var(--paper); }
+.kurs-buehne-platz { padding: 4px 12px 12px; }
+
+.kurs-fehler {
+    margin: -8px 0 22px;
+    font-size: 0.9rem;
+    color: var(--paper-dim);
+}
+
+@media (max-width: 620px) {
+    .hier-aus { margin-left: 0; }
+    .kurs-buehne-platz { padding: 4px 6px 10px; }
+}
