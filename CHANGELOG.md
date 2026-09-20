@@ -65,7 +65,7 @@ Eine Aufräumversion: Die Doku sagt jetzt überall dasselbe wie der Code.
   Stellen), Vollständigkeit der Befehlstabellen und die Kapitelnummerierung.
 - Nachgezogen: `Nimm die Leinwand` und `Beschrifte` im Referenzkapitel und in der Kapitelübersicht,
   Beschriftungen mit eigenem Beispiel im Zeichenkapitel, aktuelle Zahlen in `ÜBERGABE.md`
-  (Tests, Programme, GitHub) und das Versionsrezept in `CLAUDE.md`.
+  (Tests, Programme, GitHub) und das Versionsrezept in den Arbeitsregeln.
 - **Tabellen und Diagramme stehen auf einer eigenen Fläche.** Sie lagen unmittelbar auf dem
   Seitenhintergrund und liefen dadurch optisch mit dem Fließtext zusammen; jetzt tragen sie
   dieselbe hellere Fläche wie Hinweiskästen und Werkstücke. Der innere Rahmen der Lernsprachen-Karte

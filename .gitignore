@@ -22,3 +22,7 @@ playground/node_modules/
 # tools/baue_editor.py), liegen aber bewusst mit im Repository: so ist ein
 # ausgecheckter Stand sofort lauffähig — dieses Repository ist in erster
 # Linie ein Sicherungsnetz, nicht eine Bauanleitung.
+
+# Lokale Arbeitsanweisung für Claude Code — bleibt auf dem Rechner,
+# gehört nicht in ein öffentliches Repository.
+CLAUDE.md

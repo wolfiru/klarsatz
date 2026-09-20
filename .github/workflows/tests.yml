@@ -58,7 +58,7 @@ jobs:
 
       - name: Nichts darf sich geändert haben
         # Schlägt das fehl, wurde die Sprache geändert, ohne die Generatoren
-        # laufen zu lassen (siehe CLAUDE.md).
+        # laufen zu lassen (siehe die Arbeitsregeln im Projekt).
         run: |
           git diff --exit-code || {
             echo "::error::Erzeugte Dateien sind veraltet — bitte tools/baue_editor.py und tools/baue_playground.py ausführen und das Ergebnis mit einchecken."

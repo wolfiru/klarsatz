@@ -4,7 +4,7 @@
 > Alles heißt jetzt **Klarsatz** — nur die Dateiendung der Programme bleibt `.klar`.
 
 Klarsatz ist eine deutsche Programmiersprache mit Python-Interpreter (Lernprojekt von Wolfgang). Diese Datei ist für
-die Weiterarbeit (z. B. mit Claude Code auf dem Raspberry Pi). Arbeitsregeln: `CLAUDE.md`. Sprache: `docs/SPRACHE.md`.
+die Weiterarbeit. Sprache: `docs/SPRACHE.md`.
 
 ## Was fertig ist (Stand 20.09.2026: 636 Tests, alle grün)
 - **Interpreter** mit Aufgaben, Dingen, Listen, Tabellen, Textwerkzeugen, Zufall, Dateien, Fehlerbehandlung.
@@ -176,7 +176,7 @@ schreibt die Änderung nach `webseite/kapitel/` zurück — sonst überschreibt 
 Hauptseite, Doku-Übersicht und Spielplatz haben keine Vorlage, die werden direkt bearbeitet.
 
 **Download für Besucher:** `tools/baue_archiv.py` packt Paket, Programme, Beispiele, Doku, Tests,
-Editor-Erweiterung und Spielwiese in ein ZIP (ohne `ÜBERGABE.md`, `CLAUDE.md` und `webseite/` — die
+Editor-Erweiterung und Spielwiese in ein ZIP (ohne `ÜBERGABE.md` und `webseite/` — die
 betreffen nur den Betrieb dieser Seite), legt die SHA256-Summe daneben und trägt Dateiname, Version,
 Größe und Prüfsumme in die Seiten ein (Stellen mit `data-download="…"`). Nach jeder Versionsänderung
 einmal laufen lassen. Lizenz: **MIT** (`LICENSE`, seit 18.09.2026).
