@@ -8,6 +8,7 @@
 <meta property="og:title" content="Klarsatz — die Programmiersprache in deutschen Sätzen">
 <meta property="og:description" content="Programme, die sich lesen wie Anweisungen. Mit Dokumentation und Spielplatz zum Ausprobieren.">
 <title>Klarsatz — Programmieren in deutschen Sätzen</title>
+<link rel="canonical" href="https://www.ruthner.at/klarsatz/">
 <link rel="icon" href="assets/klarsatz-signet-klein.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -104,9 +105,10 @@ Ende.</pre>
 
         <p class="pointe">Der Quelltext <em>ist</em> die Erklärung.<span>In der Python-Fassung muss man erst lernen, was <code>range</code>, <code>%</code> und <code>elif</code> bedeuten. In der Klarsatz-Fassung steht es da. Was die Sprache sonst noch kann, steht <a href="#bausteine">weiter unten</a>.</span></p>
 
-        <p class="these">Klarsatz versucht, einen Teil der anfänglichen kognitiven Belastung
-           durch fremde Syntax und Fachbegriffe zu reduzieren, damit mehr Aufmerksamkeit für
-           <strong>Programmstruktur und Problemlösung</strong> bleibt.</p>
+        <p class="these">Klarsatz versucht nicht, das Programmieren einfacher zu machen. Es versucht,
+           <strong>zwei Lernprobleme zeitlich auseinanderzuziehen:</strong> erst das Denken in Schritten —
+           und dann, in Python, die fremde Schreibweise samt englischer Fachbegriffe. Die Annahme dahinter
+           ist, dass beides zusammen für den Anfang zu viel ist.</p>
 
         <div class="mini" id="mini">
             <h3>Und jetzt du.</h3>
@@ -366,9 +368,12 @@ Ende.</pre></td>
         </div>
 
         <div class="eig-rahmen">
+            <p class="eig-hinweis">Die Punkte sind <strong>meine eigene Einschätzung</strong>, kein Messergebnis —
+               niemand hat das nachgeprüft. Sie zeigen nur schnell, wo ich Klarsatz für nützlich halte und wo
+               nicht; das eigentliche Argument steht jeweils daneben.</p>
             <table class="eignung">
                 <thead>
-                    <tr><th scope="col">Für wen</th><th scope="col">Eignung</th><th scope="col">Warum</th></tr>
+                    <tr><th scope="col">Für wen</th><th scope="col">Meine Einschätzung</th><th scope="col">Warum</th></tr>
                 </thead>
                 <tbody>
                 <tr class="eig-gut">
@@ -893,13 +898,16 @@ Ende.</pre>
                 </div>
                 <div class="beleg-zahl beleg-zahl-gut">
                     <strong>0</strong>
-                    <span>Abstürze, 0 Hänger</span>
+                    <span>Abstürze, 0 Hänger <em>in diesen Läufen</em></span>
                 </div>
             </div>
             <p>Wir haben versucht, es kaputtzumachen: Ein Werkzeug zerhackt die Beispielprogramme
                nach dem Zufallsprinzip und verfüttert die Trümmer an den Interpreter. Nichts ist
                abgestürzt, nichts hängen geblieben — jedes Mal kam eine ruhige deutsche
                Fehlermeldung.</p>
+            <p class="beleg-fuss">Das heißt: <strong>in diesen Läufen ist nichts passiert</strong> — nicht,
+               dass nichts passieren <em>kann</em>. Der Unterschied ist wichtig, und weiter unten steht,
+               was der Prototyp deshalb trotzdem nicht ist.</p>
         </div>
 
         <p style="margin-top:36px">
@@ -1040,7 +1048,7 @@ python3 -m klarsatz programme/03_taschenrechner.klar</code></pre>
             </article>
             <article>
                 <h3>Für wen ist das gedacht?</h3>
-                <p>Für den ersten Berührungspunkt mit dem Programmieren: Schule, Kurs oder Selbstlernen, ohne Vorkenntnisse, deutschsprachig, ungefähr ab zehn Jahren. Für alle, die schon programmieren, ist es nichts — und wer nur ein Werkzeug für die Arbeit sucht, ist bei Python besser aufgehoben. Ausführlich, mit Punkten von 1 bis 10: <a href="#fuerwen">Für wen Klarsatz taugt</a>.</p>
+                <p>Für den ersten Berührungspunkt mit dem Programmieren: Schule, Kurs oder Selbstlernen, ohne Vorkenntnisse, deutschsprachig, ungefähr ab zehn Jahren. Für alle, die schon programmieren, ist es nichts — und wer nur ein Werkzeug für die Arbeit sucht, ist bei Python besser aufgehoben. Ausführlich, mit meiner Einschätzung von 1 bis 10: <a href="#fuerwen">Für wen Klarsatz taugt</a>.</p>
             </article>
             <article>
                 <h3>Warum nicht gleich Python?</h3>

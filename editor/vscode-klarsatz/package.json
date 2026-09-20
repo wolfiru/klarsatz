@@ -16,6 +16,7 @@
     "deutsch",
     "programmiersprache"
   ],
+  "icon": "icon.png",
   "contributes": {
     "languages": [
       {

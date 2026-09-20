@@ -30,7 +30,7 @@ CSS = ("https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..14
 
 # ── Signet ─────────────────────────────────────────────────────────────────
 
-def signet(kachel=True, auf_hell=False, klein=False, groesse=64):
+def signet(kachel=True, auf_hell=False, klein=False, einfarbig=False, groesse=64):
     """Drei Zeilen Text, die letzte endet im Punkt.
 
     `kachel`: mit abgerundetem Untergrund (für Avatare und App-Symbole) oder frei
@@ -39,6 +39,10 @@ def signet(kachel=True, auf_hell=False, klein=False, groesse=64):
     und ein größerer Punkt, weil feine Linien in dieser Größe zu Matsch werden."""
     linie = INK if auf_hell else PAPER
     punkt = GOLD_DUNKEL if auf_hell else GOLD
+    if einfarbig:
+        # Für Stempel, Stickerei, Fax und alles, was nur eine Farbe kennt: Der Punkt
+        # trägt dann allein durch seine Form, nicht durch Gold.
+        linie = punkt = "currentColor"
     teile = [f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="{groesse}" '
              f'height="{groesse}" role="img" aria-label="Klarsatz">',
              "<title>Klarsatz</title>",
@@ -54,14 +58,14 @@ def signet(kachel=True, auf_hell=False, klein=False, groesse=64):
         # Zwei kräftige Zeilen, ein großer Punkt: Das überlebt 16 Pixel.
         for y, breite in ((22, 34), (36, 17)):
             teile.append(f'<rect x="12" y="{y}" width="{breite}" height="6" rx="3" '
-                         f'fill="{linie}" opacity="0.62"/>')
+                         f'fill="{linie}" opacity="{0.75 if einfarbig else 0.62}"/>')
         teile.append(f'<circle cx="40" cy="39" r="7" fill="{punkt}"/>')
     else:
         # Unterschiedlich lange Zeilen, wie gesetzter Text. Die dritte bricht früh ab,
         # damit der Punkt Platz hat — er ist das eigentliche Zeichen.
         for y, breite in ((19, 28), (29, 37), (39, 19)):
             teile.append(f'<rect x="13" y="{y}" width="{breite}" height="3.4" rx="1.7" '
-                         f'fill="{linie}" opacity="0.55"/>')
+                         f'fill="{linie}" opacity="{0.7 if einfarbig else 0.55}"/>')
         teile.append(f'<circle cx="39" cy="40.7" r="4" fill="{punkt}"/>')
 
     teile.append("</svg>")
@@ -164,7 +168,8 @@ def _bilder():
         'deutsche Sätze sind · ruthner.at/klarsatz</p></body></html>')
 
     for datei, groesse, quelle in (("klarsatz-avatar-512.png", 512, "klarsatz-signet.svg"),
-                                   ("apple-touch-icon.png", 180, "klarsatz-signet-klein.svg")):
+                                   ("apple-touch-icon.png", 180, "klarsatz-signet-klein.svg"),
+                                   ("editor-icon-128.png", 128, "klarsatz-signet-klein.svg")):
         _rastere(quadrat.replace("SVG", eingehaengt(quelle, f"width:{groesse}px;height:{groesse}px")),
                  groesse, groesse, ZIEL / datei)
         yield datei
@@ -174,6 +179,11 @@ def _bilder():
     _rastere(html, 1200, 630, ZIEL / "klarsatz-vorschau.png")
     yield "klarsatz-vorschau.png"
 
+    # Die VS-Code-Erweiterung braucht ihr Symbol im eigenen Ordner.
+    ext = WURZEL / "editor" / "vscode-klarsatz"
+    if ext.exists():
+        (ext / "icon.png").write_bytes((ZIEL / "editor-icon-128.png").read_bytes())
+
 
 def main():
     ZIEL.mkdir(parents=True, exist_ok=True)
@@ -182,7 +192,8 @@ def main():
     for name, inhalt in (("klarsatz-signet.svg", signet()),
                          ("klarsatz-signet-klein.svg", signet(klein=True)),
                          ("klarsatz-signet-blank.svg", signet(kachel=False)),
-                         ("klarsatz-signet-auf-hell.svg", signet(kachel=False, auf_hell=True))):
+                         ("klarsatz-signet-auf-hell.svg", signet(kachel=False, auf_hell=True)),
+                         ("klarsatz-signet-einfarbig.svg", signet(kachel=False, einfarbig=True))):
         (ZIEL / name).write_text(inhalt, encoding="utf-8")
         geschrieben.append(name)
 

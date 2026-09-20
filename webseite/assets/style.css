@@ -2912,3 +2912,18 @@ kbd {
     .hier-aus { margin-left: 0; }
     .kurs-buehne-platz { padding: 4px 6px 10px; }
 }
+
+
+/* Die Punkte in der Eignungstabelle sind eine Selbsteinschätzung — das steht
+   darüber, damit eine selbst vergebene 9/10 nicht wie ein Messergebnis aussieht. */
+.eig-hinweis {
+    max-width: 70ch;
+    margin: 16px 0 18px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--line);
+    font-size: 0.9rem;
+    line-height: 1.7;
+    color: var(--paper-faint);
+}
+
+.eig-hinweis strong { color: var(--paper-dim); }

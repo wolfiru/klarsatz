@@ -1,6 +1,16 @@
 # Änderungen
 
 ## 0.10.0
+- **Nach einem kritischen Review nachgeschärft:** Die Punkte in der Eignungstabelle heißen jetzt
+  **„Meine Einschätzung"**, und darüber steht, dass sie vom Autor stammen und kein Messergebnis
+  sind. Die Zahlen bleiben — gerade die 1/10 für das, wofür Klarsatz nichts taugt, macht die
+  Tabelle glaubwürdig; was störte, war der Anschein von Objektivität. Bei den Fuzz-Zahlen steht
+  jetzt „in diesen Läufen" und ein Satz zum Unterschied zwischen *ist nicht passiert* und *kann
+  nicht passieren*. Die These im Abschnitt „Die Idee" ist auf den Punkt gebracht: Klarsatz will
+  das Programmieren nicht einfacher machen, sondern **zwei Lernprobleme zeitlich auseinanderziehen**.
+- **Canonical-Adressen** auf allen Seiten, auch in den beiden Seitenbauern.
+- **Logo vervollständigt:** eine einfarbige Fassung (`currentColor`, für Ausdruck und Stempel) und
+  das Symbol der VS-Code-Erweiterung, das `tools/baue_logo.py` gleich mit in den Editor-Ordner legt.
 - **„Hier ausführen" in Kurs und Dokumentation.** Bisher führte jeder Codeblock nur über einen Link
   in den Spielplatz — also aus der Lektion heraus, mit dem Text daneben verloren. Jetzt kommt die
   Spielwiese zum Block: Sie erscheint direkt darunter, lädt beim ersten Klick und **wandert**

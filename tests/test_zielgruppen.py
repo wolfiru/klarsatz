@@ -63,6 +63,19 @@ class Zielgruppen(unittest.TestCase):
                 self.assertEqual(punkte.count("ist-voll"), int(messer))
                 self.assertEqual(punkte.count("eig-punkt"), 10)
 
+    def test_die_punkte_sind_als_selbsteinschaetzung_gekennzeichnet(self):
+        """Eine selbst vergebene 9/10 sieht sonst aus wie ein Messergebnis.
+
+        Die Zahlen bleiben — auch die 1/10 für das, wofür Klarsatz nichts taugt, und
+        gerade die macht die Tabelle glaubwürdig. Aber es muss dabeistehen, wer sie
+        vergeben hat."""
+        text = SEITE.read_text(encoding="utf-8")
+        self.assertIn('<th scope="col">Meine Einschätzung</th>', text)
+        self.assertIn("meine eigene Einschätzung", text)
+        self.assertIn("kein Messergebnis", text)
+        self.assertNotIn("mit Punkten von 1 bis 10", text,
+                         "Der Verweis in den Harten Fragen behauptet wieder Objektivität.")
+
     def test_die_readme_zeigt_ebenso_viele_gefuellte_kreise(self):
         for kreise, zahl in re.findall(r"`([●○]+)` (\d+)/10", README.read_text(encoding="utf-8")):
             with self.subTest(zahl=zahl):

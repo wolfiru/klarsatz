@@ -219,6 +219,7 @@ GERUEST = """<!DOCTYPE html>
 <meta name="description" content="__BESCHREIBUNG__">
 <meta name="theme-color" content="#0c0e0b">
 <title>__TITEL__</title>
+<link rel="canonical" href="https://www.ruthner.at/klarsatz/__DATEI__">
 <link rel="icon" href="assets/klarsatz-signet-klein.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -338,6 +339,7 @@ def baue(kurs, ziel):
              .replace("__SL_TITEL__", html.escape(kurs["sl_titel"]))
              .replace("__BESCHREIBUNG__", html.escape(kurs["beschreibung"]))
              .replace("__BLAETTERN__", f'<nav class="blaettern">\n{blaettern}\n</nav>'))
+    seite = seite.replace("__DATEI__", kurs["datei"])
     (ziel / kurs["datei"]).write_text(seite, encoding="utf-8")
     return len(seite), len(lektionen)
 

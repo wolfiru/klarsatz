@@ -28,6 +28,7 @@ PAKET = {
     "description": "Syntax-Hervorhebung, Einrückung und Snippets für Klarsatz – die Programmiersprache, die wie Deutsch klingt.",
     "engines": {"vscode": "^1.75.0"}, "categories": ["Programming Languages", "Snippets"],
     "keywords": ["klarsatz", "deutsch", "programmiersprache"],
+    "icon": "icon.png",
     "contributes": {
         "languages": [{"id": "klarsatz", "aliases": ["Klarsatz", "klarsatz"], "extensions": [".klar"],
                        "configuration": "./language-configuration.json"}],

@@ -13,8 +13,10 @@ WURZEL = Path(__file__).resolve().parent.parent
 ASSETS = WURZEL / "webseite" / "assets"
 
 SVGS = ["klarsatz-signet.svg", "klarsatz-signet-klein.svg", "klarsatz-signet-blank.svg",
-        "klarsatz-signet-auf-hell.svg", "klarsatz-wortmarke.svg", "klarsatz-wortmarke-auf-hell.svg"]
-PNGS = ["klarsatz-avatar-512.png", "apple-touch-icon.png", "klarsatz-vorschau.png"]
+        "klarsatz-signet-auf-hell.svg", "klarsatz-signet-einfarbig.svg",
+        "klarsatz-wortmarke.svg", "klarsatz-wortmarke-auf-hell.svg"]
+PNGS = ["klarsatz-avatar-512.png", "apple-touch-icon.png", "editor-icon-128.png",
+        "klarsatz-vorschau.png"]
 
 
 class DieDateien(unittest.TestCase):
@@ -44,6 +46,7 @@ class DieDateien(unittest.TestCase):
         import struct
         for name, erwartet in (("klarsatz-avatar-512.png", (512, 512)),
                                ("apple-touch-icon.png", (180, 180)),
+                               ("editor-icon-128.png", (128, 128)),
                                ("klarsatz-vorschau.png", (1200, 630))):
             with self.subTest(datei=name):
                 roh = (ASSETS / name).read_bytes()
@@ -77,6 +80,40 @@ class WirdAuchBenutzt(unittest.TestCase):
         self.assertIn("klarsatz-wortmarke.svg", text)
         self.assertIn("klarsatz-wortmarke-auf-hell.svg", text)
         self.assertIn("prefers-color-scheme: dark", text)
+
+
+
+class UeberallEingesetzt(unittest.TestCase):
+    """Eine Marke wirkt erst, wenn sie an jeder Stelle auftaucht, an der jemand ankommt."""
+
+    def test_die_editor_erweiterung_traegt_das_signet(self):
+        import json
+        ext = WURZEL / "editor" / "vscode-klarsatz"
+        self.assertTrue((ext / "icon.png").exists(), "tools/baue_logo.py legt es an.")
+        self.assertEqual(json.loads((ext / "package.json").read_text(encoding="utf-8")).get("icon"),
+                         "icon.png")
+
+    def test_es_gibt_eine_einfarbige_fassung(self):
+        """Für alles, was nur eine Farbe kennt — Stempel, Ausdruck, Stickerei."""
+        text = (ASSETS / "klarsatz-signet-einfarbig.svg").read_text(encoding="utf-8")
+        self.assertIn("currentColor", text)
+        for farbe in ("#d9b45a", "#f3efe6", "#0c0e0b"):
+            self.assertNotIn(farbe, text)
+
+    def test_jede_seite_nennt_ihre_eigene_adresse(self):
+        """Ohne canonical zählt eine geteilte Adresse mit Anhängsel als eigene Seite."""
+        for seite in sorted((WURZEL / "webseite" / "seiten").glob("*.html")):
+            with self.subTest(seite=seite.name):
+                text = seite.read_text(encoding="utf-8")
+                treffer = re.search(r'rel="canonical" href="([^"]+)"', text)
+                self.assertIsNotNone(treffer, "Keine canonical-Angabe.")
+                erwartet = "" if seite.name == "index.html" else seite.name
+                self.assertEqual(treffer.group(1), f"https://www.ruthner.at/klarsatz/{erwartet}")
+
+    def test_auch_die_erzeugten_seiten_nennen_sie(self):
+        for bauer in (WURZEL / "webseite" / "baue_doku.sh", WURZEL / "tools" / "baue_tutorial.py"):
+            with self.subTest(bauer=bauer.name):
+                self.assertIn('rel="canonical"', bauer.read_text(encoding="utf-8"))
 
 
 if __name__ == "__main__":

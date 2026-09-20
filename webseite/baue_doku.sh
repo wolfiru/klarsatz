@@ -78,6 +78,7 @@ for eintrag in "${KAPITEL[@]}"; do
 <meta name="description" content="$beschr">
 <meta name="theme-color" content="#0c0e0b">
 <title>$titel — Klarsatz-Dokumentation</title>
+<link rel="canonical" href="https://www.ruthner.at/klarsatz/$datei">
 <link rel="icon" href="assets/klarsatz-signet-klein.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
