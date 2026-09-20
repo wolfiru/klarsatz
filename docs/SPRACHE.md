@@ -1,4 +1,4 @@
-# Klarsatz – Sprachdefinition (Stand: Version 0.8.3)
+# Klarsatz – Sprachdefinition (Stand: Version 0.9.0)
 
 Klarsatz ist **keine natürliche Sprache**, sondern eine Programmiersprache, deren Syntax sich an
 deutscher Alltagssprache orientiert — fachlich: eine *kontrollierte natürliche Sprache*. Der
@@ -152,6 +152,8 @@ Entferne "Milch" aus Einkauf.
 Sortiere Einkauf.                       Anmerkung: auch: Sortiere Einkauf absteigend.
 Zeige das erste Element von Einkauf.    Anmerkung: auch: das letzte Element
 Zeige Element 2 von Einkauf.            Anmerkung: gezählt wird ab 1
+Setze Element 2 von Einkauf auf "Brot". Anmerkung: auch: das erste/letzte Element
+Erhöhe Element 2 von Zahlen um 1.       Anmerkung: ebenso Verringere, Verdopple, Halbiere
 Zeige die Länge von Einkauf.
 ```
 ```
@@ -160,7 +162,9 @@ Teile Inhalt bei "\n" zu Zeilen.     Anmerkung: \n = Zeilenumbruch
 ```
 `Element Nr von Liste`: `Nr` darf eine Zahl, ein Name oder eine Rechnung in Klammern sein.
 
-Zugriffe außerhalb der Liste sind **immer** ein Fehler mit klarer Meldung, nie ein stiller Fehlgriff.
+Zugriffe außerhalb der Liste sind **immer** ein Fehler mit klarer Meldung, nie ein stiller Fehlgriff —
+beim Schreiben genauso wie beim Lesen. Ein Text lässt sich nicht an einer Stelle ändern; dafür gibt es
+`Ersetze "alt" durch "neu" in Text.`
 
 ## 9. Aufgaben (Funktionen)
 
@@ -230,6 +234,8 @@ Das ist ein **Lernprojekt**: Der Interpreter ist keine Sandbox für fremden, nic
 Erstelle eine Tabelle namens Preise mit "Apfel" als 3 und "Birne" als 2.
 Trage "Kiwi" mit 5 in Preise ein.
 Zeige Wert für "Apfel" in Preise.
+Setze Wert für "Apfel" in Preise auf 4.   Anmerkung: legt den Eintrag an, wenn es ihn noch nicht gibt
+Erhöhe Wert für "Apfel" in Preise um 1.   Anmerkung: dafür muss es ihn geben
 Wenn Preise enthält "Kiwi", zeige "ja".
 Entferne "Birne" aus Preise.
 Für jede Frucht in Preise:            Anmerkung: geht durch die Schlüssel

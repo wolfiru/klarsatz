@@ -247,6 +247,15 @@ class Parser:
         return ("merke", z, wert, t.norm, t.wert, konstant)
 
     def ziel(self):
+        # Stellen in Listen und Tabellen lassen sich ebenfalls beschreiben:
+        # Setze Element 2 von Liste auf 9. · Erhöhe das letzte Element von Liste um 1.
+        # · Setze Wert für "Apfel" in Preise auf 3.
+        if self._zeigt_auf_eine_stelle():
+            stelle = self.primaer()
+            if stelle[0] not in ("element", "pos", "tabellenwert"):
+                self.fehler("Hier erwarte ich einen Namen oder eine Stelle wie "
+                            "'Element 2 von Liste'.")
+            return stelle
         t = self.name()
         if self.ist_wort("von"):
             self.nimm()
@@ -255,6 +264,18 @@ class Parser:
         if t.norm in self.aufgaben:
             self.fehler(f"'{t.wert}' ist der Name einer Aufgabe, keiner Variablen.", tok=t)
         return ("var", t.norm, t.wert, t.zeile)
+
+    def _zeigt_auf_eine_stelle(self):
+        """Steht hier 'Element 2 von …', 'das erste Element von …' oder 'Wert für … in …'?"""
+        if self.ist_wort("erste", "letzte") and self.ist_wort("element", k=1):
+            return True
+        if self.ist_wort("wert") and self.ist_wort("fuer", k=1):
+            return True
+        if self.ist_wort("element"):
+            nxt = self.peek(1)
+            return nxt.art in ("ZAHL", "(") or (nxt.art == "WORT" and nxt.norm not in RESERVIERT
+                                                and self.ist_wort("von", k=2))
+        return False
 
     def s_setze(self):
         z = self.nimm().zeile

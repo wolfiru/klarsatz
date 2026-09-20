@@ -593,6 +593,96 @@ class Beispieldateien(unittest.TestCase):
 
 
 
+class ElementeAendern(unittest.TestCase):
+    """Stellen in Listen und Tabellen beschreiben — der Gegenweg zum Lesen.
+
+    Bis 0.8.3 ließ sich `Element 2 von Liste` nur lesen. Wer ein Spielfeld oder eine
+    Rangliste bauen wollte, musste die Liste jedes Mal neu aufbauen — und bekam beim
+    Versuch eine Meldung, die nicht einmal sagte, dass es den Satz nicht gibt.
+    """
+
+    def laufe(self, quelle):
+        aus = []
+        Interpreter(ausgabe=aus.append).lauf(quelle)
+        return aus
+
+    LISTE = 'Erstelle eine Liste namens L mit 1 und 2 und 3.\n'
+    TABELLE = 'Erstelle eine Tabelle namens T mit "a" als 1 und "b" als 2.\n'
+
+    def test_element_setzen(self):
+        self.assertEqual(self.laufe(self.LISTE + "Setze Element 2 von L auf 9.\nZeige L."),
+                         ["[1, 9, 3]"])
+
+    def test_nummer_darf_gerechnet_sein(self):
+        self.assertEqual(
+            self.laufe("Merke 1 als i.\n" + self.LISTE + "Setze Element (i plus 1) von L auf 9.\nZeige L."),
+            ["[1, 9, 3]"])
+
+    def test_erstes_und_letztes_element(self):
+        self.assertEqual(
+            self.laufe(self.LISTE + "Setze das erste Element von L auf 7.\n"
+                       "Setze das letzte Element von L auf 8.\nZeige L."),
+            ["[7, 2, 8]"])
+
+    def test_erhoehen_und_verdoppeln(self):
+        self.assertEqual(
+            self.laufe(self.LISTE + "Erhöhe Element 3 von L um 10.\nVerdopple Element 1 von L.\nZeige L."),
+            ["[2, 2, 13]"])
+
+    def test_tabellenwert_setzen_und_erhoehen(self):
+        self.assertEqual(
+            self.laufe(self.TABELLE + 'Setze Wert für "a" in T auf 5.\n'
+                       'Erhöhe Wert für "b" in T um 40.\nZeige T.'),
+            ["{a: 5, b: 42}"])
+
+    def test_ein_neuer_schluessel_darf_entstehen(self):
+        """Wie `Trage … ein` — bei Tabellen ist das Anlegen der Normalfall."""
+        self.assertEqual(self.laufe(self.TABELLE + 'Setze Wert für "c" in T auf 3.\nZeige T.'),
+                         ["{a: 1, b: 2, c: 3}"])
+
+    def test_daneben_gegriffen(self):
+        with self.assertRaisesRegex(LaufzeitFehler, "Element 5 gibt es nicht"):
+            self.laufe(self.LISTE + "Setze Element 5 von L auf 9.")
+        with self.assertRaisesRegex(LaufzeitFehler, "ganze Zahl"):
+            self.laufe(self.LISTE + "Setze Element 1.5 von L auf 9.")
+
+    def test_ein_text_laesst_sich_nicht_an_einer_stelle_aendern(self):
+        with self.assertRaisesRegex(LaufzeitFehler, "Ersetze"):
+            self.laufe('Merke "abc" als W.\nSetze Element 2 von W auf "x".')
+
+    def test_nur_listen_haben_elemente(self):
+        with self.assertRaisesRegex(LaufzeitFehler, "nur eine Liste"):
+            self.laufe("Merke 5 als Z.\nSetze Element 1 von Z auf 9.")
+
+    def test_die_leere_liste_hat_kein_erstes_element(self):
+        with self.assertRaisesRegex(LaufzeitFehler, "leer"):
+            self.laufe("Erstelle eine Liste namens L.\nSetze das erste Element von L auf 1.")
+
+    def test_ein_fehlender_schluessel_laesst_sich_nicht_erhoehen(self):
+        with self.assertRaisesRegex(LaufzeitFehler, "keinen Eintrag"):
+            self.laufe(self.TABELLE + 'Erhöhe Wert für "x" in T um 1.')
+
+    def test_eine_variable_namens_element_bleibt_moeglich(self):
+        """'Element' ist kein reserviertes Wort — das darf sich nicht geändert haben."""
+        self.assertEqual(self.laufe("Merke 3 als Element.\nSetze Element auf 4.\nZeige Element."),
+                         ["4"])
+
+    def test_nach_python(self):
+        from klarsatz.nach_python import nach_python
+        erzeugt = nach_python(self.LISTE + "Setze Element 2 von L auf 9.\n"
+                              "Erhöhe das erste Element von L um 1.")
+        self.assertIn("L[2 - 1] = 9", erzeugt)
+        self.assertIn("L[0] += 1", erzeugt)
+
+    def test_der_formatierer_laesst_den_satz_stehen(self):
+        from klarsatz.formatierer import formatiere
+        quelle = self.LISTE + "Setze Element 2 von L auf 9.\n"
+        self.assertEqual(formatiere(quelle), quelle)
+
+    def test_der_pruefer_hat_nichts_zu_beanstanden(self):
+        from klarsatz.pruefer import pruefe
+        self.assertEqual([b.meldung for b in pruefe(self.LISTE + "Setze Element 2 von L auf 9.")], [])
+
 class FuerJedenJedeJedes(unittest.TestCase):
     """„Für jedes Ort" ist falsches Deutsch — die Sprache soll das nicht erzwingen."""
 

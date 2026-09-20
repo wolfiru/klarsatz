@@ -245,10 +245,50 @@ class Interpreter:
                 raise LaufzeitFehler(f"Ich kenne '{anz}' noch nicht. Lege es zuerst mit "
                                      f"'Merke ... als {anz}.' an.", z)
             bb.lege_an(n, anz, wert)
+        elif ziel[0] in ("element", "pos", "tabellenwert"):
+            self._stelle_setzen(ziel, wert, b)
         else:
             _, fn, fa, objk, z = ziel
             obj = self.auswerten(objk, b)
             self._feld_setzen(obj, fn, fa, wert, z)
+
+    def _stelle_setzen(self, ziel, wert, b):
+        """Schreibt an eine Stelle in einer Liste oder Tabelle.
+
+        Gelesen wird so eine Stelle schon lange (`Zeige Element 2 von Liste.`); hier ist
+        der Gegenweg. Geprüft wird dasselbe wie beim Lesen — wer daneben greift, bekommt
+        dieselbe Meldung, statt dass still etwas Falsches passiert."""
+        art, z = ziel[0], ziel[-1]
+
+        if art == "tabellenwert":
+            schluessel = self._schluessel(self.auswerten(ziel[1], b), z)
+            tabelle = self._tabelle(self.auswerten(ziel[2], b), z)
+            if len(tabelle) >= self.grenzen.liste and schluessel not in tabelle:
+                raise LimitFehler(f"Die Tabelle hat mehr als {self.grenzen.liste} Einträge.", z)
+            tabelle[schluessel] = wert
+            return
+
+        liste = self.auswerten(ziel[2], b)
+        if isinstance(liste, str):
+            raise LaufzeitFehler("Ein Text lässt sich nicht an einer Stelle ändern. "
+                                 "Mit 'Ersetze \"alt\" durch \"neu\" in Text.' geht es.", z)
+        if not isinstance(liste, list):
+            raise LaufzeitFehler(f"Elemente hat nur eine Liste, hier ist es {typname(liste)}.", z)
+
+        if art == "pos":
+            if not liste:
+                raise LaufzeitFehler(f"Die Liste ist leer – ein {ziel[1]}s Element gibt es nicht.", z)
+            liste[0 if ziel[1] == "erste" else -1] = wert
+            return
+
+        nummer = self.auswerten(ziel[1], b)
+        if not isinstance(nummer, int) or isinstance(nummer, bool):
+            raise LaufzeitFehler(f"Die Nummer eines Elements muss eine ganze Zahl sein "
+                                 f"(hier: {als_text(nummer)}).", z)
+        if not 1 <= nummer <= len(liste):
+            raise LaufzeitFehler(f"Element {nummer} gibt es nicht – gezählt wird ab 1, und es sind nur "
+                                 f"{len(liste)} Elemente.", z)
+        liste[nummer - 1] = wert
 
     def _a_setze(self, k, b):
         self._schreibe_ziel(k[2], self.auswerten(k[3], b), b)

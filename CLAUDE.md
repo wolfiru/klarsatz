@@ -49,10 +49,9 @@ Das Projekt liegt seit 19.09.2026 in einem Git-Repository (Zweig `main`), öffen
 Commit-Texte auf Deutsch, Betreffzeile im Imperativ oder als Aussage. Hochladen mit
 `git push origin main`; eine Marke braucht ein eigenes `git push origin vX.Y.Z`.
 
-**Eine Version anheben** heißt: `pyproject.toml` (die Quelle der Wahrheit), `klarsatz/__init__.py`,
-die Kopfzeilen von `ÜBERGABE.md` und `docs/SPRACHE.md`, `CHANGELOG.md` (neue Überschrift ganz oben)
-und die Platzhalter `data-download="version"` in `webseite/seiten/` und `webseite/kapitel/`.
-Danach `baue_editor.py`, die drei Veröffentlichungsbefehle und `git tag -a vX.Y.Z`.
+**Eine Version anheben:** `python3 tools/hebe_version.py 0.9.1` setzt die Nummer an allen zehn
+Stellen. Von Hand bleiben die neue Überschrift in `CHANGELOG.md`, danach `baue_editor.py`, die drei
+Veröffentlichungsbefehle und `git tag -a vX.Y.Z`.
 `tests/test_doku_konsistenz.py` prüft all das nach — die Nummer auf der Seite setzt nämlich nicht
 das Veröffentlichen, sondern erst `tools/baue_archiv.py`, und genau dadurch stand sie schon einmal
 tagelang falsch da.

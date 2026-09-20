@@ -63,6 +63,39 @@ Zeige die Länge von Einkauf.</pre>
 
 <p>Die Nummer darf eine Zahl, ein Name oder eine Rechnung in Klammern sein.</p>
 
+<h2 id="aendern">Einträge ändern</h2>
+<p class="h2-sub">Dieselbe Stelle, andere Richtung</p>
+
+<p>Jede Stelle, die sich lesen lässt, lässt sich auch beschreiben. Der Satz sieht aus wie das Lesen, nur steht <code>Setze</code> davor und <code>auf</code> dahinter:</p>
+
+<div class="code-kopf"><span class="code-titel">Eine Liste an Ort und Stelle ändern</span></div>
+<pre class="klar">Erstelle eine Liste namens Punkte mit 10 und 20 und 30.
+
+Setze Element 2 von Punkte auf 25.
+Setze das letzte Element von Punkte auf 0.
+Erhöhe Element 1 von Punkte um 5.
+Verdopple Element 2 von Punkte.
+
+Zeige Punkte.</pre>
+
+<p><code>Erhöhe</code>, <code>Verringere</code>, <code>Verdopple</code> und <code>Halbiere</code> gehen also auch auf eine Stelle in der Liste — und genauso auf einen Eintrag in einer Tabelle:</p>
+
+<div class="code-kopf"><span class="code-titel">Eine Tabelle fortschreiben</span></div>
+<pre class="klar">Erstelle eine Tabelle namens Preise mit "Apfel" als 3.
+
+Setze Wert für "Apfel" in Preise auf 4.
+Setze Wert für "Birne" in Preise auf 2.
+Erhöhe Wert für "Apfel" in Preise um 1.
+
+Zeige Preise.</pre>
+
+<p>Bei Tabellen legt <code>Setze</code> den Eintrag an, wenn es ihn noch nicht gibt — <code>Erhöhe</code> setzt ihn dagegen voraus, denn es muss ja etwas dastehen, das größer werden kann.</p>
+
+<div class="notiz">
+<span class="notiz-titel">Texte ändern sich nicht an einer Stelle</span>
+<p><code>Setze Element 2 von Wort auf "x".</code> geht nicht: Ein Text ist am Stück, was auch heißt, dass ihn niemand hinter deinem Rücken verändern kann. Zum Austauschen gibt es <code>Ersetze "alt" durch "neu" in Text.</code></p>
+</div>
+
 <div class="notiz warnung">
 <span class="notiz-titel">Hinter dem Ende gibt es nichts</span>
 <p>Ein Zugriff außerhalb der Liste ist <strong>immer</strong> ein Fehler mit klarer Meldung — nie ein stiller Fehlgriff und nie ein leerer Wert. Wer damit rechnen muss, fängt ihn mit <a href="doku-aufgaben.html#fehler">Versuche</a> ab oder prüft vorher die Länge.</p>

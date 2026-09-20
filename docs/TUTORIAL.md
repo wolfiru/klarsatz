@@ -716,6 +716,26 @@ blau
 Merk dir das gut: In Lektion 11 wirst du sehen, dass Python das anders macht, und du wirst
 verstehen, warum das kein Zufall ist.
 
+### Einen Platz überschreiben
+
+Dieselbe Stelle lässt sich auch beschreiben. Der Satz sieht aus wie beim Lesen — nur steht
+`Setze` davor und `auf` dahinter:
+
+```klar
+Erstelle eine Liste namens Punkte mit 10 und 20 und 30.
+
+Setze Element 2 von Punkte auf 25.
+Erhöhe das letzte Element von Punkte um 5.
+
+Zeige Punkte.
+```
+```ausgabe
+[10, 25, 35]
+```
+
+Das brauchst du überall dort, wo sich etwas ändert statt dazuzukommen: ein Spielstand, ein
+Spielfeld, eine Rangliste.
+
 **Deine Aufgabe:** Lass drei Lieblingsessen eingeben, sammle sie in einer Liste und gib sie
 sortiert und durchnummeriert aus.
 

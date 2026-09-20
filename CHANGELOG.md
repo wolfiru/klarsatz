@@ -1,5 +1,26 @@
 # Änderungen
 
+## 0.9.0
+- **Stellen in Listen und Tabellen lassen sich jetzt beschreiben.** Gelesen wurden sie immer schon,
+  geschrieben nicht — wer ein Spielfeld, eine Rangliste oder einen Spielstand führen wollte, musste
+  die Liste jedes Mal neu aufbauen. Und der Versuch endete in einer Meldung, die nicht einmal sagte,
+  dass es den Satz nicht gibt („Hier erwarte ich 'auf', gefunden habe ich aber die Zahl 2").
+
+  ```
+  Setze Element 2 von Punkte auf 25.
+  Setze das letzte Element von Punkte auf 0.
+  Erhöhe Element 1 von Punkte um 5.          (ebenso Verringere, Verdopple, Halbiere)
+  Setze Wert für "Apfel" in Preise auf 4.    (legt den Eintrag an, wenn es ihn nicht gibt)
+  Erhöhe Wert für "Apfel" in Preise um 1.    (setzt ihn voraus)
+  ```
+
+  Geprüft wird beim Schreiben dasselbe wie beim Lesen: Eine Nummer außerhalb der Liste ist ein
+  Fehler mit derselben Meldung, nie ein stiller Fehlgriff. Ein Text lässt sich nicht an einer
+  Stelle ändern — dafür gibt es `Ersetze "alt" durch "neu" in Text.`, und die Meldung sagt das auch.
+  „Element" bleibt ein erlaubter Variablenname.
+- **`tools/hebe_version.py`** hebt die Nummer an allen zehn Stellen zugleich. Von Hand ist das
+  einmal schiefgegangen.
+
 ## 0.8.3
 Eine Aufräumversion: Die Doku sagt jetzt überall dasselbe wie der Code.
 - **Drei falsche Aussagen berichtigt.** `docs/SPRACHE.md` behauptete unter „Bekannte Grenzen", dass

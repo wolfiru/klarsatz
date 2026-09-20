@@ -1,4 +1,4 @@
-<p class="lede">Alles auf einen Blick: sämtliche Satzmuster, die reservierten Wörter, der Aufruf des Interpreters samt Prüfmodus und Formatierer, die Sicherheitsvorkehrungen und die bekannten Grenzen. Stand: Version <span data-download="version">0.8.3</span>.</p>
+<p class="lede">Alles auf einen Blick: sämtliche Satzmuster, die reservierten Wörter, der Aufruf des Interpreters samt Prüfmodus und Formatierer, die Sicherheitsvorkehrungen und die bekannten Grenzen. Stand: Version <span data-download="version">0.9.0</span>.</p>
 
 <h2 id="befehle">Alle Satzmuster</h2>
 <p class="h2-sub">Nachschlagewerk</p>
@@ -120,6 +120,8 @@
 <tr><td><code>Sortiere L.</code> · <code>Sortiere L absteigend.</code></td><td>Sortieren</td></tr>
 <tr><td><code>das erste / das letzte Element von L</code></td><td>Randeinträge</td></tr>
 <tr><td><code>Element n von L</code></td><td>Gezählt ab 1</td></tr>
+<tr><td><code>Setze Element n von L auf x.</code></td><td>Stelle beschreiben — auch <code>das erste</code> / <code>das letzte Element</code></td></tr>
+<tr><td><code>Erhöhe Element n von L um 1.</code></td><td>ebenso <code>Verringere</code>, <code>Verdopple</code>, <code>Halbiere</code></td></tr>
 <tr><td><code>Elemente a bis b von L</code></td><td>Ausschnitt</td></tr>
 <tr><td><code>ein zufälliges Element von L</code></td><td>Zufälliger Eintrag</td></tr>
 </tbody>
@@ -134,6 +136,7 @@
 <tr><td><code>Erstelle eine Tabelle namens T mit "a" als 1.</code></td><td>Gefüllte Tabelle</td></tr>
 <tr><td><code>Trage Schlüssel mit Wert in T ein.</code></td><td>Eintragen oder überschreiben</td></tr>
 <tr><td><code>Wert für Schlüssel in T</code></td><td>Wert lesen</td></tr>
+<tr><td><code>Setze Wert für k in T auf x.</code></td><td>legt den Eintrag an, wenn es ihn nicht gibt; <code>Erhöhe … um 1.</code> setzt ihn voraus</td></tr>
 <tr><td><code>Entferne Schlüssel aus T.</code></td><td>Eintrag löschen</td></tr>
 </tbody>
 </table>
@@ -258,7 +261,7 @@ python3 -m klarsatz --help</code></pre>
 </div>
 
 <h2 id="grenzen">Bekannte Grenzen</h2>
-<p class="h2-sub">Stand Version <span data-download="version">0.8.3</span></p>
+<p class="h2-sub">Stand Version <span data-download="version">0.9.0</span></p>
 
 <ul>
 <li>Kommazahlen stehen im <em>Quelltext</em> mit Punkt (<code>3.14</code>), weil das Komma dort Satzteile trennt. In <em>Antworten</em> auf <code>Frage</code> ist das Komma erlaubt, ebenso in <code>Zahlenwert von "3,5"</code>. Ausgegeben wird deutsch.</li>
