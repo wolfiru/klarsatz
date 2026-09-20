@@ -58,7 +58,7 @@ Erstelle eine Tabelle namens Strecken
 
 Anmerkung: --- Wohin soll es gehen? -----------------------------------------------
 Erstelle eine Liste namens Orte.
-Für jedes Ort in Ostwert:
+Für jeden Ort in Ostwert:
     Füge Ort zur Orte hinzu.
 Ende.
 
@@ -86,7 +86,7 @@ Erstelle eine Tabelle namens Weite.
 Erstelle eine Tabelle namens Vorher.
 Erstelle eine Tabelle namens Fertig.
 
-Für jedes Ort in Orte:
+Für jeden Ort in Orte:
     Trage Ort mit 99999 in Weite ein.
 Ende.
 Trage Start mit 0 in Weite ein.
@@ -96,7 +96,7 @@ Wiederhole solange wahr ist:
     Anmerkung: Genau das ist Dijkstras Einfall: Für den ist der Weg dann endgültig.
     Merke "" als Hier.
     Merke 99999 als Kuerzeste.
-    Für jedes Ort in Orte:
+    Für jeden Ort in Orte:
         Wenn nicht Fertig enthält Ort und Wert für Ort in Weite kleiner als Kuerzeste ist:
             Setze Kuerzeste auf Wert für Ort in Weite.
             Setze Hier auf Ort.
@@ -109,7 +109,7 @@ Wiederhole solange wahr ist:
 
     Anmerkung: Von hier aus jeden Nachbarn ansehen: Ist der Weg über diesen Ort
     Anmerkung: kürzer als der bisher beste, wird er gemerkt.
-    Für jedes Strecke in Strecken:
+    Für jede Strecke in Strecken:
         Teile Strecke bei "|" zu Enden.
         Merke das erste Element von Enden als A.
         Merke das letzte Element von Enden als B.
@@ -151,7 +151,7 @@ Zeige "".
 
 Merke 0 als Gefahren.
 Merke das erste Element von Weg als Letzter.
-Für jedes Ort in Weg:
+Für jeden Ort in Weg:
     Wenn nicht Ort gleich Letzter ist:
         Verbinde Letzter und "|" und Ort zu Hin.
         Verbinde Ort und "|" und Letzter zu Her.
@@ -211,7 +211,7 @@ Ende.
 Anmerkung: Zuerst alle Straßen, grau und dünn.
 Nimm die Farbe "grau".
 Nimm die Strichstärke 2.
-Für jedes Strecke in Strecken:
+Für jede Strecke in Strecken:
     Teile Strecke bei "|" zu Enden.
     Merke das erste Element von Enden als A.
     Merke das letzte Element von Enden als B.
@@ -223,7 +223,7 @@ Anmerkung: Darüber der gefundene Weg, golden und dick.
 Nimm die Farbe "gold".
 Nimm die Strichstärke 5.
 Merke das erste Element von Weg als Letzter.
-Für jedes Ort in Weg:
+Für jeden Ort in Weg:
     Wenn nicht Ort gleich Letzter ist:
         Führe LinieZu mit Wert für Letzter in Ostwert und Wert für Letzter in Nordwert
             und Wert für Ort in Ostwert und Wert für Ort in Nordwert aus.
@@ -233,7 +233,7 @@ Ende.
 
 Anmerkung: Zum Schluss die Orte: alle klein, Start und Ziel groß.
 Nimm die Farbe "weiß".
-Für jedes Ort in Orte:
+Für jeden Ort in Orte:
     Führe Punkt mit Wert für Ort in Ostwert und Wert für Ort in Nordwert und 8 aus.
 Ende.
 
@@ -244,7 +244,7 @@ Führe Punkt mit Wert für Ziel in Ostwert und Wert für Ziel in Nordwert und 18
 
 Anmerkung: Und die Namen dazu -- 14 Schritte über dem Punkt, damit sie ihn nicht verdecken.
 Nimm die Farbe "weiß".
-Für jedes Ort in Orte:
+Für jeden Ort in Orte:
     Führe StellDichAuf mit Wert für Ort in Ostwert und (Wert für Ort in Nordwert plus 14) aus.
     Beschrifte Ort.
 Ende.

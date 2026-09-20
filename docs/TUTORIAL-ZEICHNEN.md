@@ -449,6 +449,40 @@ Ende.
 Das Vieleck wächst vor deinen Augen von drei auf zehn Ecken. Auf der Leinwand siehst du immer nur
 das aktuelle, weil jeder Durchlauf mit `Lösche die Zeichnung.` beginnt.
 
+Wenn du genau hinsiehst, stört dabei aber etwas: Das Bild **zappelt**. Die Fläche sucht sich ihren
+Ausschnitt nämlich selbst und passt ihn an das an, was gerade gezeichnet ist — und das ändert sich
+ja in jedem Durchlauf. Ein Satz stellt das ab:
+
+* `Nimm die Leinwand 400 mal 400.` legt die Fläche fest. Die Mitte ist (0, 0), links ist −200,
+  rechts 200, und das bleibt so, egal was gezeichnet wird.
+
+Und weil ein bewegtes Bild gern dazusagt, was es gerade zeigt, gibt es noch einen Satz:
+
+* `Beschrifte "Text".` schreibt an die Stelle, an der der Stift steht — in seiner Farbe. Mehrere
+  Teile darfst du mit `und` verbinden, genau wie bei `Zeige`. `mit 20` macht die Schrift größer.
+
+```klar
+Nimm die Leinwand 400 mal 400.
+Nimm die Farbe "gold".
+Zähle von 3 bis 10 mit Ecken:
+    Lösche die Zeichnung.
+    Gehe zur Mitte.
+    Wiederhole Ecken Mal:
+        Gehe 50 Schritte vor.
+        Drehe dich um 360 geteilt durch Ecken Grad nach rechts.
+    Ende.
+
+    Hebe den Stift.
+    Gehe zur Mitte.
+    Gehe 120 Schritte zurück.
+    Beschrifte Ecken und " Ecken" mit 18.
+
+    Warte 1 Sekunde.
+Ende.
+```
+
+Jetzt steht das Vieleck still und wächst nur noch nach außen — und darunter steht, was man sieht.
+
 > **Warum das überhaupt geht.** Die Spielwiese zeigt Ausgaben und Striche in dem Moment, in dem sie
 > entstehen — ein Programm muss nicht fertig sein, um etwas zu zeigen. Genau deshalb darf eine
 > Anzeige auch endlos laufen.
@@ -489,6 +523,10 @@ Du kannst alles, was zum Zeichnen gehört. Was jetzt noch kommt, sind Ideen, kei
 
 Alle drei liegen in der Spielwiese zum Hineinladen und Zerlegen. Nimm dir eines vor, ändere eine
 Zahl und schau, was passiert — genau so hat dieser Kurs angefangen.
+
+Und wenn dich einmal ein größeres Programm reizt: Im Spielplatz liegen zwei, die alles
+zusammenbringen, was hier vorkam — *21 Spiel des Lebens* (ein Gitter, das sich selbst überlässt)
+und *22 Routenplaner* (eine Karte mit beschrifteten Orten und der kürzesten Strecke darin).
 
 Die vollständige Liste aller Zeichenbefehle steht im Kapitel
 [Zeichnen](https://www.ruthner.at/klarsatz/doku-zeichnen.html).

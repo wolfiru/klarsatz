@@ -675,7 +675,7 @@ Eine Liste lässt sich durchgehen — und hier trifft sich alles, was du kannst:
 
 ```klar
 Erstelle eine Liste namens Spieler mit "Anna" und "Ben" und "Rocco".
-Für jedes Name in Spieler:
+Für jeden Name in Spieler:
     Zeige "Willkommen, " und Name und "!".
 Ende.
 ```
@@ -780,7 +780,7 @@ Erschaffe einen Hund mit Name "Bella" und Alter 2 als Zweiter.
 Füge Erster zu Rudel hinzu.
 Füge Zweiter zu Rudel hinzu.
 
-Für jedes Hund in Rudel:
+Für jeden Hund in Rudel:
     Zeige Name von Hund und " (" und Alter von Hund und " Jahre)".
 Ende.
 ```
@@ -979,7 +979,7 @@ Und eine Liste:
 ```klar
 Erstelle eine Liste namens Farben mit "rot" und "grün" und "blau".
 Zeige das erste Element von Farben.
-Für jedes Farbe in Farben:
+Für jede Farbe in Farben:
     Zeige Farbe.
 Ende.
 ```

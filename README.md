@@ -44,7 +44,7 @@ und Fehlermeldungen, die auf Deutsch sagen, was zu tun ist.
 
 **→ [Spielwiese im Browser](https://www.ruthner.at/klarsatz/spielplatz.html)** — nichts zu
 installieren. Der Interpreter läuft als WebAssembly in einem Web-Worker, ohne Server und ohne
-Zugriff auf die Festplatte. 29 Beispielprogramme sind zum Hineinladen hinterlegt, vom Zahlenraten
+Zugriff auf die Festplatte. 31 Beispielprogramme sind zum Hineinladen hinterlegt, vom Zahlenraten
 bis zum grafischen Textadventure.
 
 Du willst programmieren lernen? Das **[Tutorial](docs/TUTORIAL.md)** führt in elf Lektionen vom
@@ -156,18 +156,23 @@ Dazu: Listen und Tabellen, Textwerkzeuge, Zufall, Dateien, Winkelfunktionen, Dat
 Fehlerbehandlung mit `Versuche` … `Bei Fehler`, und eine Schildkrötengrafik:
 
 ```klarsatz
+Nimm die Leinwand 400 mal 400.
 Nimm die Farbe "gold".
 Wiederhole 4 Mal:
     Gehe 120 Schritte vor.
     Drehe dich um 90 Grad nach rechts.
 Ende.
+Beschrifte "Ein Quadrat".
 ```
+
+`Nimm die Leinwand …` legt einen festen Rahmen fest, statt den Ausschnitt an das Gezeichnete
+anzupassen — nötig für alles, was sich bewegt. `Beschrifte …` schreibt an die Stelle des Stifts.
 
 Die vollständige Sprachbeschreibung steht in **[`docs/SPRACHE.md`](docs/SPRACHE.md)**.
 
 ## Beispielprogramme
 
-In `programme/` liegen zwanzig lauffähige Programme, nach Schwierigkeit geordnet — vorne genügen
+In `programme/` liegen zweiundzwanzig lauffähige Programme, nach Schwierigkeit geordnet — vorne genügen
 Eingabe und Rechnen, hinten kommen Tabellen, Dateien, Rekursion und Zeichnen zusammen:
 
 | | | |
@@ -176,6 +181,7 @@ Eingabe und Rechnen, hinten kommen Tabellen, Dateien, Rekursion und Zeichnen zus
 | `03_taschenrechner` | `11_galgenmaennchen` | `16_uhr` (tickt wirklich) |
 | `05_primzahlen` | `13_spirale` | `18_todo_liste` (mit Datei) |
 | `07_schere_stein_papier` | `14_wellen` (Sinus und Kosinus) | `20_grafisches_adventure` |
+| `21_spiel_des_lebens` (Conway) | `22_routenplaner` (Dijkstra) | |
 
 Alle mit Kurzbeschreibung in **[`docs/PROGRAMME.md`](docs/PROGRAMME.md)**. Jedes Programm wird von
 der Testsuite mit einem simulierten Spieler durchgespielt, damit die Beispiele nie veralten.
@@ -201,7 +207,7 @@ abgesichert ist und was nicht, steht ehrlich in **[`docs/SICHERHEIT.md`](docs/SI
 | Ordner | Inhalt |
 |---|---|
 | `klarsatz/` | das Paket: Lexer, Parser, Interpreter, Prüfer, Formatierer, Konsole, Web-Schnittstelle, Python-Übersetzer |
-| `programme/` | zwanzig Beispielprogramme |
+| `programme/` | zweiundzwanzig Beispielprogramme |
 | `beispiele/` | kleine Sprachbeispiele, je ein Thema |
 | `docs/` | die beiden Kurse, Sprachreferenz, Programmübersicht, Sicherheit |
 | `playground/` | die Spielwiese für den Browser (Editor, Pyodide-Worker) |

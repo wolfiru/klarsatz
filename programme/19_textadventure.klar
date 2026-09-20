@@ -73,7 +73,7 @@ Definiere Aufgabe Gehen mit Richtung:
 
     Merke falsch als Gefunden.
 
-    Für jedes Eintrag in ListeDerAusgaenge:
+    Für jeden Eintrag in ListeDerAusgaenge:
         Teile Eintrag bei ":" zu Teile.
         Merke Element 1 von Teile als RichtungName.
         Merke Element 2 von Teile als ZielRaum.

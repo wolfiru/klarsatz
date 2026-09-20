@@ -20,7 +20,7 @@ Definiere Aufgabe WarenkorbAnzeigen:
     Sonst:
         Zeige "=== Dein Warenkorb ===".
         Merke 0 als Summe.
-        Für jedes Artikel in Warenkorb:
+        Für jeden Artikel in Warenkorb:
             Merke Wert für Artikel in Preise als Preis.
             Zeige "  - " und Artikel und " (" und Formatiert von Preis auf 2 Stellen und " €)".
             Erhöhe Summe um Preis.

@@ -381,6 +381,14 @@ class Beschriften(unittest.TestCase):
         striche = zeichne('Merke 42 als Zahl.\nBeschrifte Zahl.')
         self.assertEqual(striche[0][3], "42")
 
+    def test_mehrere_teile_wie_bei_zeige(self):
+        striche = zeichne('Merke 5 als Ecken.\nBeschrifte Ecken und " Ecken".')
+        self.assertEqual(striche[0][3], "5 Ecken")
+
+    def test_mehrere_teile_auch_mit_groesse(self):
+        striche = zeichne('Beschrifte "a" und "b" mit 20.')
+        self.assertEqual((striche[0][3], striche[0][5]), ("ab", 20))
+
     def test_unsinnige_groessen_werden_abgelehnt(self):
         with self.assertRaisesRegex(LaufzeitFehler, "von 4 bis 400"):
             zeichne('Beschrifte "zu klein" mit 1.')

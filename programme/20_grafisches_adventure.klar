@@ -510,7 +510,7 @@ Definiere Aufgabe Gehen mit Richtung:
     Teile Wert für AktuellerRaum in Ausgaenge bei ", " zu Wege.
     Merke falsch als Gefunden.
 
-    Für jedes Weg in Wege:
+    Für jeden Weg in Wege:
         Teile Weg bei ":" zu Stuecke.
         Wenn Element 1 von Stuecke gleich Richtung ist:
             Setze AktuellerRaum auf Element 2 von Stuecke.

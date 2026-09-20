@@ -592,5 +592,45 @@ class Beispieldateien(unittest.TestCase):
                     self.assertIn("Zusicherung", e.meldung)
 
 
+
+class FuerJedenJedeJedes(unittest.TestCase):
+    """„Für jedes Ort" ist falsches Deutsch — die Sprache soll das nicht erzwingen."""
+
+    def laufe(self, quelle):
+        ausgabe = []
+        Interpreter(ausgabe=ausgabe.append).lauf(quelle)
+        return ausgabe
+
+    def test_alle_drei_formen_tun_dasselbe(self):
+        for wort in ("jeden", "jede", "jedes"):
+            with self.subTest(form=wort):
+                self.assertEqual(
+                    self.laufe(f'Erstelle eine Liste namens L mit "a" und "b".\n'
+                               f'Für {wort} Stueck in L:\n    Zeige Stueck.\nEnde.'),
+                    ["a", "b"])
+
+    def test_die_meldung_nennt_alle_drei(self):
+        with self.assertRaisesRegex(SyntaxFehler, "'jeden', 'jede' oder 'jedes'"):
+            self.laufe("Für alles X in L:\n    Zeige X.\nEnde.")
+
+    def test_die_programme_benutzen_die_passende_form(self):
+        """Wer die Beispiele liest, soll richtiges Deutsch lesen."""
+        import re
+        from pathlib import Path
+        artikel = {"Ort": "jeden", "Strecke": "jede", "Zeile": "jede", "Note": "jede",
+                   "Weg": "jeden", "Artikel": "jeden", "Eintrag": "jeden", "Name": "jeden",
+                   "Hund": "jeden", "Frucht": "jede", "Farbe": "jede", "Wert": "jeden",
+                   "Ton": "jeden"}
+        wurzel = Path(__file__).resolve().parent.parent
+        dateien = list((wurzel / "programme").glob("*.klar")) + list((wurzel / "beispiele").glob("*.klar"))
+        for datei in dateien:
+            for treffer in re.finditer(r"Für (jede[nrs]?) ([A-ZÄÖÜ][A-Za-zÄÖÜäöüß]*)",
+                                       datei.read_text(encoding="utf-8")):
+                erwartet = artikel.get(treffer.group(2))
+                if erwartet:
+                    with self.subTest(datei=datei.name, stelle=treffer.group(0)):
+                        self.assertEqual(treffer.group(1), erwartet)
+
+
 if __name__ == "__main__":
     unittest.main()

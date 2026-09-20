@@ -24,7 +24,7 @@ Wenn Länge von Noten gleich 0 ist:
 Sonst:
     Merke 0 als Summe.
     Merke 0 als Fuenfer.
-    Für jedes Note in Noten:
+    Für jede Note in Noten:
         Erhöhe Summe um Note.
         Wenn Note gleich 5 ist, erhöhe Fuenfer um 1.
     Ende.

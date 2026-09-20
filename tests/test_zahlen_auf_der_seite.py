@@ -12,8 +12,8 @@ WURZEL = Path(__file__).resolve().parent.parent
 SEITE = WURZEL / "webseite" / "seiten" / "index.html"
 HEIM = Path("/var/www/html/index.html")
 
-WORT = {9: "neun", 20: "zwanzig", 21: "einundzwanzig", 22: "zweiundzwanzig",
-        29: "neunundzwanzig", 30: "dreißig", 31: "einunddreißig"}
+WORT = {8: "acht", 9: "neun", 11: "elf", 20: "zwanzig", 21: "einundzwanzig",
+        22: "zweiundzwanzig", 29: "neunundzwanzig", 30: "dreißig", 31: "einunddreißig"}
 
 
 def ist_ruthner_at():
@@ -54,3 +54,35 @@ class Beispielzahlen(unittest.TestCase):
             self.skipTest("Die Startseite von ruthner.at liegt hier nicht")
         self.assertIn(f"{WORT[self.spielwiese]} Beispielprogramme",
                       HEIM.read_text(encoding="utf-8"))
+
+
+class ZahlenInDerReadme(unittest.TestCase):
+    """Auch die README veraltet leise — sie nennt Programmzahlen und Lektionszahlen."""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.text = (WURZEL / "README.md").read_text(encoding="utf-8")
+        cls.programme = len(list((WURZEL / "programme").glob("*.klar")))
+        cls.beispiele = len(list((WURZEL / "beispiele").glob("*.klar")))
+
+    def test_die_zahl_der_programme_stimmt(self):
+        self.assertIn(f"In `programme/` liegen {WORT[self.programme]} lauffähige Programme",
+                      self.text)
+        self.assertIn(f"| `programme/` | {WORT[self.programme]} Beispielprogramme |", self.text)
+
+    def test_die_zahl_in_der_spielwiese_stimmt(self):
+        self.assertIn(f"{self.programme + self.beispiele} Beispielprogramme sind zum Hineinladen",
+                      self.text)
+
+    def test_die_lektionszahlen_stimmen(self):
+        import re
+        for datei, wort, muster in ((WURZEL / "docs" / "TUTORIAL.md", "elf",
+                                     r"\*\*\[Tutorial\]\(docs/TUTORIAL\.md\)\*\* führt in (\w+) Lektionen"),
+                                    (WURZEL / "docs" / "TUTORIAL-ZEICHNEN.md", "acht",
+                                     r"\*\*\[Zeichnen\]\(docs/TUTORIAL-ZEICHNEN\.md\)\*\* in (\w+) Lektionen")):
+            with self.subTest(kurs=datei.name):
+                lektionen = len(re.findall(r"^## Lektion \d+", datei.read_text(encoding="utf-8"), re.M))
+                self.assertEqual(WORT.get(lektionen, str(lektionen)), wort,
+                                 f"{datei.name} hat jetzt {lektionen} Lektionen.")
+                self.assertRegex(self.text, muster)
+                self.assertEqual(re.search(muster, self.text).group(1), wort)

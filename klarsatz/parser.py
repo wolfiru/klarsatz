@@ -480,7 +480,10 @@ class Parser:
     def s_fuer(self):
         z = self.nimm().zeile
         if not self.ist_wort("jedes", "jede", "jeden"):
-            self.fehler("Nach 'Für' erwarte ich 'jedes' (Für jedes Element in Liste:).")
+            # Alle drei Formen gelten, damit der Satz zum Geschlecht des Namens passt:
+            # jeden Ort, jede Strecke, jedes Element.
+            self.fehler("Nach 'Für' erwarte ich 'jeden', 'jede' oder 'jedes' "
+                        "(Für jeden Ort in Orte:).")
         self.nimm()
         t = self.name(True)
         self.erwarte_wort("in")
@@ -681,15 +684,20 @@ class Parser:
         return ("stift", tok.zeile, tok.norm == "senke")
 
     def s_beschrifte(self):
-        """Beschrifte "Wien". · Beschrifte "Wien" mit 20."""
+        """Beschrifte "Wien". · Beschrifte Ecken und " Ecken". · Beschrifte "Wien" mit 20."""
         z = self.nimm().zeile
-        text = self.summe()
+        # Mehrere Teile wie bei 'Zeige' — sonst müsste man für jede Beschriftung, in der
+        # eine Zahl vorkommt, erst mühsam einen Text zusammenbauen.
+        teile = [self.summe()]
+        while self.ist_wort("und"):
+            self.nimm()
+            teile.append(self.summe())
         groesse = None
         if self.ist_wort("mit"):
             self.nimm()
             groesse = self.summe()
         self.punkt()
-        return ("beschrifte", z, text, groesse)
+        return ("beschrifte", z, teile, groesse)
 
     def s_nimm(self):
         """Nimm die Farbe "rot". · Nimm die Strichstärke 3. · Nimm die Leinwand 600 mal 400."""

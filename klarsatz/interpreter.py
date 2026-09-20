@@ -620,7 +620,7 @@ class Interpreter:
         Linien auch -- nur, was geschrieben werden soll; wie daraus Buchstaben werden,
         entscheidet die Oberfläche."""
         from .werte import als_text
-        text = als_text(self.auswerten(k[2], b))
+        text = "".join(als_text(self.auswerten(teil, b)) for teil in k[2])
         groesse = 14 if k[3] is None else self._zeichenzahl(self.auswerten(k[3], b), "die Schriftgröße", k[1])
         if not 4 <= groesse <= 400:
             raise LaufzeitFehler(

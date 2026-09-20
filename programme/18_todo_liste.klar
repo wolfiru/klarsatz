@@ -53,7 +53,7 @@ Bei Fehler:
     Merke "" als Inhalt.
 Ende.
 Teile Inhalt bei "\n" zu Zeilen.
-Für jedes Zeile in Zeilen:
+Für jede Zeile in Zeilen:
     Wenn Zeile nicht gleich "" ist:
         Teile Zeile bei ";" zu Teile.
         Merke falsch als Fertig.

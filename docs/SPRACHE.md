@@ -137,6 +137,7 @@ Zähle von 1 bis 10 mit i:             … Ende.       Anmerkung: nur aufwärts;
 Zähle von 10 bis 1 rückwärts mit i:   … Ende.       Anmerkung: abwärts (statt "rückwärts" geht auch "abwärts")
 Zähle von 0 bis 100 in Schritten von 10 mit i:  … Ende.
 Für jedes Element in Einkauf:         … Ende.       Anmerkung: auch über Texte
+Für jeden Ort in Orte:                … Ende.       Anmerkung: jeden/jede/jedes — passend zum Namen
 Höre auf.        Anmerkung: Schleife verlassen
 Mach weiter.     Anmerkung: nächster Durchlauf
 ```
@@ -242,7 +243,7 @@ Trage "Kiwi" mit 5 in Preise ein.
 Zeige Wert für "Apfel" in Preise.
 Wenn Preise enthält "Kiwi", zeige "ja".
 Entferne "Birne" aus Preise.
-Für jedes Frucht in Preise:            Anmerkung: geht durch die Schlüssel
+Für jede Frucht in Preise:            Anmerkung: geht durch die Schlüssel
     Zeige Frucht und ": " und Wert für Frucht in Preise.
 Ende.
 ```

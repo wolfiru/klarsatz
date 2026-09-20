@@ -1,5 +1,19 @@
 # Änderungen
 
+## 0.8.2
+- **`Für jeden Ort`, `Für jede Strecke`, `Für jedes Element`** — der Parser ließ alle drei Formen
+  schon immer zu, die Programme und die Doku schrieben aber überall „jedes". „Für jedes Ort" ist
+  falsches Deutsch, und eine Sprache, die wie Deutsch aussehen will, sollte das nicht vormachen.
+  18 Stellen in Programmen, Kursen und Doku berichtigt; die Fehlermeldung nennt jetzt alle drei
+  Formen, und ein Test hält die Beispielprogramme beim richtigen Geschlecht.
+- **`Beschrifte` nimmt mehrere Teile** — `Beschrifte Ecken und " Ecken".` statt erst mühsam einen
+  Text zusammenbauen. Genau wie bei `Zeige`.
+- **Doku auf 0.8 nachgezogen:** `Nimm die Leinwand` und `Beschrifte` stehen jetzt auch im
+  Referenzkapitel der Webseite und in der Kapitelübersicht; Lektion 8 des Zeichenkurses zeigt
+  beides an ihrem eigenen Beispiel (das wachsende Vieleck zappelte ohne feste Leinwand).
+  Die README nennt die richtigen Zahlen — und ein Test zählt sie künftig nach, so wie es ihn für
+  die Webseite längst gibt.
+
 ## 0.8.1
 - **Der Versionsstempel erreicht jetzt jede nachgeladene Datei.** Die Demos auf der Startseite
   holen die Spielwiese über `await import('./../spielwiese/klarsatz-playground.js')` — und genau
