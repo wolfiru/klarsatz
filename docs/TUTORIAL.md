@@ -7,14 +7,14 @@ Du brauchst nichts zu installieren: Öffne die [Spielwiese](https://www.ruthner.
 wähle oben **Leeres Blatt** und tippe mit.
 
 > **Wo tippe ich das ein?** In der Spielwiese — das ist der Editor mit dem grünen
-> *Ausführen*-Knopf. Du kommst auf zwei Wegen hin:
+> *Ausführen*-Knopf. Du kommst auf drei Wegen hin:
 >
-> * Über jedem Beispiel steht **„Im Spielplatz öffnen"**. Ein Klick, und das Programm steht
->   dort schon im Editor — du kannst es sofort ändern und laufen lassen.
-> * Für die Aufgaben („Deine Aufgabe: …") brauchst du ein **[leeres Blatt](https://www.ruthner.at/klarsatz/spielplatz.html#beispiel=)**.
+> * Über jedem Beispiel steht **„Hier ausführen“**. Ein Klick, und die Spielwiese erscheint
+>   gleich darunter, mit dem Programm darin. Du bleibst dabei in der Lektion.
+> * Daneben steht **„Im Spielplatz öffnen“** — dasselbe Programm, aber auf einer eigenen
+>   Seite mit mehr Platz.
+> * Für die Aufgaben („Deine Aufgabe: …“) brauchst du ein **[leeres Blatt](https://www.ruthner.at/klarsatz/spielplatz.html#beispiel=)**.
 >   Dort tippst du selbst.
->
-> Am besten lässt du die Spielwiese in einem zweiten Fenster offen, neben diesem Kurs.
 
 **So funktioniert dieser Kurs.** Jede Lektion beginnt mit einem Problem, nicht mit einem Befehl.
 Dann kommt immer dieselbe Schleife:
@@ -43,8 +43,6 @@ zurück.
 | ✦ | [Kür: Malen mit dem Stift](#kür--malen-mit-dem-stift) | 7 |
 | 10 | [Dein Abschlussprojekt](#lektion-10--dein-abschlussprojekt) | 7 |
 | 11 | [Dasselbe in Python](#lektion-11--dasselbe-in-python) | — |
-
-Über jedem Programm stehen zwei Knöpfe: **Hier ausführen** holt die Spielwiese in die Lektion, direkt unter den Block — du bleibst also, wo du bist. **Im Spielplatz öffnen** ist für die, die mit mehr Platz weitermachen wollen.
 
 Alle Beispiele hier laufen wirklich. Die Ausgaben, die Fehlermeldungen und sogar der Python-Code in
 Lektion 11 sind nicht abgetippt, sondern werden bei jedem Testlauf neu ausgerechnet und verglichen.
@@ -334,7 +332,7 @@ Gut
 ```
 
 **Vorhersagen:** Was passiert bei `Note` gleich 9? Bei 8? Bei 2? Warum wird bei 9 **nicht** auch
-noch „Gut" ausgegeben?
+noch „Gut“ ausgegeben?
 
 **Deine Aufgabe:** Frage nach einer Zahl und sage, ob sie negativ, null oder positiv ist.
 
@@ -411,7 +409,7 @@ ist der Grund für die Meldung — und übrigens die Antwort auf die Vertausch-A
 
 ### Das Wichtigste
 
-> Ein Fehler heißt nicht „ich kann das nicht".
+> Ein Fehler heißt nicht „ich kann das nicht“.
 > Ein Fehler ist eine **Nachricht vom Programm an dich**.
 
 Lies immer drei Dinge: **welche Zeile**, **welche Stelle**, **was Klarsatz erwartet hätte**. In
@@ -521,7 +519,7 @@ Du kannst jetzt Eingaben, Variablen, Entscheidungen und Schleifen. Das reicht f�
 Spiel — und zwar für ein bekanntes.
 
 **Das Problem:** Der Computer denkt sich eine Zahl zwischen 1 und 100 aus. Du rätst. Er sagt
-„höher" oder „tiefer", bis du sie hast, und zählt deine Versuche.
+„höher“ oder „tiefer“, bis du sie hast, und zählt deine Versuche.
 
 Bevor du weiterliest: Überleg, welche Teile du brauchst.
 
@@ -576,7 +574,7 @@ Das sind zwanzig Zeilen, und du verstehst jede davon. **Das ist der Punkt dieser
 
 * Ändere den Bereich auf 1 bis 10. Wie viele Versuche brauchst du höchstens?
 * Gib nach jedem Tipp aus, der wievielte Versuch das war.
-* Beende das Spiel nach fünf Versuchen mit „Schade!".
+* Beende das Spiel nach fünf Versuchen mit „Schade!“.
 
 > **Eine Abkürzung — jetzt, wo du sicher bist.** Wenn nach `Wenn` nur *ein* Satz folgt, darf man ihn
 > hinter ein Komma schreiben und spart sich das `Ende.`:
@@ -881,7 +879,7 @@ Hier bekommst du keine Lösung. Nur Anforderungen.
 **Bau ein eigenes Programm.** Du darfst dir aussuchen, was:
 
 * ein Quiz mit fünf Fragen
-* ein Taschenrechner, der weiterfragt, bis man „ende" tippt
+* ein Taschenrechner, der weiterfragt, bis man „ende“ tippt
 * ein Vokabeltrainer
 * ein Einkaufsrechner mit Mehrwertsteuer
 * ein winziges Textabenteuer mit drei Räumen
@@ -915,7 +913,7 @@ zugetraut hättest.
 
 Und jetzt die Sache, auf die dieser ganze Kurs hinausläuft.
 
-**Du hast nicht „Klarsatz gelernt". Du hast programmieren gelernt.** Klarsatz war die Schreibweise,
+**Du hast nicht „Klarsatz gelernt“. Du hast programmieren gelernt.** Klarsatz war die Schreibweise,
 in der du es zum ersten Mal gesehen hast. Die Ideen dahinter — Variable, Bedingung, Schleife,
 Aufgabe — sind in jeder Programmiersprache dieselben.
 
@@ -1049,7 +1047,7 @@ Ein Python-Programm ist eine Textdatei, die auf `.py` endet. Speichere sie als `
 drück in Thonny auf *Run*.
 
 > **Ein Unterschied, den du gleich merken wirst:** Python spricht Englisch, auch bei Fehlern.
-> Statt „Hier fehlt ein Punkt am Satzende" steht dort `SyntaxError: invalid syntax`. Das ist
+> Statt „Hier fehlt ein Punkt am Satzende“ steht dort `SyntaxError: invalid syntax`. Das ist
 > gewöhnungsbedürftig, aber es ist dieselbe Art von Nachricht — und du weißt jetzt, dass man sie
 > liest, statt zu erschrecken.
 

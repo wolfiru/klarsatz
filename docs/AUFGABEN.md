@@ -6,7 +6,7 @@ schaffen ist — du brauchst also nie etwas, das noch nicht dran war.
 **Wie geprüft wird:** Nicht auf wortgleiche Ausgabe. Dein Programm wird mit festen Antworten
 ausgeführt, und dann wird nachgesehen, ob das Wesentliche stimmt: Kommt die Zahl vor? Hat die
 Ausgabe die richtige Zahl an Zeilen? Wird überhaupt gefragt? Dadurch darfst du deine Sätze
-selbst formulieren — *„Die Fläche ist 12"* und *„12 Quadratmeter"* sind beide richtig.
+selbst formulieren — *„Die Fläche ist 12“* und *„12 Quadratmeter“* sind beide richtig.
 
 **Wo du sie löst:** Auf der Seite [Übungsaufgaben](https://www.ruthner.at/klarsatz/aufgaben.html),
 direkt im Browser. Dort steht die Angabe, daneben ein Editor, und der Knopf *Abgeben* sagt dir,
@@ -143,7 +143,7 @@ Zeige Zweite.
 ## 5 — Countdown
 *Stufe 4 · nach Lektion 5*
 
-Frage nach einer Zahl und zähle von ihr rückwärts bis 1. Zum Schluss: „Los!"
+Frage nach einer Zahl und zähle von ihr rückwärts bis 1. Zum Schluss: „Los!“
 
 ```probe
 eingabe: 3

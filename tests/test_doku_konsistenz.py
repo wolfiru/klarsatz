@@ -37,10 +37,16 @@ class Version(unittest.TestCase):
         self.assertIn(version(), kopf, f"Die Kopfzeile der Sprachdefinition lautet: {kopf}")
 
     def test_der_changelog_fuehrt_sie_ganz_oben(self):
+        """Ganz oben darf „Unveröffentlicht" stehen — darunter muss die aktuelle Version kommen."""
         zeilen = (WURZEL / "CHANGELOG.md").read_text(encoding="utf-8").splitlines()
-        ueberschriften = [z for z in zeilen if z.startswith("## ")]
-        self.assertEqual(ueberschriften[0], f"## {version()}",
-                         "Die neueste Version steht nicht als erste im Changelog.")
+        ueberschriften = [z[3:].strip() for z in zeilen if z.startswith("## ")]
+        if ueberschriften and ueberschriften[0].lower().startswith("unveröffentlicht"):
+            ueberschriften = ueberschriften[1:]
+        # Eine Überschrift darf einen Zusatz tragen („0.10.1 — QA-Durchgang"), die Nummer
+        # muss aber vorn stehen.
+        self.assertTrue(ueberschriften[0].split(" ")[0] == version(),
+                        f"Ganz oben im Changelog steht '{ueberschriften[0]}', "
+                        f"die aktuelle Version ist {version()}.")
 
     def test_keine_alte_nummer_in_den_quellen_der_webseite(self):
         """Die Seiten tragen die Nummer selbst, damit zwischen Veröffentlichen und

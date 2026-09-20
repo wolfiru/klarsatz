@@ -1,7 +1,7 @@
 # Änderungen
 
-## Unveröffentlicht — QA-Durchgang vom 20.09.2026
-Aus einer externen Prüfung; die Punkte 1 bis 10 sind abgearbeitet, der Abschluss läuft noch.
+## 0.10.1 — QA-Durchgang vom 20.09.2026
+Aus einer externen Prüfung, vollständig abgearbeitet.
 - **Weiterleitung ohne Schrägstrich** (kritisch): `/klarsatz` endete in einer Kette, weil Apaches
   DirectorySlash die Adresse aus dem Serverport bildete — und Cloudflare den Ursprung über http
   anfragt. Jetzt beantwortet eine `RedirectMatch` den Fall selbst: genau ein 301 nach
@@ -27,6 +27,12 @@ Aus einer externen Prüfung; die Punkte 1 bis 10 sind abgearbeitet, der Abschlus
 - **Barrierefreiheit:** „Zum Inhalt springen", sichtbarer Tastaturfokus über `:focus-visible`,
   `aria-hidden` für die Hintergrundgrafik, `aria-label` für die Navigation, und im Editor führt
   Escape wieder heraus (Tab rückt dort ein, sonst käme man beim Programmieren nicht voran).
+- **Korrekturgelesen:** Startseite und Kurs waren bisher nur maschinell geprüft. Gefunden und
+  berichtigt: „ein Programm, das sich selbst überlässt" (es wird überlassen), zweimal „entwickelt"
+  im selben Atemzug bei Robot Karol, eine verdrehte Satzstellung im Zeichenkurs-Absatz — und vor
+  allem **17 Anführungszeichen**, die mit einem geraden `"` statt mit `“` schlossen (Kurse,
+  Startseite, Doku-Kapitel, Aufgaben, Sprach- und Sicherheitsdoku). Der Wegweiser am Kursanfang
+  nennt jetzt „Hier ausführen" als ersten Weg in die Spielwiese.
 - **Eigene 404-Seite** mit Wegweisern, **Druckansicht** für Kurs und Doku (heller Grund, ohne
   Navigation, Linkziele ausgeschrieben), **noscript-Hinweise** auf Aufgaben-, Kurs- und Doku-Seiten.
 

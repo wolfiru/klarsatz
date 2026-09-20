@@ -1,4 +1,4 @@
-# Klarsatz – Sprachdefinition (Stand: Version 0.10.0)
+# Klarsatz – Sprachdefinition (Stand: Version 0.10.1)
 
 Klarsatz ist **keine natürliche Sprache**, sondern eine Programmiersprache, deren Syntax sich an
 deutscher Alltagssprache orientiert — fachlich: eine *kontrollierte natürliche Sprache*. Der
@@ -278,7 +278,7 @@ Der Tangens von 90 oder 270 Grad ist nicht bestimmt und meldet einen Fehler.
 
 **Lernstufen** (`--stufe N`): Wer anfängt, hat mit `Zeige`, `Frage` und `Merke` schon ein Programm –
 alles andere wartet. Greift man zu früh nach einem Wort, sagt Klarsatz freundlich, wo es hingehört
-(„Das kommt später: 'Wenn' lernst du in Stufe 3"). Die Stufen folgen den Lektionen des Tutorials:
+(„Das kommt später: 'Wenn' lernst du in Stufe 3“). Die Stufen folgen den Lektionen des Tutorials:
 
 | Stufe | Name | Neu darin |
 |---|---|---|

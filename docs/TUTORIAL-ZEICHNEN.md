@@ -14,9 +14,9 @@ Rechner schreibt `python3 -m klarsatz --bild bild.svg meins.klar` das Ergebnis i
 > **Wo tippe ich das ein?** In der Spielwiese — das ist der Editor mit dem grünen
 > *Ausführen*-Knopf. Du kommst auf zwei Wegen hin:
 >
-> * Über jedem Beispiel steht **„Im Spielplatz öffnen"**. Ein Klick, und das Programm steht
+> * Über jedem Beispiel steht **„Im Spielplatz öffnen“**. Ein Klick, und das Programm steht
 >   dort schon im Editor — du kannst es sofort ändern und laufen lassen.
-> * Für die Aufgaben („Deine Aufgabe: …") brauchst du ein **[leeres Blatt](https://www.ruthner.at/klarsatz/spielplatz.html#beispiel=)**.
+> * Für die Aufgaben („Deine Aufgabe: …“) brauchst du ein **[leeres Blatt](https://www.ruthner.at/klarsatz/spielplatz.html#beispiel=)**.
 >   Dort tippst du selbst.
 >
 > Am besten lässt du die Spielwiese in einem zweiten Fenster offen, neben diesem Kurs.

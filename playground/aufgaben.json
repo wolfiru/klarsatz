@@ -219,7 +219,7 @@
   "titel": "Countdown",
   "stufe": 4,
   "lektion": "nach Lektion 5",
-  "angabe": "Frage nach einer Zahl und zähle von ihr rückwärts bis 1. Zum Schluss: „Los!\"",
+  "angabe": "Frage nach einer Zahl und zähle von ihr rückwärts bis 1. Zum Schluss: „Los!“",
   "loesung": "Frage \"Von welcher Zahl?\" und merke die Antwort als Start.\nZähle von Start bis 1 rückwärts mit i:\n    Zeige i.\nEnde.\nZeige \"Los!\".\n",
   "proben": [
    {

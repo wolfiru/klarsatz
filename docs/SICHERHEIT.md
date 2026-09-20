@@ -26,7 +26,7 @@ Für fremde Programme: `--streng-grenzen` (bzw. `Grenzen.streng()`), `--ohne-dat
 
 ## Was der Fuzz-Test zeigt
 
-Die Zusage „ein Programm kann den Interpreter nicht aus der Bahn werfen" war lange nur mit *gültigen*
+Die Zusage „ein Programm kann den Interpreter nicht aus der Bahn werfen“ war lange nur mit *gültigen*
 Programmen geprüft. Seit 19.09.2026 gibt es einen Fuzz-Test, der sie angreift: Er nimmt die
 mitgelieferten Programme und zerhackt sie zufällig — Zeichen löschen, einfügen, ersetzen; Wörter
 löschen, doppeln, vertauschen; Zeilen löschen und vertauschen; Einrückung verbiegen; Punkte und
