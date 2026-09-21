@@ -11,7 +11,7 @@ from pathlib import Path
 
 from klarsatz.nach_python import nach_python
 
-SEITE = Path(__file__).resolve().parent.parent / "webseite" / "seiten" / "index.html"
+SEITE = Path(__file__).resolve().parent.parent / "webseite" / "seiten" / "fuerwen.html"
 
 ZEILE = re.compile(
     r'<tr>\s*<th scope="row">(?P<konzept>[^<]+)</th>\s*'

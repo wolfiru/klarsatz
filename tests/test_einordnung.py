@@ -11,7 +11,8 @@ import unittest
 from pathlib import Path
 
 WURZEL = Path(__file__).resolve().parent.parent
-SEITE = WURZEL / "webseite" / "seiten" / "index.html"
+SEITE = WURZEL / "webseite" / "seiten" / "einordnung.html"
+STARTSEITE = WURZEL / "webseite" / "seiten" / "index.html"
 
 PROJEKTE = ["Logo", "Niki, der Roboter", "Robot Karol", "Scratch",
             "Guido van Robot", "Python", "Klarsatz"]
@@ -32,20 +33,17 @@ def ohne_tags(html):
 
 
 class Aufbau(unittest.TestCase):
-    def test_der_abschnitt_steht_auf_der_seite_und_im_menue(self):
+    def test_der_abschnitt_steht_auf_der_eigenen_seite_und_ist_von_der_startseite_verlinkt(self):
+        """Seit dem Umbau der Startseite (21.09.2026) ist „Wo Klarsatz steht" eine eigene
+        Seite — die Startseite verweist über eine Kachel im Abschnitt „Weiterlesen" dorthin."""
         t = quelltext()
         self.assertIn('id="einordnung"', t)
-        self.assertIn('<a href="#einordnung">Einordnung</a>', t)
+        self.assertIn('href="einordnung.html"', STARTSEITE.read_text(encoding="utf-8"))
 
     def test_die_abschnitte_sind_lueckenlos_durchnummeriert(self):
         """Ein eingeschobener Abschnitt verschiebt alle folgenden Nummern."""
         nummern = [int(n) for n in re.findall(r'class="eyebrow">(\d\d) — ', quelltext())]
         self.assertEqual(nummern, list(range(1, len(nummern) + 1)))
-
-    def test_der_abschnitt_steht_vor_der_sprache_und_nach_fuer_wen(self):
-        t = quelltext()
-        self.assertLess(t.index('id="fuerwen"'), t.index('id="einordnung"'))
-        self.assertLess(t.index('id="einordnung"'), t.index('id="bausteine"'))
 
 
 class Tabelle(unittest.TestCase):

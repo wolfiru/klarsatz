@@ -12,7 +12,7 @@ import unittest
 from pathlib import Path
 
 WURZEL = Path(__file__).resolve().parent.parent
-SEITE = WURZEL / "webseite" / "seiten" / "index.html"
+SEITE = WURZEL / "webseite" / "seiten" / "programme.html"
 
 
 def abschnitt():

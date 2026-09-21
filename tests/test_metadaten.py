@@ -106,12 +106,19 @@ class StrukturierteDaten(unittest.TestCase):
         daten = self.bloecke(WURZEL / "webseite" / "seiten" / "index.html")
         self.assertTrue(daten, "kein JSON-LD")
         arten = {e["@type"] for block in daten for e in (block if isinstance(block, list) else [block])}
-        for art in ("WebSite", "SoftwareSourceCode", "FAQPage"):
+        for art in ("WebSite", "SoftwareSourceCode"):
             self.assertIn(art, arten)
+
+    def test_die_fragen_seite_beschreibt_sich_maschinenlesbar(self):
+        """Seit dem Umbau der Startseite (21.09.2026) steht das FAQPage-JSON-LD auf
+        fragen.html, wo die Fragen jetzt tatsächlich stehen."""
+        daten = self.bloecke(WURZEL / "webseite" / "seiten" / "fragen.html")
+        arten = {e["@type"] for block in daten for e in (block if isinstance(block, list) else [block])}
+        self.assertIn("FAQPage", arten)
 
     def test_die_fragen_stammen_von_der_seite(self):
         """Erfundene Antworten in den Daten wären schlimmer als gar keine."""
-        seite = WURZEL / "webseite" / "seiten" / "index.html"
+        seite = WURZEL / "webseite" / "seiten" / "fragen.html"
         text = seite.read_text(encoding="utf-8")
         faq = [e for block in self.bloecke(seite) for e in (block if isinstance(block, list) else [block])
                if e["@type"] == "FAQPage"][0]
@@ -131,7 +138,8 @@ class StrukturierteDaten(unittest.TestCase):
         self.assertEqual(software["codeRepository"], "https://github.com/wolfiru/klarsatz")
 
     def test_unterseiten_haben_brotkrumen(self):
-        for name in ("tutorial.html", "doku.html", "aufgaben.html", "spielplatz.html"):
+        for name in ("tutorial.html", "doku.html", "aufgaben.html", "spielplatz.html",
+                     "einordnung.html", "programme.html", "fuerwen.html", "fragen.html"):
             seite = WURZEL / "webseite" / "seiten" / name
             if not seite.exists():
                 continue

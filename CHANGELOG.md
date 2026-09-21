@@ -1,5 +1,25 @@
 # Änderungen
 
+## 0.11.0 — Die Startseite kürzer, vier neue Seiten
+- **Die Startseite war zu lang.** 14 Abschnitte, ~1270 Zeilen, aber die Navigation zeigte nur
+  sieben davon — Erstbesucher mussten durch eine Vergleichskarte, einen Feature-Showcase und
+  eine FAQ scrollen, bevor überhaupt der Download in Sicht kam. Vier Abschnitte sind jetzt eigene
+  Seiten, nach demselben Muster wie `tutorial.html` und `doku.html`:
+  - **`einordnung.html`** — die Karte „Wo Klarsatz steht" (Logo, Niki, Robot Karol, Scratch,
+    Guido van Robot, Python).
+  - **`programme.html`** — der Showcase „Was damit geht" (Spiel des Lebens, Routenplaner) mit
+    den beiden interaktiven Werkstücken.
+  - **`fuerwen.html`** — die Python-Brücke „Danach" und die Eignungstabelle „Für wen" zusammen.
+  - **`fragen.html`** — die acht „Harten Fragen" samt „Mitmachen"; das `FAQPage`-JSON-LD zog mit
+    um, denn die Daten müssen bei den sichtbaren Fragen stehen.
+  Die Startseite endet jetzt nach Hero, Beispiel, Idee, Lernen und Zeichnen mit einem Abschnitt
+  „Weiterlesen": vier Kacheln, die auf die neuen Seiten verweisen. Sie schrumpft dadurch um fast
+  die Hälfte (1271 → 659 Zeilen), ohne dass ein einziger Satz gelöscht wurde — Vertiefer finden
+  alles nach wie vor, nur nicht mehr alle auf einen Blick.
+  `tools/pruefe_webseite.py` erfasst jetzt 18 statt 14 Seiten; sieben bestehende Tests
+  (`test_einordnung.py`, `test_werkstuecke.py`, `test_bruecke.py`, `test_zielgruppen.py`,
+  `test_fragen.py`, `test_metadaten.py`) zeigen auf die neuen Fundorte statt auf `index.html`.
+
 ## Unveröffentlicht
 - **Die Kästen im Kurs sind wieder undurchsichtig.** `tut-eingabe`, `tut-ausgabe`, `tut-fehler` und
   `tut-python` hatten keinen eigenen Grund — über der Handschrift im Seitenhintergrund las sich das

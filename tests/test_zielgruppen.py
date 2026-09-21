@@ -10,7 +10,7 @@ from pathlib import Path
 
 WURZEL = Path(__file__).resolve().parent.parent
 README = WURZEL / "README.md"
-SEITE = WURZEL / "webseite" / "seiten" / "index.html"
+SEITE = WURZEL / "webseite" / "seiten" / "fuerwen.html"
 
 
 def aus_readme():

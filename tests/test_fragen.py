@@ -10,7 +10,8 @@ import unittest
 from pathlib import Path
 
 WURZEL = Path(__file__).resolve().parent.parent
-SEITE = WURZEL / "webseite" / "seiten" / "index.html"
+SEITE = WURZEL / "webseite" / "seiten" / "fragen.html"
+STARTSEITE = WURZEL / "webseite" / "seiten" / "index.html"
 
 
 def abschnitt():
@@ -28,10 +29,11 @@ class DieFragen(unittest.TestCase):
         self.a = abschnitt()
         self.fragen = re.findall(r"<h3>([^<]+)</h3>", self.a)
 
-    def test_der_abschnitt_steht_auf_der_seite_und_im_menue(self):
-        ganz = SEITE.read_text(encoding="utf-8")
-        self.assertIn('id="fragen"', ganz)
-        self.assertIn('<a href="#fragen">Fragen</a>', ganz)
+    def test_der_abschnitt_steht_auf_der_eigenen_seite_und_ist_von_der_startseite_verlinkt(self):
+        """Seit dem Umbau der Startseite (21.09.2026) ist „Harte Fragen" eine eigene Seite —
+        die Startseite verweist über eine Kachel im Abschnitt „Weiterlesen" dorthin."""
+        self.assertIn('id="fragen"', SEITE.read_text(encoding="utf-8"))
+        self.assertIn('href="fragen.html"', STARTSEITE.read_text(encoding="utf-8"))
 
     def test_die_unbequemen_fragen_werden_gestellt(self):
         gestellt = " ".join(self.fragen).lower()

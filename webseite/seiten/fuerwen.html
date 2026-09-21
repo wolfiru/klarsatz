@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Für wen Klarsatz sich eignet, ehrlich und ohne Beschönigung eingeschätzt — und die Brücke von Klarsatz zu echtem Python, Zeile für Zeile erklärt.">
+<meta name="theme-color" content="#0c0e0b">
+<meta name="color-scheme" content="dark">
+<title>Für wen — und wie es weitergeht — Klarsatz</title>
+<meta property="og:type" content="website">
+<meta property="og:title" content="Für wen — und wie es weitergeht — Klarsatz">
+<meta property="og:description" content="Eine ehrliche Eignungstabelle und die Brücke nach Python: Klarsatz ist die erste Schreibweise, nicht die letzte.">
+<meta property="og:url" content="https://www.ruthner.at/klarsatz/fuerwen.html">
+<meta property="og:image" content="https://www.ruthner.at/klarsatz/assets/klarsatz-vorschau.png">
+<meta property="og:site_name" content="Klarsatz">
+<meta property="og:locale" content="de_AT">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Klarsatz — Programmieren lernen, ohne vorher eine Fremdsprache zu übersetzen">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Für wen — und wie es weitergeht — Klarsatz">
+<meta name="twitter:description" content="Eine ehrliche Eignungstabelle und die Brücke nach Python: Klarsatz ist die erste Schreibweise, nicht die letzte.">
+<meta name="twitter:image" content="https://www.ruthner.at/klarsatz/assets/klarsatz-vorschau.png">
+<link rel="canonical" href="https://www.ruthner.at/klarsatz/fuerwen.html">
+<link rel="icon" href="assets/klarsatz-signet-klein.svg" type="image/svg+xml">
+<link rel="icon" href="assets/favicon.ico" sizes="48x48">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="manifest" href="assets/klarsatz.webmanifest">
+<link rel="stylesheet" href="assets/style.css">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "BreadcrumbList",
+ "itemListElement": [
+  {
+   "@type": "ListItem",
+   "position": 1,
+   "name": "Klarsatz",
+   "item": "https://www.ruthner.at/klarsatz/"
+  },
+  {
+   "@type": "ListItem",
+   "position": 2,
+   "name": "Für wen",
+   "item": "https://www.ruthner.at/klarsatz/fuerwen.html"
+  }
+ ]
+}
+</script>
+</head>
+<body>
+<a class="zum-inhalt" href="#inhalt">Zum Inhalt springen</a>
+
+<canvas id="manuskript" aria-hidden="true"></canvas>
+<div class="bg-overlay" aria-hidden="true"></div>
+<div class="grain" aria-hidden="true"></div>
+
+<nav class="nav" aria-label="Hauptnavigation">
+    <div class="nav-start">
+        <a class="heim" href="/" aria-label="Zur Startseite von ruthner.at">
+            <img src="assets/monogram.png" alt="" width="51" height="64" decoding="async" fetchpriority="high">
+            <span>ruthner<em>.at</em></span>
+        </a>
+        <span class="nav-teiler" aria-hidden="true"></span>
+        <a class="brand" href="index.html"><span class="brand-mark"></span><span>Klar<em>satz</em></span></a>
+    </div>
+    <div class="nav-links">
+        <a href="index.html">Sprache</a>
+        <a href="tutorial.html">Tutorial</a>
+        <a href="doku.html">Dokumentation</a>
+        <a href="doku-referenz.html">Referenz</a>
+        <a href="aufgaben.html">Aufgaben</a>
+        <a href="spielplatz.html" class="nav-cta">Spielplatz</a>
+    </div>
+</nav>
+
+<main id="inhalt" class="mit-verlauf">
+
+<section class="section" id="danach">
+        <div class="section-head">
+            <span class="eyebrow">01 — Danach</span>
+            <h2>Warum du Klarsatz <em>nicht für immer brauchst.</em></h2>
+            <p class="section-sub"><strong>Klarsatz ersetzt Python nicht.</strong> Es ist eine erste textbasierte Programmiersprache, die Programmierkonzepte ohne die zusätzliche Hürde einer fremden Syntax vermittelt — und anschließend bewusst zu Python weiterführt. Der naheliegendste Einwand lautet deshalb: Warum soll ich eine kleine eigene Sprache lernen? Die Antwort: Sollst du nicht. Klarsatz ist die erste Schreibweise, nicht die letzte.</p>
+        </div>
+
+        <div class="bruecke">
+            <h3>Dasselbe Denken, eine andere Sprache</h3>
+            <p><strong>Klarsatz ist keine Sackgasse.</strong> Wenn du ein Programm verstanden hast,
+               kannst du es als Python ansehen. Ganz links steht die <strong>Idee</strong>, daneben,
+               wie Klarsatz sie aufschreibt, rechts, wie dieselbe Idee in Python notiert wird. Lies
+               eine Zeile quer und sieh, was sich ändert — und was nicht.</p>
+            <div class="tabelle-rahmen">
+                <table class="bruecke-tabelle">
+                    <thead>
+                        <tr><th scope="col">Das Konzept</th><th scope="col">In Klarsatz</th><th scope="col">In Python</th></tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <th scope="row">Einen Wert merken</th>
+                        <td><pre class="klar" data-pruefung="nein">Merke 10 als Punkte.</pre></td>
+                        <td><pre class="schale"><code>Punkte = 10</code></pre></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Etwas anzeigen</th>
+                        <td><pre class="klar" data-pruefung="nein">Zeige &quot;Gewonnen!&quot;.</pre></td>
+                        <td><pre class="schale"><code>print(&#x27;Gewonnen!&#x27;)</code></pre></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Nach etwas fragen</th>
+                        <td><pre class="klar" data-pruefung="nein">Frage &quot;Wie heißt du? &quot; als Text und merke die Antwort als Name.</pre></td>
+                        <td><pre class="schale"><code>Name = input(&#x27;Wie heißt du? &#x27;)</code></pre></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Eine Entscheidung</th>
+                        <td><pre class="klar" data-pruefung="nein">Wenn Punkte mindestens 10 ist:
+    Zeige &quot;Gewonnen!&quot;.
+Sonst:
+    Zeige &quot;Noch nicht.&quot;.
+Ende.</pre></td>
+                        <td><pre class="schale"><code>if (Punkte &gt;= 10):
+    print(&#x27;Gewonnen!&#x27;)
+else:
+    print(&#x27;Noch nicht.&#x27;)</code></pre></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Eine Wiederholung</th>
+                        <td><pre class="klar" data-pruefung="nein">Zähle von 1 bis 5 mit i:
+    Zeige i.
+Ende.</pre></td>
+                        <td><pre class="schale"><code>for i in range(1, 5 + 1):
+    print(i)</code></pre></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Viele Werte</th>
+                        <td><pre class="klar" data-pruefung="nein">Erstelle eine Liste namens Farben mit &quot;rot&quot; und &quot;blau&quot;.</pre></td>
+                        <td><pre class="schale"><code>Farben = [&#x27;rot&#x27;, &#x27;blau&#x27;]</code></pre></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Ein eigener Baustein</th>
+                        <td><pre class="klar" data-pruefung="nein">Definiere Aufgabe Quadrat von x:
+    Gib x mal x zurück.
+Ende.</pre></td>
+                        <td><pre class="schale"><code>def Quadrat(x):
+    return (x * x)</code></pre></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="bruecke-punkt">Die Schreibweise ändert sich.<br><em>Das Programmdenken bleibt dasselbe.</em></p>
+
+            <p class="bruecke-fuss">Deshalb ist Python hier nicht das Ziel einer Übersetzungsfunktion,
+               sondern der Beweis: Was du in Klarsatz verstanden hast, erkennst du in einer anderen
+               Notation wieder. — Die Python-Spalte ist übrigens nicht abgetippt. Sie kommt aus
+               demselben Übersetzer, den der Knopf <em>Als Python</em> benutzt, und ein Test rechnet
+               bei jeder Änderung nach, dass hier noch steht, was er heute erzeugt.</p>
+        </div>
+
+        <div class="funnel">
+            <div class="fn-stufe">
+                <span class="fn-marke">Klarsatz</span>
+                <p>Denken lernen: Variablen, Bedingungen, Schleifen, eigene Bausteine — in Sätzen, die man vorlesen kann.</p>
+            </div>
+            <span class="fn-pfeil" aria-hidden="true"></span>
+            <div class="fn-stufe">
+                <span class="fn-marke">Als Python</span>
+                <p>Ein Knopf übersetzt dein eigenes Programm. Dieselben Zeilen, dieselbe Bedeutung, andere Zeichen.</p>
+            </div>
+            <span class="fn-pfeil" aria-hidden="true"></span>
+            <div class="fn-stufe">
+                <span class="fn-marke">Python</span>
+                <p>Weiterbauen — mit allem, was Klarsatz bewusst nicht hat: Bibliotheken, Ökosystem, Stellenanzeigen.</p>
+            </div>
+        </div>
+
+        <p class="funnel-fuss">So wird aus einer ersten deutschen Schreibweise schrittweise
+           echter Python-Quelltext.</p>
+
+        <div class="warum">
+            <h3>Warum dann nicht gleich Python?</h3>
+            <p>Oft ist das die richtige Antwort — und die Seite sagt das auch: Wer Englisch kann und
+               loslegen will, sollte gleich Python nehmen. Klarsatz ist für die anderen gebaut.</p>
+            <p>Um die <strong>Python-Fassung</strong> oben zu lesen, muss man gleichzeitig sechs Dinge
+               wissen, die mit Programmieren nichts zu tun haben: dass <code>range(1, 30 + 1)</code>
+               bei 30 aufhört und das <code>+ 1</code> nur deshalb dasteht, dass <code>%</code> den
+               Rest einer Division meint, dass <code>==</code> etwas anderes ist als <code>=</code>,
+               was <code>elif</code> abkürzt, wofür der Doppelpunkt steht und dass die Einrückung
+               nicht Zierde ist. Wer das erste Mal
+               programmiert, lernt also zwei Dinge auf einmal — und scheitert meist am zweiten,
+               obwohl er das erste verstanden hätte.</p>
+            <p>Klarsatz nimmt diese zweite Hürde für eine Weile weg. Nicht für immer: Am Ende des
+               Tutorials steht dasselbe Programm in Python daneben, Zeile für Zeile, mit derselben
+               Bedeutung. Der Satz, auf den alles hinausläuft, lautet dann
+               <em>„Du hast nicht Klarsatz gelernt — du hast programmieren gelernt.“</em></p>
+            <p class="warum-fuss"><a href="tutorial.html" class="btn btn-secondary">Das Tutorial ansehen</a></p>
+        </div>
+    </section>
+
+<section class="section" id="fuerwen">
+        <div class="section-head">
+            <span class="eyebrow">02 — Für wen</span>
+            <h2>Eine erste Sprache, <em>keine einzige.</em></h2>
+            <p class="section-sub">Klarsatz nimmt genau eine Hürde weg: die fremde Schreibweise. Alles andere am Programmieren bleibt, wie es ist. Das macht die Sprache für manche sehr nützlich und für andere überflüssig — hier ehrlich aufgeschrieben.</p>
+        </div>
+
+        <div class="eig-rahmen">
+            <p class="eig-hinweis">Die Punkte sind <strong>meine eigene Einschätzung</strong>, kein Messergebnis —
+               niemand hat das nachgeprüft. Sie zeigen nur schnell, wo ich Klarsatz für nützlich halte und wo
+               nicht; das eigentliche Argument steht jeweils daneben.</p>
+            <table class="eignung">
+                <thead>
+                    <tr><th scope="col">Für wen</th><th scope="col">Meine Einschätzung</th><th scope="col">Warum</th></tr>
+                </thead>
+                <tbody>
+                <tr class="eig-gut">
+                    <th scope="row">Anfänger ab etwa 10 Jahren, deutschsprachig</th>
+                    <td><span class="eig-messer" role="img" aria-label="9 von 10"><span class="eig-punkt ist-voll"></span><span class="eig-punkt ist-voll"></span><span class="eig-punkt ist-voll"></span><span class="eig-punkt ist-voll"></span><span class="eig-punkt ist-voll"></span><span class="eig-punkt ist-voll"></span><span class="eig-punkt ist-voll"></span><span class="eig-punkt ist-voll"></span><span class="eig-punkt ist-voll"></span><span class="eig-punkt"></span></span><span class="eig-zahl">9/10</span></td>
+                    <td>Der Quelltext ist der erklärende Satz. Es gibt nichts zu übersetzen, bevor man denken kann.</td>
+                </tr>
+                <tr class="eig-gut">
+                    <th scope="row">Schule und Kurse: der allererste Einstieg</th>
+                    <td><span class="eig-messer" role="img" aria-label="9 von 10"><span class="eig-punkt ist-voll"></span><span class="eig-punkt ist-voll"></span><span class="eig-punkt ist-voll"></span><span class="eig-punkt ist-voll"></span><span class="eig-punkt ist-voll"></span><span class="eig-punkt ist-voll"></span><span class="eig-punkt ist-voll"></span><span class="eig-punkt ist-voll"></span><span class="eig-punkt ist-voll"></span><span class="eig-punkt"></span></span><span class="eig-zahl">9/10</span></td>
+                    <td>Elf Lektionen, Lernstufen, Spielwiese im Browser — nichts zu installieren, nichts einzurichten.</td>
+                </tr>
+                <tr class="eig-gut">
+                    <th scope="row">Erwachsene ohne Englischkenntnisse</th>
+                    <td><span class="eig-messer" role="img" aria-label="8 von 10"><span class="eig-punkt ist-voll"></span><span class="eig-punkt ist-voll"></span><span class="eig-punkt ist-voll"></span><span class="eig-punkt ist-voll"></span><span class="eig-punkt ist-voll"></span><span class="eig-punkt ist-voll"></span><span class="eig-punkt ist-voll"></span><span class="eig-punkt ist-voll"></span><span class="eig-punkt"></span><span class="eig-punkt"></span></span><span class="eig-zahl">8/10</span></td>
+                    <td>Befehle, Fehlermeldungen und die ganze Doku sind deutsch.</td>
+                </tr>
+                <tr class="eig-gut">
+                    <th scope="row">Wer danach Python lernen will</th>
+                    <td><span class="eig-messer" role="img" aria-label="8 von 10"><span class="eig-punkt ist-voll"></span><span class="eig-punkt ist-voll"></span><span class="eig-punkt ist-voll"></span><span class="eig-punkt ist-voll"></span><span class="eig-punkt ist-voll"></span><span class="eig-punkt ist-voll"></span><span class="eig-punkt ist-voll"></span><span class="eig-punkt ist-voll"></span><span class="eig-punkt"></span><span class="eig-punkt"></span></span><span class="eig-zahl">8/10</span></td>
+                    <td>Der Knopf <em>Als Python</em> übersetzt jedes eigene Programm — dieselben Ideen, andere Schreibweise.</td>
+                </tr>
+                <tr class="eig-gut">
+                    <th scope="row">Wer schnell ein Bild sehen will</th>
+                    <td><span class="eig-messer" role="img" aria-label="7 von 10"><span class="eig-punkt ist-voll"></span><span class="eig-punkt ist-voll"></span><span class="eig-punkt ist-voll"></span><span class="eig-punkt ist-voll"></span><span class="eig-punkt ist-voll"></span><span class="eig-punkt ist-voll"></span><span class="eig-punkt ist-voll"></span><span class="eig-punkt"></span><span class="eig-punkt"></span><span class="eig-punkt"></span></span><span class="eig-zahl">7/10</span></td>
+                    <td>Stift, Farben und Schleifen ergeben in fünf Zeilen ein Vieleck.</td>
+                </tr>
+                <tr class="eig-mittel">
+                    <th scope="row">Hobby: kleine Rechnungen und Spielereien für sich selbst</th>
+                    <td><span class="eig-messer" role="img" aria-label="5 von 10"><span class="eig-punkt ist-voll"></span><span class="eig-punkt ist-voll"></span><span class="eig-punkt ist-voll"></span><span class="eig-punkt ist-voll"></span><span class="eig-punkt ist-voll"></span><span class="eig-punkt"></span><span class="eig-punkt"></span><span class="eig-punkt"></span><span class="eig-punkt"></span><span class="eig-punkt"></span></span><span class="eig-zahl">5/10</span></td>
+                    <td>Reicht für Listen, Tabellen, Dateien und Text — aber ohne fremde Bibliotheken.</td>
+                </tr>
+                <tr class="eig-schlecht">
+                    <th scope="row">Kinder, die noch nicht sicher lesen (unter etwa 8)</th>
+                    <td><span class="eig-messer" role="img" aria-label="3 von 10"><span class="eig-punkt ist-voll"></span><span class="eig-punkt ist-voll"></span><span class="eig-punkt ist-voll"></span><span class="eig-punkt"></span><span class="eig-punkt"></span><span class="eig-punkt"></span><span class="eig-punkt"></span><span class="eig-punkt"></span><span class="eig-punkt"></span><span class="eig-punkt"></span></span><span class="eig-zahl">3/10</span></td>
+                    <td>Klarsatz wird getippt und gelesen. Zum Klicken und Ziehen ist Scratch das bessere Werkzeug.</td>
+                </tr>
+                <tr class="eig-schlecht">
+                    <th scope="row">Wer Englisch kann und sofort Python will</th>
+                    <td><span class="eig-messer" role="img" aria-label="3 von 10"><span class="eig-punkt ist-voll"></span><span class="eig-punkt ist-voll"></span><span class="eig-punkt ist-voll"></span><span class="eig-punkt"></span><span class="eig-punkt"></span><span class="eig-punkt"></span><span class="eig-punkt"></span><span class="eig-punkt"></span><span class="eig-punkt"></span><span class="eig-punkt"></span></span><span class="eig-zahl">3/10</span></td>
+                    <td>Dann ist der Umweg keiner. Klarsatz spart genau die Hürde, die es bei dir nicht gibt.</td>
+                </tr>
+                <tr class="eig-schlecht">
+                    <th scope="row">Erfahrene Programmierer als Zweitsprache</th>
+                    <td><span class="eig-messer" role="img" aria-label="2 von 10"><span class="eig-punkt ist-voll"></span><span class="eig-punkt ist-voll"></span><span class="eig-punkt"></span><span class="eig-punkt"></span><span class="eig-punkt"></span><span class="eig-punkt"></span><span class="eig-punkt"></span><span class="eig-punkt"></span><span class="eig-punkt"></span><span class="eig-punkt"></span></span><span class="eig-zahl">2/10</span></td>
+                    <td>Hier gibt es nichts Neues zu lernen — außer aus Neugier, wie eine deutsche Syntax sich anfühlt.</td>
+                </tr>
+                <tr class="eig-schlecht">
+                    <th scope="row">Programme über ein paar hundert Zeilen</th>
+                    <td><span class="eig-messer" role="img" aria-label="2 von 10"><span class="eig-punkt ist-voll"></span><span class="eig-punkt ist-voll"></span><span class="eig-punkt"></span><span class="eig-punkt"></span><span class="eig-punkt"></span><span class="eig-punkt"></span><span class="eig-punkt"></span><span class="eig-punkt"></span><span class="eig-punkt"></span><span class="eig-punkt"></span></span><span class="eig-zahl">2/10</span></td>
+                    <td>Es gibt keine Module, keine Pakete und keinen Namensraum über die Datei hinaus.</td>
+                </tr>
+                <tr class="eig-schlecht">
+                    <th scope="row">Webseiten, Apps, Datenauswertung, KI</th>
+                    <td><span class="eig-messer" role="img" aria-label="1 von 10"><span class="eig-punkt ist-voll"></span><span class="eig-punkt"></span><span class="eig-punkt"></span><span class="eig-punkt"></span><span class="eig-punkt"></span><span class="eig-punkt"></span><span class="eig-punkt"></span><span class="eig-punkt"></span><span class="eig-punkt"></span><span class="eig-punkt"></span></span><span class="eig-zahl">1/10</span></td>
+                    <td>Dafür fehlt alles: Netzwerk, Bibliotheken, Ökosystem. Das ist Absicht, siehe Sicherheit.</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <figure class="zitat">
+            <blockquote>
+                <p>Wer mit Klarsatz programmieren gelernt hat, soll weiterziehen. Genau dafür gibt es
+                   den Knopf <em>Als Python</em>: Er zeigt dasselbe Programm in einer Sprache, mit der
+                   man danach weiterarbeitet.</p>
+            </blockquote>
+        </figure>
+    </section>
+
+</main>
+
+<footer>
+    <div class="foot-inner">
+        <span>© <span id="jahr"></span> ruthner.at · Klarsatz <span data-download="version">0.11.0</span></span>
+        <span class="fuss-stand">Stand: <time datetime="2026-09-21">21.09.2026</time> · Version <span data-download="version">0.11.0</span> · MIT-Lizenz · von <a href="/impressum.html">Ing. Wolfgang Ruthner</a></span>
+        <span><a href="/">ruthner.at</a> &nbsp;·&nbsp; <a href="index.html">Sprache</a> &nbsp;·&nbsp; <a href="tutorial.html">Tutorial</a> &nbsp;·&nbsp; <a href="doku.html">Dokumentation</a> &nbsp;·&nbsp; <a href="spielplatz.html">Spielplatz</a> &nbsp;·&nbsp; <a href="aufgaben.html">Aufgaben</a> &nbsp;·&nbsp; <a href="https://github.com/wolfiru/klarsatz" rel="noopener">GitHub</a> &nbsp;·&nbsp; <a href="mailto:wolfgang@ruthner.at">wolfgang@ruthner.at</a> &nbsp;·&nbsp; <a href="/impressum.html">Impressum</a> &nbsp;·&nbsp; <a href="/datenschutz.html">Datenschutz</a> &nbsp;·&nbsp; <a href="https://github.com/wolfiru/klarsatz/blob/main/LICENSE" rel="noopener">MIT-Lizenz</a></span>
+    </div>
+</footer>
+
+<script defer src="assets/manuskript-bg.js"></script>
+<script defer src="assets/app.js"></script>
+<script type="module" src="assets/code-hervorhebung.js"></script>
+</body>
+</html>

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Zwei größere Klarsatz-Programme zum Ausprobieren: das Spiel des Lebens von Conway und ein Routenplaner mit Dijkstras Algorithmus, direkt im Browser.">
+<meta name="theme-color" content="#0c0e0b">
+<meta name="color-scheme" content="dark">
+<title>Was damit geht — Klarsatz</title>
+<meta property="og:type" content="website">
+<meta property="og:title" content="Was damit geht — Klarsatz">
+<meta property="og:description" content="Einfach zu lernen heißt nicht, dass man damit nur einfache Programme schreiben kann — zwei Werkstücke, die das zeigen.">
+<meta property="og:url" content="https://www.ruthner.at/klarsatz/programme.html">
+<meta property="og:image" content="https://www.ruthner.at/klarsatz/assets/klarsatz-vorschau.png">
+<meta property="og:site_name" content="Klarsatz">
+<meta property="og:locale" content="de_AT">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Klarsatz — Programmieren lernen, ohne vorher eine Fremdsprache zu übersetzen">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Was damit geht — Klarsatz">
+<meta name="twitter:description" content="Einfach zu lernen heißt nicht, dass man damit nur einfache Programme schreiben kann — zwei Werkstücke, die das zeigen.">
+<meta name="twitter:image" content="https://www.ruthner.at/klarsatz/assets/klarsatz-vorschau.png">
+<link rel="canonical" href="https://www.ruthner.at/klarsatz/programme.html">
+<link rel="icon" href="assets/klarsatz-signet-klein.svg" type="image/svg+xml">
+<link rel="icon" href="assets/favicon.ico" sizes="48x48">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="manifest" href="assets/klarsatz.webmanifest">
+<link rel="stylesheet" href="assets/style.css">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "BreadcrumbList",
+ "itemListElement": [
+  {
+   "@type": "ListItem",
+   "position": 1,
+   "name": "Klarsatz",
+   "item": "https://www.ruthner.at/klarsatz/"
+  },
+  {
+   "@type": "ListItem",
+   "position": 2,
+   "name": "Was damit geht",
+   "item": "https://www.ruthner.at/klarsatz/programme.html"
+  }
+ ]
+}
+</script>
+</head>
+<body>
+<a class="zum-inhalt" href="#inhalt">Zum Inhalt springen</a>
+
+<canvas id="manuskript" aria-hidden="true"></canvas>
+<div class="bg-overlay" aria-hidden="true"></div>
+<div class="grain" aria-hidden="true"></div>
+
+<nav class="nav" aria-label="Hauptnavigation">
+    <div class="nav-start">
+        <a class="heim" href="/" aria-label="Zur Startseite von ruthner.at">
+            <img src="assets/monogram.png" alt="" width="51" height="64" decoding="async" fetchpriority="high">
+            <span>ruthner<em>.at</em></span>
+        </a>
+        <span class="nav-teiler" aria-hidden="true"></span>
+        <a class="brand" href="index.html"><span class="brand-mark"></span><span>Klar<em>satz</em></span></a>
+    </div>
+    <div class="nav-links">
+        <a href="index.html">Sprache</a>
+        <a href="tutorial.html">Tutorial</a>
+        <a href="doku.html">Dokumentation</a>
+        <a href="doku-referenz.html">Referenz</a>
+        <a href="aufgaben.html">Aufgaben</a>
+        <a href="spielplatz.html" class="nav-cta">Spielplatz</a>
+    </div>
+</nav>
+
+<main id="inhalt" class="mit-verlauf">
+
+<section class="section" id="komplex">
+        <div class="section-head">
+            <span class="eyebrow">01 — Was damit geht</span>
+            <h2>Die Sprache ist einfach.<br><em>Die Programme müssen es nicht sein.</em></h2>
+            <p class="section-sub">Einfach zu lernen heißt nicht, dass man damit nur einfache Programme schreiben kann. Die Sätze bleiben dieselben wie in Lektion 1 — was daraus entsteht, muss nicht klein bleiben. Zwei Programme, die das zeigen: eines, das man sich selbst überlässt, und eines, das rechnet.</p>
+        </div>
+
+        <article class="werk">
+            <p class="werk-nr">Werkstück 01</p>
+            <h3 class="werk-titel">Das Spiel des Lebens</h3>
+            <p class="werk-was">John Conway, 1970. Ein Gitter aus Zellen, vier Regeln, kein Spieler —
+               und trotzdem entstehen Formen, die wandern, blinken, sich gegenseitig auffressen und
+               manchmal für immer stehen bleiben. 352 Zellen, dreißig Generationen, jede aus der
+               vorherigen gerechnet.</p>
+
+            <div class="code-kopf"><span class="code-titel">Die Regeln, wie sie im Programm stehen</span></div>
+<pre class="klar" data-pruefung="nein" data-probieren="nein">Wenn Nachbarn gleich 3 ist, füge 1 zur Neu hinzu.
+Sonst wenn Nachbarn gleich 2 und Element i von Feld gleich 1 ist, füge 1 zur Neu hinzu.
+Sonst füge 0 zur Neu hinzu.</pre>
+
+            <p class="werk-text">Das ist das ganze Spiel. Darüber steht ein einziger Satz, der die acht
+               Nachbarn zusammenzählt, darunter kein weiterer. Der Rest des Programms — gut hundert
+               Zeilen — beantwortet die Fragen, die jedes ernsthafte Programm stellt: Wie bringt man
+               ein Gitter in einer Liste unter? Wie zählt man Nachbarn, ohne an jeder Kante zu
+               fragen, ob es dort noch weitergeht? Und wie wird aus Zahlen ein Bild, das stillsteht,
+               während sich darin alles bewegt?</p>
+
+            <div class="werk-zutaten">
+                <p><span>Liste als Gitter</span> 22 mal 16 Zellen, flach in einer einzigen Liste, Nummer statt Koordinaten.</p>
+                <p><span>Toter Rand</span> Eine Reihe nie lebender Zellen ringsum — dadurch braucht das Nachbarzählen keine einzige Kantenabfrage.</p>
+                <p><span>Feste Leinwand</span> <code>Nimm die Leinwand 440 mal 320.</code> hält den Maßstab still. Ohne diesen Satz springt das Gitter bei jeder Generation.</p>
+                <p><span>Aufgabe gibt eine Liste zurück</span> Jede Generation entsteht als neue Liste — nichts wird an Ort und Stelle verändert, deshalb rechnet keine Zelle mit halb aktualisierten Nachbarn.</p>
+            </div>
+
+            <div class="mini" data-beispiel="21_spiel_des_lebens">
+                <p class="mini-fuss"><button type="button" class="btn btn-primary mini-start">▶ Hier laufen lassen</button></p>
+
+                <p class="mini-hinweis" hidden><strong>Das läuft jetzt hier, in dieser Seite.</strong>
+                   Jeder Start würfelt ein neues Feld aus. Im Editor steht das vollständige Programm —
+                   ändere <em>Breite</em>, <em>Hoehe</em> oder <em>Generationen</em> und drück wieder auf
+                   <em>Ausführen</em>. <a href="spielplatz.html#beispiel=21_spiel_des_lebens">Mit mehr Platz weitermachen →</a></p>
+
+                <div class="mini-buehne" hidden></div>
+            </div>
+
+            <p class="werk-fuss">Im Spielplatz unter <em>21 Spiel des Lebens</em>, im Archiv als
+               <code>programme/21_spiel_des_lebens.klar</code>.</p>
+        </article>
+
+        <article class="werk">
+            <p class="werk-nr">Werkstück 02</p>
+            <h3 class="werk-titel">Der Routenplaner</h3>
+            <p class="werk-was">Zwölf Orte in Niederösterreich und Wien, neunzehn Straßen mit
+               gerundeten Kilometern. Zwei Orte werden ausgewürfelt, und der Algorithmus von
+               Edsger Dijkstra sucht die kürzeste Verbindung — dieselbe Rechnung, die im
+               Navigationsgerät steckt.</p>
+
+            <div class="code-kopf"><span class="code-titel">Der Kern: Lohnt der Umweg über diesen Ort?</span></div>
+<pre class="klar" data-pruefung="nein" data-probieren="nein">Merke Kuerzeste plus Wert für Strecke in Strecken als Ueber.
+Wenn Ueber kleiner als Wert für Nachbar in Weite ist:
+    Trage Nachbar mit Ueber in Weite ein.
+    Trage Nachbar mit Hier in Vorher ein.
+Ende.</pre>
+
+            <p class="werk-text">Dijkstras Einfall von 1959 steht in einem Satz: Nimm immer den
+               nächstgelegenen Ort, der noch offen ist — für den kann kein Umweg mehr kürzer sein.
+               Was das Programm dabei mitschreibt, ist nicht der Weg, sondern zu jedem Ort nur der
+               <em>Vorgänger</em>. Der fertige Weg entsteht erst am Schluss, rückwärts vom Ziel.</p>
+
+            <div class="werk-zutaten">
+                <p><span>Tabelle als Straßennetz</span> Der Schlüssel <code>"Krems|Tulln"</code> nennt beide Enden, der Wert die Kilometer. Befahren wird jede Straße in beide Richtungen.</p>
+                <p><span>Drei Tabellen als Gedächtnis</span> Entfernung, Vorgänger, erledigt — mehr braucht der Algorithmus nicht.</p>
+                <p><span>Karte aus Koordinaten</span> Jeder Ort hat einen Ost- und einen Nordwert; eine Aufgabe zieht daraus Linien, Richtung und Länge rechnet sie mit Wurzel und Arkustangens selbst aus.</p>
+                <p><span>Beschriftete Karte</span> <code>Beschrifte "Wien".</code> schreibt den Namen an die Stelle, an der der Stift steht — auch das kann die Sprache jetzt.</p>
+            </div>
+
+            <div class="mini" data-beispiel="22_routenplaner">
+                <p class="mini-fuss"><button type="button" class="btn btn-primary mini-start">▶ Route berechnen</button></p>
+
+                <p class="mini-hinweis" hidden><strong>Jeder Start würfelt zwei andere Orte aus.</strong>
+                   Golden ist der gefundene Weg, grau sind die übrigen Straßen. Im Editor steht das
+                   ganze Programm — trag eine Straße nach oder ändere eine Kilometerzahl und sieh zu,
+                   wie die Route woanders langgeht.
+                   <a href="spielplatz.html#beispiel=22_routenplaner">Mit mehr Platz weitermachen →</a></p>
+
+                <div class="mini-buehne" hidden></div>
+            </div>
+
+            <p class="werk-fuss">Im Spielplatz unter <em>22 Routenplaner</em>, im Archiv als
+               <code>programme/22_routenplaner.klar</code>. Die Kilometer sind gerundete
+               Straßenkilometer — für die Urlaubsplanung bitte trotzdem eine echte Karte.</p>
+        </article>
+    </section>
+
+</main>
+
+<footer>
+    <div class="foot-inner">
+        <span>© <span id="jahr"></span> ruthner.at · Klarsatz <span data-download="version">0.11.0</span></span>
+        <span class="fuss-stand">Stand: <time datetime="2026-09-21">21.09.2026</time> · Version <span data-download="version">0.11.0</span> · MIT-Lizenz · von <a href="/impressum.html">Ing. Wolfgang Ruthner</a></span>
+        <span><a href="/">ruthner.at</a> &nbsp;·&nbsp; <a href="index.html">Sprache</a> &nbsp;·&nbsp; <a href="tutorial.html">Tutorial</a> &nbsp;·&nbsp; <a href="doku.html">Dokumentation</a> &nbsp;·&nbsp; <a href="spielplatz.html">Spielplatz</a> &nbsp;·&nbsp; <a href="aufgaben.html">Aufgaben</a> &nbsp;·&nbsp; <a href="https://github.com/wolfiru/klarsatz" rel="noopener">GitHub</a> &nbsp;·&nbsp; <a href="mailto:wolfgang@ruthner.at">wolfgang@ruthner.at</a> &nbsp;·&nbsp; <a href="/impressum.html">Impressum</a> &nbsp;·&nbsp; <a href="/datenschutz.html">Datenschutz</a> &nbsp;·&nbsp; <a href="https://github.com/wolfiru/klarsatz/blob/main/LICENSE" rel="noopener">MIT-Lizenz</a></span>
+    </div>
+</footer>
+
+<script defer src="assets/manuskript-bg.js"></script>
+<script defer src="assets/app.js"></script>
+<script type="module" src="assets/mini.js"></script>
+<script type="module" src="assets/code-hervorhebung.js"></script>
+</body>
+</html>
