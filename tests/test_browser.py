@@ -747,3 +747,40 @@ class WegInDieSpielwiese(unittest.TestCase):
         self.s.reload()   # ein Ankersprung im selben Dokument lädt die Seite nicht neu
         self.s.wait_for_function("() => !document.querySelector('.kp-lauf').disabled", timeout=180000)
         self.assertEqual(self.s.input_value(".kp-text").strip(), "")
+
+    def test_von_den_neuen_unterseiten_findet_man_zurueck(self):
+        """Seit 0.11.0 gibt es vier Unterseiten (einordnung, programme, fuerwen, fragen), die
+        von der Startseite wegführen — ohne einen sichtbaren Rückweg wäre das eine Sackgasse."""
+        for datei, name in (("einordnung.html", "Wo Klarsatz steht"),
+                            ("programme.html", "Was damit geht"),
+                            ("fuerwen.html", "Für wen"),
+                            ("fragen.html", "Häufige Einwände")):
+            with self.subTest(seite=datei):
+                self.s.goto(self.basis + datei)
+                self.s.wait_for_selector(".brotkrumen", timeout=30000)
+                self.assertIn(name, self.s.inner_text(".brotkrumen"))
+                self.s.click(".brotkrumen a")
+                self.s.wait_for_url("**/index.html", timeout=30000)
+
+    def test_die_kapitel_seitenleiste_verlinkt_die_vier_seiten_und_springt_im_text(self):
+        """Dieselbe Seitenleiste wie in der Doku (Kapitel + Auf dieser Seite), jetzt auch auf
+        den vier Weiterlesen-Seiten — sonst müsste man für jeden Wechsel zurück zur Startseite."""
+        self.s.goto(self.basis + "fuerwen.html")
+        self.s.wait_for_selector(".doku-seitenleiste", timeout=30000)
+        kapitel = self.s.locator(".doku-seitenleiste li a").all_inner_texts()
+        self.assertEqual(len(kapitel), 6, "Vier Kapitel plus zwei Sprungmarken erwartet.")
+        self.assertTrue(self.s.query_selector(".doku-seitenleiste a.aktiv"),
+                        "Kein Kapitel ist als aktiv markiert.")
+        self.assertIn("Für wen", self.s.inner_text(".doku-seitenleiste a.aktiv"))
+
+        # Zu einer anderen Seite wechseln …
+        self.s.click(".doku-seitenleiste >> text=Wo Klarsatz steht")
+        self.s.wait_for_url("**/einordnung.html", timeout=30000)
+
+        # … und innerhalb einer Seite zu einem Abschnitt springen.
+        self.s.goto(self.basis + "programme.html")
+        self.s.wait_for_selector(".doku-seitenleiste", timeout=30000)
+        self.s.click(".doku-seitenleiste >> text=Der Routenplaner")
+        self.s.wait_for_timeout(400)
+        self.assertIn("#routenplaner", self.s.url)
+        self.assertTrue(self.s.query_selector("#routenplaner"))

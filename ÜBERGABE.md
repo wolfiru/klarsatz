@@ -1,4 +1,4 @@
-# Übergabe – Stand 20.09.2026, Version 0.11.0
+# Übergabe – Stand 20.09.2026, Version 0.11.1
 
 > **Umbenannt:** Das Projekt hieß bis 18.09.2026 *Klartext*; der Name war schon vergeben.
 > Alles heißt jetzt **Klarsatz** — nur die Dateiendung der Programme bleibt `.klar`.
@@ -28,7 +28,7 @@ die Weiterarbeit. Sprache: `docs/SPRACHE.md`.
   SVG-Ausgabe der Kommandozeile und Python-Übersetzung.
 - **Versionsverwaltung:** seit 19.09.2026 ein Git-Repository in `/home/pi/klarsatz` (Zweig `main`).
   Erzeugte Dateien liegen bewusst mit im Repository, damit ein ausgecheckter Stand sofort läuft.
-  Versionssprünge sind als `vX.Y.Z` markiert, zuletzt `v0.11.0`.
+  Versionssprünge sind als `vX.Y.Z` markiert, zuletzt `v0.11.1`.
 - **GitHub:** seit 19.09.2026 öffentlich unter **https://github.com/wolfiru/klarsatz** mit
   README, Lizenz, CI (Tests + wöchentlicher Fuzz-Lauf). `git push origin main` schiebt hin;
   Marken brauchen ein eigenes `git push origin vX.Y.Z`.
@@ -114,7 +114,7 @@ sich überspringt, wo die nicht liegt.
 `tools/baue_tutorial.py` baut jetzt mehrere Kurse aus einer Liste `KURSE`; ein weiterer Kurs ist
 ein Markdown-Datei plus ein Eintrag.
 
-**Seit 0.11.0 kommt die Spielwiese in die Lektion** (`assets/kurs.js`): Der Knopf „Hier
+**Seit 0.11.1 kommt die Spielwiese in die Lektion** (`assets/kurs.js`): Der Knopf „Hier
 ausführen/editieren" an jedem Codeblock lädt sie einmal je Seite und verschiebt sie danach nur noch
 — mehr als eine hieße Pyodide (14 MB) je Block neu laden. Der Link in den Spielplatz bleibt für
 die, die mehr Platz wollen, öffnet aber einen neuen Tab.
@@ -148,6 +148,7 @@ SVG-Symbolbild (`assets/klarsatz-symbolbild.svg`).
 | „Was damit geht" mit den beiden Werkstücken — **seit 0.11.0 eigene Seite** | `programme.html`; `programme/21_*`, `programme/22_*`; `tests/test_werkstuecke.py` hält Seite und Programm zusammen |
 | „Danach" (Python-Brücke) + „Für wen" (Eignungstabelle) — **seit 0.11.0 eine gemeinsame Seite** | `fuerwen.html`; `tests/test_bruecke.py`, `tests/test_zielgruppen.py` |
 | „Harte Fragen" + „Mitmachen" — **seit 0.11.0 eigene Seite**, `FAQPage`-JSON-LD zog mit | `fragen.html`; `tests/test_fragen.py` |
+| Rückweg von den vier Seiten oben: Brotkrümel-Leiste; **seit 0.11.1** zusätzlich dieselbe Kapitel-Seitenleiste wie in der Doku (`.doku-layout`) zum Springen zwischen und innerhalb der vier Seiten | jeweils im Kopf von `einordnung.html`/`programme.html`/`fuerwen.html`/`fragen.html`; `tests/test_browser.py` |
 | Demos, die in der Startseite bzw. in `programme.html` laufen | `webseite/assets/mini.js`; holt den Quelltext aus `spielwiese/beispiele.json`, damit die Seite keine veraltete Fassung zeigen kann |
 | Design, Hintergrund-Animation, Hervorhebung | `assets/` |
 | Vorlage der Doku-Kapitel (im Projekt) | `webseite/kapitel/` + `webseite/baue_doku.sh` |
@@ -274,7 +275,7 @@ Kleinschreibung nicht (Python schon → Namensspeicher), und Feldnamen dürfen g
   Stellen, an denen es abweicht.
 </details>
 
-### 4. Übungsaufgaben mit Selbstprüfung — **gebaut am 20.09.2026 (0.11.0)**
+### 4. Übungsaufgaben mit Selbstprüfung — **gebaut am 20.09.2026 (0.11.1)**
 * **Ansatz:** `web.laufe(quelltext, antworten, seed)` ist bereits deterministisch — eine Aufgabe ist damit
   ein Datensatz aus Angabe, vorgegebenen Antworten und Prüfregel. Dazu ein Test, der alle Musterlösungen
   durchspielt (wie `tools/pruefe_webseite.py` es für die Doku-Beispiele tut), und eine Übungsseite.

@@ -149,6 +149,36 @@
 
 <main id="inhalt" class="mit-verlauf">
 
+<nav class="brotkrumen" aria-label="Brotkrümelnavigation">
+    <a href="index.html">← Klarsatz</a>
+    <span aria-hidden="true">/</span>
+    <span aria-current="page">Häufige Einwände</span>
+</nav>
+
+<div class="doku-layout">
+<aside class="doku-seitenleiste">
+        <span class="sl-titel">Kapitel</span>
+        <ol>
+            <li><a href="einordnung.html">Wo Klarsatz steht</a></li>
+            <li><a href="programme.html">Was damit geht</a></li>
+            <li><a href="fuerwen.html">Für wen — und wie es weitergeht</a></li>
+            <li><a href="fragen.html" class="aktiv">Was man einwenden kann</a></li>
+        </ol>
+        <span class="sl-titel">Auf dieser Seite</span>
+        <ol>
+            <li><a href="#f-neue-sprache">Ist das eine neue Programmiersprache?</a></li>
+            <li><a href="#f-fuer-wen">Für wen ist das gedacht?</a></li>
+            <li><a href="#f-warum-nicht-python">Warum nicht gleich Python?</a></li>
+            <li><a href="#f-warum-nicht-scratch">Warum nicht Scratch?</a></li>
+            <li><a href="#f-deutsch">Ist Deutsch nicht ein Nachteil? Programmiert wird auf Englisch.</a></li>
+            <li><a href="#f-dabei-bleiben">Und wenn jemand dabei bleibt?</a></li>
+            <li><a href="#f-erprobt">Ist das didaktisch erprobt?</a></li>
+            <li><a href="#f-unterricht">Darf ich das im Unterricht einsetzen?</a></li>
+            <li><a href="#mitmachen">Mitmachen</a></li>
+        </ol>
+    </aside>
+
+    <div class="kapitel-inhalt">
 <section class="section" id="fragen">
         <div class="section-head">
             <span class="eyebrow">01 — Harte Fragen</span>
@@ -157,41 +187,41 @@
         </div>
 
         <div class="faq">
-            <article>
+            <article id="f-neue-sprache">
                 <h3>Ist das eine neue Programmiersprache?</h3>
                 <p>Technisch ja: eigener Lexer, eigener Parser, eigener Interpreter, eine Sprachdefinition. Als <em>Ziel</em> nein. Klarsatz ist als didaktische Notation gedacht — ein Gerüst, das man wieder abbaut. Deshalb endet der Kurs nicht in Klarsatz, sondern in Python.</p>
             </article>
-            <article>
+            <article id="f-fuer-wen">
                 <h3>Für wen ist das gedacht?</h3>
                 <p>Für den ersten Berührungspunkt mit dem Programmieren: Schule, Kurs oder Selbstlernen, ohne Vorkenntnisse, deutschsprachig, ungefähr ab zehn Jahren. Für alle, die schon programmieren, ist es nichts — und wer nur ein Werkzeug für die Arbeit sucht, ist bei Python besser aufgehoben. Ausführlich, mit meiner Einschätzung von 1 bis 10: <a href="fuerwen.html">Für wen Klarsatz taugt</a>.</p>
             </article>
-            <article>
+            <article id="f-warum-nicht-python">
                 <h3>Warum nicht gleich Python?</h3>
                 <p>Für viele ist genau das der richtige Weg, und dieser Seite liegt nichts daran, davon abzuraten. Klarsatz setzt bei denen an, die zwei Dinge gleichzeitig lernen müssten: wie man ein Problem in Schritte zerlegt <em>und</em> eine fremde Schreibweise samt englischer Fachbegriffe. Die Annahme ist, dass sich das trennen lässt. Bewiesen ist sie nicht.</p>
             </article>
-            <article>
+            <article id="f-warum-nicht-scratch">
                 <h3>Warum nicht Scratch?</h3>
                 <p>Scratch nimmt die Syntax weg — ein anderer Weg, und ein bewährter. Mit ihr fällt aber auch weg, was später den Alltag ausmacht: tippen, Zeile für Zeile lesen, mit Fehlermeldungen umgehen, Quelltext als Text behandeln. Klarsatz behält das und senkt stattdessen die sprachliche Hürde. Welcher Weg besser trägt, hängt vom Lernenden ab — die <a href="einordnung.html">Einordnung</a> zeigt beide nebeneinander.</p>
             </article>
-            <article>
+            <article id="f-deutsch">
                 <h3>Ist Deutsch nicht ein Nachteil? Programmiert wird auf Englisch.</h3>
                 <p>Das ist die Spannung, auf der das ganze Projekt steht. Wer bei Klarsatz bliebe, hätte am Ende eine Sprache gelernt, die niemand sonst spricht. Genau deshalb ist der Ausgang kein Zusatz, sondern eingebaut: Ein Knopf übersetzt jedes eigene Programm nach Python, und die letzte Lektion des Kurses handelt davon, wie die englischen Wörter heißen, die man bis dahin auf Deutsch benutzt hat.</p>
             </article>
-            <article>
+            <article id="f-dabei-bleiben">
                 <h3>Und wenn jemand dabei bleibt?</h3>
                 <p>Dann wäre das Projekt gescheitert, nicht gelungen. Dagegen steht die bewusste Begrenzung: keine Pakete, kein Ökosystem, kein Netzwerk, keine großen Programme. Klarsatz ist so gebaut, dass man es <strong>verlassen will</strong>, sobald man es nicht mehr braucht.</p>
             </article>
-            <article>
+            <article id="f-erprobt">
                 <h3>Ist das didaktisch erprobt?</h3>
                 <p>Nein. Es gibt keine Studie, keinen Unterrichtsversuch, keine Zahlen zum Lerntransfer — das ist ein Hobbyprojekt, kein Forschungsvorhaben. Geprüft ist die <em>Technik</em>: Jedes Beispielprogramm und jedes Codebeispiel dieser Seite wird bei jeder Änderung ausgeführt und mit der erwarteten Ausgabe verglichen. Ob der Ansatz beim Lernen trägt, ist davon unberührt und bleibt offen.</p>
             </article>
-            <article>
+            <article id="f-unterricht">
                 <h3>Darf ich das im Unterricht einsetzen?</h3>
                 <p>Ja, ohne zu fragen. MIT-Lizenz, der Quelltext liegt offen, die Spielwiese läuft im Browser ohne Konto und ohne Installation — und das heruntergeladene Archiv läuft auch ohne Internet. Wenn du es tust, schreib mir bitte, was passiert ist: Das ist die einzige Art von Antwort, die diese Seite nicht selbst geben kann.</p>
             </article>
         </div>
 
-        <div class="mitmachen">
+        <div class="mitmachen" id="mitmachen">
             <p class="mitmachen-titel">Mitmachen</p>
             <div class="mitmachen-grid">
                 <article>
@@ -213,12 +243,15 @@
         </div>
     </section>
 
+    </div>
+</div>
+
 </main>
 
 <footer>
     <div class="foot-inner">
-        <span>© <span id="jahr"></span> ruthner.at · Klarsatz <span data-download="version">0.11.0</span></span>
-        <span class="fuss-stand">Stand: <time datetime="2026-09-21">21.09.2026</time> · Version <span data-download="version">0.11.0</span> · MIT-Lizenz · von <a href="/impressum.html">Ing. Wolfgang Ruthner</a></span>
+        <span>© <span id="jahr"></span> ruthner.at · Klarsatz <span data-download="version">0.11.1</span></span>
+        <span class="fuss-stand">Stand: <time datetime="2026-09-21">21.09.2026</time> · Version <span data-download="version">0.11.1</span> · MIT-Lizenz · von <a href="/impressum.html">Ing. Wolfgang Ruthner</a></span>
         <span><a href="/">ruthner.at</a> &nbsp;·&nbsp; <a href="index.html">Sprache</a> &nbsp;·&nbsp; <a href="tutorial.html">Tutorial</a> &nbsp;·&nbsp; <a href="doku.html">Dokumentation</a> &nbsp;·&nbsp; <a href="spielplatz.html">Spielplatz</a> &nbsp;·&nbsp; <a href="aufgaben.html">Aufgaben</a> &nbsp;·&nbsp; <a href="https://github.com/wolfiru/klarsatz" rel="noopener">GitHub</a> &nbsp;·&nbsp; <a href="mailto:wolfgang@ruthner.at">wolfgang@ruthner.at</a> &nbsp;·&nbsp; <a href="/impressum.html">Impressum</a> &nbsp;·&nbsp; <a href="/datenschutz.html">Datenschutz</a> &nbsp;·&nbsp; <a href="https://github.com/wolfiru/klarsatz/blob/main/LICENSE" rel="noopener">MIT-Lizenz</a></span>
     </div>
 </footer>

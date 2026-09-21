@@ -23,7 +23,7 @@ def abschnitt():
 
 def werkstuecke():
     """Jedes Werkstück mit seinem Programm: [(Kennung, HTML, Quelltext), …]"""
-    stuecke = re.findall(r'<article class="werk">(.*?)</article>', abschnitt(), re.S)
+    stuecke = re.findall(r'<article class="werk"[^>]*>(.*?)</article>', abschnitt(), re.S)
     ergebnis = []
     for html in stuecke:
         kennung = re.search(r'data-beispiel="([^"]+)"', html).group(1)

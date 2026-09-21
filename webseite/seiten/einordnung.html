@@ -76,6 +76,29 @@
 
 <main id="inhalt" class="mit-verlauf">
 
+<nav class="brotkrumen" aria-label="Brotkrümelnavigation">
+    <a href="index.html">← Klarsatz</a>
+    <span aria-hidden="true">/</span>
+    <span aria-current="page">Wo Klarsatz steht</span>
+</nav>
+
+<div class="doku-layout">
+<aside class="doku-seitenleiste">
+        <span class="sl-titel">Kapitel</span>
+        <ol>
+            <li><a href="einordnung.html" class="aktiv">Wo Klarsatz steht</a></li>
+            <li><a href="programme.html">Was damit geht</a></li>
+            <li><a href="fuerwen.html">Für wen — und wie es weitergeht</a></li>
+            <li><a href="fragen.html">Was man einwenden kann</a></li>
+        </ol>
+        <span class="sl-titel">Auf dieser Seite</span>
+        <ol>
+            <li><a href="#ein-vergleich">Vergleichstabelle</a></li>
+            <li><a href="#ein-karte">Die Karte</a></li>
+        </ol>
+    </aside>
+
+    <div class="kapitel-inhalt">
 <section class="section" id="einordnung">
         <div class="section-head">
             <span class="eyebrow">01 — Einordnung</span>
@@ -88,7 +111,7 @@
            der vollen Komplexität einer etablierten Sprache zu konfrontieren. Die Ansätze setzen
            dabei an unterschiedlichen Stellen an — und keiner davon ist der richtige für alle.</p>
 
-        <div class="ein-rahmen">
+        <div class="ein-rahmen" id="ein-vergleich">
             <table class="einordnung">
                 <thead>
                     <tr>
@@ -182,7 +205,7 @@
 
         <p class="pointe">Weder Blöcke noch Python <em>ersetzen.</em><span>Klarsatz versucht nicht, Programmieren durch Blöcke zu ersetzen, und auch nicht, Python zu ersetzen. Der Ansatz liegt dazwischen: echter Quelltext von Anfang an, aber mit einer vertrauten sprachlichen Oberfläche.</span></p>
 
-        <figure class="ein-diagramm">
+        <figure class="ein-diagramm" id="ein-karte">
             <svg class="ein-karte" viewBox="0 0 900 580" role="img"
                  aria-labelledby="ein-karte-titel ein-karte-text" preserveAspectRatio="xMidYMid meet">
                 <title id="ein-karte-titel">Schematische Karte der Lernsprachen</title>
@@ -289,12 +312,15 @@
             <a href="https://scratch.mit.edu/" rel="noopener">Scratch</a></p>
     </section>
 
+    </div>
+</div>
+
 </main>
 
 <footer>
     <div class="foot-inner">
-        <span>© <span id="jahr"></span> ruthner.at · Klarsatz <span data-download="version">0.11.0</span></span>
-        <span class="fuss-stand">Stand: <time datetime="2026-09-21">21.09.2026</time> · Version <span data-download="version">0.11.0</span> · MIT-Lizenz · von <a href="/impressum.html">Ing. Wolfgang Ruthner</a></span>
+        <span>© <span id="jahr"></span> ruthner.at · Klarsatz <span data-download="version">0.11.1</span></span>
+        <span class="fuss-stand">Stand: <time datetime="2026-09-21">21.09.2026</time> · Version <span data-download="version">0.11.1</span> · MIT-Lizenz · von <a href="/impressum.html">Ing. Wolfgang Ruthner</a></span>
         <span><a href="/">ruthner.at</a> &nbsp;·&nbsp; <a href="index.html">Sprache</a> &nbsp;·&nbsp; <a href="tutorial.html">Tutorial</a> &nbsp;·&nbsp; <a href="doku.html">Dokumentation</a> &nbsp;·&nbsp; <a href="spielplatz.html">Spielplatz</a> &nbsp;·&nbsp; <a href="aufgaben.html">Aufgaben</a> &nbsp;·&nbsp; <a href="https://github.com/wolfiru/klarsatz" rel="noopener">GitHub</a> &nbsp;·&nbsp; <a href="mailto:wolfgang@ruthner.at">wolfgang@ruthner.at</a> &nbsp;·&nbsp; <a href="/impressum.html">Impressum</a> &nbsp;·&nbsp; <a href="/datenschutz.html">Datenschutz</a> &nbsp;·&nbsp; <a href="https://github.com/wolfiru/klarsatz/blob/main/LICENSE" rel="noopener">MIT-Lizenz</a></span>
     </div>
 </footer>

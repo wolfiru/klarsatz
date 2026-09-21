@@ -49,7 +49,7 @@ class DieFragen(unittest.TestCase):
                 self.assertIn("?", frage, "Das ist keine Frage.")
 
     def test_jede_frage_bekommt_eine_antwort(self):
-        for stueck in re.findall(r"<article>(.*?)</article>", self.a, re.S):
+        for stueck in re.findall(r"<article[^>]*>(.*?)</article>", self.a, re.S):
             if "<h3>" not in stueck:
                 continue
             with self.subTest(frage=re.search(r"<h3>([^<]+)</h3>", stueck).group(1)):
@@ -87,7 +87,7 @@ class DieAntwortenBleibenEhrlich(unittest.TestCase):
 class Mitmachen(unittest.TestCase):
     def setUp(self):
         a = abschnitt()
-        self.block = a[a.index('<div class="mitmachen">'):]
+        self.block = a[a.index('<div class="mitmachen"'):]
 
     def test_die_drei_wege_stehen_da(self):
         for was in ("Unterricht", "Fehler und Ideen", "forken"):

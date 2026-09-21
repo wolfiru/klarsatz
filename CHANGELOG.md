@@ -1,5 +1,22 @@
 # Änderungen
 
+## 0.11.1 — Zurückfinden auf den neuen Seiten
+- **Kein Rückweg von den vier Weiterlesen-Seiten.** 0.11.0 hatte `einordnung.html`,
+  `programme.html`, `fuerwen.html` und `fragen.html` neu eingeführt, aber außer der
+  Wortmarke oben links gab es nirgends einen erkennbaren Weg zurück — das wirkte
+  unübersichtlich. Jetzt steht ganz oben eine Brotkrümel-Leiste („← Klarsatz / Seitenname“).
+- **Kapitel-Seitenleiste, wiederverwendet aus der Dokumentation.** Dieselbe
+  `.doku-layout`/`.doku-seitenleiste`, die schon bei `doku*.html` zwischen den Kapiteln
+  springen lässt, sitzt jetzt auch auf den vier neuen Seiten: „Kapitel“ verlinkt zwischen
+  ihnen (aktuelle Seite hervorgehoben), „Auf dieser Seite“ springt zu den Abschnitten
+  innerhalb der Seite — bei `fragen.html` zu jeder einzelnen Frage. Responsiv wie im
+  Original: auf schmalen Bildschirmen eine umbrechende Leiste oberhalb des Inhalts statt
+  der festen Spalte links.
+- Zwei bestehende Tests (`test_werkstuecke.py`, `test_fragen.py`) suchten exakt nach
+  `<article class="werk">` bzw. `<article>` ohne Attribute — durch die neuen `id`s für die
+  Sprungmarken fanden sie plötzlich nichts mehr (bei `test_fragen.py` sogar unbemerkt: die
+  Schleife lief einfach über null Treffer). Beide Regex angepasst.
+
 ## 0.11.0 — Die Startseite kürzer, vier neue Seiten
 - **Die Startseite war zu lang.** 14 Abschnitte, ~1270 Zeilen, aber die Navigation zeigte nur
   sieben davon — Erstbesucher mussten durch eine Vergleichskarte, einen Feature-Showcase und

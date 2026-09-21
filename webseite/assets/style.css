@@ -3226,3 +3226,41 @@ textarea:focus-visible,
 }
 
 .aufgabe-flaeche .hier-aus { order: 3; }
+
+/* ── Brotkrumen auf den Unterseiten "Weiterlesen" ────────────────────────── */
+
+/* Die vier Seiten (Einordnung, Programme, Für wen, Fragen) haben sonst keinen
+   sichtbaren Weg zurück — nur die Wortmarke oben links, die nicht als "zurück"
+   erkennbar ist. Diese Leiste macht Herkunft und Rückweg in einem Blick klar. */
+.brotkrumen {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 22px 0 0;
+    font-family: var(--sans);
+    font-size: 0.82rem;
+    color: var(--paper-faint);
+}
+
+.brotkrumen a {
+    color: var(--paper-dim);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: color 0.15s var(--ease), border-color 0.15s var(--ease);
+}
+
+.brotkrumen a:hover,
+.brotkrumen a:focus-visible {
+    color: var(--gold);
+    border-bottom-color: var(--gold);
+}
+
+.brotkrumen span[aria-current] {
+    color: var(--paper-faint);
+}
+
+/* Die vier "Weiterlesen"-Seiten bekommen dieselbe Kapitel-Seitenleiste wie die Doku
+   (.doku-layout/.doku-seitenleiste, schon vorhanden und responsiv) — nur der
+   Inhalts-Container heißt anders, weil .doku-inhalt eigene h2/p-Farben mitbringt,
+   die für section-head/eyebrow hier nicht passen. */
+.kapitel-inhalt { min-width: 0; }

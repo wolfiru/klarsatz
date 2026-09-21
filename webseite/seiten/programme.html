@@ -76,6 +76,29 @@
 
 <main id="inhalt" class="mit-verlauf">
 
+<nav class="brotkrumen" aria-label="Brotkrümelnavigation">
+    <a href="index.html">← Klarsatz</a>
+    <span aria-hidden="true">/</span>
+    <span aria-current="page">Was damit geht</span>
+</nav>
+
+<div class="doku-layout">
+<aside class="doku-seitenleiste">
+        <span class="sl-titel">Kapitel</span>
+        <ol>
+            <li><a href="einordnung.html">Wo Klarsatz steht</a></li>
+            <li><a href="programme.html" class="aktiv">Was damit geht</a></li>
+            <li><a href="fuerwen.html">Für wen — und wie es weitergeht</a></li>
+            <li><a href="fragen.html">Was man einwenden kann</a></li>
+        </ol>
+        <span class="sl-titel">Auf dieser Seite</span>
+        <ol>
+            <li><a href="#spiel-des-lebens">Das Spiel des Lebens</a></li>
+            <li><a href="#routenplaner">Der Routenplaner</a></li>
+        </ol>
+    </aside>
+
+    <div class="kapitel-inhalt">
 <section class="section" id="komplex">
         <div class="section-head">
             <span class="eyebrow">01 — Was damit geht</span>
@@ -83,7 +106,7 @@
             <p class="section-sub">Einfach zu lernen heißt nicht, dass man damit nur einfache Programme schreiben kann. Die Sätze bleiben dieselben wie in Lektion 1 — was daraus entsteht, muss nicht klein bleiben. Zwei Programme, die das zeigen: eines, das man sich selbst überlässt, und eines, das rechnet.</p>
         </div>
 
-        <article class="werk">
+        <article class="werk" id="spiel-des-lebens">
             <p class="werk-nr">Werkstück 01</p>
             <h3 class="werk-titel">Das Spiel des Lebens</h3>
             <p class="werk-was">John Conway, 1970. Ein Gitter aus Zellen, vier Regeln, kein Spieler —
@@ -125,7 +148,7 @@ Sonst füge 0 zur Neu hinzu.</pre>
                <code>programme/21_spiel_des_lebens.klar</code>.</p>
         </article>
 
-        <article class="werk">
+        <article class="werk" id="routenplaner">
             <p class="werk-nr">Werkstück 02</p>
             <h3 class="werk-titel">Der Routenplaner</h3>
             <p class="werk-was">Zwölf Orte in Niederösterreich und Wien, neunzehn Straßen mit
@@ -170,12 +193,15 @@ Ende.</pre>
         </article>
     </section>
 
+    </div>
+</div>
+
 </main>
 
 <footer>
     <div class="foot-inner">
-        <span>© <span id="jahr"></span> ruthner.at · Klarsatz <span data-download="version">0.11.0</span></span>
-        <span class="fuss-stand">Stand: <time datetime="2026-09-21">21.09.2026</time> · Version <span data-download="version">0.11.0</span> · MIT-Lizenz · von <a href="/impressum.html">Ing. Wolfgang Ruthner</a></span>
+        <span>© <span id="jahr"></span> ruthner.at · Klarsatz <span data-download="version">0.11.1</span></span>
+        <span class="fuss-stand">Stand: <time datetime="2026-09-21">21.09.2026</time> · Version <span data-download="version">0.11.1</span> · MIT-Lizenz · von <a href="/impressum.html">Ing. Wolfgang Ruthner</a></span>
         <span><a href="/">ruthner.at</a> &nbsp;·&nbsp; <a href="index.html">Sprache</a> &nbsp;·&nbsp; <a href="tutorial.html">Tutorial</a> &nbsp;·&nbsp; <a href="doku.html">Dokumentation</a> &nbsp;·&nbsp; <a href="spielplatz.html">Spielplatz</a> &nbsp;·&nbsp; <a href="aufgaben.html">Aufgaben</a> &nbsp;·&nbsp; <a href="https://github.com/wolfiru/klarsatz" rel="noopener">GitHub</a> &nbsp;·&nbsp; <a href="mailto:wolfgang@ruthner.at">wolfgang@ruthner.at</a> &nbsp;·&nbsp; <a href="/impressum.html">Impressum</a> &nbsp;·&nbsp; <a href="/datenschutz.html">Datenschutz</a> &nbsp;·&nbsp; <a href="https://github.com/wolfiru/klarsatz/blob/main/LICENSE" rel="noopener">MIT-Lizenz</a></span>
     </div>
 </footer>
