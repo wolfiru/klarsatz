@@ -1,5 +1,24 @@
 # Änderungen
 
+## 0.11.2 — Textstufen statt 1–10-Punkte
+- **Die Eignungstabelle sah nach einer Messung aus.** Externe Kritik, mehrfach wiederholt:
+  „Das ist keine Messung“ stand direkt neben `9/10`, `8/10`, `7/10` — und eine Zahl mit
+  Punkte-Maß wirkt zwangsläufig präzise, egal was der Disclaimer sagt. Nachgerechnet zeigte
+  sich: Die Zahlen unterschieden ohnehin nie mehr als drei Farbklassen (9/8/7 waren immer
+  „gut“, 5 „mittel“, 3/2/1 „weniger geeignet“) — es ging also keine echte Information
+  verloren. Jetzt steht statt Punkte-Maß und Zahl eine von drei Textstufen: **Gut
+  geeignet**, **Bedingt geeignet**, **Weniger geeignet**, farblich wie zuvor.
+- Betroffen: `webseite/seiten/fuerwen.html`, die parallele Tabelle in `README.md` (per Test
+  synchron gehalten) und der Verweis „mit meiner Einschätzung von 1 bis 10“ auf
+  `fragen.html` samt `FAQPage`-JSON-LD, jetzt „mit meiner ehrlichen Einschätzung“.
+- `tests/test_zielgruppen.py` komplett neu geschrieben: prüft jetzt Textstufen statt
+  Punktzahl, und zusätzlich, dass Zeilenfarbe (`eig-gut`/`-mittel`/`-schlecht`) und
+  Stufentext übereinstimmen.
+- Nebenbei: `hebe_version.py` hatte in `ÜBERGABE.md` erneut mehrere „seit 0.11.0“/„seit
+  0.11.1“ blind auf die neue Versionsnummer mitgezogen (derselbe Effekt wie in 0.11.1) —
+  zurückkorrigiert. Das Werkzeug bräuchte eigentlich ein gezielteres Muster statt eines
+  blinden Textersetzens; bisher von Hand nachkontrolliert.
+
 ## 0.11.1 — Zurückfinden auf den neuen Seiten
 - **Kein Rückweg von den vier Weiterlesen-Seiten.** 0.11.0 hatte `einordnung.html`,
   `programme.html`, `fuerwen.html` und `fragen.html` neu eingeführt, aber außer der

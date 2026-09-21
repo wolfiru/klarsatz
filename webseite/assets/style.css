@@ -1706,29 +1706,23 @@ kbd {
 .eignung th, .eignung td { padding: 14px 18px 14px 0; border-bottom: 1px solid var(--line); vertical-align: top; }
 .eignung tbody tr:last-child th, .eignung tbody tr:last-child td { border-bottom: none; }
 
-/* Das Zehn-Punkte-Maß. Die Farbe sagt, in welche Richtung es geht. */
-.eig-messer { display: inline-flex; gap: 3px; vertical-align: middle; }
-
-.eig-punkt {
-    width: 9px;
-    height: 9px;
-    border-radius: 50%;
-    border: 1px solid rgba(243, 239, 230, 0.22);
-    background: none;
-}
-
-.eig-gut      .eig-punkt.ist-voll { background: var(--moss);  border-color: var(--moss); }
-.eig-mittel   .eig-punkt.ist-voll { background: var(--gold);  border-color: var(--gold); }
-.eig-schlecht .eig-punkt.ist-voll { background: #b2705a;      border-color: #b2705a; }
-
-.eig-zahl {
+/* Textstufe statt Punktezahl: Eine Zahl von 1 bis 10 sah nach einer Messung aus, obwohl
+   direkt daneben stand, dass es keine ist — und die Ziffern unterschieden ohnehin nie
+   mehr als diese drei Stufen (9/8/7 waren immer "gut", 3/2/1 immer "weniger geeignet").
+   Dieselben drei Farben wie vorher, nur ohne die Pseudo-Präzision. */
+.eig-stufe {
     display: inline-block;
-    margin-left: 10px;
-    font-variant-numeric: tabular-nums;
-    font-size: 0.82rem;
-    color: var(--paper-faint);
-    vertical-align: middle;
+    padding: 3px 10px;
+    border-radius: 999px;
+    font-family: var(--sans);
+    font-size: 0.78rem;
+    font-weight: 600;
+    white-space: nowrap;
 }
+
+.eig-gut      .eig-stufe { color: var(--moss); background: rgba(127, 176, 105, 0.12); border: 1px solid rgba(127, 176, 105, 0.35); }
+.eig-mittel   .eig-stufe { color: var(--gold); background: rgba(217, 180, 90, 0.12);  border: 1px solid rgba(217, 180, 90, 0.35); }
+.eig-schlecht .eig-stufe { color: #d99a82;     background: rgba(178, 112, 90, 0.16);  border: 1px solid rgba(178, 112, 90, 0.4); }
 
 .eig-fazit {
     margin: 32px 0 0;

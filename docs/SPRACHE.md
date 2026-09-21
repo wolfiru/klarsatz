@@ -1,4 +1,4 @@
-# Klarsatz – Sprachdefinition (Stand: Version 0.11.1)
+# Klarsatz – Sprachdefinition (Stand: Version 0.11.2)
 
 Klarsatz ist **keine natürliche Sprache**, sondern eine Programmiersprache, deren Syntax sich an
 deutscher Alltagssprache orientiert — fachlich: eine *kontrollierte natürliche Sprache*. Der
